@@ -3,10 +3,18 @@ using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
-public class SnowmanController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [Header("References")]
-    public GameObject head;
+    [SerializeField]
+    private Transform head;
+
+    [SerializeField]
+    private Transform playerBody;
+
+    [SerializeField]
+    private Transform cameraTransform;
+
 
     [Header("Movement")]
     [SerializeField]
@@ -15,13 +23,16 @@ public class SnowmanController : MonoBehaviour
     [SerializeField]
     private float rotationSpeed = 10f;
 
+
     [Header("Jump")]
     [SerializeField]
     private float jumpForce = 6f;
 
+
     [Header("Ground Check")]
     [SerializeField]
     private float groundCheckDistance = 0.25f;
+
 
     private Rigidbody rb;
     private CapsuleCollider capsule;
@@ -41,7 +52,7 @@ public class SnowmanController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         capsule = GetComponent<CapsuleCollider>();
 
-        // 不讓雪人倒下
+        // Player 本體保持直立
         rb.constraints =
             RigidbodyConstraints.FreezeRotationX |
             RigidbodyConstraints.FreezeRotationZ;
@@ -90,14 +101,13 @@ public class SnowmanController : MonoBehaviour
         float horizontal = 0f;
         float vertical = 0f;
 
-        // W / S
+
         if (Keyboard.current.wKey.isPressed)
             vertical += 1f;
 
         if (Keyboard.current.sKey.isPressed)
             vertical -= 1f;
 
-        // A / D
         if (Keyboard.current.aKey.isPressed)
             horizontal -= 1f;
 
@@ -110,14 +120,13 @@ public class SnowmanController : MonoBehaviour
             vertical
         );
 
-        // 防止斜走速度變快
         moveInput = Vector2.ClampMagnitude(
             moveInput,
             1f
         );
 
 
-        // Space
+        // Jump
         if (
             Keyboard.current.spaceKey.wasPressedThisFrame &&
             canJump
@@ -134,20 +143,20 @@ public class SnowmanController : MonoBehaviour
 
     private void Move()
     {
-        if (Camera.main == null)
+        if (cameraTransform == null)
             return;
 
 
         // Camera 的前方
         Vector3 cameraForward =
-            Camera.main.transform.forward;
+            cameraTransform.forward;
 
         // Camera 的右方
         Vector3 cameraRight =
-            Camera.main.transform.right;
+            cameraTransform.right;
 
 
-        // 不考慮 Camera 上下角度
+        // RPG 移動只考慮水平面
         cameraForward.y = 0f;
         cameraRight.y = 0f;
 
@@ -155,7 +164,7 @@ public class SnowmanController : MonoBehaviour
         cameraRight.Normalize();
 
 
-        // 計算移動方向
+        // 根據 Camera 方向計算 WASD 移動方向
         Vector3 moveDirection =
             cameraForward * moveInput.y +
             cameraRight * moveInput.x;
@@ -167,7 +176,7 @@ public class SnowmanController : MonoBehaviour
 
 
             // =====================
-            // 移動
+            // 移動 Player
             // =====================
 
             Vector3 movement =
@@ -181,7 +190,7 @@ public class SnowmanController : MonoBehaviour
 
 
             // =====================
-            // 角色轉向
+            // 下半身轉向
             // =====================
 
             Quaternion targetRotation =
@@ -189,23 +198,29 @@ public class SnowmanController : MonoBehaviour
                     moveDirection
                 );
 
-            Quaternion newRotation =
-                Quaternion.Slerp(
-                    rb.rotation,
-                    targetRotation,
-                    rotationSpeed *
-                    Time.fixedDeltaTime
-                );
 
-            rb.MoveRotation(newRotation);
+            if (playerBody != null)
+            {
+                playerBody.rotation =
+                    Quaternion.Slerp(
+                        playerBody.rotation,
+                        targetRotation,
+                        rotationSpeed *
+                        Time.fixedDeltaTime
+                    );
+            }
 
 
-            // 如果 Head 有指定
+            // =====================
+            // 頭部轉向
+            // 保留原本功能
+            // =====================
+
             if (head != null)
             {
-                head.transform.rotation =
+                head.rotation =
                     Quaternion.Slerp(
-                        head.transform.rotation,
+                        head.rotation,
                         targetRotation,
                         rotationSpeed *
                         Time.fixedDeltaTime
@@ -224,7 +239,6 @@ public class SnowmanController : MonoBehaviour
         canJump = false;
 
 
-        // 先把目前垂直速度清掉
         Vector3 velocity =
             rb.linearVelocity;
 
@@ -233,7 +247,6 @@ public class SnowmanController : MonoBehaviour
         rb.linearVelocity = velocity;
 
 
-        // 往上跳
         rb.AddForce(
             Vector3.up * jumpForce,
             ForceMode.Impulse
