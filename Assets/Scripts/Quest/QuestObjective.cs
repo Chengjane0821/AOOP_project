@@ -1,16 +1,19 @@
-using UnityEngine;
+using System;
 
-public class QuestObjective : MonoBehaviour
+[Serializable]
+public class QuestObjective
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public string description;
+    public bool isCompleted;
+
+    public QuestObjective(string description)
     {
-        
+        this.description = description;
+        isCompleted = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Complete()
     {
-        
+        isCompleted = true;
     }
 }
