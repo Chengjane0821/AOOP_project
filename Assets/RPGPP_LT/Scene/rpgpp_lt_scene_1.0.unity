@@ -4868,7 +4868,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 54563161740569382, guid: d781dc2ecd8586b4aa9b97f9c32f6d8f, type: 3}
-    - {fileID: 135920957308414378, guid: d781dc2ecd8586b4aa9b97f9c32f6d8f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -9770,7 +9769,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 658847171}
-  - component: {fileID: 658847172}
   - component: {fileID: 658847173}
   - component: {fileID: 658847174}
   - component: {fileID: 658847175}
@@ -9798,18 +9796,6 @@ Transform:
   - {fileID: 522811755}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &658847172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 658847170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb7e539b97c005346b403eab30bc527e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RollControl
 --- !u!54 &658847173
 Rigidbody:
   m_ObjectHideFlags: 0
