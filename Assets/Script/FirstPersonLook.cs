@@ -18,7 +18,7 @@ public class FirstPersonLook : MonoBehaviour
 
         pitch = 0f;
 
-        transform.localPosition = new Vector3(0f, 3f, 0f);
+        transform.localPosition = new Vector3(0f, 2f, 0f);
         transform.localRotation = Quaternion.identity;
     }
 
