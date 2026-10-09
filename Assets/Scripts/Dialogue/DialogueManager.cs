@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -11,7 +12,11 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TMP_Text dialogueText;
 
     private DialogueData currentDialogue;
-    private int currentSentenceIndex = 0;
+    private int currentSentenceIndex;
+
+    // 防止開啟對話的那一次 E
+    // 同時把第一句跳過
+    private bool waitingForERelease = false;
 
     public bool IsDialogueActive { get; private set; }
 
@@ -30,6 +35,33 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(false);
     }
 
+    private void Update()
+    {
+        if (!IsDialogueActive)
+            return;
+
+        if (Keyboard.current == null)
+            return;
+
+        // 開啟 Dialogue 後，
+        // 先等待玩家放開第一次按下的 E
+        if (waitingForERelease)
+        {
+            if (!Keyboard.current.eKey.isPressed)
+            {
+                waitingForERelease = false;
+            }
+
+            return;
+        }
+
+        // 之後每按一次 E → 下一句
+        if (Keyboard.current.eKey.wasPressedThisFrame)
+        {
+            NextSentence();
+        }
+    }
+
     public void StartDialogue(DialogueData dialogue)
     {
         if (dialogue == null ||
@@ -41,13 +73,17 @@ public class DialogueManager : MonoBehaviour
 
         currentDialogue = dialogue;
         currentSentenceIndex = 0;
+
         IsDialogueActive = true;
+
+        // 防止開始對話的 E 直接跳到第二句
+        waitingForERelease = true;
 
         dialoguePanel.SetActive(true);
 
         speakerNameText.text = currentDialogue.speakerName;
 
-        ShowSentence();
+        ShowCurrentSentence();
     }
 
     public void NextSentence()
@@ -63,10 +99,10 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        ShowSentence();
+        ShowCurrentSentence();
     }
 
-    private void ShowSentence()
+    private void ShowCurrentSentence()
     {
         dialogueText.text =
             currentDialogue.sentences[currentSentenceIndex];
