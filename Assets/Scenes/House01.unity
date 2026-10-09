@@ -959,6 +959,38 @@ PrefabInstance:
       propertyPath: m_CollisionDetection
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5714044430807736490, guid: f3e1947eb1f3f7848a051dd880fd1377, type: 3}
+      propertyPath: distance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5908276805007139254, guid: f3e1947eb1f3f7848a051dd880fd1377, type: 3}
+      propertyPath: field of view
+      value: 92
+      objectReference: {fileID: 0}
+    - target: {fileID: 5908276805007139254, guid: f3e1947eb1f3f7848a051dd880fd1377, type: 3}
+      propertyPath: far clip plane
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6294861962139376292, guid: f3e1947eb1f3f7848a051dd880fd1377, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6294861962139376292, guid: f3e1947eb1f3f7848a051dd880fd1377, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6294861962139376292, guid: f3e1947eb1f3f7848a051dd880fd1377, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6294861962139376292, guid: f3e1947eb1f3f7848a051dd880fd1377, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6294861962139376292, guid: f3e1947eb1f3f7848a051dd880fd1377, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8582161169358483702, guid: f3e1947eb1f3f7848a051dd880fd1377, type: 3}
       propertyPath: m_Name
       value: Player
