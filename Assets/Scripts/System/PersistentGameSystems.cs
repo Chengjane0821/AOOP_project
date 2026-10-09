@@ -1,16 +1,20 @@
 using UnityEngine;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class PersistentGameSystems : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    private static PersistentGameSystems instance;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        instance = this;
+
+        DontDestroyOnLoad(gameObject);
     }
 }
