@@ -4502,6 +4502,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4569117048019876, guid: d781dc2ecd8586b4aa9b97f9c32f6d8f, type: 3}
   m_PrefabInstance: {fileID: 340142804}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &340142806 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1505044373176760, guid: d781dc2ecd8586b4aa9b97f9c32f6d8f, type: 3}
+  m_PrefabInstance: {fileID: 340142804}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &347403878
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8846,7 +8851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb7e539b97c005346b403eab30bc527e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RollControl
-  head: {fileID: 0}
+  head: {fileID: 340142806}
 --- !u!54 &658847173
 Rigidbody:
   m_ObjectHideFlags: 0
