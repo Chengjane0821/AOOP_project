@@ -13,22 +13,24 @@ public class CameraFollow2D : MonoBehaviour
 
     private Vector3 velocity;
 
-    private void LateUpdate()
-    {
-        if (target == null)
-            return;
+   
+private void LateUpdate()
+{
+    if (target == null)
+        return;
 
-        Vector3 targetPosition = new Vector3(
-            target.position.x + offsetX,
-            fixedY,
-            -10f
-        );
+    Vector3 targetPosition = new Vector3(
+        target.position.x + offsetX,
+        fixedY,
+        -10f
+    );
 
-        transform.position = Vector3.SmoothDamp(
-            transform.position,
-            targetPosition,
-            ref velocity,
-            smoothTime
-        );
-    }
+    transform.position = Vector3.SmoothDamp(
+        transform.position,
+        targetPosition,
+        ref velocity,
+        smoothTime
+    );
+}
+
 }
