@@ -563,11 +563,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2131640447}
   m_SourcePrefab: {fileID: 100100000, guid: 8c9ff27c4343b5e41b0c944eb72ca800, type: 3}
---- !u!4 &522804605 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -5284001439293047682, guid: 8c9ff27c4343b5e41b0c944eb72ca800, type: 3}
-  m_PrefabInstance: {fileID: 522804604}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &561962667 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3215934717270796462, guid: 369c53baef81e9f41969e79c677af9a3, type: 3}
@@ -971,31 +966,8 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6294861962139376292, guid: f3e1947eb1f3f7848a051dd880fd1377, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1441396167}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8582161169358483702, guid: f3e1947eb1f3f7848a051dd880fd1377, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 886668010}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3e1947eb1f3f7848a051dd880fd1377, type: 3}
---- !u!1 &886668009 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8582161169358483702, guid: f3e1947eb1f3f7848a051dd880fd1377, type: 3}
-  m_PrefabInstance: {fileID: 886668008}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &886668010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 886668009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3831b5979530f7946815361a958b2ecf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BedMiniGameEntrance
-  bed: {fileID: 522804605}
-  interactDistance: 2.5
-  miniGameScene: BedMiniGame
 --- !u!1 &933615780 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2914678643711151999, guid: 7c11c43002c7a274894af728c82a6df8, type: 3}
