@@ -4,7 +4,6 @@ using TMPro;
 
 public class QuestUI : MonoBehaviour
 {
-    [Header("Quest UI")]
     [SerializeField] private GameObject questPanel;
     [SerializeField] private TMP_Text questTitleText;
     [SerializeField] private TMP_Text questObjectivesText;
@@ -14,12 +13,6 @@ public class QuestUI : MonoBehaviour
         if (QuestManager.Instance != null)
         {
             QuestManager.Instance.OnQuestUpdated += RefreshUI;
-
-            Debug.Log("QuestUI subscribed to QuestManager.");
-        }
-        else
-        {
-            Debug.LogError("QuestUI cannot find QuestManager!");
         }
 
         RefreshUI();
@@ -35,16 +28,14 @@ public class QuestUI : MonoBehaviour
 
     public void RefreshUI()
     {
-        Debug.Log("QuestUI RefreshUI called.");
-
         if (QuestManager.Instance == null ||
-            QuestManager.Instance.MainQuest == null)
+            QuestManager.Instance.CurrentQuest == null)
         {
             questPanel.SetActive(false);
             return;
         }
 
-        Quest quest = QuestManager.Instance.MainQuest;
+        Quest quest = QuestManager.Instance.CurrentQuest;
 
         questPanel.SetActive(true);
 
@@ -56,21 +47,14 @@ public class QuestUI : MonoBehaviour
         {
             if (objective.isCompleted)
             {
-                // 暫時用 [DONE]，避免 TMP 字型不支援 ✓
-                text.AppendLine(
-                    "[DONE] " + objective.description
-                );
+                text.AppendLine("[DONE] " + objective.description);
             }
             else
             {
-                text.AppendLine(
-                    "[ ] " + objective.description
-                );
+                text.AppendLine("[ ] " + objective.description);
             }
         }
 
         questObjectivesText.text = text.ToString();
-
-        Debug.Log("Quest UI text updated:\n" + text);
     }
 }
