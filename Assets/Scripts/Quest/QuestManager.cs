@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class QuestManager : MonoBehaviour
@@ -5,6 +6,8 @@ public class QuestManager : MonoBehaviour
     public static QuestManager Instance;
 
     public Quest MainQuest { get; private set; }
+
+    public event Action OnQuestUpdated;
 
     private void Awake()
     {
@@ -35,6 +38,8 @@ public class QuestManager : MonoBehaviour
         MainQuest.AddObjective("Find the Forgotten Diary");
 
         Debug.Log("Main quest started.");
+
+        OnQuestUpdated?.Invoke();
     }
 
     public void CompleteObjective(int index)
@@ -46,12 +51,17 @@ public class QuestManager : MonoBehaviour
             index >= MainQuest.objectives.Count)
             return;
 
+        if (MainQuest.objectives[index].isCompleted)
+            return;
+
         MainQuest.objectives[index].Complete();
 
         Debug.Log(
             "Objective completed: " +
             MainQuest.objectives[index].description
         );
+
+        OnQuestUpdated?.Invoke();
 
         if (MainQuest.IsCompleted)
         {
