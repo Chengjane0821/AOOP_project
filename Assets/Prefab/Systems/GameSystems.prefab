@@ -1155,6 +1155,7 @@ GameObject:
   - component: {fileID: 8429588315259598324}
   - component: {fileID: 1355776299652349681}
   - component: {fileID: 6103754411644145787}
+  - component: {fileID: 6330284281905374526}
   m_Layer: 5
   m_Name: QuestPanel
   m_TagString: Untagged
@@ -1221,3 +1222,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6330284281905374526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8761986681335961010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f75bdcc41354bd4b8b96433ade7b5da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuestUI
+  questPanel: {fileID: 8761986681335961010}
+  questTitleText: {fileID: 6558879320621840243}
+  questObjectivesText: {fileID: 4075723317879965062}
