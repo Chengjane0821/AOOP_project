@@ -1,10 +1,17 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
     public static QuestManager Instance;
 
-    public Quest MainQuest { get; private set; }
+    public Quest CurrentQuest { get; private set; }
+
+    public event Action OnQuestUpdated;
+
+    private List<Quest> questSequence;
+    private int currentQuestIndex = -1;
 
     private void Awake()
     {
@@ -14,62 +21,123 @@ public class QuestManager : MonoBehaviour
         }
         else
         {
-            Destroy(this);
+            Destroy(gameObject);
+            return;
         }
+
+        CreateQuestSequence();
     }
 
-    public void StartMainQuest()
+    private void CreateQuestSequence()
     {
-        if (MainQuest != null)
-            return;
+        questSequence = new List<Quest>();
 
-        MainQuest = new Quest(
-            "The Missing Villager",
-            "Investigate the village and discover what happened."
+        // Quest 1
+        Quest quest1 = new Quest(
+            "The Forgotten Photograph",
+            "Investigate the Elder's House."
         );
+        quest1.AddObjective("Find the Forgotten Photograph");
+        questSequence.Add(quest1);
 
-        MainQuest.AddObjective("Find the Forgotten Photograph");
-        MainQuest.AddObjective("Discover the Memory Potion");
-        MainQuest.AddObjective("Find the Broken Emblem");
-        MainQuest.AddObjective("Find the Hidden Passage Map");
-        MainQuest.AddObjective("Find the Forgotten Diary");
+        // Quest 2
+        Quest quest2 = new Quest(
+            "The Memory Potion",
+            "Investigate the Alchemist's House."
+        );
+        quest2.AddObjective("Discover the Memory Potion");
+        questSequence.Add(quest2);
 
-        Debug.Log("Main quest started.");
+        // Quest 3
+        Quest quest3 = new Quest(
+            "The Broken Emblem",
+            "Investigate the Carpenter's House."
+        );
+        quest3.AddObjective("Find the Broken Emblem");
+        questSequence.Add(quest3);
+
+        // Quest 4
+        Quest quest4 = new Quest(
+            "The Hidden Passage",
+            "Follow the Hunter's clues."
+        );
+        quest4.AddObjective("Find the Hidden Passage Map");
+        questSequence.Add(quest4);
+
+        // Quest 5
+        Quest quest5 = new Quest(
+            "The Forgotten Diary",
+            "Investigate the Scholar's House."
+        );
+        quest5.AddObjective("Find the Forgotten Diary");
+        questSequence.Add(quest5);
+
+        // Final Quest
+        Quest quest6 = new Quest(
+            "The Final Mystery",
+            "All five clues point to the abandoned house."
+        );
+        quest6.AddObjective("Enter House 6 and uncover the truth");
+        questSequence.Add(quest6);
     }
 
-    public void CompleteObjective(int index)
+    public void StartQuestSequence()
     {
-        if (MainQuest == null)
+        if (currentQuestIndex >= 0)
             return;
 
-        if (index < 0 ||
-            index >= MainQuest.objectives.Count)
+        currentQuestIndex = 0;
+        CurrentQuest = questSequence[currentQuestIndex];
+
+        Debug.Log("Quest started: " + CurrentQuest.questName);
+
+        OnQuestUpdated?.Invoke();
+    }
+
+    public void CompleteObjective(int objectiveIndex)
+    {
+        if (CurrentQuest == null)
             return;
 
-        MainQuest.objectives[index].Complete();
+        if (objectiveIndex < 0 ||
+            objectiveIndex >= CurrentQuest.objectives.Count)
+            return;
+
+        CurrentQuest.objectives[objectiveIndex].Complete();
 
         Debug.Log(
             "Objective completed: " +
-            MainQuest.objectives[index].description
+            CurrentQuest.objectives[objectiveIndex].description
         );
 
-        if (MainQuest.IsCompleted)
+        OnQuestUpdated?.Invoke();
+
+        if (CurrentQuest.IsCompleted)
         {
-            Debug.Log(
-                "All clues found! House 6 can now be unlocked."
-            );
+            AdvanceToNextQuest();
         }
     }
 
-    public bool IsObjectiveCompleted(int index)
+    private void AdvanceToNextQuest()
     {
-        if (MainQuest == null)
-            return false;
+        Debug.Log("Quest completed: " + CurrentQuest.questName);
 
-        if (index < 0 ||
-            index >= MainQuest.objectives.Count)
-            return false;
+        currentQuestIndex++;
 
-        return MainQuest.objectives[index].isCompleted;
+        if (currentQuestIndex >= questSequence.Count)
+        {
+            CurrentQuest = null;
+
+            Debug.Log("All quests completed!");
+
+            OnQuestUpdated?.Invoke();
+            return;
+        }
+
+        CurrentQuest = questSequence[currentQuestIndex];
+
+        Debug.Log("New quest: " + CurrentQuest.questName);
+
+        OnQuestUpdated?.Invoke();
     }
 }
