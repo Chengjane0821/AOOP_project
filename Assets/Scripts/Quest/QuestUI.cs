@@ -14,6 +14,12 @@ public class QuestUI : MonoBehaviour
         if (QuestManager.Instance != null)
         {
             QuestManager.Instance.OnQuestUpdated += RefreshUI;
+
+            Debug.Log("QuestUI subscribed to QuestManager.");
+        }
+        else
+        {
+            Debug.LogError("QuestUI cannot find QuestManager!");
         }
 
         RefreshUI();
@@ -29,6 +35,8 @@ public class QuestUI : MonoBehaviour
 
     public void RefreshUI()
     {
+        Debug.Log("QuestUI RefreshUI called.");
+
         if (QuestManager.Instance == null ||
             QuestManager.Instance.MainQuest == null)
         {
@@ -48,18 +56,21 @@ public class QuestUI : MonoBehaviour
         {
             if (objective.isCompleted)
             {
+                // 暫時用 [DONE]，避免 TMP 字型不支援 ✓
                 text.AppendLine(
-                    "✓ " + objective.description
+                    "[DONE] " + objective.description
                 );
             }
             else
             {
                 text.AppendLine(
-                    "□ " + objective.description
+                    "[ ] " + objective.description
                 );
             }
         }
 
         questObjectivesText.text = text.ToString();
+
+        Debug.Log("Quest UI text updated:\n" + text);
     }
 }

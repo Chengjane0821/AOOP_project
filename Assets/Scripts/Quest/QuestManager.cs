@@ -17,7 +17,7 @@ public class QuestManager : MonoBehaviour
         }
         else
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 
@@ -39,20 +39,25 @@ public class QuestManager : MonoBehaviour
 
         Debug.Log("Main quest started.");
 
+        // Tell UI to refresh
         OnQuestUpdated?.Invoke();
     }
 
     public void CompleteObjective(int index)
     {
+        Debug.Log("CompleteObjective called with index: " + index);
+
         if (MainQuest == null)
+        {
+            Debug.LogError("MainQuest is NULL!");
             return;
+        }
 
-        if (index < 0 ||
-            index >= MainQuest.objectives.Count)
+        if (index < 0 || index >= MainQuest.objectives.Count)
+        {
+            Debug.LogError("Invalid objective index: " + index);
             return;
-
-        if (MainQuest.objectives[index].isCompleted)
-            return;
+        }
 
         MainQuest.objectives[index].Complete();
 
@@ -61,25 +66,12 @@ public class QuestManager : MonoBehaviour
             MainQuest.objectives[index].description
         );
 
+        // IMPORTANT
         OnQuestUpdated?.Invoke();
 
         if (MainQuest.IsCompleted)
         {
-            Debug.Log(
-                "All clues found! House 6 can now be unlocked."
-            );
+            Debug.Log("All clues found! House 6 can now be unlocked.");
         }
-    }
-
-    public bool IsObjectiveCompleted(int index)
-    {
-        if (MainQuest == null)
-            return false;
-
-        if (index < 0 ||
-            index >= MainQuest.objectives.Count)
-            return false;
-
-        return MainQuest.objectives[index].isCompleted;
     }
 }
