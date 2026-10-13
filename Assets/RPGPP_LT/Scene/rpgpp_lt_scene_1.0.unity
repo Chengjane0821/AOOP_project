@@ -17188,18 +17188,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5286696439143959309, guid: b08d9321d66bf4d4180616956c6d9c83, type: 3}
   m_PrefabInstance: {fileID: 1662210308}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1202195100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1202195097}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2456ce9f034145d48bcffabe494f4721, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::QuestTester
 --- !u!114 &1202195101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25143,9 +25131,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5286696439143959309, guid: b08d9321d66bf4d4180616956c6d9c83, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1202195100}
     - targetCorrespondingSourceObject: {fileID: 5286696439143959309, guid: b08d9321d66bf4d4180616956c6d9c83, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1202195101}
