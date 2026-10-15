@@ -2,20 +2,22 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour
 {
-    [SerializeField]
-    private DialogueData dialogue;
+    [SerializeField] private DialogueData dialogue;
 
-    [SerializeField]
-    private bool startsMainQuest;
+    [Header("Quest")]
+    [SerializeField] private bool startsQuestSequence;
 
     public void Talk()
     {
-        DialogueManager.Instance.StartDialogue(dialogue);
+        if (DialogueManager.Instance != null)
+        {
+            DialogueManager.Instance.StartDialogue(dialogue);
+        }
 
-        if (startsMainQuest &&
+        if (startsQuestSequence &&
             QuestManager.Instance != null)
         {
-            QuestManager.Instance.StartMainQuest();
+            QuestManager.Instance.StartQuestSequence();
         }
     }
 }

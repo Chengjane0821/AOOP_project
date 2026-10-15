@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class ClueItem : MonoBehaviour
 {
-    [Header("Clue Settings")]
-    [SerializeField] private int objectiveIndex;
     [SerializeField] private string clueName;
 
     private bool collected = false;
@@ -13,21 +11,16 @@ public class ClueItem : MonoBehaviour
         if (collected)
             return;
 
-        if (QuestManager.Instance == null)
+        if (QuestManager.Instance == null ||
+            QuestManager.Instance.CurrentQuest == null)
         {
-            Debug.LogWarning("QuestManager not found.");
-            return;
-        }
-
-        if (QuestManager.Instance.MainQuest == null)
-        {
-            Debug.LogWarning("Main quest has not started.");
+            Debug.LogWarning("No active quest.");
             return;
         }
 
         collected = true;
 
-        QuestManager.Instance.CompleteObjective(objectiveIndex);
+        QuestManager.Instance.CompleteObjective(0);
 
         Debug.Log("Collected clue: " + clueName);
 
