@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
     path: Assets/Scenes/House000.unity
     guid: 154150ea849021c42846dbbc1cf62a4b
   - enabled: 1
@@ -17,6 +14,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/RPGPP_LT/Scene/rpgpp_lt_scene_1.0.unity
     guid: d2809ab9b90eea7419d8d90d4c505d35
+  - enabled: 1
+    path: Assets/Scenes/House001.unity
+    guid: 6a5b615a431980b43b8cfa41a425444b
+  - enabled: 1
+    path: Assets/Scenes/House002.unity
+    guid: 038f646da2997ef40bf11b40d802e7f9
+  - enabled: 1
+    path: Assets/Scenes/House003.unity
+    guid: 5ebbb1e70b192254d8b078d6eb3469c8
+  - enabled: 1
+    path: Assets/Scenes/House004.unity
+    guid: c491953c151b55b4b8a300d604cae0bb
+  - enabled: 1
+    path: Assets/Scenes/House005.unity
+    guid: 3bc6fefcdbd79154b8d0da1144799acb
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

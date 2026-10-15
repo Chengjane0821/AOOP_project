@@ -2506,7 +2506,7 @@ GameObject:
   - component: {fileID: 153527294}
   - component: {fileID: 153527296}
   - component: {fileID: 153527295}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: DoorInteractionZone (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3751,6 +3751,37 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 365209172614366938, guid: aab66de36575a3c4f91090c4945c1234, type: 3}
   m_PrefabInstance: {fileID: 1504135132}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &244943545
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 244943546}
+  m_Layer: 0
+  m_Name: ThrowPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &244943546
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244943545}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.5, z: 1.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 658847171}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &245114481
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4825,6 +4856,26 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: b75a02a185084be49bc0ead09438de21, type: 3}
+--- !u!1 &330240119 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1637040420728384, guid: d781dc2ecd8586b4aa9b97f9c32f6d8f, type: 3}
+  m_PrefabInstance: {fileID: 340142804}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &330240124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330240119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80d7c2b124692664ba60685f23ef5289, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SnowballRolling
+  playerRoot: {fileID: 658847171}
+  ballRadius: 0.5
+  rollingSpeed: 5
 --- !u!1 &334157348 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1069567032315564, guid: bdf8e7438a7816543998181bd3067573, type: 3}
@@ -4841,7 +4892,7 @@ GameObject:
   - component: {fileID: 336193513}
   - component: {fileID: 336193514}
   - component: {fileID: 336193515}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: DoorInteractionZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5026,11 +5077,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 54563161740569382, guid: d781dc2ecd8586b4aa9b97f9c32f6d8f, type: 3}
+    - target: {fileID: 135920957308414378, guid: d781dc2ecd8586b4aa9b97f9c32f6d8f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1637040420728384, guid: d781dc2ecd8586b4aa9b97f9c32f6d8f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 330240124}
   m_SourcePrefab: {fileID: 100100000, guid: d781dc2ecd8586b4aa9b97f9c32f6d8f, type: 3}
 --- !u!4 &340142805 stripped
 Transform:
@@ -6756,7 +6813,7 @@ GameObject:
   - component: {fileID: 430663840}
   - component: {fileID: 430663842}
   - component: {fileID: 430663841}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: DoorInteractionZone (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6823,7 +6880,7 @@ GameObject:
   - component: {fileID: 443603153}
   - component: {fileID: 443603155}
   - component: {fileID: 443603154}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: DoorInteractionZone (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7901,7 +7958,7 @@ GameObject:
   - component: {fileID: 511945595}
   - component: {fileID: 511945597}
   - component: {fileID: 511945596}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: DoorInteractionZone (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10137,6 +10194,7 @@ GameObject:
   - component: {fileID: 658847174}
   - component: {fileID: 658847175}
   - component: {fileID: 658847176}
+  - component: {fileID: 658847177}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -10159,6 +10217,7 @@ Transform:
   m_Children:
   - {fileID: 340142805}
   - {fileID: 522811755}
+  - {fileID: 244943546}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &658847173
@@ -10207,10 +10266,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.92460644
-  m_Height: 1.8492129
+  m_Radius: 0.5
+  m_Height: 0.5
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0.12623379, y: 2.0112119, z: 0}
 --- !u!114 &658847175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10246,6 +10305,23 @@ MonoBehaviour:
   interactionLayer:
     serializedVersion: 2
     m_Bits: 8
+--- !u!114 &658847177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658847170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b7cd91fb776e664791ec11745d41089, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SnowballThrower
+  snowballPrefab: {fileID: 526540143493102501, guid: 43a4634c86a33744682857d062a92eac, type: 3}
+  throwPoint: {fileID: 244943546}
+  throwForce: 20
+  upwardForce: 5
+  cooldown: 0.4
 --- !u!1 &660780081 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 750211204992862766, guid: 9de25cb83282c7046b4dc6d17d18c281, type: 3}
@@ -16768,7 +16844,7 @@ GameObject:
   - component: {fileID: 1136239746}
   - component: {fileID: 1136239748}
   - component: {fileID: 1136239747}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: DoorInteractionZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
