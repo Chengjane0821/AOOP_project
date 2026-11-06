@@ -1,0 +1,76 @@
+PASS: Main village and additive transition service initialized
+PASS: Runtime frames advancing
+PASS: Abandoned entrance refuses entry without five clues
+PASS: Village Elder dialogue completes through UI callbacks
+PASS: Load actual EldersHouse scene
+PASS: Only village and current house loaded 0
+PASS: Copied source scene roots retained 0
+PASS: One active camera in house 0
+PASS: One active audio listener in house 0
+PASS: Puzzle Inspector bindings restored 0
+PASS: Solve engineering puzzle and earn record 0
+PASS: Duplicate clue reward prevented 0
+PASS: Journal available in house 0
+PASS: Unload house and return to village 0
+PASS: Clue persists after scene unload 0
+PASS: Load actual AlchemistsHouse scene
+PASS: Only village and current house loaded 1
+PASS: Copied source scene roots retained 1
+PASS: One active camera in house 1
+PASS: One active audio listener in house 1
+PASS: Puzzle Inspector bindings restored 1
+PASS: Simulated potentiometer drives RC station across scene load
+PASS: Solve engineering puzzle and earn record 1
+PASS: Duplicate clue reward prevented 1
+PASS: Journal available in house 1
+PASS: Unload house and return to village 1
+PASS: Clue persists after scene unload 1
+PASS: Load actual CarpentersHouse scene
+PASS: Only village and current house loaded 2
+PASS: Copied source scene roots retained 2
+PASS: One active camera in house 2
+PASS: One active audio listener in house 2
+PASS: Puzzle Inspector bindings restored 2
+PASS: Grab component activates workshop trigger socket
+PASS: Solve engineering puzzle and earn record 2
+PASS: Duplicate clue reward prevented 2
+PASS: Journal available in house 2
+PASS: Unload house and return to village 2
+PASS: Clue persists after scene unload 2
+PASS: Load actual TechniciansHouse scene
+PASS: Only village and current house loaded 3
+PASS: Copied source scene roots retained 3
+PASS: One active camera in house 3
+PASS: One active audio listener in house 3
+PASS: Puzzle Inspector bindings restored 3
+PASS: Simulated Arduino button invokes bound diagnostic
+PASS: In-room diagnostic button invokes corrected test
+PASS: Solve engineering puzzle and earn record 3
+PASS: Duplicate clue reward prevented 3
+PASS: Journal available in house 3
+PASS: Unload house and return to village 3
+PASS: Clue persists after scene unload 3
+PASS: Load actual ClockmakersHouse scene
+PASS: Only village and current house loaded 4
+PASS: Copied source scene roots retained 4
+PASS: One active camera in house 4
+PASS: One active audio listener in house 4
+PASS: Puzzle Inspector bindings restored 4
+PASS: Solve engineering puzzle and earn record 4
+PASS: Duplicate clue reward prevented 4
+PASS: Journal available in house 4
+PASS: Unload house and return to village 4
+PASS: Clue persists after scene unload 4
+PASS: Load actual AbandonedHouse scene
+PASS: Only village and current house loaded 5
+PASS: Copied source scene roots retained 5
+PASS: One active camera in house 5
+PASS: One active audio listener in house 5
+PASS: Final command blocked until all laboratory evidence reviewed
+PASS: Full final investigation reaches identity reveal
+PASS: Verified command receives SIMULATED gate acknowledgment
+PASS: Unload house and return to village 5
+PASS: Five independent scene records unlock final house
+PASS: JSON save round trip retains cross-scene progression
+PASS: New Game resets cross-scene progress
+Scope: real additive scene load/unload, UnityEvent callbacks, physics trigger and simulated hardware; physical VR/Arduino not tested.
