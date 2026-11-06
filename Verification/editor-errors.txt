@@ -1,0 +1,10 @@
+2026-11-06T23:29:15 Error Failed to load 'C:/Users/User/Desktop/雞米范/大三上/AOOP/Final_proj/AOOP_project/Library/expandedItems'. File may be corrupted or was serialized with a newer version of Unity.
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditorInternal.InternalEditorUtility:get_expandedProjectWindowItems ()
+UnityEditor.ProjectBrowser:Awake ()
+UnityEditorInternal.InternalEditorUtility:LoadSerializedFileAndForget (string)
+UnityEditor.WindowLayout:LoadDefaultWindowPreferences ()
+
+2026-11-06T23:31:56 Error [Package Manager Window] Error while getting auth code: System.InvalidOperationException: Failed to call Unity ID to get auth code.
+UnityEditor.AsyncHTTPClient:Done (UnityEditor.AsyncHTTPClient/State,int)
+
