@@ -13,6 +13,31 @@ namespace ForgottenVillage.Tests {
             Assert.That(save.inventory, Is.Not.Null);
         }
 
+        [Test]
+        public void MalformedEvidenceCannotAuthorizeFinalGate() {
+            var save = new VillageSave {
+                elder = true,
+                clues = new[] { true, true, true, true, true },
+                faultyTest = true,
+                fixedTest = true,
+                evidence = null
+            };
+
+            Assert.That(save.Authorized, Is.False);
+
+            save.Normalize();
+            Assert.That(save.Authorized, Is.False);
+        }
+
+        [Test]
+        public void EngineeringTargetsMatchProposal() {
+            Assert.That(Engineering.DividerSolved(20000), Is.True);
+            Assert.That(Engineering.FilterSolved(5000), Is.True);
+            Assert.That(Engineering.GainSolved(6750), Is.True);
+            Assert.That(Engineering.Slack(11.5, 1, .5, 1, 9), Is.EqualTo(0).Within(.0001));
+            Assert.That(Engineering.Slack(10, 1, .5, 1, 9), Is.LessThan(0));
+        }
+
         [TestCase("ACK:GATE:OPEN", true, "ACK:GATE:OPEN", 0)]
         [TestCase("BTN:1", true, "BTN", 1)]
         [TestCase("POT:512", true, "POT", 512)]
