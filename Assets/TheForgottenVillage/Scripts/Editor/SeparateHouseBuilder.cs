@@ -65,8 +65,9 @@ public static class SeparateHouseBuilder {
    foreach(var b in root.GetComponentsInChildren<MonoBehaviour>(true))if(b){scriptAudit.Add(b.name+": "+b.GetType().Name);if(new[]{"TeleportPlayer","LoadScene","OnSceneLoad","TeleportAreaWithFade","TeleportAnchorWithFade"}.Contains(b.GetType().Name))b.enabled=false;}
    foreach(var r in root.GetComponentsInChildren<MeshRenderer>()){if(r.bounds.size.magnitude<15&&!r.GetComponent<Collider>()&&r.GetComponent<MeshFilter>()){var col=r.gameObject.AddComponent<MeshCollider>();col.sharedMesh=r.GetComponent<MeshFilter>().sharedMesh;}}
   }
+  HouseSceneRoot.ClearInactiveStartingSelections(copied);
   if(id==0)File.WriteAllLines("Verification/copied-room-component-audit.txt",scriptAudit);
-  var content=new GameObject(HouseTransitions.SceneNames[id]+" ¡X Investigation");var house=content.AddComponent<HouseSceneRoot>();house.houseIndex=id;house.copiedRoots=copied;
+  var content=new GameObject(HouseTransitions.SceneNames[id]+" Â¡X Investigation");var house=content.AddComponent<HouseSceneRoot>();house.houseIndex=id;house.copiedRoots=copied;
   house.arrival=Point("Player arrival",new Vector3(.5f,.15f,-1.25f),content.transform);
   var floor=Box("Comfort teleport floor",new Vector3(.1f,-.065f,-.1f),new Vector3(5.7f,.08f,3.7f),dark,content.transform);floor.GetComponent<Renderer>().enabled=false;floor.AddComponent<TeleportationArea>();
   var exit=Box("Return to village",new Vector3(-.7f,1.2f,-1.8f),new Vector3(.45f,.45f,.12f),teal,content.transform);Action(exit,"exit",id,"Return to village");var sign=Label("RETURN TO\nVILLAGE",new Vector3(-.7f,1.65f,-1.7f),1,content.transform);sign.transform.rotation=Quaternion.Euler(0,180,0);

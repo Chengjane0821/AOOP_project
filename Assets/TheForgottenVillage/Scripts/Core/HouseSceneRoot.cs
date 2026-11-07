@@ -6,6 +6,16 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 namespace ForgottenVillage {
 public class HouseSceneRoot : MonoBehaviour {
  public int houseIndex;public Transform arrival;public Transform safetyGate;public GameObject[] copiedRoots;
+ void Awake(){ClearInactiveStartingSelections(gameObject.scene.GetRootGameObjects());}
+ // XRI starting selections bypass target validation. Hidden props have not run
+ // Awake yet, so their cached Rigidbody is null even if the component exists.
+ public static void ClearInactiveStartingSelections(GameObject[] roots){
+  foreach(var root in roots)
+   foreach(var socket in root.GetComponentsInChildren<UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor>(true)){
+    var target=socket.startingSelectedInteractable;
+    if(target&&!target.isActiveAndEnabled)socket.startingSelectedInteractable=null;
+   }
+ }
  public void Bind(VillageGame game){
   foreach(var root in gameObject.scene.GetRootGameObjects()){
    foreach(var action in root.GetComponentsInChildren<VillageAction>(true)){action.game=game;if(action.kind=="pickup"&&game.state.inventory.Contains(action.item))action.gameObject.SetActive(false);}

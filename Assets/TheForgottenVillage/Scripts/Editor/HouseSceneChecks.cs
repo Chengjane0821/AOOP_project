@@ -10,15 +10,16 @@ using UnityEditor.SceneManagement;
 namespace ForgottenVillage.Editor {
 [InitializeOnLoad] public static class HouseSceneChecks {
  static IEnumerator routine;static int lastFrame;static StringBuilder report;
- static HouseSceneChecks(){EditorApplication.update+=Tick;}
+ static HouseSceneChecks(){EditorApplication.update+=Tick;Application.logMessageReceived+=CaptureError;}
+ static void CaptureError(string message,string trace,LogType type){if(SessionState.GetBool("FV_CAPTURE_ERRORS",false)&&(type==LogType.Error||type==LogType.Exception||type==LogType.Assert))SessionState.SetInt("FV_TEST_ERRORS",SessionState.GetInt("FV_TEST_ERRORS",0)+1);}
  [MenuItem("Forgotten Village/Run integrated Play Mode checks")]
- public static void Request(){File.WriteAllText("Verification/house-playtest.request","run");}
+ public static void Request(){Directory.CreateDirectory("Verification");File.WriteAllText("Verification/house-playtest.request","run");}
  static void Tick(){if(EditorApplication.isCompiling||EditorApplication.isUpdating)return;
-  if(!EditorApplication.isPlaying&&File.Exists("Verification/house-playtest.request")){try{File.Delete("Verification/house-playtest.request");}catch(IOException){return;}EditorSceneManager.OpenScene("Assets/Scenes/rpgpp_lt_scene_1.0.unity");SessionState.SetBool("FV_HOUSE_TEST",true);EditorApplication.isPlaying=true;return;}
+  if(!EditorApplication.isPlaying&&File.Exists("Verification/house-playtest.request")){try{File.Delete("Verification/house-playtest.request");}catch(IOException){return;}if(!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())return;EditorSceneManager.OpenScene("Assets/Scenes/rpgpp_lt_scene_1.0.unity");SessionState.SetInt("FV_TEST_ERRORS",0);SessionState.SetBool("FV_CAPTURE_ERRORS",true);SessionState.SetBool("FV_HOUSE_TEST",true);EditorApplication.isPlaying=true;return;}
   if(!EditorApplication.isPlaying)return;
   if(SessionState.GetBool("FV_HOUSE_TEST",false)&&Time.frameCount>8){SessionState.SetBool("FV_HOUSE_TEST",false);routine=Run();}
   if(routine==null||lastFrame==Time.frameCount)return;lastFrame=Time.frameCount;
-  try{if(!routine.MoveNext()){routine=null;VillageStorage.overridePath=null;EditorApplication.isPlaying=false;}}catch(Exception e){File.WriteAllText("Verification/house-playtest-results.txt",report+"\nFAIL: "+e);Debug.LogException(e);routine=null;VillageStorage.overridePath=null;EditorApplication.isPlaying=false;}
+  try{if(!routine.MoveNext()){routine=null;VillageStorage.overridePath=null;SessionState.SetBool("FV_CAPTURE_ERRORS",false);EditorApplication.isPlaying=false;}}catch(Exception e){File.WriteAllText("Verification/house-playtest-results.txt",report+"\nFAIL: "+e);Debug.LogException(e);routine=null;VillageStorage.overridePath=null;SessionState.SetBool("FV_CAPTURE_ERRORS",false);EditorApplication.isPlaying=false;}
  }
  static void Check(bool value,string name){if(!value)throw new Exception(name);report.AppendLine("PASS: "+name);}
  static void Use(VillageGame game,string kind,int index){var a=UnityEngine.Object.FindObjectsByType<VillageAction>(FindObjectsSortMode.None).First(x=>x.game==game&&x.kind==kind&&x.index==index);a.GetComponent<VillageInteractable>().Activate();}
@@ -30,6 +31,7 @@ namespace ForgottenVillage.Editor {
    Use(game,"enter",i);float timeout=Time.realtimeSinceStartup+30;while(game.transitions.Busy){if(Time.realtimeSinceStartup>timeout)throw new Exception("House load timed out "+i);yield return null;}yield return null;
    Check(game.house==i&&SceneManager.GetSceneByName(HouseTransitions.SceneNames[i]).isLoaded,"Load actual "+HouseTransitions.SceneNames[i]+" scene");Check(SceneManager.sceneCount==2,"Only village and current house loaded "+i);Check(game.transitions.Current.copiedRoots.Length>=6,"Copied source scene roots retained "+i);
    Check(UnityEngine.Object.FindObjectsByType<Camera>(FindObjectsSortMode.None).Count(c=>c.enabled)==1,"One active camera in house "+i);Check(UnityEngine.Object.FindObjectsByType<AudioListener>(FindObjectsSortMode.None).Count(c=>c.enabled)==1,"One active audio listener in house "+i);
+   Check(SessionState.GetInt("FV_TEST_ERRORS",0)==0,"No runtime errors through house "+i);
    VillageAutomation.Capture(game,"copied-house-"+i);
    if(i<5){Use(game,"puzzle",i);yield return null;var station=UnityEngine.Object.FindObjectsByType<EngineeringStation>(FindObjectsSortMode.None).Single();Check(station.game==game&&game.ui.IsOpen,"Puzzle Inspector bindings restored "+i);
     if(i==0){Use(game,"photo",0);station.Open();station.DisconnectLoad();station.Measure();station.ConnectLoad();station.Measure();station.setting=20000;}
