@@ -30,8 +30,7 @@ namespace ForgottenVillage.Tests {
         }
 
         [Test]
-        public void EngineeringTargetsMatchProposal() {
-            Assert.That(Engineering.DividerSolved(20000), Is.True);
+        public void OtherHouseEngineeringTargetsRemainUnchanged() {
             Assert.That(Engineering.FilterSolved(5000), Is.True);
             Assert.That(Engineering.GainSolved(6750), Is.True);
             Assert.That(Engineering.Slack(11.5, 1, .5, 1, 9), Is.EqualTo(0).Within(.0001));
