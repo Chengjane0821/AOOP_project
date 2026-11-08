@@ -52,19 +52,20 @@ public class HardwareConsole : MonoBehaviour {
  }
  public void SimulateButton(){Receive("BTN:1");Receive("BTN:0");}
  public bool RequestGate(VillageSave state){
-  if(!state.Authorized)return false;
+  if(state==null||!state.Authorized)return false;
+  if(!simulation&&!state.PhysicalChestAuthorized){status="Physical chest requires five LIVE camera records; simulated evidence cannot release the latch.";return false;}
   if(waiting||acknowledged)return true;
   if(!simulation&&!connected){status="Validated; hardware disconnected. Connect, then retry the verified command.";return false;}
   lastCommand="GATE:OPEN";waiting=true;sentAt=Time.unscaledTime;acknowledged=false;
   if(simulation){Receive("ACK:GATE:OPEN");status="SIMULATED gate OPEN acknowledgment";}else output.Enqueue(lastCommand);
   return true;
  }
- public void ResetSession(){lastCommand="";acknowledged=false;waiting=false;}
+ public void ResetSession(){lastCommand="";acknowledged=false;waiting=false;previousButton=false;while(output.TryDequeue(out _)){}status=simulation?"Simulation ready":"Chest session reset; reset the physical latch manually.";}
  public void Disconnect(){
   running=false;
   if(worker!=null){worker.Join(500);if(!worker.IsAlive)worker=null;}
   while(output.TryDequeue(out _)){}while(input.TryDequeue(out _)){}
-  connected=false;previousButton=false;waiting=false;
+  connected=false;previousButton=false;waiting=false;acknowledged=false;lastCommand="";
  }
  void OnDestroy(){Disconnect();}void OnApplicationQuit(){Disconnect();}
 }
