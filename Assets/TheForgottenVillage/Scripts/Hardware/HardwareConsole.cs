@@ -53,7 +53,7 @@ public class HardwareConsole : MonoBehaviour {
  public void SimulateButton(){Receive("BTN:1");Receive("BTN:0");}
  public bool RequestGate(VillageSave state){
   if(state==null||!state.Authorized)return false;
-  if(!simulation&&!state.PhysicalChestAuthorized){status="Physical chest requires five LIVE camera records; simulated evidence cannot release the latch.";return false;}
+  if(!simulation&&!state.PhysicalChestAuthorized){status="Physical chest requires the Elder photograph and four LIVE camera records; simulated evidence cannot release the latch.";return false;}
   if(waiting||acknowledged)return true;
   if(!simulation&&!connected){status="Validated; hardware disconnected. Connect, then retry the verified command.";return false;}
   lastCommand="GATE:OPEN";waiting=true;sentAt=Time.unscaledTime;acknowledged=false;
