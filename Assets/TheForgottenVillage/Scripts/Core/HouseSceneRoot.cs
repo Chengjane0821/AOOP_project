@@ -26,6 +26,7 @@ public class HouseSceneRoot : MonoBehaviour {
    foreach(var interactable in root.GetComponentsInChildren<XRBaseInteractable>(true))if(interactable.gameObject.activeInHierarchy)interactable.interactionManager=game.interactionManager;
   }
   foreach(var tennis in GetComponentsInChildren<ElderTennis>(true))tennis.Bind(game);
+  var alchemist=GetComponent<AlchemistDreamHouse>();if(alchemist)alchemist.Bind(game);
   game.gate=safetyGate;if(game.gate&&game.state.ended)game.gate.localRotation=Quaternion.Euler(0,0,80);
  }
 }

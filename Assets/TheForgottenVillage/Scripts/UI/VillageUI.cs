@@ -25,12 +25,13 @@ public class VillageUI : MonoBehaviour {
  public void Prompt(string text){prompt.text=text;}
  public void RefreshTracker(){if(tracker)tracker.text="THE MISSING RESEARCHER  |  "+game.Objective;}
  void Update(){if(notice&&Time.unscaledTime>toastUntil)notice.text="";if(!IsOpen&&game.player&&game.player.View){var cam=game.player.View.transform;transform.position=cam.position+cam.forward*2.4f;transform.rotation=cam.rotation;}if(!IsOpen&&UnityEngine.InputSystem.Keyboard.current?.tabKey.wasPressedThisFrame==true)Pause();}
- public void Menu(){game.recognition.Cancel();notice.text="";prompt.text="";game.playing=false;Show("THE FORGOTTEN VILLAGE","A VR mystery RPG\n\nFive village clues. One missing researcher.\nAn Elder's memory and four real-world objects. One sealed archive chest.");Button("Start Game",game.NewGame);Button("Continue",game.Continue);Button("Settings",Settings);Button("Quit",()=>Application.Quit());}
- public void Pause(){Show("Field journal / Pause",game.Objective+"\n\n"+game.hardware.status);Button("Resume",Close);var tennis=FindFirstObjectByType<ElderTennis>();if(tennis&&tennis.Running){Button("Restart match",tennis.StartMatch);Button("Leave table",tennis.StopMatch);}Button("Journal",Journal);Button("Inventory",Inventory);Button("Settings",Settings);Button("Save & Menu",()=>{game.Commit();Menu();});Button("Reset Progress",()=>{Show("Reset progress?","This starts a new investigation.");Button("New Game",game.NewGame);Button("Cancel",Pause);});}
+ public void Menu(){game.recognition.Cancel();notice.text="";prompt.text="";game.playing=false;Show("THE FORGOTTEN VILLAGE","A VR mystery RPG\n\nFive village clues. One missing researcher.\nTwo recovered memories and three real-world objects. One sealed archive chest.");Button("Start Game",game.NewGame);Button("Continue",game.Continue);Button("Settings",Settings);Button("Quit",()=>Application.Quit());}
+ public void Pause(){var flight=FindFirstObjectByType<PlaneDreamRun>();if(flight&&flight.InDream){flight.PauseMenu();return;}Show("Field journal / Pause",game.Objective+"\n\n"+game.hardware.status);Button("Resume",Close);var tennis=FindFirstObjectByType<ElderTennis>();if(tennis&&tennis.Running){Button("Restart match",tennis.StartMatch);Button("Leave table",tennis.StopMatch);}Button("Journal",Journal);Button("Inventory",Inventory);Button("Settings",Settings);Button("Save & Menu",()=>{game.Commit();Menu();});Button("Reset Progress",()=>{Show("Reset progress?","This starts a new investigation.");Button("New Game",game.NewGame);Button("Cancel",Pause);});}
  public void Settings(){Show("Settings / Safety console","Mode: "+(game.player.IsVR?"VR: controller movement, snap turn and rays":"Desktop: WASD, mouse look, E interact; J journal, I inventory, Esc menu")+"\n"+game.hardware.status+"\nSerial: "+game.hardware.portName+" @ "+game.hardware.baud+"\nAudio: "+Mathf.RoundToInt(AudioListener.volume*100)+"%");Button("Simulation / USB",()=>{game.hardware.simulation=!game.hardware.simulation;game.hardware.Connect();Settings();});Button("Next COM port",()=>{int.TryParse(game.hardware.portName.Replace("COM",""),out int p);game.hardware.portName="COM"+(p%20+1);Settings();});Button("Connect",()=>{game.hardware.Connect();Settings();});Button("Volume -",()=>{AudioListener.volume=Mathf.Clamp01(AudioListener.volume-.1f);Settings();});Button("Volume +",()=>{AudioListener.volume=Mathf.Clamp01(AudioListener.volume+.1f);Settings();});Button("Camera settings",CameraSettings);Button("Back",()=>{if(game.playing)Pause();else Menu();});}
  public void Journal(){
   int i=journalPage;
   if(i==0){Show("CASE NOTE 01 / 05", "Elder's House — Table Tennis\n"+(game.state.elderTennisWon?"Match WON. ":"Win a best-of-three match. ")+(game.state.clues[0]?"Clue recovered.\n\n"+VillageGame.Notes[0]:game.state.elderMemoryRecovered?"Inspect the unlocked photograph to recover Clue #1.":"Help the Elder recover his memory, then inspect his photograph."));Button("Previous",()=>{journalPage=4;Journal();});Button("Next",()=>{journalPage=1;Journal();});Button("Close",Close);return;}
+  if(i==1){Show("CASE NOTE 02 / 05", "Alchemist's House — Endless Sky\n"+(game.state.alchemistDreamWon?"Dream completed. ":"Survive the airplane dream for 60 active seconds. ")+(game.state.clues[1]?"Record recovered.\n\n"+VillageGame.Notes[1]:game.state.alchemistMemoryRecovered?"Inspect the unlocked dream record.":"Help the Alchemist end her recurring dream, then inspect her evidence."));Button("Previous",()=>{journalPage=0;Journal();});Button("Next",()=>{journalPage=2;Journal();});Button("Close",Close);return;}
   string n=(i+1).ToString("00");
   string text=VillageGame.Houses[i]+"\nPuzzle: "+(game.state.puzzleSolved[i]?"COMPLETED":"not solved")+" | Object: "+ObjectQuests.Categories[i]+"\n";
   text+=game.state.ObjectVerified(i)?(game.state.objects[i].simulated?"SIMULATED evidence - not a real camera check":"CAMERA VERIFIED - "+game.state.objects[i].confidence.ToString("P0")+" confidence")+"\n":"Object verification pending\n";
@@ -40,20 +41,21 @@ public class VillageUI : MonoBehaviour {
  int inventoryPage;public void Inventory(){if(game.state.inventory.Count==0){Message("Inventory","Your satchel is empty. Inspect evidence and collect supplies inside the houses.");return;}inventoryPage%=game.state.inventory.Count;string id=game.state.inventory[inventoryPage];int clue=Array.IndexOf(VillageGame.Clues,id);Show("Satchel ??"+(inventoryPage+1)+" / "+game.state.inventory.Count,"[ FIELD RECORD ]\n"+id+"\n\n"+(clue>=0?VillageGame.Notes[clue]:id=="Scratched photograph"?"Six villagers. A scratched-out face. A familiar researcher's wristband.":"A collected village specimen, retained in your satchel for inspection."));Button("Previous",()=>{inventoryPage=(inventoryPage+game.state.inventory.Count-1)%game.state.inventory.Count;Inventory();});Button("Next",()=>{inventoryPage++;Inventory();});Button("Close",Close);}
  public void Dialogue(int npc){
   if(npc<0||npc>=5)return;
+  if(npc==1&&game.house==1){var dream=FindFirstObjectByType<AlchemistDreamHouse>();if(dream){dream.Offer();return;}}
   if(npc==0&&game.house==0){var tennis=FindFirstObjectByType<ElderTennis>();if(tennis){tennis.Offer();return;}}
   if(game.state.elder&&game.state.puzzleSolved[npc]&&!game.state.clues[npc]){ObjectQuest(npc);return;}
   string[] lines;
   if(npc==0&&!game.state.elder)lines=new[]{"You are not from here, are you?","Something happened last night.","One of our villagers disappeared, but none of us can remember exactly what happened.","Please... investigate the village. Maybe you can discover the truth."};
   else if(game.state.clues[npc]){string[][] after={
    new[]{"You recovered our photograph. That face in the photograph wore the research wristband you carry.","I remember playing table tennis with you. Why did we forget?"},
-   new[]{"The cyan trace keeps the 100 Hz memory signal while the amber trace loses the high-frequency noise.","Someone tuned this filter for a real experiment, not a story. The same signatures appear on the Carpenter's board."},
+   new[]{"The airplane has reached the horizon. I remember the experiment now.","That recurring dream was part of a memory experiment. The same signatures appear on the Carpenter's board."},
    new[]{"You recovered the analog front-end record. The inverted waveform is exactly what that common-source stage predicts.","The schematic is initialled M.I.C. The technician may know what software ran on it."},
    new[]{"Your reproduction matches both the deployed RUN and the reference-fix STOP.","That is direct software evidence. The Clockmaker's negative slack is concerning, but it does not prove what caused the event."},
    new[]{"The fifth record completes the engineering chain. Its 10 ns path has negative setup slack.","That is a credible timing risk, not a proven cause. The experiment log and faulty safety decision are stronger incident evidence."}
   };lines=after[Mathf.Clamp(npc,0,4)];}
   else {string[][] before={
    new[]{"That photograph once showed all six of us. Why was one face erased?","Come to my house. Perhaps a game of table tennis will help me remember."},
-   new[]{"We separated useful memory signals from noise. I can still hear the prototype humming after midnight.","Keep 100 Hz above 90%, and reduce 5 kHz below 10%. The potentiometer changes resistance."},
+   new[]{"My dream is an endless sky. Can you guide the airplane to the horizon?","Come to my house and help me end the dream."},
    new[]{"The front end inverted and amplified the signal. I built it from the Technician's controller notes.","Use gm = 2 mS and RL = 10 kilohms. Find a drain resistance for gain near -8."},
    new[]{"The unsafe sensor was asserted, yet the deployed controller logged RUN. I remember the status lamp turning green.","Run the pass-by-value diagnostic, then preserve the derived override with a const reference. The physical button repeats the deployed test."},
    new[]{"The timing report showed a violation. It describes a possible risk; it does not prove the village incident's cause.","Measure the original path, then find the shortest passing clock period."}
@@ -63,7 +65,7 @@ public class VillageUI : MonoBehaviour {
  public void RefreshObjectQuest(int house){if(IsOpen&&objectPage==house)ObjectQuest(house);}
  public void ObjectQuest(int id){
   if(id<0||id>=5)return;
-  if(id==0){journalPage=0;Journal();return;}
+  if(id<2){journalPage=id;Journal();return;}
   bool solved=game.state.puzzleSolved[id],verified=game.state.ObjectVerified(id);
   string text=VillageGame.Houses[id]+" requests a "+ObjectQuests.Categories[id]+" - "+ObjectQuests.Roles[id]+".\n\n";
   if(!solved)text+="Complete the engineering puzzle first.";
