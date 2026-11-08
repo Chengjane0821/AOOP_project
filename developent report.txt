@@ -1,0 +1,6 @@
+THE FORGOTTEN VILLAGE — ELDER TABLE TENNIS
+Implementation date: 2026-11-08
+Objective: replace only the Elder voltage-divider activity with physical VR table tennis, retaining resident, transitions and clue ID 0.
+Baseline: Elder divider + camera object verification; scratched photo previously available before completion. XRI 3.1.3, Unity 6000.0.80f1. Existing uncommitted Verification/editor-errors.txt is unrelated and preserved.
+Asset dependency: existing user-supplied Assets/LowPolyTableTennis (table, bat, ball and materials). Copied Course Library room and decorations retained.
+Validation and milestone notes are appended during implementation. Physical Meta Quest testing has NOT been performed.
