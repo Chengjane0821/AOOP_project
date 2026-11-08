@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: aaa38a4476618ef4782580288901ea02
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 305306
+  packageName: Plane Runner 3D- Game Template
+  packageVersion: 1.0
+  assetPath: Assets/PlaneRunner/Prefabs/UI/GameUI.prefab
+  uploadId: 717364

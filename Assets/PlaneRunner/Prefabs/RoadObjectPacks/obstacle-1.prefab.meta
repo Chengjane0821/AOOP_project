@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 16306570a08599a4693c7d331a05a6d0
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 305306
+  packageName: Plane Runner 3D- Game Template
+  packageVersion: 1.0
+  assetPath: Assets/PlaneRunner/Prefabs/RoadObjectPacks/obstacle-1.prefab
+  uploadId: 717364

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a4e58977dd28b2d4c8e71e422e17c390
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 305306
+  packageName: Plane Runner 3D- Game Template
+  packageVersion: 1.0
+  assetPath: Assets/PlaneRunner/Prefabs/Gameplay/hill_002.prefab
+  uploadId: 717364

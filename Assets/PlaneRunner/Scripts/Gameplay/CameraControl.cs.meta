@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: d20de4059c1b3974788fc30d5a2a7781
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 305306
+  packageName: Plane Runner 3D- Game Template
+  packageVersion: 1.0
+  assetPath: Assets/PlaneRunner/Scripts/Gameplay/CameraControl.cs
+  uploadId: 717364

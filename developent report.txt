@@ -70,3 +70,10 @@ cd03fd3 fix(tennis): distinguish tabletop bounces from edge and underside faults
 e6f8461 docs(tennis): document controls rules tuning and hardware acceptance
 ce72186 test(tennis): record passing Unity suites and inspected scene preview
 Final report commit: docs(elder): finalize implementation milestones and validation report.
+
+============================================================
+ALCHEMIST'S HOUSE — VR PLANE RUNNER
+Date: 2026-11-08
+Objective: replace only the Alchemist RC low-pass-filter challenge with a 60-active-second dream flight, retaining clue index 1 and the other house challenges.
+Baseline: main branch at cf4a18a; unrelated main-scene and editor-error-log changes preserved. Assets/PlaneRunner is an existing untracked user-supplied package and will be tracked as a required dependency.
+Inspection: package uses PlayerPlane keyboard controls/OverlapSphere, GameControl singleton, CameraControl shake/follow, RoadCreator random packs and RoadPart/ObstaclePack backward scrolling. Win handling is empty and retry reloads the whole active scene. Reuse its aircraft, obstacle/hill/valley prefabs, materials and scrolling-world concept; replace incompatible global lifecycle/camera/UI/input code with an isolated RPG activity. No duplicate XR Origin or forced camera motion.
