@@ -14,3 +14,59 @@ Milestone: save schema 3 records tennis victory and memory recovery. Already-ear
 Room audit: actual copied room is approximately 11.1 x 7.5 m, already sufficient. Retain the shell dimensions; relocate couch/coffee table/TV to clear the swing lane. Do not scale NPCs, furniture or XR rig. Table target dimensions: 2.74 x 1.525 m, surface 0.76 m; paddle face 0.17 x 0.19 m; ball diameter 0.04 m.
 Unity validation access: second Editor instance refused because the project is already open. Use the existing Editor via the checked-in request handler; no physical hardware testing claimed.
 Executed validation: 17 Edit Mode tests passed (0 failed / 0 skipped). Initial actual Play Mode run passed entry dialogue, decline/start buttons, locked-photo guard, countdown, physical serve/fault, normal moving-paddle contact and single counting. It failed the NPC physical-return check; debugging ball/paddle trajectory before claiming full gameplay success.
+Executed validation: actual Unity Play Mode suite now passes all 50 checks, including physical NPC return after bounce prediction fix, normal/smash single counting, invalid-smash MISS, both decisive-failure paths, complete best-of-three loss reset/retry, victory memory, photo-only clue collection, JSON persistence, all four other puzzles and camera gates, five-clue Abandoned House unlock, original ending and simulated Arduino gate command. No runtime errors captured during the suite. Physical hardware remains untested.
+
+FINAL FEATURE NOTES
+Story: the Elder remembers little about last night, but remembers loving table tennis. Let's play starts the match; Maybe later safely closes the conversation. The resident can be approached again. The recovered memory describes a missing table-tennis partner who asked about memories and strange experiments, and an old photograph with a scratched-out face.
+Reward: winning two games saves the victory but does not award a clue. Acknowledging the memory enables the original photograph. Inspecting it awards Clue #1 (index 0), inventory and journal entries and house completion. Replays never erase an earned clue. All five clues remain necessary for the Abandoned House; the other four camera quests and final ending remain intact.
+VR: active right/left controller poses are transformed through the existing XRI camera-offset space. Translational and wrist angular velocity contribute to contact. Both paddle faces work. Grip never counts without a valid moving collision. Normal responses use capped physical impulses with configurable assistance; valid smashes use a directed ballistic impulse. Tracking loss and menus pause the rally. Activity locomotion is restored on leave, loss, victory and scene unload.
+Smash: player-side reachable ball; configurable height range, descending/near-apex trajectory, swing-speed and forward-speed thresholds, and face alignment. Bad moving Grip contact produces MISS and an Elder point. Accepted contacts count once through cooldown/ownership/phase guards. Smash thresholds are exposed in TableTennisTuning.asset. Defaults still need actual controller calibration.
+NPC: bounded speed and reaction delay, incoming trajectory prediction including table bounce, small shot-specific error. On the 20–30 cumulative game-hit target or second valid smash, paddle moves aside. Game win follows the actual missed-return outcome. Counters and target regenerate for the next game; lost best-of-three resets progress completely before retry.
+Presentation: table/net, actual ball trail, two paddles, original Elder, standing markers, readable scoreboard and instruction panels, countdown, hit/bounce audio, controller haptics, SMASH/MISS/game/match messages, pause/restart and replay. Existing furniture retains authored scale. Model audit verified tabletop near 0.76 m, net 0.1525 m above it, ball 40 mm and paddle face approximately 17 x 18 cm aligned with the collision face.
+
+FINAL EXECUTED VALIDATION (2026-11-08)
+- Unity 6000.0.80f1 compiled the feature and ran the saved scenes in actual Editor Play Mode.
+- 21 Edit Mode tests passed; 0 failed, 0 skipped. Includes smash landing/net clearance and physical chest authorization with four live camera records plus the Elder photograph.
+- 61 Play Mode assertions passed, followed by suite completion; no runtime errors captured during the suite. Covers entry dialogue, decline/start/retry UI callbacks, real ball/paddle collision and NPC return, valid/invalid smash contacts, both special failure paths, best-of-three loss reset, victory memory/photo gating, inventory/journal, pause/resume, JSON save/load, unload/re-entry evidence restoration, other house puzzles and camera requirements, camera/audio exclusivity, all-five-clue gate and original final ending with Arduino simulation.
+- Rendered Play Mode preview manually inspected. Imported model submesh dimensions inspected against colliders.
+- Initial physics test exposed incorrect NPC pre-bounce prediction; fixed and rerun successfully. Initial test-runner API compile error was corrected before final executed suites.
+Evidence files: Verification/elder-tennis-editmode.xml, elder-tennis-editmode.txt, elder-tennis-playmode.txt, elder-tennis-play-preview.png, elder-model-dimensions.txt.
+Test scope: scripted physical contact fixtures and UI callbacks, not human controller play. No physical Meta Quest, real camera, or USB Arduino testing performed. The local OpenXR runtime was unavailable; Editor gameplay used desktop mode. No native Android build/performance claim.
+Remaining acceptance: Quest left/right paddle offsets; wrist/forehand/backhand alignment; actual Grip timing and thresholds; tracking loss; headset-frame-rate latency; haptics/audio; seated/standing reach; ray UI; comfort and clear real-world swing space. Human desktop difficulty/playability assessment remains necessary.
+Known limitations: simplified first-to-five scoring (no deuce or official serve rotation), configurable aim assistance, simple retained Elder character art, and a shared 50 Hz physics timestep with swept contact handling. No real hardware success is inferred from simulation.
+
+FILES CREATED OR MODIFIED
+- Assets/TheForgottenVillage/Scenes/EldersHouse.unity and Prefabs/EldersHouseContent.prefab: integrated activity, room arrangement, removed divider/workbench/lever/signage, locked photo.
+- Scripts/TableTennis/: TennisRules, TennisTuning/TennisShots, TennisPaddle, TennisBall, TennisSurface, TennisOpponent, ElderTennis, TennisFeedback, with .meta files.
+- TableTennisTuning.asset and Materials/TennisBounce.physicMaterial.
+- Core/VillageGame, VillageSave, HouseSceneRoot, HouseTransitions; UI/VillageUI; Player/VillagePlayer; Hardware/HardwareConsole: only related activity/progression integration. Other house scene/prefab assets were not modified.
+- Editor/ElderTennisBuilder, ElderTennisAutomation, ElderTennisChecks, TennisTestRunner; existing scene builder and regression entry points updated for the official challenge.
+- Tests/Editor/TennisTests and the relevant legacy test expectation; Documentation/README.md and TABLE_TENNIS.md.
+- Existing Assets/LowPolyTableTennis tracked as the feature dependency; imported material colors retained, table green darkened for readability.
+Git: existing main branch, no history rewrite or force push. Meaningful implementation milestones committed incrementally. Unrelated pre-existing Verification/editor-errors.txt changes and the main-scene editor serialization/position changes are excluded and preserved; Unity's existing logger also appended diagnostic lines during work. Library, Temp, Logs and generated cache directories are excluded.
+
+COMMIT MILESTONES (in implementation order)
+942173f feat(elder): track table tennis assets and implementation baseline
+fff070f feat(tennis): define deterministic rally and best-of-three rules
+44a1e69 feat(tennis): track controller paddle poses and desktop swings
+9c13c78 feat(tennis): validate grip smashes from swing and ball trajectory
+9b6527b feat(tennis): simulate ball impulses and swept paddle contacts
+905eb00 feat(tennis): add bounded opponent tracking and visible decisive misses
+c2ae008 feat(tennis): run match transitions with safe controller and menu pauses
+f01e32c feat(elder): gate photograph clue on tennis victory and persist completion
+43bc237 feat(elder): replace house dialogue and journal with recovered-memory story
+aab72c5 feat(tennis): add paddle sounds haptics and smash trail feedback
+02f8aa4 feat(elder): install asset-based tennis setup in the existing house
+761896d test(tennis): cover match rules smash constraints and clue migration
+fc3e84d fix(tennis): include wrist velocity and reject mistimed grip contacts
+d016b4f test(elder): exercise physical rallies and six-house progression in Play Mode
+8b1a1c0 feat(elder): save playable house scene and align imported tennis models
+c4343ad fix(assets): retain Unity-imported tennis material colors
+9019d55 fix(tennis): predict table bounce before positioning the Elder paddle
+cd03fd3 fix(tennis): distinguish tabletop bounces from edge and underside faults
+62a4cc7 polish(tennis): align paddle faces and add readable score panels
+3cc2c2a fix(elder): make timed smashes land legally and align final clue narrative
+6bb30ed test(elder): replace legacy divider checks and verify pause and revisits
+e6f8461 docs(tennis): document controls rules tuning and hardware acceptance
+ce72186 test(tennis): record passing Unity suites and inspected scene preview
+Final report commit: docs(elder): finalize implementation milestones and validation report.
