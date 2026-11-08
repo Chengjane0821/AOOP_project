@@ -36,7 +36,7 @@ public static class ElderTennisBuilder {
   match.npcStanding=Point("Elder standing position",new Vector3(0,0,1.95f),activity.transform);
   house.arrival.position=new Vector3(-1.65f,.15f,-2.25f);
   var table=Visual("PingPongTable",activity.transform,new Vector3(1.525f,.9125f,2.74f));table.name="Table tennis table and net";table.transform.localPosition=new Vector3(0,.45625f,0);
-  var rubber=new PhysicsMaterial("Tennis bounce"){bounciness=.88f,dynamicFriction=.12f,staticFriction=.12f,bounceCombine=PhysicsMaterialCombine.Maximum};AssetDatabase.CreateAsset(rubber,Root+"Materials/TennisBounce.physicMaterial");
+  var rubber=new PhysicsMaterial("Tennis bounce"){bounciness=.88f,dynamicFriction=.12f,staticFriction=.12f,bounceCombine=PhysicsMaterialCombine.Maximum};var storedRubber=AssetDatabase.LoadAssetAtPath<PhysicsMaterial>(Root+"Materials/TennisBounce.physicMaterial");if(storedRubber){UnityEngine.Object.DestroyImmediate(rubber);rubber=storedRubber;}else AssetDatabase.CreateAsset(rubber,Root+"Materials/TennisBounce.physicMaterial");
   var top=Box("Table collision surface",activity.transform,new Vector3(0,.735f,0),new Vector3(1.525f,.05f,2.74f),false);top.AddComponent<TennisSurface>().kind=TennisSurface.Kind.Table;top.GetComponent<Collider>().sharedMaterial=rubber;
   var net=Box("Net collision",activity.transform,new Vector3(0,.836f,0),new Vector3(1.7f,.1525f,.025f),false);net.AddComponent<TennisSurface>().kind=TennisSurface.Kind.Net;
   var ballRoot=new GameObject("Physics ball");ballRoot.transform.SetParent(activity.transform,false);ballRoot.transform.localPosition=new Vector3(0,1.2f,0);ballRoot.AddComponent<Rigidbody>();ballRoot.AddComponent<SphereCollider>().radius=.02f;ballRoot.GetComponent<Collider>().sharedMaterial=rubber;match.ball=ballRoot.AddComponent<TennisBall>();match.ball.match=match;
@@ -75,10 +75,16 @@ public static class ElderTennisBuilder {
   var light=new GameObject("Warm table lamp",typeof(Light));light.transform.SetParent(activity,false);light.transform.localPosition=new Vector3(0,2.8f,.3f);var l=light.GetComponent<Light>();l.type=LightType.Point;l.color=new Color(1,.84f,.65f);l.intensity=2;l.range=6;
  }
  static TennisPaddle Paddle(string name,bool player,ElderTennis match,Vector3 p){var o=new GameObject(name);o.transform.SetParent(match.transform,false);o.transform.localPosition=p;o.AddComponent<Rigidbody>();var c=o.AddComponent<BoxCollider>();c.size=new Vector3(.17f,.19f,.022f);c.isTrigger=true;var paddle=o.AddComponent<TennisPaddle>();paddle.player=player;paddle.match=match;var v=Visual("PingPongBat",o.transform,new Vector3(.17f,.27f,.022f));v.transform.localPosition=new Vector3(0,-.04f,0);return paddle;}
- static GameObject Visual(string name,Transform parent,Vector3 size){var asset=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/LowPolyTableTennis/Prefabs/"+name+".prefab");if(!asset)throw new Exception("Missing table tennis asset: "+name);var o=(GameObject)PrefabUtility.InstantiatePrefab(asset);PrefabUtility.UnpackPrefabInstance(o,PrefabUnpackMode.Completely,InteractionMode.AutomatedAction);o.transform.SetParent(parent,false);o.transform.localPosition=Vector3.zero;o.transform.localRotation=Quaternion.identity;
+ static GameObject Visual(string name,Transform parent,Vector3 size){
+  var asset=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/LowPolyTableTennis/Prefabs/"+name+".prefab");if(!asset)throw new Exception("Missing table tennis asset: "+name);
+  var wrapper=new GameObject(name+" visual");wrapper.transform.SetParent(parent,false);
+  var o=(GameObject)PrefabUtility.InstantiatePrefab(asset);PrefabUtility.UnpackPrefabInstance(o,PrefabUnpackMode.Completely,InteractionMode.AutomatedAction);o.transform.SetParent(wrapper.transform,false);o.transform.localPosition=Vector3.zero;
+  if(name=="PingPongTable")o.transform.localRotation=Quaternion.Euler(0,90,0)*o.transform.localRotation;
   foreach(var c in o.GetComponentsInChildren<Collider>())UnityEngine.Object.DestroyImmediate(c);foreach(var rb in o.GetComponentsInChildren<Rigidbody>())UnityEngine.Object.DestroyImmediate(rb);
-  var rr=o.GetComponentsInChildren<Renderer>();var b=rr[0].bounds;foreach(var r in rr)b.Encapsulate(r.bounds);var s=o.transform.localScale;o.transform.localScale=Vector3.Scale(s,new Vector3(size.x/b.size.x,size.y/b.size.y,size.z/b.size.z));b=rr[0].bounds;foreach(var r in rr)b.Encapsulate(r.bounds);o.transform.position+=parent.position-b.center;
-  return o;
+  var rr=o.GetComponentsInChildren<Renderer>();var b=rr[0].bounds;foreach(var r in rr)b.Encapsulate(r.bounds);
+  wrapper.transform.localScale=new Vector3(size.x/b.size.x,size.y/b.size.y,size.z/b.size.z);
+  b=rr[0].bounds;foreach(var r in rr)b.Encapsulate(r.bounds);o.transform.position+=wrapper.transform.position-b.center;
+  return wrapper;
  }
  static GameObject Box(string n,Transform parent,Vector3 p,Vector3 size,bool visible){var o=GameObject.CreatePrimitive(PrimitiveType.Cube);o.name=n;o.transform.SetParent(parent,false);o.transform.localPosition=p;o.transform.localScale=size;o.GetComponent<Renderer>().enabled=visible;return o;}
  static Transform Point(string n,Vector3 p,Transform parent){var o=new GameObject(n);o.transform.SetParent(parent,false);o.transform.localPosition=p;return o.transform;}

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd85d1da4e1b4757a9f02d74679a76d4, type: 3}
+  m_Name: TableTennisTuning
+  m_EditorClassIdentifier: 
+  maximumBallSpeed: 9
+  aimAssist: 0.75
+  minimumSwingSpeed: 0.25
+  contactCooldown: 0.12
+  rallyTimeout: 15
+  smashMinimumHeight: 1.08
+  smashMaximumHeight: 2.1
+  smashMinimumSwingSpeed: 1.5
+  smashMinimumForwardSpeed: 0.6
+  smashMaximumRisingSpeed: 0.6
+  smashMinimumFaceAlignment: 0.35
+  elderSpeed: 2.8
+  elderReactionTime: 0.12
+  elderError: 0.045
