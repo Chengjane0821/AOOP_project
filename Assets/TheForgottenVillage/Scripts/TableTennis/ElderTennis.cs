@@ -40,13 +40,14 @@ public class ElderTennis : MonoBehaviour {
  public bool PaddleContact(TennisPaddle paddle,Vector3 worldPosition,Vector3 worldIncoming){if(!RallyActive)return false;
   bool player=paddle.player;
   // A return is allowed only after one bounce on the receiver's half.
-  if(player==lastPlayer||!landed||bounces!=1)return false;
+  if(player==lastPlayer)return false;
   if(!player&&rules.elderMustMiss)return false;
   var at=transform.InverseTransformPoint(worldPosition);var incoming=transform.InverseTransformDirection(worldIncoming);
-  var swing=transform.InverseTransformDirection(paddle.velocity);var normal=transform.InverseTransformDirection(paddle.transform.forward);
+  var swing=transform.InverseTransformDirection(paddle.VelocityAt(worldPosition));var normal=transform.InverseTransformDirection(paddle.transform.forward);
   if(player&&swing.magnitude<tuning.minimumSwingSpeed)return false;
   bool smash=player&&paddle.Grip;
-  if(smash&&!TennisShots.IsSmash(tuning,at,incoming,swing,normal)){Feedback("MISS! — smash timing",2);EndRally(false);return true;}
+  if(smash&&(!landed||bounces!=1||!TennisShots.IsSmash(tuning,at,incoming,swing,normal))){Feedback("MISS! — smash timing",2);EndRally(false);return true;}
+  if(!landed||bounces!=1)return false;
   if(player&&(at.z>=0||Vector3.Dot(swing-incoming,normal)*normal.z<=0))return false;
   if(!player&&at.z<=0)return false;
   Vector3 outgoing=player?TennisShots.PlayerReturn(tuning,at,incoming,swing,normal,smash):TennisShots.ToTarget(at,new Vector3(Mathf.Clamp(at.x*.25f,-.3f,.3f),.79f,-.85f),.82f);

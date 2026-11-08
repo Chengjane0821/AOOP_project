@@ -8,7 +8,7 @@ public class TennisPaddle : MonoBehaviour {
  public Vector3 gripOffset=new Vector3(0,0,.14f), rotationOffset=Vector3.zero;
  public float maxTrackingSpeed=12; public Vector3 velocity {get;private set;} public bool Grip {get;private set;}
  public bool TrackingValid {get;private set;}
- Rigidbody body; Vector3 target,previous; Quaternion orientation; bool initialized;
+ Rigidbody body; Vector3 target,previous; Quaternion orientation,previousRotation; Vector3 angularVelocity; bool initialized;
  void Awake(){body=GetComponent<Rigidbody>();body.isKinematic=true;body.interpolation=RigidbodyInterpolation.Interpolate;body.collisionDetectionMode=CollisionDetectionMode.ContinuousSpeculative;target=previous=transform.position;orientation=transform.rotation;}
  void Update(){if(!player||!match||!match.game)return;
   var p=match.game.player;
@@ -34,11 +34,15 @@ public class TennisPaddle : MonoBehaviour {
  Vector2 desktopOffset;
  void FixedUpdate(){if(!player||!match||!match.Running)return;
   if(!TrackingValid)return;
-  if(!initialized){previous=target;body.position=target;initialized=true;}
+  if(!initialized){previous=target;previousRotation=orientation;body.position=target;initialized=true;}
+  if(Vector3.Distance(target,previous)>.65f){previous=target;previousRotation=orientation;}
+  var delta=orientation*Quaternion.Inverse(previousRotation);delta.ToAngleAxis(out float degrees,out var axis);if(degrees>180)degrees-=360;
+  angularVelocity=degrees==0?Vector3.zero:Vector3.ClampMagnitude(axis*(degrees*Mathf.Deg2Rad/Time.fixedDeltaTime),40);previousRotation=orientation;
   velocity=Vector3.ClampMagnitude((target-previous)/Time.fixedDeltaTime,maxTrackingSpeed);previous=target;
   body.MovePosition(target);body.MoveRotation(orientation);
  }
  public void MoveAI(Vector3 position,Quaternion rotation){TrackingValid=true;velocity=(position-body.position)/Time.fixedDeltaTime;body.MovePosition(position);body.MoveRotation(rotation);}
- public void ResetTracking(){initialized=false;TrackingValid=!player;velocity=Vector3.zero;}
+ public Vector3 VelocityAt(Vector3 point)=>Vector3.ClampMagnitude(velocity+Vector3.Cross(angularVelocity,point-transform.position),maxTrackingSpeed);
+ public void ResetTracking(){initialized=false;TrackingValid=!player;velocity=angularVelocity=Vector3.zero;}
 }
 }
