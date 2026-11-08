@@ -14,7 +14,7 @@ public class HouseTransitions : MonoBehaviour {
   var scene=SceneManager.GetSceneByName(SceneNames[index]);foreach(var root in scene.GetRootGameObjects()){var candidate=root.GetComponent<HouseSceneRoot>();if(candidate){Current=candidate;break;}}
   if(!Current){yield return SceneManager.UnloadSceneAsync(scene);Busy=false;game.ui.Message("Room unavailable","No configured house root was found.");yield break;}
   Current.Bind(game);game.house=index;SceneManager.SetActiveScene(scene);foreach(var root in outdoorRoots)if(root)root.SetActive(false);
-  game.player.Teleport(Current.arrival.position,Current.arrival.eulerAngles.y);Physics.SyncTransforms();game.Commit();Busy=false;game.ui.Close();game.ui.Toast(VillageGame.Houses[index]);
+  game.player.Teleport(Current.arrival.position,Current.arrival.eulerAngles.y);Physics.SyncTransforms();game.Commit();Busy=false;game.ui.Close();game.ui.Toast(VillageGame.Houses[index]);if(index==0){var tennis=Current.GetComponentInChildren<ElderTennis>();if(tennis)tennis.Offer();}
  }
  public void Exit(){if(Busy||!Current)return;StartCoroutine(Return(false));}
  public void ReturnToStart(){if(Busy)return;if(Current)StartCoroutine(Return(true));else game.player.Teleport(game.villageSpawn.position,game.villageSpawn.eulerAngles.y);}

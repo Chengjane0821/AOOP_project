@@ -25,6 +25,7 @@ public class HouseSceneRoot : MonoBehaviour {
    foreach(var teleport in root.GetComponentsInChildren<UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation.BaseTeleportationInteractable>(true))teleport.teleportationProvider=game.player.xrRig.GetComponentInChildren<UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation.TeleportationProvider>(true);
    foreach(var interactable in root.GetComponentsInChildren<XRBaseInteractable>(true))if(interactable.gameObject.activeInHierarchy)interactable.interactionManager=game.interactionManager;
   }
+  foreach(var tennis in GetComponentsInChildren<ElderTennis>(true))tennis.Bind(game);
   game.gate=safetyGate;if(game.gate&&game.state.ended)game.gate.localRotation=Quaternion.Euler(0,0,80);
  }
 }
