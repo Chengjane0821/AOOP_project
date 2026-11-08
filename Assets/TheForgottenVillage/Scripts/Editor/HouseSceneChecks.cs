@@ -13,7 +13,7 @@ namespace ForgottenVillage.Editor {
  static HouseSceneChecks(){EditorApplication.update+=Tick;Application.logMessageReceived+=CaptureError;}
  static void CaptureError(string message,string trace,LogType type){if(SessionState.GetBool("FV_CAPTURE_ERRORS",false)&&(type==LogType.Error||type==LogType.Exception||type==LogType.Assert))SessionState.SetInt("FV_TEST_ERRORS",SessionState.GetInt("FV_TEST_ERRORS",0)+1);}
  [MenuItem("Forgotten Village/Run integrated Play Mode checks")]
- public static void Request(){Directory.CreateDirectory("Verification");File.WriteAllText("Verification/house-playtest.request","run");}
+ public static void Request(){ElderTennisChecks.Request();}
  static void Tick(){if(EditorApplication.isCompiling||EditorApplication.isUpdating)return;
   if(!EditorApplication.isPlaying&&File.Exists("Verification/house-playtest.request")){try{File.Delete("Verification/house-playtest.request");}catch(IOException){return;}if(!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())return;EditorSceneManager.OpenScene("Assets/Scenes/rpgpp_lt_scene_1.0.unity");SessionState.SetInt("FV_TEST_ERRORS",0);SessionState.SetBool("FV_CAPTURE_ERRORS",true);SessionState.SetBool("FV_HOUSE_TEST",true);EditorApplication.isPlaying=true;return;}
   if(!EditorApplication.isPlaying)return;
@@ -33,8 +33,8 @@ namespace ForgottenVillage.Editor {
    Check(UnityEngine.Object.FindObjectsByType<Camera>(FindObjectsSortMode.None).Count(c=>c.enabled)==1,"One active camera in house "+i);Check(UnityEngine.Object.FindObjectsByType<AudioListener>(FindObjectsSortMode.None).Count(c=>c.enabled)==1,"One active audio listener in house "+i);
    Check(SessionState.GetInt("FV_TEST_ERRORS",0)==0,"No runtime errors through house "+i);
    VillageAutomation.Capture(game,"copied-house-"+i);
+   if(i==0){throw new Exception("Legacy divider test retired. Use Test Elder tennis and RPG progression.");}
    if(i<5){Use(game,"puzzle",i);yield return null;var station=UnityEngine.Object.FindObjectsByType<EngineeringStation>(FindObjectsSortMode.None).Single();Check(station.game==game&&game.ui.IsOpen,"Puzzle Inspector bindings restored "+i);
-    if(i==0){Use(game,"photo",0);station.Open();station.DisconnectLoad();station.Measure();station.ConnectLoad();station.Measure();station.setting=20000;}
     if(i==1){game.hardware.Receive("POT:292");yield return null;Check(Mathf.Abs(station.setting-5000)<15,"Simulated potentiometer drives RC station across scene load");}
     if(i==2){station.setting=6750;var part=UnityEngine.Object.FindObjectsByType<Rigidbody>(FindObjectsSortMode.None).First(r=>r.name=="Amplifier component 0");var socket=UnityEngine.Object.FindFirstObjectByType<WorkshopSocket>();part.position=socket.transform.position;Physics.SyncTransforms();for(int frame=0;frame<10;frame++)yield return null;Check(game.state.inventory.Contains("Workshop component examined"),"Grab component activates workshop trigger socket");station.Open();}
     if(i==3){game.hardware.SimulateButton();Check(game.state.faultyTest,"Simulated Arduino button invokes bound diagnostic");station.referenceFix=true;Use(game,"diagnostic",0);Check(game.state.fixedTest,"In-room diagnostic button invokes corrected test");}
