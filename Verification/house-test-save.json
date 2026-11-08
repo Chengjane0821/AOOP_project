@@ -1,0 +1,23 @@
+{
+    "version": 1,
+    "elder": false,
+    "photograph": false,
+    "faultyTest": false,
+    "fixedTest": false,
+    "timingViolation": false,
+    "ended": false,
+    "clues": [
+        false,
+        false,
+        false,
+        false,
+        false
+    ],
+    "evidence": [
+        false,
+        false,
+        false,
+        false
+    ],
+    "inventory": []
+}

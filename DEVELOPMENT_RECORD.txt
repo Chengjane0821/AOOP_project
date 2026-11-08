@@ -1,0 +1,177 @@
+THE FORGOTTEN VILLAGE - DEVELOPMENT CHECKPOINT
+Recorded: 2026-11-08 (Asia/Taipei)
+Branch: main
+Proposal: The_Forgotten_Village_Proposal.pdf (the new proposal in this repo)
+
+STATUS
+This is a preserved development checkpoint, NOT a finished-project sign-off.
+The existing six-house game is present. The new camera/object quest workflow
+has a compiling Unity-side foundation, but has not been validated end to end.
+Development was paused at the user's request to record progress and push it.
+
+1. WHAT WAS REVIEWED AND PRESERVED
+- Reviewed Git status, existing edits, project structure, history, the new
+  two-page proposal, and the existing editor error/playtest records.
+- Worked on main. Preserved prior history and merged origin/main normally
+  (ebd0a1c); no reset, rebase, force-push, or replacement of the original room.
+- Kept the main village and all six additive house scenes, scripts, existing
+  assets, and metadata. New camera scripts have matching .meta files.
+- Preserved the existing error log, screenshots, and test save artifacts.
+  Ignored Unity caches/build outputs and temporary tooling are not deliverables.
+
+2. WHAT WAS ALREADY IN THE PROJECT
+- Main scene: Assets/Scenes/rpgpp_lt_scene_1.0.unity.
+- Six additive scenes in Assets/TheForgottenVillage/Scenes: EldersHouse,
+  AlchemistsHouse, CarpentersHouse, TechniciansHouse, ClockmakersHouse, and
+  AbandonedHouse. The original source room remains available.
+- Desktop and XR player paths; village/house transitions; NPC dialogue,
+  journal, inventory, pickups, save/continue/new game, and ending/replay UI.
+- Five engineering puzzles: loaded voltage divider, RC low-pass filter,
+  MOSFET gain, C++ object slicing, and VLSI setup timing.
+- Five records unlock the final house in the old workflow. Four final evidence
+  stations and software diagnostics support the missing-researcher reveal.
+- Arduino serial interface and simulation existed, but this is not evidence
+  that physical hardware or firmware has been supplied/tested.
+- Earlier local commits included dbfd0f1 (final-gate save validation) and
+  dfe2bcb (six-house integration report). Their report predates the camera flow.
+
+3. COMPLETED FIXES IN THIS CONTINUATION
+Commit 2358411: Fix copied-room socket startup and surface runtime test errors.
+- Investigated XRGrabInteractable/XRSocketInteractor exceptions in the log.
+  Two starting selections in each copied house referenced inactive props.
+  Startup selection could run before the inactive target's Awake initialized
+  its rigidbody, with subsequent socket/teardown errors. This was not isolated
+  to only the Carpenter's House.
+- Cleared those starting references in all six copied house scenes while
+  retaining their props. Added defensive sanitizing to HouseSceneRoot and
+  SeparateHouseBuilder so generated rooms also avoid inactive start targets.
+- Improved HouseSceneChecks to capture runtime errors and protect unsaved
+  scene edits before automation. A fresh runtime check is still required.
+- Added Verification/Compile.ps1 to compile runtime and Editor code against
+  installed Unity references into Temp/VerificationCompile without replacing
+  the live Editor's assemblies.
+
+4. NEW PROPOSAL WORK IMPLEMENTED, BUT STILL WIP
+Commit 9032d5c: Add camera-gated object quest foundation (WIP).
+Unity-side quest model and UI:
+- Separated puzzle completion, object verification, and explicit clue claim.
+  Solving a puzzle now asks the player to speak to the resident; it no longer
+  immediately awards a clue. Final-house authorization requires all five
+  puzzle/object/clue sequences.
+- Added the proposal's object mapping:
+    Elder       / voltage divider  -> book       / research notes
+    Alchemist   / RC filter        -> bottle     / sample container
+    Carpenter   / MOSFET gain      -> mouse      / workstation tool
+    Technician  / object slicing  -> cell phone / diagnostic record
+    Clockmaker  / timing analysis -> clock      / experiment timeline
+- Added per-house object-task UI, simulation detection, camera settings,
+  retry/cancel actions, clue collection, and puzzle/object/clue journal counts.
+- Expanded ending text with the student ID/letter and archive-chest framing.
+- Wait for return-to-village transitions before showing restored-game UI.
+- Tightened the timing answer target to 11.5 ns.
+
+Recognition protocol/client:
+- Added ObjectRecognitionProtocol.cs and ObjectRecognitionClient.cs, plus
+  .meta files. VillageGame installs the client at runtime.
+- Added request IDs, house/category matching, explicit live/simulated evidence,
+  confidence >= 0.70, >= 3 frames, timestamp parsing, and snapshot-name checks.
+- Added authenticated POST /v1/quests and GET /v1/quests/{requestId} calls,
+  polling, cancellation, request timeout, overall timeout, and error messages.
+- Default is SIMULATION. Live defaults to http://raspberrypi.local:8765;
+  FV_CAMERA_URL/FV_CAMERA_TOKEN or the settings UI configure the connection.
+  These are client expectations, NOT an implemented Raspberry Pi service.
+- Simulation never captures a photograph. Live evidence currently stores
+  metadata/filename; a working Pi must actually capture and retain the image.
+
+Persistence and hardware boundaries:
+- Added version-2 save fields for solved puzzles and object evidence; retained
+  the existing forgotten-village-v1.json filename for compatibility.
+- Added v1 migration preserving engineering progress but requiring new object
+  checks; migration/legacy inventory behavior still needs tests and review.
+- Added a guard intended to prevent simulated camera evidence from authorizing
+  a live chest command. Serial simulation still supports desktop development.
+- Reset/disconnect clear acknowledgment and queued-command state.
+- Tightened POT input parsing and leave the output value at zero on rejection.
+- The wire command is still GATE:OPEN. There is no new Arduino firmware yet.
+- Cleaned corrupted punctuation in touched interaction/evidence strings and
+  the copied-house builder. Untouched legacy text still needs an encoding audit.
+
+5. VERIFICATION PERFORMED AND ITS LIMITS
+- PASS: powershell -NoProfile -ExecutionPolicy Bypass -File Verification/Compile.ps1
+  Repeated after the final punctuation cleanup. Runtime and Editor C# compile
+  with installed Unity 6000.0.80f1 references. Six pre-existing obsolete-API
+  warnings remain in Assets/_Course Library, plus USG0001 analyzer information.
+- Editor diagnostics tool reported no script errors before the final text-only
+  cleanup; the subsequent compile also passed.
+- Compilation does NOT execute tests, import/serialize scenes, build a player,
+  validate UI layout, or prove runtime behavior.
+- No fresh NUnit execution or current-code six-house playthrough was completed.
+- Verification/house-playtest-results.txt is LEGACY evidence. Its PASS lines
+  assume immediate clues on puzzle completion, not the new object quest flow.
+  The generated test saves are version 1, and the report lacks the newly added
+  runtime-error assertions. Do not treat it as validation of current code.
+- Verification/copied-*.png and house-test-save.json(.bak) are artifacts of
+  that legacy run. They are preserved, not claimed as current camera evidence.
+- Verification/editor-errors.txt contains historical exceptions. It was not
+  cleared or presented as proof of a clean post-fix Unity console.
+- No Raspberry Pi, camera, Quest Link session, Arduino/SG90 latch, or release
+  build was validated. Hardware behavior remains unverified.
+
+6. NOT FINISHED / REQUIRED NEXT WORK
+[ ] Update HouseSceneChecks and VillageAutomation for puzzle -> object -> clue.
+    Their old immediate-clue assertions are incompatible with current code.
+[ ] Extend VillageModelTests with v1/v2 migration, malformed saves, claim gates,
+    partial quest progress, duplicate rewards, and simulated/live chest guards.
+    Review whether legacy inventory/evidence should be reconciled on migration.
+[ ] Test recognition: wrong category/house/request, duplicate/stale responses,
+    malformed JSON, confidence/frame bounds, timestamps, invalid snapshot names,
+    wrong token, connection loss, cancellation, timeout, and retry/reset.
+[ ] Exercise journal/inventory/pause while verification is pending. Review
+    cancellation/navigation paths, UI input sizing, and headset-off operation.
+[ ] Implement the Raspberry Pi camera + lightweight YOLO service matching the
+    Unity API contract, with token authentication, actual category detections,
+    stable detections, snapshots, safe storage, expiration/cancellation, setup
+    instructions, dependencies/model configuration, and service tests.
+[ ] Implement Arduino Uno/SG90 archive-chest latch firmware and document the
+    USB protocol, pin wiring, power, manual release, and supervised reset.
+    Verify acknowledgments, disconnect/reconnect, retry, and duplicate commands.
+    Do not treat a serial acknowledgment as proof the physical chest opened.
+[ ] Refresh/recompile Unity fully, then run the updated tests through all six
+    houses with runtime-error capture enabled. Verify startup and transitions
+    no longer produce the original socket exceptions.
+[ ] Manually test the entire desktop and PC-VR/Quest Link game: arbitrary house
+    order, object handoff, save/continue, locked final house, all evidence,
+    software diagnostics, identity reveal, chest retry, and new-game reset.
+[ ] Test with real Pi/camera objects and real Uno/latch. Confirm simulated data
+    cannot release physical hardware, and actual snapshots can be retrieved.
+[ ] Update the existing README, architecture/class diagrams, game script and
+    delivery instructions to match the NEW proposal and the final implementation.
+    Existing documentation may still describe the older gate workflow.
+[ ] Audit remaining legacy encoding issues, presentation/UI, accessibility,
+    warnings, scene/prefab references, and .meta consistency after Unity import.
+[ ] Produce and smoke-test a Windows build; record reproducible current-code
+    test results instead of reusing the old PASS report.
+
+7. RESUME HERE
+1) Check Git status and read this record plus the new proposal before editing.
+2) Start with save/protocol unit tests and update the six-house automation so
+   simulation can validate the new quest sequence without real hardware.
+3) Implement/test the Pi service and Arduino firmware against explicit contracts.
+4) Run Unity/desktop checks, then supervised VR/real-hardware validation.
+5) Update this record with actual results and remaining blockers. Keep commits
+   small on main, preserving existing history and unrelated user changes.
+
+Key paths (relative to repository root):
+  Assets/TheForgottenVillage/Scripts/Core/VillageGame.cs
+  Assets/TheForgottenVillage/Scripts/Core/VillageSave.cs
+  Assets/TheForgottenVillage/Scripts/Hardware/ObjectRecognitionClient.cs
+  Assets/TheForgottenVillage/Scripts/Hardware/ObjectRecognitionProtocol.cs
+  Assets/TheForgottenVillage/Scripts/Hardware/HardwareConsole.cs
+  Assets/TheForgottenVillage/Scripts/UI/VillageUI.cs
+  Assets/TheForgottenVillage/Scripts/Editor/HouseSceneChecks.cs
+  Assets/TheForgottenVillage/Scripts/Editor/VillageAutomation.cs
+  Assets/TheForgottenVillage/Tests/Editor/VillageModelTests.cs
+  Verification/Compile.ps1
+
+Git commit/push outcomes are reported separately after the commands complete;
+the presence of this file alone is not proof a push succeeded.

@@ -1,3 +1,10 @@
+LEGACY PLAYTEST REPORT - preserved at the 2026-11-08 development checkpoint.
+The original results below cover the pre-camera quest workflow. They do NOT
+validate the current puzzle -> object verification -> clue implementation or
+the latest XR socket fix. The associated test saves are version 1. Update the
+automation, recompile Unity, and rerun before claiming current runtime success.
+See ../DEVELOPMENT_RECORD.txt for completed work and remaining requirements.
+
 PASS: Main village and additive transition service initialized
 PASS: Runtime frames advancing
 PASS: Abandoned entrance refuses entry without five clues

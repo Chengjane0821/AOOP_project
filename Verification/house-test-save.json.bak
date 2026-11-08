@@ -1,0 +1,31 @@
+{
+    "version": 1,
+    "elder": true,
+    "photograph": true,
+    "faultyTest": true,
+    "fixedTest": true,
+    "timingViolation": true,
+    "ended": true,
+    "clues": [
+        true,
+        true,
+        true,
+        true,
+        true
+    ],
+    "evidence": [
+        true,
+        true,
+        true,
+        true
+    ],
+    "inventory": [
+        "Scratched photograph",
+        "The Forgotten Person / Damaged Circuit Notes",
+        "Memory Signal Filtering Record",
+        "Workshop component examined",
+        "Analog Front-End Record",
+        "Safety Controller Software Record",
+        "Timing Analysis Record"
+    ]
+}
