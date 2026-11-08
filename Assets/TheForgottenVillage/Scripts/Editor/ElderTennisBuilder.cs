@@ -55,6 +55,7 @@ public static class ElderTennisBuilder {
   ExpandRoom(house,activity.transform);
   PrefabUtility.SaveAsPrefabAsset(house.gameObject,Root+"Prefabs/EldersHouseContent.prefab");
   EditorSceneManager.MarkSceneDirty(scene);EditorSceneManager.SaveScene(scene);AssetDatabase.SaveAssets();
+  Polish();
   File.WriteAllText("Verification/elder-tennis-build.txt","PASS: Elder scene and content prefab saved with physical table, net, ball, paddles, opponent, UI and evidence.\n");
  }
  static void ExpandRoom(HouseSceneRoot house,Transform activity){
