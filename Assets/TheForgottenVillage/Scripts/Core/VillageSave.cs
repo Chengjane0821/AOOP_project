@@ -5,8 +5,9 @@ using System.Linq;
 namespace ForgottenVillage {
     [Serializable]
     public class VillageSave {
-        public int version = 3;
+        public int version = 4;
         public bool elderTennisWon, elderMemoryRecovered;
+        public bool alchemistDreamWon, alchemistMemoryRecovered, alchemistEvidenceInspected;
         public bool elder, photograph, faultyTest, fixedTest, timingViolation, ended;
         public bool[] clues = new bool[5];
         public bool[] puzzleSolved = new bool[5];
@@ -16,12 +17,12 @@ namespace ForgottenVillage {
         public bool ObjectVerified(int id) => id >= 0 && id < 5 && objects != null &&
             objects.Length == 5 && objects[id] != null && objects[id].ValidFor(id);
         public bool CanClaim(int id) => elder && id >= 0 && id < 5 && puzzleSolved != null &&
-            puzzleSolved.Length == 5 && puzzleSolved[id] && (id == 0 ? elderTennisWon && elderMemoryRecovered && photograph : ObjectVerified(id));
+            puzzleSolved.Length == 5 && puzzleSolved[id] && (id == 0 ? elderTennisWon && elderMemoryRecovered && photograph : id == 1 ? alchemistDreamWon && alchemistMemoryRecovered && alchemistEvidenceInspected : ObjectVerified(id));
         public bool Unlocked => clues != null && clues.Length == 5 &&
             Enumerable.Range(0, 5).All(i => clues[i] && CanClaim(i));
         public bool Authorized => Unlocked && faultyTest && fixedTest && evidence != null &&
             evidence.Length == 4 && evidence.All(x => x);
-        public bool PhysicalChestAuthorized => Authorized && Enumerable.Range(1, 4).All(i => ObjectVerified(i) && !objects[i].simulated);
+        public bool PhysicalChestAuthorized => Authorized && Enumerable.Range(2, 3).All(i => ObjectVerified(i) && !objects[i].simulated);
         public void Normalize() {
             if (inventory == null) inventory = new List<string>();
             inventory = inventory.Where(x => !string.IsNullOrWhiteSpace(x)).Distinct().ToList();
@@ -41,6 +42,11 @@ namespace ForgottenVillage {
                 inventory.Remove("The Forgotten Person / Damaged Circuit Notes");
                 if (clues[0] && !inventory.Contains(VillageGame.Clues[0])) inventory.Add(VillageGame.Clues[0]);
                 version = 3;
+            }
+            if (version < 4) {
+                // Preserve an already-earned record, not incomplete RC measurements.
+                alchemistDreamWon = alchemistMemoryRecovered = alchemistEvidenceInspected = clues[1];
+                puzzleSolved[1] = clues[1]; version = 4;
             }
             for (int i = 0; i < 5; i++) if (!CanClaim(i)) clues[i] = false;
             if (!Authorized) ended = false;
