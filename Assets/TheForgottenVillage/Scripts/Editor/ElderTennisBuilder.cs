@@ -79,12 +79,44 @@ public static class ElderTennisBuilder {
   var asset=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/LowPolyTableTennis/Prefabs/"+name+".prefab");if(!asset)throw new Exception("Missing table tennis asset: "+name);
   var wrapper=new GameObject(name+" visual");wrapper.transform.SetParent(parent,false);
   var o=(GameObject)PrefabUtility.InstantiatePrefab(asset);PrefabUtility.UnpackPrefabInstance(o,PrefabUnpackMode.Completely,InteractionMode.AutomatedAction);o.transform.SetParent(wrapper.transform,false);o.transform.localPosition=Vector3.zero;
+  if(name=="PingPongBat"){
+   o.transform.localRotation=Quaternion.identity;var meshBounds=BoundsOf(o);var dimensions=meshBounds.size;
+   if(dimensions.x<dimensions.y&&dimensions.x<dimensions.z)o.transform.localRotation=Quaternion.Euler(0,90,0);
+   else if(dimensions.y<dimensions.x&&dimensions.y<dimensions.z)o.transform.localRotation=Quaternion.Euler(90,0,0);
+   dimensions=BoundsOf(o).size;if(dimensions.x>dimensions.y)o.transform.localRotation=Quaternion.Euler(0,0,90)*o.transform.localRotation;
+  }
   if(name=="PingPongTable")o.transform.localRotation=Quaternion.Euler(0,90,0)*o.transform.localRotation;
   foreach(var c in o.GetComponentsInChildren<Collider>())UnityEngine.Object.DestroyImmediate(c);foreach(var rb in o.GetComponentsInChildren<Rigidbody>())UnityEngine.Object.DestroyImmediate(rb);
   var rr=o.GetComponentsInChildren<Renderer>();var b=rr[0].bounds;foreach(var r in rr)b.Encapsulate(r.bounds);
   wrapper.transform.localScale=new Vector3(size.x/b.size.x,size.y/b.size.y,size.z/b.size.z);
   b=rr[0].bounds;foreach(var r in rr)b.Encapsulate(r.bounds);o.transform.position+=wrapper.transform.position-b.center;
   return wrapper;
+ }
+ static Bounds BoundsOf(GameObject o){var rr=o.GetComponentsInChildren<Renderer>();var b=rr[0].bounds;foreach(var r in rr)b.Encapsulate(r.bounds);return b;}
+ public static void Polish(){
+  var scene=EditorSceneManager.OpenScene(Root+"Scenes/EldersHouse.unity");var match=UnityEngine.Object.FindFirstObjectByType<ElderTennis>();
+  foreach(var paddle in new[]{match.playerPaddle,match.elderPaddle}){
+   foreach(Transform child in paddle.transform)UnityEngine.Object.DestroyImmediate(child.gameObject);
+   var v=Visual("PingPongBat",paddle.transform,new Vector3(.17f,.27f,.022f));v.transform.localPosition=new Vector3(0,-.04f,0);
+  }
+  // Readable surfaces behind world-space text; no UI collider blocks the ball or rays.
+  foreach(var label in new[]{match.scoreboard,match.instructions}){
+   string name=label.name+" backing";var existing=match.transform.Find(name);if(existing)UnityEngine.Object.DestroyImmediate(existing.gameObject);
+   var panel=Box(name,match.transform,label.transform.localPosition+Vector3.forward*.035f,new Vector3(label.rectTransform.sizeDelta.x+.12f,label.rectTransform.sizeDelta.y+.12f,.035f),true);
+   panel.GetComponent<Renderer>().sharedMaterial=AssetDatabase.LoadAssetAtPath<Material>(Root+"Materials/Ink.mat");UnityEngine.Object.DestroyImmediate(panel.GetComponent<Collider>());
+  }
+  match.instructions.fontSize=.8f;match.instructions.rectTransform.sizeDelta=new Vector2(1.4f,1.4f);
+  var green=AssetDatabase.LoadAssetAtPath<Material>("Assets/LowPolyTableTennis/Materials/Table/TableGreen.mat");green.SetColor("_BaseColor",new Color(.07f,.28f,.22f));green.SetColor("_Color",new Color(.07f,.28f,.22f));EditorUtility.SetDirty(green);
+  PrefabUtility.SaveAsPrefabAsset(match.GetComponentInParent<HouseSceneRoot>().gameObject,Root+"Prefabs/EldersHouseContent.prefab");EditorSceneManager.MarkSceneDirty(scene);EditorSceneManager.SaveScene(scene);AssetDatabase.SaveAssets();
+  var audit=new System.Text.StringBuilder();
+  foreach(var filter in match.GetComponentsInChildren<MeshFilter>(true)){
+   var renderer=filter.GetComponent<Renderer>();var mesh=filter.sharedMesh;if(!renderer||!mesh)continue;
+   for(int sub=0;sub<Mathf.Min(mesh.subMeshCount,renderer.sharedMaterials.Length);sub++){
+    var triangles=mesh.GetTriangles(sub);if(triangles.Length==0)continue;var vertices=mesh.vertices;var b=new Bounds(filter.transform.TransformPoint(vertices[triangles[0]]),Vector3.zero);foreach(int index in triangles)b.Encapsulate(filter.transform.TransformPoint(vertices[index]));
+    audit.AppendLine(filter.name+" / "+renderer.sharedMaterials[sub].name+" center="+b.center+" size="+b.size);
+   }
+  }
+  File.WriteAllText("Verification/elder-model-dimensions.txt",audit.ToString());
  }
  static GameObject Box(string n,Transform parent,Vector3 p,Vector3 size,bool visible){var o=GameObject.CreatePrimitive(PrimitiveType.Cube);o.name=n;o.transform.SetParent(parent,false);o.transform.localPosition=p;o.transform.localScale=size;o.GetComponent<Renderer>().enabled=visible;return o;}
  static Transform Point(string n,Vector3 p,Transform parent){var o=new GameObject(n);o.transform.SetParent(parent,false);o.transform.localPosition=p;return o.transform;}
