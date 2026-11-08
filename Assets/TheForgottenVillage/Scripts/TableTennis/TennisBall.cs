@@ -29,7 +29,7 @@ public class TennisBall : MonoBehaviour {
   if(match.PaddleContact(p,Body.position,Body.linearVelocity)){lastHit=Time.fixedTime;previous=Body.position;}
  }
  void OnCollisionEnter(Collision collision){if(!match||!match.RallyActive)return;var surface=collision.collider.GetComponent<TennisSurface>();
-  if(surface&&surface.kind==TennisSurface.Kind.Table)match.TableBounce(Body.position);
+  if(surface&&surface.kind==TennisSurface.Kind.Table){if(collision.contactCount>0&&collision.GetContact(0).normal.y>.5f&&match.transform.InverseTransformPoint(Body.position).y>=.75f)match.TableBounce(Body.position);else match.BallOut();}
   else if(surface&&surface.kind==TennisSurface.Kind.Net)match.NetFault();
   else match.BallOut();
  }
