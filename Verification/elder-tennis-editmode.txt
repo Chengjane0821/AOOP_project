@@ -1,0 +1,2 @@
+Tests: 21, passed: 21, failed: 0, skipped: 0
+Passed

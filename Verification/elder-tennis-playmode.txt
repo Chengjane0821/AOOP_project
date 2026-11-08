@@ -1,0 +1,63 @@
+PASS: Main village systems present
+PASS: Village Elder quest introduction retained
+PASS: House entry automatically opens Elder conversation
+PASS: No divider station remains in Elder house
+PASS: Photograph locked before victory
+PASS: Early photograph call cannot award clue
+PASS: Maybe later safely closes conversation
+PASS: Let's play starts match and reserves swing space
+PASS: Start countdown launches physical serve
+PASS: Ball uses dynamic Unity physics
+PASS: Pause freezes the physical rally
+PASS: Resume restores physical rally
+PASS: Unreturned physical serve resolves a point without stalling
+PASS: Moving paddle physically hits ball once without Grip
+PASS: Normal contact sends ball toward Elder
+PASS: NPC moves paddle and physically returns a normal shot
+PASS: Grip plus valid physical contact counts exactly one smash
+PASS: Two smashes queue visible failure without instant game win
+PASS: Decisive smash ball physically resolves Elder game loss
+PASS: Invalid low Grip contact is MISS and Elder point
+PASS: Hit-target fatigue waits for physical missed return
+PASS: Losing best-of-three clears all match progress
+PASS: Immediate retry samples fresh valid target
+PASS: Match victory triggers memory dialogue
+PASS: Victory alone does not award evidence
+PASS: Memory acknowledgment unlocks photograph
+PASS: Photo interaction awards Clue #1 and inventory
+PASS: Repeated inspection cannot duplicate inventory
+PASS: Journal describes official Elder challenge
+PASS: House exit restores locomotion
+PASS: Actual JSON save and scene unload preserve Elder completion
+PASS: Elder clue alone does not unlock Abandoned House
+PASS: Reentering Elder house restores unlocked evidence
+PASS: One active camera in house 1
+PASS: One active audio listener in house 1
+PASS: Original engineering station retained in house 1
+PASS: Other house puzzle still solves 1
+PASS: Other house still requires camera evidence 1
+PASS: Other house simulated object quest awards original clue 1
+PASS: One active camera in house 2
+PASS: One active audio listener in house 2
+PASS: Original engineering station retained in house 2
+PASS: Other house puzzle still solves 2
+PASS: Other house still requires camera evidence 2
+PASS: Other house simulated object quest awards original clue 2
+PASS: One active camera in house 3
+PASS: One active audio listener in house 3
+PASS: Original engineering station retained in house 3
+PASS: Other house puzzle still solves 3
+PASS: Other house still requires camera evidence 3
+PASS: Other house simulated object quest awards original clue 3
+PASS: One active camera in house 4
+PASS: One active audio listener in house 4
+PASS: Original engineering station retained in house 4
+PASS: Other house puzzle still solves 4
+PASS: Other house still requires camera evidence 4
+PASS: Other house simulated object quest awards original clue 4
+PASS: All five clues unlock Abandoned House
+PASS: Original final ending remains reachable
+PASS: Arduino simulation still receives final gate command
+PASS: No Unity runtime errors during suite
+PASS: integrated Play Mode suite completed
+Scope: real Unity scenes and physics, scripted input/contact fixtures. No physical Quest/Arduino/camera testing.

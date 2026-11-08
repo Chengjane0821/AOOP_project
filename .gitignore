@@ -107,3 +107,10 @@ InitTestScene*.unity*
 
 # Auto-generated cache in Assets folder
 /[Aa]ssets/[Ss]ceneDependencyCache*
+
+# Elder table tennis automation scratch files (keep final verification reports tracked)
+/Verification/elder-automation-ready.txt
+/Verification/elder-tennis.request
+/Verification/elder-tennis-test-save.json*
+/Verification/elder-tennis-playmode-progress.txt
+/Verification/elder-npc-trace.txt
