@@ -5,7 +5,7 @@ namespace ForgottenVillage {
 [RequireComponent(typeof(Rigidbody),typeof(BoxCollider))]
 public class TennisPaddle : MonoBehaviour {
  public ElderTennis match; public bool player; public XRNode hand=XRNode.RightHand;
- public Vector3 gripOffset=new Vector3(0,0,.14f), rotationOffset=new Vector3(90,0,0);
+ public Vector3 gripOffset=new Vector3(0,0,.14f), rotationOffset=Vector3.zero;
  public float maxTrackingSpeed=12; public Vector3 velocity {get;private set;} public bool Grip {get;private set;}
  public bool TrackingValid {get;private set;}
  Rigidbody body; Vector3 target,previous; Quaternion orientation; bool initialized;
