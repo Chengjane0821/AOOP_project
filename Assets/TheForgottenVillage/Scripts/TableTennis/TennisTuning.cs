@@ -25,9 +25,10 @@ public static class TennisShots {
   if(Vector3.Dot(normal,swing-incoming)<0)normal=-normal;
   var reflected=incoming+normal*(2*Mathf.Max(.3f,Vector3.Dot(swing-incoming,normal)));
   float side=Mathf.Clamp(swing.x*.18f+normal.x*.35f,-.55f,.55f);
-  float duration=smash?.36f:Mathf.Clamp(.8f-swing.magnitude*.035f,.5f,.78f);
+  float duration=smash?.45f:Mathf.Clamp(.8f-swing.magnitude*.035f,.5f,.78f);
   var assisted=ToTarget(at,new Vector3(side,.79f,.85f),duration);
-  return Vector3.ClampMagnitude(Vector3.Lerp(reflected,assisted,t.aimAssist),t.maximumBallSpeed);
+  // A correctly timed smash receives a directed attacking impulse; normal returns retain configurable assistance.
+  return Vector3.ClampMagnitude(smash?assisted:Vector3.Lerp(reflected,assisted,t.aimAssist),t.maximumBallSpeed);
  }
 }
 }
