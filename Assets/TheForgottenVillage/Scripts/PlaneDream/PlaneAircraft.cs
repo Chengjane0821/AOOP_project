@@ -17,6 +17,6 @@ public class PlaneAircraft : MonoBehaviour {
   body.MovePosition(transform.parent.TransformPoint(Position));
   if(visual)visual.localRotation=Quaternion.Slerp(visual.localRotation,Quaternion.Euler(-Velocity.y/tuning.movementSpeed*tuning.pitchAngle,0,-Velocity.x/tuning.movementSpeed*tuning.bankAngle),1-Mathf.Exp(-dt*8));
  }
- void OnTriggerEnter(Collider other){if(run&&other.GetComponent<PlaneObstacleBlock>())run.Crash();}
+ void OnTriggerEnter(Collider other){if(!run||!other.GetComponent<PlaneObstacleBlock>())return;var group=other.GetComponentInParent<PlaneObstacleGroup>();if(group&&group.gameObject.activeSelf&&group.Hits(this))run.Crash();}
 }
 }
