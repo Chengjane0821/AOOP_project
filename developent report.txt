@@ -96,3 +96,32 @@ FILES AND LIMITATIONS
 Known limitations: no physical Meta Quest, controller ray, real camera-recognition or Arduino hardware testing was performed. HMD body mapping was tested with synthetic tracked positions; full flight used scripted route guidance and synthetic keyboard input. Physical headset acceptance must assess thresholds for standing/seated players, tracking loss/recenter, controller fallback, safe movement range, world-space UI readability and target-device performance. This project uses its existing Windows/Quest Link XR configuration; no standalone Android build or device deployment was performed. Dream entry/exit use narrative transitions and station teleportation; flight itself never forces camera motion. Obstacles are readable outlined rock barriers, not aircraft-scale flight simulation. Main scene editor serialization and pre-existing editor error logs remain uncommitted and preserved.
 FINAL REGRESSION (2026-11-09)
 The actual Unity Elder/six-house Play Mode regression passed after a second full-duration Alchemist flight. It verified Elder physical returns, normal/Grip contacts, two-smash and hit-threshold outcomes, best-of-three reset/retry, memory/photo reward, persistence and revisit; Carpenter, Technician and Clockmaker original station validation and object-evidence gates; all-five-clue Abandoned House unlocking; the original ending and simulated Arduino GATE:OPEN command. No runtime errors were captured within that suite. This does not claim physical hardware operation. Other house scenes/prefabs and tennis runtime code were not changed by this feature.
+
+PLANE RUNNER COMMIT MILESTONES (incremental implementation order)
+63e3a11 feat(alchemist): track PlaneRunner assets and integration baseline
+5f5564f feat(plane): define exact survival lifecycle and comfort tuning
+31b676c feat(plane): map calibrated headset motion with accessible input alternatives
+9c96ad9 feat(plane): add bounded aircraft motion and physical collision body
+813d6fe feat(plane): generate solvable barriers with swept collision checks
+1c61bbf feat(plane): pool obstacle groups with fair approach spacing
+8abac27 feat(plane): run fixed-view survival attempts with pause and clean retries
+034fbf4 feat(alchemist): enter the airplane dream and recover evidence through dialogue
+cfe3170 feat(alchemist): persist dream evidence and retain the five-clue gate
+9f9e51e feat(alchemist): save the isolated PlaneRunner dream area in the house scene
+fa11930 test(plane): cover body mapping survival rules and integrated dream progression
+f883cd5 fix(plane): hold desktop steering and preserve safe clearance between patterns
+b3f83b1 polish(plane): adapt imported materials and make obstacle boundaries visible
+5616545 fix(plane): validate pooled trigger contacts against swept obstacle bounds
+2c95eca fix(alchemist): preserve Plane Runner when rebuilding house scenes
+d2f6f76 fix(assets): retain Unity URP conversion for PlaneRunner textures
+01e1c3c docs(plane): explain controls fairness persistence and hardware acceptance
+e7bc212 fix(plane): constrain inspector tuning to reachable flight patterns
+952367e test(plane): synchronize input checks with active simulation time
+29c90b8 docs(alchemist): record dream integration and Play Mode collision fix
+4d57445 fix(plane): sample desktop keys before fixed-step aircraft movement
+565125e test(plane): inject gameplay keyboard state independently of editor focus
+51451da test(alchemist): record passing full-minute flight and 29 Unity unit tests
+6a5849e test(rpg): verify tennis remaining houses and ending after dream completion
+Final report commit: docs(alchemist): finalize Plane Runner implementation milestones.
+Validation artifacts contain 29 passing Edit Mode tests, 27 Plane Play Mode PASS lines (26 checks plus completion), and 57 RPG regression PASS lines (56 checks plus completion).
+Git delivery: existing main branch; no history rewrite, empty commits, branch deletion or force push. Only feature files and verification artifacts committed; unrelated main scene and editor log modifications preserved. Push targets existing origin/main.
