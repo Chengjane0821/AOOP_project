@@ -31,7 +31,6 @@ namespace ForgottenVillage.Tests {
 
         [Test]
         public void OtherHouseEngineeringTargetsRemainUnchanged() {
-            Assert.That(Engineering.FilterSolved(5000), Is.True);
             Assert.That(Engineering.GainSolved(6750), Is.True);
             Assert.That(Engineering.Slack(11.5, 1, .5, 1, 9), Is.EqualTo(0).Within(.0001));
             Assert.That(Engineering.Slack(10, 1, .5, 1, 9), Is.LessThan(0));

@@ -1,0 +1,18 @@
+using NUnit.Framework;
+using UnityEngine;
+namespace ForgottenVillage.Tests {
+public class PlaneDreamTests {
+ [Test] public void ExactlySixtyActiveSecondsAndNoPartialRetry(){var s=new PlaneRunState();s.Reset();s.Advance(20);Assert.AreEqual(60,s.Remaining);s.Launch();s.Advance(20);s.Pause();s.Advance(100);Assert.AreEqual(40,s.Remaining);s.Resume();s.Advance(39.99);Assert.AreEqual(PlaneRunState.Phase.Flying,s.phase);s.Advance(.02);Assert.AreEqual(60,s.elapsed);Assert.AreEqual(PlaneRunState.Phase.Succeeded,s.phase);s.Crash();Assert.AreEqual(PlaneRunState.Phase.Succeeded,s.phase);s.Reset();Assert.AreEqual(60,s.Remaining);s.Launch();s.Crash();s.Advance(60);Assert.AreEqual(0,s.elapsed);}
+ [Test] public void HeadBobbingIsNotALift(){var t=ScriptableObject.CreateInstance<PlaneDreamTuning>();var m=new PlaneBodyMapper();m.Calibrate(Vector3.up*1.7f);for(int i=0;i<200;i++)m.Sample(new Vector3(.01f,1.7f+Mathf.Sin(i*.2f)*.035f,0),.02f,t);Assert.That(m.Command.sqrMagnitude,Is.LessThan(.001f));Object.DestroyImmediate(t);}
+ [Test] public void CalibratedLiftCrouchAndSidesMapAndRelease(){var t=ScriptableObject.CreateInstance<PlaneDreamTuning>();var m=new PlaneBodyMapper();var neutral=new Vector3(3,1.2f,-2);m.Calibrate(neutral);
+  for(int i=0;i<30;i++)m.Sample(neutral+new Vector3(.25f,.14f,0),.02f,t);Assert.Greater(m.Command.x,.95f);Assert.Greater(m.Command.y,.95f);
+  for(int i=0;i<30;i++)m.Sample(neutral,.02f,t);Assert.Less(m.Command.magnitude,.01f);
+  for(int i=0;i<30;i++)m.Sample(neutral+new Vector3(-.25f,-.23f,0),.02f,t);Assert.Less(m.Command.x,-.95f);Assert.Less(m.Command.y,-.95f);
+  m.Calibrate(neutral+Vector3.left);Assert.AreEqual(Vector2.zero,m.Command);Assert.IsFalse(m.Sample(neutral+Vector3.right*4,.02f,t));Object.DestroyImmediate(t);
+ }
+ [Test] public void EveryPatternHasAchievableCollisionFreeRoute(){var t=ScriptableObject.CreateInstance<PlaneDreamTuning>();for(int k=0;k<PlanePatterns.Count;k++)for(int i=0;i<30;i++){var p=PlanePatterns.Create(k,Mathf.Lerp(-.65f,.65f,i/29f),t);var target=new Vector3(p.safeTarget.x,p.safeTarget.y,0);Assert.IsTrue(p.SafeFor(target,new Vector3(.36f,.12f,.36f)),"Pattern "+k);Assert.LessOrEqual(Mathf.Abs(target.x),t.halfWidth);Assert.That(target.y,Is.InRange(t.normalHeight-t.verticalRange,t.normalHeight+t.verticalRange));}Assert.GreaterOrEqual(t.SafeSpacing/t.maximumWorldSpeed,t.minimumPassageInterval);Assert.GreaterOrEqual(t.SafeSpawnDistance/t.maximumWorldSpeed,t.minimumReactionTime);Assert.Greater(t.WorldSpeed(1),t.WorldSpeed(0));Object.DestroyImmediate(t);}
+ [Test] public void SweptCollisionCatchesFastThinBarrier(){var box=new Bounds(new Vector3(0,1,0),new Vector3(1,2,.1f));Assert.IsTrue(PlanePatterns.SweptHit(Vector3.up,Vector3.up,Vector3.one*.2f,box,10,-10));Assert.IsFalse(PlanePatterns.SweptHit(new Vector3(3,1,0),new Vector3(3,1,0),Vector3.one*.2f,box,10,-10));}
+ [Test] public void ClueTwoRequiresDreamMemoryAndInspection(){var s=new VillageSave{elder=true};s.puzzleSolved[1]=true;Assert.IsFalse(s.CanClaim(1));s.alchemistDreamWon=true;Assert.IsFalse(s.CanClaim(1));s.alchemistMemoryRecovered=true;Assert.IsFalse(s.CanClaim(1));s.alchemistEvidenceInspected=true;Assert.IsTrue(s.CanClaim(1));s.clues[1]=true;Assert.IsFalse(s.Unlocked);var restored=JsonUtility.FromJson<VillageSave>(JsonUtility.ToJson(s));restored.Normalize();Assert.IsTrue(restored.clues[1]);}
+ [Test] public void LegacyEarnedClueMigratesButUnfinishedFilterDoesNot(){var s=new VillageSave{version=3,elder=true};s.puzzleSolved[1]=true;s.Normalize();Assert.IsFalse(s.alchemistDreamWon);Assert.IsFalse(s.puzzleSolved[1]);s=new VillageSave{version=3,elder=true};s.clues[1]=true;s.Normalize();Assert.IsTrue(s.alchemistDreamWon&&s.alchemistMemoryRecovered&&s.alchemistEvidenceInspected&&s.CanClaim(1));}
+}
+}
