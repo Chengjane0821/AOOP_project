@@ -31,12 +31,7 @@ PASS: House exit restores locomotion
 PASS: Actual JSON save and scene unload preserve Elder completion
 PASS: Elder clue alone does not unlock Abandoned House
 PASS: Reentering Elder house restores unlocked evidence
-PASS: One active camera in house 1
-PASS: One active audio listener in house 1
-PASS: Original engineering station retained in house 1
-PASS: Other house puzzle still solves 1
-PASS: Other house still requires camera evidence 1
-PASS: Other house simulated object quest awards original clue 1
+PASS: Alchemist dream completes through full survival and evidence
 PASS: One active camera in house 2
 PASS: One active audio listener in house 2
 PASS: Original engineering station retained in house 2
