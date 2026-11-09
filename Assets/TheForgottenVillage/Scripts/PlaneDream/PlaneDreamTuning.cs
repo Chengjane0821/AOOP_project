@@ -19,6 +19,19 @@ public class PlaneDreamTuning : ScriptableObject {
  public float initialSpawnInterval=4.2f, finalSpawnInterval=3.2f;
  public float minimumPassageInterval=2.8f, minimumReactionTime=3f;
  public int poolSize=8;
+ public void Validate(){
+  liftThreshold=Mathf.Clamp(liftThreshold,.05f,.25f);liftRelease=Mathf.Clamp(liftRelease,.01f,liftThreshold-.01f);
+  crouchThreshold=Mathf.Clamp(crouchThreshold,.05f,.4f);crouchRelease=Mathf.Clamp(crouchRelease,.01f,crouchThreshold-.01f);
+  minimumLiftVelocity=Mathf.Clamp(minimumLiftVelocity,.02f,1);gestureDwell=Mathf.Clamp(gestureDwell,.02f,.3f);
+  lateralDeadZone=Mathf.Clamp(lateralDeadZone,.01f,.12f);lateralFullRange=Mathf.Clamp(lateralFullRange,lateralDeadZone+.05f,.5f);
+  inputSmoothing=Mathf.Clamp(inputSmoothing,.02f,.3f);halfWidth=Mathf.Clamp(halfWidth,1.2f,3);verticalRange=Mathf.Clamp(verticalRange,.5f,1.5f);normalHeight=Mathf.Max(normalHeight,verticalRange+.3f);
+  movementSpeed=Mathf.Clamp(movementSpeed,1,6);acceleration=Mathf.Clamp(acceleration,4,20);
+  initialWorldSpeed=Mathf.Clamp(initialWorldSpeed,2,8);maximumWorldSpeed=Mathf.Clamp(maximumWorldSpeed,initialWorldSpeed,10);
+  minimumReactionTime=Mathf.Max(3,minimumReactionTime);minimumPassageInterval=Mathf.Max(2.8f,minimumPassageInterval);
+  initialSpawnInterval=Mathf.Max(3,initialSpawnInterval);finalSpawnInterval=Mathf.Clamp(finalSpawnInterval,2.8f,initialSpawnInterval);poolSize=Mathf.Clamp(poolSize,4,24);
+ }
+ void OnValidate(){Validate();}
+ void OnEnable(){Validate();}
  public float WorldSpeed(float progress)=>Mathf.Lerp(initialWorldSpeed,maximumWorldSpeed,Mathf.Clamp01(progress));
  public float SpawnInterval(float progress)=>Mathf.Lerp(initialSpawnInterval,finalSpawnInterval,Mathf.Clamp01(progress));
  public float SafeSpacing=>Mathf.Max(maximumWorldSpeed*minimumPassageInterval,maximumWorldSpeed*(2*halfWidth/Mathf.Max(.1f,movementSpeed)+2*movementSpeed/Mathf.Max(.1f,acceleration)+1.2f));
