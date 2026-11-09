@@ -1,0 +1,1 @@
+PASS: Alchemist scene and prefab saved; RC station removed; isolated fixed-view dream area uses PlaneRunner aircraft, rocks and valleys; no added camera or XR Origin.

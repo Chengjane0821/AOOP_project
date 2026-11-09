@@ -1,0 +1,28 @@
+PASS: Existing village and transition service loaded
+PASS: Alchemist activity bound in existing house
+PASS: Obsolete RC station removed
+PASS: Evidence cannot be collected before dream victory
+PASS: Maybe later closes safely without quest progress
+PASS: Dialogue enters isolated dream and shows safety instructions
+PASS: No duplicate camera or XR view in dream
+PASS: PlaneRunner aircraft and valley assets loaded
+PASS: Run begins with fresh timer and calibration
+PASS: Automatic forward flight starts after countdown: Flying / distance 0.08999997
+PASS: Random pooled obstacles spawn ahead of aircraft
+PASS: Desktop D and Space steer and raise airplane: (1.40, 2.78, 0.00) input (1.00, 1.00)
+PASS: Aircraft motion does not move the viewing camera
+PASS: Pause freezes both survival time and obstacles
+PASS: Paused recalibration succeeds
+PASS: Desktop A and Ctrl steer and lower airplane: (-1.47, 0.91, 0.00) input (-1.00, -1.00)
+PASS: Actual approaching obstacle collision fails the run
+PASS: Crash stops survival timer
+PASS: Retry clears obstacles, position and all elapsed time
+PASS: Successful challenge used a full real-time minute, not a shortened test duration
+PASS: Success returns to Alchemist house and restores locomotion
+PASS: Recovery dialogue and evidence inspection award existing Clue #2
+PASS: One clue cannot unlock Abandoned House
+PASS: Real JSON save preserves dream and clue completion
+PASS: Re-entering house restores evidence availability
+PASS: No runtime errors captured during Plane dream checks
+PASS: Plane dream Play Mode suite completed
+Scope: real Unity frames, physics, UI callbacks and injected desktop input; full 60 active seconds with editor-only route following. No physical Meta Quest testing.

@@ -120,3 +120,5 @@ InitTestScene*.unity*
 /Verification/plane-dream-ready.txt
 /Verification/plane-dream-progress.txt
 /Verification/plane-dream-test-save.json*
+
+/Verification/plane-input-trace.txt
