@@ -114,3 +114,9 @@ InitTestScene*.unity*
 /Verification/elder-tennis-test-save.json*
 /Verification/elder-tennis-playmode-progress.txt
 /Verification/elder-npc-trace.txt
+
+# Plane dream automation scratch files
+/Verification/plane-dream.request*
+/Verification/plane-dream-ready.txt
+/Verification/plane-dream-progress.txt
+/Verification/plane-dream-test-save.json*
