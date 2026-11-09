@@ -7,9 +7,9 @@ public class PlaneBodyInput : MonoBehaviour {
  public Vector2 Command {get;private set;} public string Status {get;private set;}="Calibrate before flight";
  public bool Ready {get;private set;}
  public readonly PlaneBodyMapper mapper=new PlaneBodyMapper();
- Vector3 originPosition;Quaternion originRotation;bool calibrated;
+ float desktopX;Vector3 originPosition;Quaternion originRotation;bool calibrated;
  public bool Calibrate(VillagePlayer player){
-  Command=Vector2.zero;Ready=calibrated=false;
+  Command=Vector2.zero;desktopX=0;Ready=calibrated=false;
   if(!player.IsVR){calibrated=Ready=true;Status="Desktop controls ready";return true;}
   if(!TrackedPosition(out var position)){Status="Headset tracking unavailable";return false;}
   mapper.Calibrate(position);originPosition=player.origin.transform.position;originRotation=player.origin.transform.rotation;
@@ -20,7 +20,7 @@ public class PlaneBodyInput : MonoBehaviour {
  }
  public bool Sample(VillagePlayer player,float dt){
   if(!calibrated){Ready=false;return false;}
-  if(!player.IsVR){var k=Keyboard.current;Command=k==null?Vector2.zero:new Vector2((k.dKey.isPressed?1:0)-(k.aKey.isPressed?1:0),(k.spaceKey.isPressed?1:0)-(k.leftCtrlKey.isPressed?1:0));Ready=true;return true;}
+  if(!player.IsVR){var k=Keyboard.current;if(k!=null)desktopX=Mathf.Clamp(desktopX+((k.dKey.isPressed?1:0)-(k.aKey.isPressed?1:0))*dt*1.3f,-1,1);Command=k==null?Vector2.zero:new Vector2(desktopX,(k.spaceKey.isPressed?1:0)-(k.leftCtrlKey.isPressed?1:0));Ready=true;return true;}
   if(!TrackedPosition(out var position)){Ready=false;calibrated=false;Status="Tracking lost. Restore tracking and recalibrate.";return false;}
   // Locomotion/recenter is not body motion. Freeze rather than interpreting an origin jump as input.
   if(Vector3.Distance(originPosition,player.origin.transform.position)>.02f||Quaternion.Angle(originRotation,player.origin.transform.rotation)>1){Ready=calibrated=false;Status="Play-space origin changed. Recalibrate to continue.";return false;}

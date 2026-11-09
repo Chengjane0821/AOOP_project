@@ -21,7 +21,7 @@ public class PlaneDreamTuning : ScriptableObject {
  public int poolSize=8;
  public float WorldSpeed(float progress)=>Mathf.Lerp(initialWorldSpeed,maximumWorldSpeed,Mathf.Clamp01(progress));
  public float SpawnInterval(float progress)=>Mathf.Lerp(initialSpawnInterval,finalSpawnInterval,Mathf.Clamp01(progress));
- public float SafeSpacing=>Mathf.Max(maximumWorldSpeed*minimumPassageInterval,maximumWorldSpeed*(2*halfWidth/Mathf.Max(.1f,movementSpeed)+1.2f));
+ public float SafeSpacing=>Mathf.Max(maximumWorldSpeed*minimumPassageInterval,maximumWorldSpeed*(2*halfWidth/Mathf.Max(.1f,movementSpeed)+2*movementSpeed/Mathf.Max(.1f,acceleration)+1.2f));
  public float SafeSpawnDistance=>Mathf.Max(spawnDistance,maximumWorldSpeed*minimumReactionTime+1);
 }
 }

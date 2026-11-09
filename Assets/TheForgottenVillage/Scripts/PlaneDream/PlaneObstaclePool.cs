@@ -17,7 +17,7 @@ public class PlaneObstaclePool : MonoBehaviour {
   foreach(var g in groups){if(g.gameObject.activeSelf)continue;var p=PlanePatterns.Create(random.Next(PlanePatterns.Count),(float)(random.NextDouble()*1.3-.65),tuning);g.Place(p,tuning.SafeSpawnDistance);Spawned++;sinceSpawn=0;break;}
   return false;
  }
- public PlaneObstacleGroup Next(){PlaneObstacleGroup next=null;foreach(var g in groups)if(g.gameObject.activeSelf&&g.Z>-.6f&&(!next||g.Z<next.Z))next=g;return next;}
+ public PlaneObstacleGroup Next(){PlaneObstacleGroup next=null;foreach(var g in groups)if(g.gameObject.activeSelf&&g.Z>-.9f&&(!next||g.Z<next.Z))next=g;return next;}
  public void Clear(){foreach(var g in groups)if(g)g.gameObject.SetActive(false);}
 }
 }

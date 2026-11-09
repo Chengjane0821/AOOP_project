@@ -10,8 +10,8 @@ public static class PlanePatterns {
   float w=tuning.halfWidth+.6f,h=tuning.normalHeight+tuning.verticalRange+.8f;
   var p=new PlanePattern();float neutral=tuning.normalHeight;
   switch(kind){
-   case 0:p.first=new Bounds(new Vector3(0,(neutral+.15f)*.5f,0),new Vector3(w*2,neutral+.15f,.6f));p.safeTarget=new Vector2(0,neutral+tuning.verticalRange);p.cue="RISE / small lift or A";break;
-   case 1:float bottom=neutral-.15f;p.first=new Bounds(new Vector3(0,(h+bottom)*.5f,0),new Vector3(w*2,h-bottom,.6f));p.safeTarget=new Vector2(0,neutral-tuning.verticalRange);p.cue="LOWER / crouch";break;
+   case 0:p.first=new Bounds(new Vector3(0,(neutral+.15f)*.5f,0),new Vector3(w*2,neutral+.15f,.6f));p.safeTarget=new Vector2(0,neutral+tuning.verticalRange);p.cue="RISE";break;
+   case 1:float bottom=neutral-.15f;p.first=new Bounds(new Vector3(0,(h+bottom)*.5f,0),new Vector3(w*2,h-bottom,.6f));p.safeTarget=new Vector2(0,neutral-tuning.verticalRange);p.cue="LOWER";break;
    case 2:p.first=new Bounds(new Vector3((-w+.3f)*.5f,h*.5f,0),new Vector3(w+.3f,h,.6f));p.safeTarget=new Vector2(tuning.halfWidth*.75f,neutral);p.cue="MOVE RIGHT";break;
    case 3:p.first=new Bounds(new Vector3((w-.3f)*.5f,h*.5f,0),new Vector3(w+.3f,h,.6f));p.safeTarget=new Vector2(-tuning.halfWidth*.75f,neutral);p.cue="MOVE LEFT";break;
    case 4:p.first=new Bounds(new Vector3(0,h*.5f,0),new Vector3(.9f,h,.6f));p.safeTarget=new Vector2(tuning.halfWidth*.75f,neutral);p.cue="PASS EITHER SIDE";break;

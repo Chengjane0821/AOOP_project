@@ -8,6 +8,9 @@ public class PlaneDreamRun : MonoBehaviour {
  public Transform[] scenery;public float sceneryLength=24;
  public readonly PlaneRunState state=new PlaneRunState();public float DistanceTravelled {get;private set;}
  public bool InDream=>house&&house.InDream;
+ #if UNITY_EDITOR
+ public System.Func<Vector2> AutomationInput;
+ #endif
  float countdown;bool reported;Vector3[] sceneryStart;
  void Awake(){aircraft.run=this;sceneryStart=new Vector3[scenery.Length];for(int i=0;i<scenery.Length;i++)sceneryStart[i]=scenery[i].localPosition;}
  public void Introduction(){state.Stop();var g=house.game;
@@ -30,7 +33,11 @@ public class PlaneDreamRun : MonoBehaviour {
   if(state.phase!=PlaneRunState.Phase.Countdown&&state.phase!=PlaneRunState.Phase.Flying)return;
   float dt=Time.fixedDeltaTime;if(!input.Sample(house.game.player,dt)){PauseMenu();return;}
   if(state.phase==PlaneRunState.Phase.Countdown){countdown-=dt;if(countdown<=0)state.Launch();return;}
-  StepFlight(input.Command,dt);
+  var command=input.Command;
+ #if UNITY_EDITOR
+  if(AutomationInput!=null)command=AutomationInput();
+ #endif
+  StepFlight(command,dt);
  }
  // Shared deterministic simulation path; tests feed commands here while real input uses FixedUpdate.
  public void StepFlight(Vector2 command,float dt){float active=(float)state.StepDuration(dt);if(active<=0)return;
@@ -47,7 +54,7 @@ public class PlaneDreamRun : MonoBehaviour {
  public void Recalibrate(){if(!InDream)return;state.Pause();input.Calibrate(house.game.player);PauseMenu();}
  public void Resume(){if(!input.Ready){PauseMenu();return;}state.Resume();house.game.ui.Close();}
  public void Stop(){state.Stop();obstacles.Clear();}
- public void Refresh(){if(!timerLabel||!house||!house.game)return;timerLabel.text=$"ENDLESS SKY   {Mathf.CeilToInt((float)state.Remaining):00}s";if(progressBar)progressBar.fillAmount=state.Progress;
+ public void Refresh(){if(!timerLabel||!house||!house.game)return;timerLabel.text=$"ENDLESS SKY   {Mathf.CeilToInt((float)state.Remaining):00}s";if(progressBar){progressBar.fillAmount=state.Progress;progressBar.rectTransform.localScale=new Vector3(state.Progress,1,1);}
   var next=obstacles.Next();statusLabel.text=state.phase==PlaneRunState.Phase.Countdown?"READY  "+Mathf.Max(1,Mathf.CeilToInt(countdown)):state.phase==PlaneRunState.Phase.Flying?(next?next.Pattern.cue:"Fly toward the horizon"):state.phase.ToString().ToUpperInvariant();
   instructionLabel.text=house.game.player.IsVR?(input.controllerMode?"SEATED CONTROLS\nLeft stick: steer / height\nA: rise   B: lower\nMenu: pause / recalibrate":"BODY CONTROLS\nSmall lift: rise | crouch: lower\nSmall side steps: steer\nA: accessible rise\nMenu: pause / recalibrate") : "A / D: steer\nSpace: rise | Left Ctrl: lower\nEsc: pause | R: recalibrate";
  }
