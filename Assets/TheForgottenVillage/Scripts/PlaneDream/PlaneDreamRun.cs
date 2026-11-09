@@ -31,7 +31,8 @@ public class PlaneDreamRun : MonoBehaviour {
  }
  void FixedUpdate(){if(!InDream||house.game.ui.IsOpen)return;
   if(state.phase!=PlaneRunState.Phase.Countdown&&state.phase!=PlaneRunState.Phase.Flying)return;
-  float dt=Time.fixedDeltaTime;if(!input.Sample(house.game.player,dt)){PauseMenu();return;}
+  float dt=Time.fixedDeltaTime;
+  if(!input.Sample(house.game.player,dt)){PauseMenu();return;}
   if(state.phase==PlaneRunState.Phase.Countdown){countdown-=dt;if(countdown<=0)state.Launch();return;}
   var command=input.Command;
  #if UNITY_EDITOR
