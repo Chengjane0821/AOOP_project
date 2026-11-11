@@ -20,7 +20,7 @@ namespace ForgottenVillage {
         public bool ObjectVerified(int id) => id >= 0 && id < 5 && objects != null &&
             objects.Length == 5 && objects[id] != null && objects[id].ValidFor(id);
         public bool CanClaim(int id) => elder && id >= 0 && id < 5 && puzzleSolved != null &&
-            puzzleSolved.Length == 5 && puzzleSolved[id] && (id == 0 ? elderTennisWon && elderMemoryRecovered && photograph : id == 1 ? alchemistDreamWon && alchemistMemoryRecovered && alchemistEvidenceInspected : id == 4 ? clockRhythmWon && clockMemoryRecovered && ObjectVerified(id) : ObjectVerified(id));
+            puzzleSolved.Length == 5 && puzzleSolved[id] && (id == 0 ? elderTennisWon && elderMemoryRecovered && photograph : id == 1 ? alchemistDreamWon && alchemistMemoryRecovered && alchemistEvidenceInspected : id == 3 ? technicianGridWon && technicianMemoryRecovered && ObjectVerified(id) : id == 4 ? clockRhythmWon && clockMemoryRecovered && ObjectVerified(id) : ObjectVerified(id));
         public bool Unlocked => clues != null && clues.Length == 5 &&
             Enumerable.Range(0, 5).All(i => clues[i] && CanClaim(i));
         public bool Authorized => Unlocked && faultyTest && fixedTest && evidence != null &&
