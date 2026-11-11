@@ -1,0 +1,1 @@
+PASS: Clockmaker scene, content prefab and tuning saved. Three numbered bells, stationary play point, rhythm HUD. Old timing station removed. Other houses untouched.
