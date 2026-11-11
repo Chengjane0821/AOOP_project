@@ -1,3 +1,17 @@
+WORKSHOP PRESENTATION UPDATE - 2026-11-11 (Asia/Taipei)
+Completed a visual and feedback pass on rhythm repair and power-grid emergency.
+Both use shared persistent rounded meshes, Lit materials and camera-aware labels.
+Clockmaker has wood/brass detailing, porcelain dials, combined tick geometry,
+approach lamps, cast bells with press feedback and richer synthetic bell tones.
+Technician has a steel/enamel chassis, load/heat gauges, source selection frames,
+five machine silhouettes, smooth motors/conveyor and moving cable current dots.
+Duplicate gameplay HUD prompts were moved onto the equipment. Rules, clue gates
+and save schema are retained. Meshes/materials are saved with scene and prefab.
+Runtime/Editor compilation, 48 unit tests, both complete activity playthroughs,
+selection-ray checks, pause animations, clue/save/re-entry paths and quick visual
+fixture passed. The final PNGs were visually inspected. Physical device testing
+remains manual. See Verification/house-playtest-results.txt for current evidence.
+
 TECHNICIAN POWER-GRID EMERGENCY - 2026-11-11 (Asia/Taipei)
 Implemented the Technician's three-round power-grid game. Generator A/B selection,
 visible cables, numbered machine demands, load/capacity displays, breaker heat,

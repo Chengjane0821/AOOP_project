@@ -1,3 +1,18 @@
+WORKSHOP VISUAL POLISH - 2026-11-11 (Asia/Taipei)
+PASS: Clockmaker now has a walnut/brass cabinet, porcelain engraved dials,
+approach lamps, animated cast bells, clearer score cards and layered bell audio.
+PASS: Technician now has an enamel/steel cabinet, inset load/temperature meters,
+selection frames, five machine designs, smooth motors and moving current pulses.
+PASS: Runtime/Editor compile and 48 unit regressions; core rules/save schema retained.
+PASS: Both full Play Mode suites, clue/save/re-entry paths and failure/retry flows.
+PASS: Bell and panel center/inner-edge selection rays remain unobstructed.
+PASS: Refined grid animation pauses with heat and time; no runtime errors captured.
+PASS: Quick live visual fixture and final PNG inspection; key legends remain visible.
+Preview: clock-rhythm-polished-preview.png and power-grid-polished-preview.png.
+Details: workshop-polish-preview.txt, workshop-polish-compile.txt and the updated
+clock-rhythm-playmode.txt / power-grid-playmode.txt. Physical VR/device acceptance
+remains manual. This entry covers the two workshop games, not a full ending run.
+
 TECHNICIAN POWER-GRID UPDATE - 2026-11-11 (Asia/Taipei)
 PASS: Technician code panel replaced by three physical power-grid emergency rounds.
 PASS: Runtime and Editor compilation; 48 unit regressions, zero failures.
