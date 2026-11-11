@@ -1,0 +1,37 @@
+PASS: Village services loaded
+PASS: Technician activity bound in real additive scene
+PASS: Obsolete code station removed
+PASS: Fourth clue blocked before grid victory
+PASS: Legacy completion call cannot bypass activity
+PASS: One active player camera
+PASS: Declining invitation makes no progress
+PASS: Panel reserves stationary view with usable mouse pointer
+PASS: All first-round controls have unobstructed selection rays
+PASS: Mouse ray selects actual generator B control
+PASS: Actual A/1/2/3/Space input creates overload
+PASS: Overload heats visible breaker
+PASS: Pause freezes both timer and overload heat
+PASS: Sustained actual overload trips breaker and stops machines
+PASS: Reset rejected while generator remains overloaded
+PASS: Rerouting cable and resetting repairs circuit
+PASS: Connected machines visibly run
+PASS: First circuit alone never awards victory
+PASS: Second round starts with damaged breaker
+PASS: Shared VR callbacks and USB simulation operate repaired workshop
+PASS: Final archive circuit starts
+PASS: All five machine sockets and backup controls remain unobstructed
+PASS: Full 75-second timeout fails without progress and releases pointer
+PASS: Retry preserves round and clears connections timer and backup
+PASS: Archive cannot run safely without backup
+PASS: Backup key adds required capacity
+PASS: Three complete circuits unlock memory without granting clue early
+PASS: Success keeps camera still and restores locomotion and cursor ownership
+PASS: Recovered diagnostic log preserves deployed RUN and corrected STOP evidence
+PASS: Existing cell phone object quest accepts simulated evidence
+PASS: Fourth clue awarded once after full requirements
+PASS: Actual disk save preserves grid and clue progress
+PASS: Re-entry restores clue and operating workshop visuals
+PASS: Return to title cancels running activity
+PASS: No runtime errors in grid playthrough
+PASS: Power-grid Play Mode suite completed
+Scope: actual additive scenes, injected keyboard/mouse, shared VR interaction callbacks, real overload/timeout/stability time, save and clue flow. Camera/USB simulated; physical VR/Pi/Arduino not tested.

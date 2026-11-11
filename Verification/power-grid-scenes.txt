@@ -1,0 +1,7 @@
+PASS: EldersHouse; six source roots; missing scripts=0; enabled copied cameras/listeners=0
+PASS: AlchemistsHouse; six source roots; missing scripts=0; enabled copied cameras/listeners=0
+PASS: CarpentersHouse; six source roots; missing scripts=0; enabled copied cameras/listeners=0
+PASS: TechniciansHouse; six source roots; missing scripts=0; enabled copied cameras/listeners=0
+PASS: ClockmakersHouse; six source roots; missing scripts=0; enabled copied cameras/listeners=0
+PASS: AbandonedHouse; six source roots; missing scripts=0; enabled copied cameras/listeners=0
+PASS: Technician has two generators, five bound cables, twelve controls and no legacy station.
