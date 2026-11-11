@@ -127,3 +127,9 @@ InitTestScene*.unity*
 /Verification/clock-rhythm.request*
 /Verification/clock-rhythm-test-save.json*
 /Verification/clock-rhythm-progress.txt
+
+# Power-grid automation scratch files
+/Verification/power-grid.request*
+/Verification/power-grid.status
+/Verification/power-grid-progress.txt
+/Verification/power-grid-test-save.json*
