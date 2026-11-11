@@ -1,0 +1,7 @@
+PASS: EldersHouse; six source roots, no missing scripts or enabled copied cameras/listeners
+PASS: AlchemistsHouse; six source roots, no missing scripts or enabled copied cameras/listeners
+PASS: CarpentersHouse; six source roots, no missing scripts or enabled copied cameras/listeners
+PASS: TechniciansHouse; six source roots, no missing scripts or enabled copied cameras/listeners
+PASS: ClockmakersHouse; six source roots, no missing scripts or enabled copied cameras/listeners
+PASS: AbandonedHouse; six source roots, no missing scripts or enabled copied cameras/listeners
+PASS: Carpenter has six grab pieces, six assembly sockets, a physical cart and desktop/VR stations.

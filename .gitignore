@@ -136,3 +136,9 @@ InitTestScene*.unity*
 
 # Polished workshop visual fixture save
 /Verification/workshop-polish-test-save.json*
+
+# Carpenter bridge delivery automation scratch files
+/Verification/bridge-delivery.request*
+/Verification/bridge-delivery.status
+/Verification/bridge-delivery-progress.txt
+/Verification/bridge-delivery-test-save.json*

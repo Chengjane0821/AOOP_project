@@ -1,3 +1,27 @@
+CARPENTER BRIDGE DELIVERY - 2026-11-11 (Asia/Taipei)
+Replaced the remaining Carpenter engineering panel with a tactile bridge game.
+Players grab/rotate/fasten boards and test real physics carts across three spans:
+basic crossing, longer-timber selection, and a reinforced heavy-load delivery.
+Bad layouts fall into a recessed river; weak decks break under the cart. Retry
+keeps the configuration and repairs dropped boards for further adjustment.
+Desktop uses pointer dragging, Q/E, Space and R; VR uses shared XR grab/select.
+Desktop reinforcements can be dropped onto a visible deck to fasten underneath.
+Pause freezes cart/falling-piece physics. Desktop panels face the current view.
+Six copied room roots, original arrival/exit and shared player rig are retained.
+
+Save schema 7 records bridge victory/memory; valid earned old mouse clues migrate.
+Third clue still requires the original mouse object verification and recovered
+memory. Legacy gain validation cannot bypass the bridge. Normal village rebuilds
+and the full ending test helper now include the physical Carpenter activity.
+
+Verification: runtime/Editor compile and 66 unit regressions passed. Saved six-house
+checks and complete Carpenter runtime checks passed real pointer/key input, XR
+callbacks, gravity failures, all three real crossings, reinforcement, retry/pause,
+clue uniqueness, disk save, scene re-entry and title cancellation. No runtime errors.
+Final PNG was visually inspected. Full village ending runtime and physical Quest/
+Pi camera acceptance remain untested for this change. See BRIDGE_DELIVERY.md and
+Verification/bridge-delivery-* for controls, scope and evidence.
+
 WORKSHOP PRESENTATION UPDATE - 2026-11-11 (Asia/Taipei)
 Completed a visual and feedback pass on rhythm repair and power-grid emergency.
 Both use shared persistent rounded meshes, Lit materials and camera-aware labels.

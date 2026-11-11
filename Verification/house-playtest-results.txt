@@ -1,3 +1,22 @@
+CARPENTER BRIDGE DELIVERY - 2026-11-11 (Asia/Taipei)
+PASS: Carpenter amplifier panel replaced by three hands-on bridge deliveries.
+PASS: Runtime/Editor compile and 66 village unit tests, zero failures.
+PASS: Six copied-room roots retained; scene/prefab, grab pieces, sockets and cart bindings validated.
+PASS: Actual mouse grab/drag/drop, Q/E rotation, Space trial and shared XR grab callbacks.
+PASS: All workshop controls remain selectable at their centers and inner edges.
+PASS: Empty and short bridges make the real Rigidbody cart fail; heavy carts physically break weak decks.
+PASS: Mouse reinforcement placement onto a visible board fastens underneath; reinforced heavy delivery succeeds.
+PASS: Retry repairs fallen boards while preserving the player's layout.
+PASS: Pause freezes actual cart physics; desktop panels face the downward workshop view.
+PASS: Three successful physical crossings recover memory, then original simulated mouse evidence awards Clue #3 once.
+PASS: Actual disk save, additive exit/re-entry, camera/cursor restoration and title cancellation.
+PASS: No runtime errors captured; final bridge-delivery-play-preview.png visually inspected.
+Details: bridge-delivery-compile.txt, bridge-delivery-editmode.xml,
+bridge-delivery-scenes.txt and bridge-delivery-playmode.txt.
+Scope: focused Carpenter runtime checks plus all unit/static house regressions.
+Full multi-house ending runtime suite updated but not rerun. Physical Quest reach,
+controller grab/haptics and live Pi camera acceptance remain manual.
+
 WORKSHOP VISUAL POLISH - 2026-11-11 (Asia/Taipei)
 PASS: Clockmaker now has a walnut/brass cabinet, porcelain engraved dials,
 approach lamps, animated cast bells, clearer score cards and layered bell audio.

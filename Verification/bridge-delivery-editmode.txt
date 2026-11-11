@@ -1,0 +1,2 @@
+Passed: 66; failed: 0; skipped: 0
+Passed

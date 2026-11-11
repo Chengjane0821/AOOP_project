@@ -1,0 +1,4 @@
+PASS: Carpenter scene and prefab saved with walnut/brass bridge bench, recessed riverbed, two movable banks, six sockets, six XR materials, physical cart and four shared interaction controls.
+Copied source objects retained: 98; original arrival and village exit preserved; no camera, audio listener or XR rig added.
+The recessed riverbed floor remains below the fall plane; banks, timber, cart and below-deck reinforcement grips have physical collision. Decoration/socket previews have none.
+Cleared copied/dressing props: Couch_Rustic_Brown, Table_Coffee_Traditional, TV_FlatWithStand, Screen, Tennis_Racket_Blue, Chair_Rustic_DarkBrown room dressing, Notebook_Brown room dressing, Notebook_Cover, Table_Dining_Traditional_Dark room dressing, Cut timber and component case, Cut timber and component case, Cut timber and component case

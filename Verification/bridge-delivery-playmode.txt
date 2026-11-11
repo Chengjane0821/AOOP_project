@@ -1,0 +1,43 @@
+PASS: Village services initialized
+PASS: Carpenter bridge game bound in actual additive scene
+PASS: Legacy amplifier station and component socket removed
+PASS: Legacy completion and early clue cannot bypass deliveries
+PASS: One active player camera
+PASS: Invitation can be declined without progress
+PASS: Build mode enables pointer and reserves the tabletop view
+PASS: Desktop receives a downward view without rotating XR tracking
+PASS: Workshop control centers and inner edges have clear selection rays
+PASS: XR grab callback selects timber
+PASS: XR release callback returns unplaced timber safely
+PASS: TEST releases a real gravity-driven Rigidbody cart
+PASS: Empty bridge makes the actual cart fall below the deck
+PASS: Failed crossing never awards house progress
+PASS: Retry returns to building without automatically running the cart
+PASS: Actual mouse ray grabs a timber piece
+PASS: E rotates held timber
+PASS: Mouse drag and release fastens timber to its bridge guide
+PASS: Wrongly rotated timber does not fasten
+PASS: Two correctly aligned boards complete the first layout
+PASS: Space starts the physical cart
+PASS: Pause freezes the cart without advancing its physics
+PASS: Desktop pause panel faces the downward workshop view
+PASS: Successful first cart cannot finish the whole house
+PASS: Wider crossing begins with fresh materials
+PASS: Retry preserves the player's short-board layout
+PASS: Heavy delivery starts after two true crossings
+PASS: Heavy cart physically breaks an unreinforced board
+PASS: Retry repairs fallen boards while retaining the bridge configuration
+PASS: Mouse can grab a reinforcement from its tray
+PASS: Dropping reinforcement onto a visible board fastens it underneath
+PASS: Three reinforcements increase the heavy bridge capacity
+PASS: Three actual cart deliveries unlock memory but not the clue early
+PASS: Finishing restores camera rotation locomotion and cursor ownership
+PASS: Recovered memory still requires the original mouse evidence
+PASS: Existing mouse object quest accepts simulated evidence
+PASS: Third clue is awarded once after the bridge and evidence requirements
+PASS: Actual disk save retains Carpenter progress
+PASS: Re-entry restores the clue without restarting the activity
+PASS: Returning to title stops the trial and releases controls
+PASS: No runtime errors during Bridge Delivery checks
+PASS: Bridge Delivery Play Mode suite completed
+Scope: actual Carpenter scene, injected mouse/keys, XR grab callbacks, real Rigidbody cart crossings/falls, reinforcement, pause, save and clue flow. No physics time or success flags are altered. Camera evidence simulated; physical VR/Pi acceptance remains manual.
