@@ -38,7 +38,7 @@ namespace ForgottenVillage.Editor {
                 if(missing!=0||cameras!=0||listeners!=0)throw new Exception("House component validation: "+name);
                 if(house.houseIndex==4) {
                     var rhythm=house.GetComponent<ClockRhythmHouse>();
-                    if(!rhythm||!rhythm.run||!rhythm.run.tuning||!rhythm.run.playingPoint||rhythm.GetComponentsInChildren<ClockBell>().Length!=3||
+                    if(!rhythm||!rhythm.run||!rhythm.run.tuning||!rhythm.run.playingPoint||!rhythm.run.vrPlayingPoint||rhythm.GetComponentsInChildren<ClockBell>().Length!=ClockChart.LaneCount||
                         roots.Sum(r=>r.GetComponentsInChildren<EngineeringStation>(true).Length)!=0)throw new Exception("Clock room incomplete");
                 }
                 lines.AppendLine("PASS: "+name+"; missing scripts=0; enabled cameras/listeners=0; activity retained");
@@ -52,23 +52,23 @@ namespace ForgottenVillage.Editor {
             try {
                 Check(ClockJudgement.Judge(0) == ClockHit.Perfect && ClockJudgement.Judge(-.09) == ClockHit.Perfect, "Perfect timing boundary");
                 Check(ClockJudgement.Judge(.2) == ClockHit.Good && ClockJudgement.Judge(-.201) == ClockHit.Miss, "Good and miss timing boundaries");
-                Check(ClockJudgement.Passed(23,32) && !ClockJudgement.Passed(22,32) && !ClockJudgement.Passed(0,0), "70 percent threshold requires 23 of 32 notes");
+                Check(ClockJudgement.Passed(ClockChart.RequiredHits,ClockChart.NoteCount) && !ClockJudgement.Passed(ClockChart.RequiredHits-1,ClockChart.NoteCount) && !ClockJudgement.Passed(0,0), "70 percent threshold requires 34 of 48 notes");
                 var boundary = new ClockSession(new[]{new ClockNote(0,0)});
                 Check(boundary.Strike(0,.2000005)==ClockHit.Miss&&boundary.Hits==0, "A strike beyond the good boundary never increments hits");
                 var notes = ClockChart.Create();
-                Check(notes.Length == 32 && notes.All(n=>n.Lane>=0&&n.Lane<3), "Chart has 32 valid single-hand notes");
+                Check(notes.Length == ClockChart.NoteCount && notes.All(n=>n.Lane>=0&&n.Lane<ClockChart.LaneCount) && notes.Select(n=>n.Lane).Distinct().Count()==ClockChart.LaneCount, "Chart has 48 notes across all six bells");
                 Check(notes.Zip(notes.Skip(1),(a,b)=>b.Time>a.Time).All(x=>x), "Chart notes are strictly chronological");
                 var session = new ClockSession(notes);
                 foreach(var n in notes) session.Strike(n.Lane,n.Time);
-                Check(session.Passed && session.Perfects==32 && session.BestCombo==32, "Full chart can be completed with exact strokes");
-                session.Strike(notes[31].Lane,notes[31].Time);
-                Check(session.Hits==32 && session.Strays==1, "Duplicate strike never awards the same note twice");
+                Check(session.Passed && session.Perfects==notes.Length && session.BestCombo==notes.Length, "Full six-bell chart can be completed with exact strokes");
+                session.Strike(notes[notes.Length-1].Lane,notes[notes.Length-1].Time);
+                Check(session.Hits==notes.Length && session.Strays==1, "Duplicate strike never awards the same note twice");
                 session = new ClockSession(notes); session.Advance(100);
-                Check(session.Finished && !session.Passed && session.Misses==32, "Idle run fails and resolves all missed notes");
+                Check(session.Finished && !session.Passed && session.Misses==notes.Length, "Idle run fails and resolves all missed notes");
                 session = new ClockSession(notes); session.Strike(2,notes[0].Time);
                 Check(session.Hits==0 && session.Strays==1, "Wrong bell does not consume a correct note");
-                for(int i=0;i<32;i++) session.Strike(notes[i].Lane,notes[i].Time);
-                for(int i=0;i<9;i++) session.Strike(0,100+i);
+                for(int i=0;i<notes.Length;i++) session.Strike(notes[i].Lane,notes[i].Time);
+                for(int i=0;i<=ClockChart.MaxStrays;i++) session.Strike(0,100+i);
                 Check(!session.Passed, "Excessive stray strikes cannot pass by key spamming");
                 var save = new VillageSave { version=4,elder=true }; save.puzzleSolved[4]=true; save.Normalize();
                 Check(save.version==VillageSave.CurrentVersion&&!save.clockRhythmWon&&!save.puzzleSolved[4], "Unfinished legacy timing progress does not invent a rhythm victory");

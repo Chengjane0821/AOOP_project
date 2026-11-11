@@ -1,18 +1,22 @@
 PASS: Village services loaded
 PASS: Clockmaker activity bound after additive entry
+PASS: Six bell bindings and reachable VR play point installed
 PASS: Calculation station removed from Clockmaker scene
 PASS: Fifth clue cannot be claimed before activity
 PASS: Declining invitation leaves progress unchanged
 PASS: Starting repairs locks locomotion
 PASS: All refined bell targets remain unobstructed across center and inner edges
 PASS: Bell selection callback submits exactly one strike
+PASS: A controller contact entry submits a physical bell strike
+PASS: Holding a controller inside a bell never repeats strikes
 PASS: Pause freezes musical time
 PASS: Resume does not catch up paused time
-PASS: Leave releases locomotion lock
-PASS: Full unattended run fails without awarding progress
+PASS: Leave restores locomotion and journal shortcut
+PASS: Full unattended 48-note run fails without awarding progress
 PASS: Retry resets chart and score
 PASS: Injected desktop A key hits actual chart notes
-PASS: Full 32-note run succeeds through real A/S/D input
+PASS: Full 48-note run succeeds through real A/S/D/J/K/L input
+PASS: All six keyboard lanes are exercised including J without opening the journal
 PASS: Camera remains stationary and movement unlocks on success
 PASS: Victory alone does not award memory or clue
 PASS: Memory recovery still requires object evidence
@@ -24,4 +28,4 @@ PASS: Re-entry retains progression without restarting activity
 PASS: Returning to title cancels active rhythm run
 PASS: No runtime errors during clock checks
 PASS: Clock rhythm Play Mode suite completed
-Scope: actual additive scene, real-time complete runs, UI callbacks and injected A/S/D input. Camera evidence simulated. Physical VR and audio latency acceptance remain manual.
+Scope: actual additive scene, six bells, real-time 48-note failure/success runs, UI/XR select callbacks, controller-contact entry checks and injected A/S/D/J/K/L. Camera evidence simulated. Physical VR reach/grab feel and audio latency acceptance remain manual.

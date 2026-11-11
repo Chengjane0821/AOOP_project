@@ -51,7 +51,7 @@ namespace ForgottenVillage.Editor {
             var owner = house.gameObject.AddComponent<ClockRhythmHouse>();
             foreach(var root in scene.GetRootGameObjects())foreach(var text in root.GetComponentsInChildren<TMP_Text>(true)) {
                 if(text.text==VillageGame.Houses[4])text.gameObject.SetActive(false); // Avoid overlapping the live score.
-                if(text.text.Contains("REGISTER SETUP ANALYSIS"))text.text="RESTORE THE RHYTHM\n\nWatch the gold mark\nRing bells 1 / 2 / 3\n\n23 good notes repair the clocks";
+                if(text.text.Contains("REGISTER SETUP ANALYSIS")||text.text.StartsWith("RESTORE THE RHYTHM"))text.gameObject.SetActive(false);
             }
             var arena = new GameObject("Rhythm repair workshop"); arena.transform.SetParent(house.transform, false);
             var run = arena.AddComponent<ClockRhythmRun>(); owner.run = run; run.house = owner;
@@ -63,86 +63,88 @@ namespace ForgottenVillage.Editor {
             arena.AddComponent<ClockRhythmInput>().run = run;
             run.view = arena.AddComponent<ClockRhythmView>();
             var point = new GameObject("Stationary clock playing point"); point.transform.SetParent(arena.transform, false);
-            point.transform.localPosition = new Vector3(.2f, .15f, -1.45f); run.playingPoint = point.transform;
+            point.transform.localPosition = new Vector3(.2f, .15f, -1.65f); run.playingPoint = point.transform;
+            var vrPoint = new GameObject("Reachable six bell VR playing point"); vrPoint.transform.SetParent(arena.transform,false);
+            vrPoint.transform.localPosition = new Vector3(.2f,.15f,.03f); run.vrPlayingPoint = vrPoint.transform;
             ClearDisplaySpace(house);
-            var wood=WorkshopArt.Mat("Clock walnut cabinet",new Color(.47f,.28f,.12f),0,.28f);
-            var sourceWood=AssetDatabase.LoadAssetAtPath<Material>("Assets/_Course Library/Materials/Object Materials/Material_Wood_Dark.mat");
-            if(sourceWood&&sourceWood.HasProperty("_BaseMap")){wood.SetTexture("_BaseMap",sourceWood.GetTexture("_BaseMap"));wood.SetTextureScale("_BaseMap",new Vector2(1.6f,.75f));EditorUtility.SetDirty(wood);}
-            var dark=WorkshopArt.Mat("Clock midnight enamel",new Color(.035f,.065f,.085f),.2f,.55f);
-            var brass=WorkshopArt.Mat("Clock brushed brass",new Color(.72f,.47f,.18f),.72f,.55f);
-            var ivory=WorkshopArt.Mat("Clock porcelain face",new Color(.84f,.79f,.62f),.05f,.4f);
-            var ink=WorkshopArt.Mat("Clock dial ink",new Color(.035f,.075f,.085f),.1f,.3f);
-            var glow=WorkshopArt.Mat("Clock turquoise signal",new Color(.18f,.78f,.68f),.2f,.45f,true);
-            var cream=new Color(.9f,.86f,.73f);
-            WorkshopArt.Plate("Walnut clock cabinet",arena.transform,new Vector3(.2f,1.65f,1.08f),new Vector2(2.65f,1.85f),.16f,wood,.09f);
-            WorkshopArt.Plate("Brass cabinet inset",arena.transform,new Vector3(.2f,1.67f,.982f),new Vector2(2.5f,1.68f),.035f,brass,.07f);
-            WorkshopArt.Plate("Midnight instrument panel",arena.transform,new Vector3(.2f,1.67f,.952f),new Vector2(2.44f,1.62f),.035f,dark,.055f);
-            WorkshopArt.Plate("Solid repair bench",arena.transform,new Vector3(.2f,.87f,.85f),new Vector2(2.8f,.12f),.85f,wood,.045f);
-            for(int side=-1;side<=1;side+=2){
-                WorkshopArt.Box("Carved cabinet support",arena.transform,new Vector3(.2f+side*1.1f,.42f,.95f),new Vector3(.13f,.84f,.35f),wood);
-                WorkshopArt.Plate("Cabinet corner cap",arena.transform,new Vector3(.2f+side*1.22f,2.42f,.95f),new Vector2(.11f,.18f),.03f,brass,.02f);
+            var wood=WorkshopArt.Mat("Clock open stand walnut",new Color(.29f,.19f,.12f),0,.20f);
+            var navy=WorkshopArt.Mat("Clock arcade navy",new Color(.025f,.043f,.075f),0,.12f);
+            var bronze=WorkshopArt.Mat("Clock matte bronze",new Color(.50f,.34f,.17f),.10f,.18f);
+            var ivory=WorkshopArt.Mat("Clock matte ivory",new Color(.86f,.86f,.80f),0,.12f);
+            var ink=WorkshopArt.Mat("Clock matte hand",new Color(.035f,.075f,.085f),0,.16f);
+            var gold=WorkshopArt.Mat("Clock timing gold",new Color(.95f,.67f,.15f),0,.18f);
+            var glow=WorkshopArt.Mat("Clock arcade mint",new Color(.21f,.77f,.66f),0,.20f,true);
+            var cream=new Color(.93f,.91f,.83f);
+            // A floating scoreboard and a separate controls card match the other
+            // house games. The clock field itself stays open to the room.
+            var hud=new GameObject("Rhythm floating HUD");hud.transform.SetParent(arena.transform,false);hud.transform.localPosition=new Vector3(.2f,2.8f,2.25f);hud.transform.localScale=Vector3.one*1.35f;
+            const string overlayPath=Root+"Materials/Clock scoreboard overlay.mat";
+            var hudMaterial=AssetDatabase.LoadAssetAtPath<Material>(overlayPath);
+            if(!hudMaterial){hudMaterial=new Material(Shader.Find("ForgottenVillage/World UI Overlay"));AssetDatabase.CreateAsset(hudMaterial,overlayPath);}
+            hudMaterial.SetColor("_Color",new Color(.035f,.055f,.085f,1));EditorUtility.SetDirty(hudMaterial);
+            WorkshopArt.Plate("Rhythm scoreboard",hud.transform,new Vector3(0,.17f,0),new Vector2(2.3f,.65f),.025f,hudMaterial,.025f);
+            WorkshopArt.Label(hud.transform,"RHYTHM REPAIR",new Vector3(-.30f,.37f,-.023f),new Vector2(1.50f,.14f),1.05f,cream);
+            run.view.feedback=WorkshopArt.Label(hud.transform,"",new Vector3(.78f,.37f,-.03f),new Vector2(.66f,.14f),.85f,new Color(.40f,.95f,.78f));
+            run.view.status=WorkshopArt.Label(hud.transform,"READY TO RESTORE",new Vector3(-.39f,.18f,-.03f),new Vector2(1.45f,.18f),1.10f,cream);
+            run.view.comboLabel=WorkshopArt.Label(hud.transform,"COMBO 00",new Vector3(.78f,.18f,-.03f),new Vector2(.68f,.18f),.90f,new Color(.40f,.91f,.78f));
+            run.view.phraseLabel=WorkshopArt.Label(hud.transform,"TOP: A S D     /     LOWER: J K L",new Vector3(0,.01f,-.03f),new Vector2(2.1f,.13f),.72f,new Color(.64f,.82f,.79f));
+            WorkshopArt.Box("Repair progress rail",hud.transform,new Vector3(0,.09f,-.03f),new Vector3(2.1f,.018f,.009f),ink);
+            var progressPivot=new GameObject("Repair progress origin");progressPivot.transform.SetParent(hud.transform,false);progressPivot.transform.localPosition=new Vector3(-1.05f,.09f,-.042f);
+            WorkshopArt.Box("Repair progress fill",progressPivot.transform,new Vector3(1.05f,0,0),new Vector3(2.1f,.018f,.009f),glow);run.view.progress=progressPivot.transform;
+            WorkshopArt.Plate("Rhythm controls",arena.transform,new Vector3(-1.53f,1.62f,.89f),new Vector2(.96f,1.20f),.025f,navy,.025f);
+            WorkshopArt.Label(arena.transform,"SIX BELLS\n\nTop: A / S / D\nLower: J / K / L\nVR: touch or select\n\nStrike at the gold mark\nEsc: pause / retry",new Vector3(-1.53f,1.62f,.868f),new Vector2(.86f,1.08f),.76f,cream);
+            // Each column has a slim independent stand. No row-wide shelf or
+            // plaque crosses the lower clock's twelve-o'clock timing marker.
+            for(int column=0;column<3;column++){
+                float x=.2f+(column-1)*.55f;
+                WorkshopArt.Plate("Clock stand foot",arena.transform,new Vector3(x,.20f,.92f),new Vector2(.30f,.06f),.36f,wood,.02f);
+                WorkshopArt.Box("Slim clock support",arena.transform,new Vector3(x,1.10f,1.01f),new Vector3(.025f,1.80f,.025f),bronze);
             }
-            var title=WorkshopArt.Label(arena.transform,"THE CLOCKMAKER  /  RHYTHM REPAIR",new Vector3(.2f,2.42f,.91f),new Vector2(2.25f,.16f),.40f,cream);title.characterSpacing=2;
-            WorkshopArt.Plate("Scoreboard inset",arena.transform,new Vector3(.2f,2.17f,.913f),new Vector2(2.26f,.28f),.035f,ink,.025f);
-            run.view.status=WorkshopArt.Label(arena.transform,"READY TO RESTORE",new Vector3(-.22f,2.17f,.884f),new Vector2(1.34f,.2f),.58f,cream);
-            run.view.comboLabel=WorkshopArt.Label(arena.transform,"COMBO 00",new Vector3(1.00f,2.17f,.884f),new Vector2(.75f,.2f),.46f,new Color(.3f,.85f,.75f));
-            WorkshopArt.Box("Score divider",arena.transform,new Vector3(.58f,2.17f,.88f),new Vector3(.008f,.17f,.007f),brass);
-            var progressPivot=new GameObject("Repair progress origin");progressPivot.transform.SetParent(arena.transform,false);progressPivot.transform.localPosition=new Vector3(-.9f,2.005f,.90f);
-            WorkshopArt.Box("Repair progress rail",arena.transform,new Vector3(.2f,2.005f,.925f),new Vector3(2.2f,.018f,.015f),ink);
-            WorkshopArt.Box("Repair progress fill",progressPivot.transform,new Vector3(1.1f,0,0),new Vector3(2.2f,.018f,.015f),glow);run.view.progress=progressPivot.transform;
-            for (int i = 0; i < 3; i++) {
-                float x = .2f + (i-1)*.65f;
-                const float y=1.62f;
-                WorkshopArt.Disc("Brass clock housing "+(i+1),arena.transform,new Vector3(x,y,.929f),.61f,.085f,brass);
-                var dial=WorkshopArt.Disc("Porcelain clock dial "+(i+1),arena.transform,new Vector3(x,y,.882f),.555f,.022f,ivory);run.view.faces[i]=dial.GetComponent<Renderer>();
-                WorkshopArt.Ring("Inner dial engraving",arena.transform,new Vector3(x,y,.865f),.242f,.003f,brass);
-                var halo=WorkshopArt.Ring("Beat signal bezel",arena.transform,new Vector3(x,y,.886f),.322f,.010f,glow);run.view.halos[i]=halo.GetComponent<Renderer>();
-                WorkshopArt.TickRing("Engraved minute track",arena.transform,new Vector3(x,y,.863f),.26f,ink);
-                for(int lightIndex=0;lightIndex<12;lightIndex++){
-                    float angle=lightIndex*30*Mathf.Deg2Rad;
-                    var led=WorkshopArt.Disc("Approach indicator",arena.transform,new Vector3(x+Mathf.Sin(angle)*.324f,y+Mathf.Cos(angle)*.324f,.87f),.022f,.009f,glow);
-                    run.view.approachLights[i*12+lightIndex]=led.GetComponent<Renderer>();
+            for(int i=0;i<ClockChart.LaneCount;i++){
+                int row=i/3;float x=.2f+(i%3-1)*.55f;
+                float y=row==0?1.91f:1.14f;
+                float bellY=row==0?1.55f:.86f,bellZ=row==0?.53f:.43f;
+                WorkshopArt.Disc("Clock frame "+(i+1),arena.transform,new Vector3(x,y,.92f),.46f,.035f,navy);
+                var dial=WorkshopArt.Disc("Plain clock face "+(i+1),arena.transform,new Vector3(x,y,.895f),.425f,.012f,ivory);run.view.faces[i]=dial.GetComponent<Renderer>();
+                var halo=WorkshopArt.Ring("Beat signal "+(i+1),arena.transform,new Vector3(x,y,.883f),.225f,.004f,glow);run.view.halos[i]=halo.GetComponent<Renderer>();
+                for(int ledIndex=0;ledIndex<12;ledIndex++){
+                    float angle=ledIndex*30*Mathf.Deg2Rad;
+                    var led=WorkshopArt.Disc("Beat approach dot",arena.transform,new Vector3(x+Mathf.Sin(angle)*.225f,y+Mathf.Cos(angle)*.225f,.875f),.014f,.006f,glow);
+                    run.view.approachLights[i*12+ledIndex]=led.GetComponent<Renderer>();
                 }
-                foreach(int hour in new[]{3,6,9,12}){
-                    float angle=hour*30*Mathf.Deg2Rad;WorkshopArt.Label(arena.transform,hour.ToString(),new Vector3(x+Mathf.Sin(angle)*.197f,y+Mathf.Cos(angle)*.197f,.854f),new Vector2(.11f,.08f),.31f,new Color(.07f,.12f,.13f));
+                foreach(int hour in new[]{3,6,9}){
+                    float angle=hour*30*Mathf.Deg2Rad;
+                    WorkshopArt.Box("Quarter hour mark",arena.transform,new Vector3(x+Mathf.Sin(angle)*.176f,y+Mathf.Cos(angle)*.176f,.881f),new Vector3(.012f,.012f,.004f),ink);
                 }
-                WorkshopArt.Disc("Gold timing jewel",arena.transform,new Vector3(x,y+.321f,.85f),.045f,.015f,brass);
-                var pivot = new GameObject("Moving hand pivot " + i); pivot.transform.SetParent(arena.transform, false);
-                pivot.transform.localPosition = new Vector3(x,y,.833f); run.view.hands[i] = pivot.transform;
-                WorkshopArt.Box("Blued clock hand",pivot.transform,new Vector3(0,.095f,0),new Vector3(.015f,.215f,.013f),ink);
-                WorkshopArt.Box("Hand gold inlay",pivot.transform,new Vector3(0,.1f,-.008f),new Vector3(.005f,.19f,.004f),brass);
-                WorkshopArt.Disc("Counterweight",pivot.transform,new Vector3(0,-.045f,0),.038f,.01f,brass);
-                WorkshopArt.Disc("Clock hand cap",arena.transform,new Vector3(x,y,.819f),.055f,.02f,brass);
-                WorkshopArt.Plate("Bell numbered plaque",arena.transform,new Vector3(x,1.205f,.898f),new Vector2(.45f,.15f),.022f,brass,.025f);
-                WorkshopArt.Label(arena.transform,(i+1)+"  /  "+new[]{"A","S","D"}[i],new Vector3(x,1.205f,.88f),new Vector2(.42f,.12f),.44f,new Color(.055f,.09f,.10f));
-                var bell=new GameObject("Bell "+(i+1));bell.transform.SetParent(arena.transform,false);bell.transform.localPosition=new Vector3(x,.94f,.57f);
-                var collider=bell.AddComponent<BoxCollider>();collider.center=new Vector3(0,.14f,0);collider.size=new Vector3(.43f,.34f,.43f);
-                var bellArt=new GameObject("Animated bell ornament");bellArt.transform.SetParent(bell.transform,false);run.view.bells[i]=bellArt.transform;
-                WorkshopArt.Bell("Cast brass bell",bellArt.transform,Vector3.zero,brass);
-                var rim=WorkshopArt.Ring("Bell rolled rim",bellArt.transform,Vector3.zero,.177f,.008f,brass);rim.transform.localRotation=Quaternion.Euler(90,0,0);
-                WorkshopArt.Sphere("Bell crown",bellArt.transform,new Vector3(0,.263f,0),new Vector3(.055f,.047f,.055f),brass);
-                WorkshopArt.Plate("Bell felt base",arena.transform,new Vector3(x,.921f,.57f),new Vector2(.44f,.055f),.43f,dark,.02f);
-                var target = bell.AddComponent<ClockBell>(); target.run = run; target.lane = i;
+                WorkshopArt.Disc("Gold timing marker",arena.transform,new Vector3(x,y+.225f,.863f),.036f,.010f,gold);
+                WorkshopArt.Label(arena.transform,(i+1)+" / "+ClockRhythmInput.LaneKeys[i],new Vector3(x+.235f,bellY+.075f,bellZ-.055f),new Vector2(.24f,.10f),.72f,cream);
+                var pivot=new GameObject("Moving hand pivot "+i);pivot.transform.SetParent(arena.transform,false);pivot.transform.localPosition=new Vector3(x,y,.867f);run.view.hands[i]=pivot.transform;
+                WorkshopArt.Box("Clock hand",pivot.transform,new Vector3(0,.078f,0),new Vector3(.014f,.174f,.008f),ink);
+                WorkshopArt.Disc("Clock hand cap",arena.transform,new Vector3(x,y,.855f),.040f,.012f,bronze);
+                // Compact bells sit below their own face, with contact volumes
+                // independent from the art and its press animation.
+                var bell=new GameObject("Bell "+(i+1));bell.transform.SetParent(arena.transform,false);bell.transform.localPosition=new Vector3(x,bellY,bellZ);
+                var collider=bell.AddComponent<BoxCollider>();collider.center=new Vector3(0,.080f,0);collider.size=new Vector3(.29f,.20f,.29f);
+                var bellArt=new GameObject("Animated bell ornament");bellArt.transform.SetParent(bell.transform,false);bellArt.transform.localScale=Vector3.one*.48f;run.view.bells[i]=bellArt.transform;
+                WorkshopArt.Bell("Matte bronze bell",bellArt.transform,Vector3.zero,bronze);
+                WorkshopArt.Plate("Individual bell base",arena.transform,new Vector3(x,bellY-.016f,bellZ),new Vector2(.30f,.035f),.30f,wood,.02f);
+                WorkshopArt.Box("Bell mounting arm",arena.transform,new Vector3(x+.11f,bellY-.035f,.76f),new Vector3(.018f,.018f,.49f),bronze);
+                var target=bell.AddComponent<ClockBell>();target.run=run;target.lane=i;
                 bell.AddComponent<XRSimpleInteractable>();
-                var interaction = bell.AddComponent<VillageInteractable>(); interaction.prompt = "Strike bell " + (i+1);
-                UnityEventTools.AddPersistentListener(interaction.action, target.Strike);
+                var interaction=bell.AddComponent<VillageInteractable>();interaction.prompt="Strike bell "+(i+1);
+                UnityEventTools.AddPersistentListener(interaction.action,target.Strike);
             }
-            WorkshopArt.Plate("Repair feedback plaque",arena.transform,new Vector3(.2f,2.285f,.89f),new Vector2(1.1f,.105f),.015f,ink,.02f);
-            run.view.feedback=WorkshopArt.Label(arena.transform,"",new Vector3(.2f,2.285f,.873f),new Vector2(1.05f,.09f),.34f,new Color(.4f,.95f,.8f));
-            run.view.accuracyLabel=WorkshopArt.Label(arena.transform,"23 / 32 NOTES  +  MAX 8 EXTRA",new Vector3(.2f,.865f,.404f),new Vector2(1.95f,.10f),.30f,cream);
-            WorkshopArt.Label(arena.transform,"STRIKE AT THE GOLD JEWEL     /     ESC: PAUSE",new Vector3(.2f,.685f,.62f),new Vector2(2.25f,.12f),.29f,cream);
-            var start=WorkshopArt.Plate("Start clock repair",arena.transform,new Vector3(-1.01f,1.14f,.66f),new Vector2(.25f,.28f),.1f,dark,.035f);start.AddComponent<BoxCollider>().size=new Vector3(.25f,.28f,.1f);
-            start.AddComponent<XRSimpleInteractable>(); var use = start.AddComponent<VillageInteractable>(); use.prompt = "Repair the clocks";
-            UnityEventTools.AddPersistentListener(use.action, owner.Offer);
-            WorkshopArt.Label(arena.transform,"PLAY",new Vector3(-1.01f,1.14f,.596f),new Vector2(.23f,.13f),.32f,cream);
-            for(int side=-1;side<=1;side+=2)foreach(float y in new[]{.91f,2.37f})WorkshopArt.Screw(arena.transform,new Vector3(.2f+side*1.17f,y,.921f),brass);
-            var studio=new GameObject("Clock cabinet warm work light",typeof(Light));studio.transform.SetParent(arena.transform,false);studio.transform.localPosition=new Vector3(-.4f,2.4f,-.6f);
-            var light=studio.GetComponent<Light>();light.type=LightType.Point;light.color=new Color(1,.87f,.65f);light.intensity=2.2f;light.range=5;light.shadows=LightShadows.None;
+            run.view.accuracyLabel=WorkshopArt.Label(hud.transform,ClockChart.RequiredHits+" / "+ClockChart.NoteCount+" NOTES  +  MAX "+ClockChart.MaxStrays+" EXTRA",new Vector3(0,-.10f,-.03f),new Vector2(2.20f,.10f),.57f,cream);
+            var start=WorkshopArt.Plate("Start clock repair",arena.transform,new Vector3(-1.53f,.87f,.89f),new Vector2(.80f,.23f),.06f,navy,.025f);start.AddComponent<BoxCollider>().size=new Vector3(.80f,.23f,.06f);
+            start.AddComponent<XRSimpleInteractable>();var use=start.AddComponent<VillageInteractable>();use.prompt="Repair the clocks";
+            UnityEventTools.AddPersistentListener(use.action,owner.Offer);
+            WorkshopArt.Label(arena.transform,"PLAY",new Vector3(-1.53f,.87f,.85f),new Vector2(.72f,.16f),1.0f,cream);
+            foreach(var label in hud.GetComponentsInChildren<TMP_Text>())label.fontSharedMaterial=AssetDatabase.LoadAssetAtPath<Material>(Root+"Materials/Field Text Overlay.mat");
             Save(house); EditorSceneManager.MarkSceneDirty(scene); EditorSceneManager.SaveScene(scene); AssetDatabase.SaveAssets();
-            File.WriteAllText("Verification/clock-rhythm-build.txt", "PASS: Clockmaker scene/prefab saved with walnut/brass cabinet, porcelain dials, shared engraved tick mesh, approach lights, animated cast bells, score cards and fully visible controls. Three original bell bindings retained; visual ornament has no colliders. No new camera or XR rig.\n");
+            File.WriteAllText("Verification/clock-rhythm-build.txt", "PASS: Clockmaker scene/prefab saved with an open six-clock field on slim independent stands, compact matte-bronze bells, plain ivory faces and gold timing marks. Floating navy scoreboard, left controls and lower goal strip match the tennis/plane interface language. Six A/S/D + J/K/L bindings, 72 approach dots, controller-contact and XR selection retained. Separate desktop/VR positions; no enclosing cabinet, continuous shelves, decorative colliders, new camera or XR rig.\n");
         }
         static void ClearDisplaySpace(HouseSceneRoot house){
-            var area=new Bounds(new Vector3(.1f,1.1f,.7f),new Vector3(3.4f,1.3f,1.8f));
+            var area=new Bounds(new Vector3(.1f,1.65f,.7f),new Vector3(3.4f,2.7f,1.8f));
             var roots=house.copiedRoots.Concat(house.GetComponentsInChildren<Transform>(true).Where(t=>t.name.StartsWith("Atmosphere & set dressing")).Select(t=>t.gameObject)).Distinct();
             foreach(var root in roots){if(!root||!root.activeSelf)continue;foreach(var renderer in root.GetComponentsInChildren<Renderer>(true))if(area.Contains(renderer.bounds.center)&&renderer.bounds.size.magnitude<2.6f)renderer.gameObject.SetActive(false);foreach(var collider in root.GetComponentsInChildren<Collider>(true))if(area.Contains(collider.bounds.center)&&collider.bounds.size.magnitude<2.6f)collider.enabled=false;}
             foreach(var tr in house.GetComponentsInChildren<Transform>(true))if(tr.name=="Clockmaker brass timing wheel")tr.gameObject.SetActive(false);

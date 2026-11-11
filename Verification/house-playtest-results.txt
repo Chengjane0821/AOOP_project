@@ -1,3 +1,18 @@
+QUICK HANDS + SIX-BELL RHYTHM / OPEN GAME INTERFACES - 2026-11-11 (Asia/Taipei)
+PASS: Carpenter bridge replaced by a 60-second seeded motion arcade; three stages, distinct two-hand pairs, head dodge/duck, combos and saved personal best.
+PASS: Clockmaker has six bells, 48 notes, A/S/D + J/K/L, XR selection/contact and 34-hit / 12-extra limits.
+PASS: Final runtime/Editor compile and 104 unit regressions, zero failures/skips.
+PASS: Six saved houses retain source roots, valid scripts and one shared player camera/listener path.
+PASS: Full Quick Hands real-time failure/success with injected mouse/keys, pose-contact entry, invalid/reacquired tracking, pause/retry, memory, simulated mouse evidence, unique clue, JSON disk save and re-entry.
+PASS: Full six-bell real-time failure/success, all six keys including J without opening journal, XR callbacks/contact, pause/retry, memory, simulated clock evidence, unique clue and disk save/re-entry.
+PASS: Open game layouts follow the plane/table-tennis interface; final target/control rays, visible single/pair/dodge cues, six clock bindings, pause and control restoration passed the short presentation fixture.
+PASS: Final actual gameplay PNGs visually inspected; no text overlap, broken RECENTER label or room-beam occlusion in score HUD.
+PASS: No runtime errors captured in these game suites or the final presentation fixture.
+Details: active-workshop-compile.txt, active-workshop-editmode.xml, active-workshop-scenes.txt, active-workshop-playmode.txt, clock-rhythm-playmode.txt and active-games-presentation.txt.
+Scope: complete rule/progression playthroughs plus final presentation checks after the visual redesign. Not a new full-village ending runtime run.
+Physical Quest reach/feel/haptics, audio latency, USB electronics and live Pi recognition remain manual; camera evidence in automation is simulated.
+Older bridge and three-bell presentation records below remain historical.
+
 CARPENTER BRIDGE DELIVERY - 2026-11-11 (Asia/Taipei)
 PASS: Carpenter amplifier panel replaced by three hands-on bridge deliveries.
 PASS: Runtime/Editor compile and 66 village unit tests, zero failures.

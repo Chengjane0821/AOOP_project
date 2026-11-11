@@ -29,7 +29,7 @@ public class HouseSceneRoot : MonoBehaviour {
   var alchemist=GetComponent<AlchemistDreamHouse>();if(alchemist)alchemist.Bind(game);
   var clock=GetComponent<ClockRhythmHouse>();if(clock)clock.Bind(game);
   var grid=GetComponent<PowerGridHouse>();if(grid)grid.Bind(game);
-  var bridge=GetComponent<BridgeHouse>();if(bridge)bridge.Bind(game);
+  var workshop=GetComponent<ActiveWorkshopHouse>();if(workshop)workshop.Bind(game);
   game.gate=safetyGate;if(game.gate&&game.state.ended)game.gate.localRotation=Quaternion.Euler(0,0,80);
  }
 }

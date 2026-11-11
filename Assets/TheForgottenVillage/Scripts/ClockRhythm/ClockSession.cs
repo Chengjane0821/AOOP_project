@@ -11,11 +11,14 @@ namespace ForgottenVillage {
         public int BestCombo { get; private set; }
         public int Strays { get; private set; }
         public int Resolved => Hits + Misses;
+        public int RequiredHits => (Notes.Length * 7 + 9) / 10;
+        public int MaxStrays => Notes.Length / 4;
         public bool Finished => Resolved == Notes.Length;
-        public bool Passed => Finished && ClockJudgement.Passed(Hits, Notes.Length) && Strays <= Notes.Length / 4;
+        public bool Passed => Finished && ClockJudgement.Passed(Hits, Notes.Length) && Strays <= MaxStrays;
         public ClockSession(ClockNote[] notes) { Notes = notes; resolved = new bool[notes.Length]; }
         public bool IsResolved(int index) => resolved[index];
         public ClockHit Strike(int lane, double time) {
+            if (lane < 0 || lane >= ClockChart.LaneCount || double.IsNaN(time) || double.IsInfinity(time)) return ClockHit.Miss;
             int best = -1; double distance = ClockJudgement.GoodWindow;
             for (int i = 0; i < Notes.Length; i++) {
                 double error = Math.Abs(Notes[i].Time - time);

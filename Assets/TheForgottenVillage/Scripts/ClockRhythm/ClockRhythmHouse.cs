@@ -10,7 +10,7 @@ namespace ForgottenVillage {
             if (game.state.clockRhythmWon && !game.state.clockMemoryRecovered) { Recovery(); return; }
             game.ui.Show("Clockmaker / Rhythm repair", game.state.clockRhythmWon ?
                 "The clocks are alive again. Thank you.\nYou can replay, or continue investigating my timing record." :
-                "Every clock stopped on the night we forgot. Help me bring them back.\n\nWatch the three clock hands. Strike a bell at the gold mark.\nA / S / D on desktop; select numbered bells in VR.\nHit 23 of 32 notes; no more than 8 extra strikes. About 45 seconds.");
+                "Every clock stopped on the night we forgot. Help me bring them back.\n\nSix bells, three musical phrases. Strike when a hand reaches the gold mark.\nTop row: A / S / D. Lower row: J / K / L.\nVR: touch bells with your controllers, or select them.\nHit " + ClockChart.RequiredHits + " of " + ClockChart.NoteCount + " notes; no more than " + ClockChart.MaxStrays + " extra strikes. About 43 seconds.");
             game.ui.Button("Repair the clocks", run.Begin);
             if (game.state.clockMemoryRecovered) game.ui.Button("Investigate record", () => game.ui.ObjectQuest(4));
             game.ui.Button("Maybe later", game.ui.Close);

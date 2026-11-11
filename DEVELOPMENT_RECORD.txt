@@ -1,3 +1,38 @@
+QUICK HANDS WORKSHOP + SIX-BELL RHYTHM - 2026-11-11 (Asia/Taipei)
+Replaced Carpenter Bridge Delivery with a 60-second motion-action arcade.
+Calibrated controller contact, distinct hands on timed pairs, small head leans
+and duck cues, seeded patterns, three accelerating stages, combos and saved best
+scores provide the activity. Desktop mouse left/right/both and A/D/S use the same
+rules. Pause/recenter, tracking-loss pause, fresh contact entry and invalid-pose
+guards prevent stale or missing tracking from generating hits.
+
+Clockmaker now has six bells in two reachable rows and a 48-note, three-phrase
+chart. Desktop A/S/D + J/K/L, XR select and controller contact share the scoring
+path. At least 34 hits and at most 12 extra strikes pass. J is reserved during
+the activity; movement, pointer and journal controls restore on exit.
+
+Both final presentations follow the existing plane/table-tennis layout: open
+game objects, large navy HUD and separate controls. Removed the large gold
+cabinets and shelves; targets have response-time bars, clocks have clear faces
+and small matte bells. Existing overlay UI materials prevent room beams/window
+frames from hiding the score. Final live screenshots were visually inspected.
+
+Save schema 8 requires current Carpenter victory, memory and the existing mouse
+evidence. Valid fully earned old clues migrate; unfinished bridges do not grant
+a new victory. Source roots, arrival/exit and the shared player rig remain.
+Normal village rebuilds and the ending test helper use the new activity.
+
+Verification: final runtime/Editor compile, 104 unit tests (0 failures/skips), six
+saved houses and both complete game failure/success/progression suites passed.
+A final presentation fixture checked the revised layout, target/control rays,
+single/pair/dodge displays, pause and restored controls with no runtime errors.
+Complete gameplay and presentation scopes are recorded separately. The full
+multi-house ending runtime suite was updated but not rerun. Physical Quest feel,
+reach/haptics/audio latency, USB wiring and live Pi camera remain manual.
+Reports: Verification/active-workshop-*, active-games-presentation.txt and the
+updated clock-rhythm-playmode.txt. See ACTIVE_WORKSHOP.md, CLOCK_RHYTHM.md and
+PARTNER_HANDOFF.md. Older Bridge Delivery records below are historical.
+
 CARPENTER BRIDGE DELIVERY - 2026-11-11 (Asia/Taipei)
 Replaced the remaining Carpenter engineering panel with a tactile bridge game.
 Players grab/rotate/fasten boards and test real physics carts across three spans:

@@ -142,3 +142,10 @@ InitTestScene*.unity*
 /Verification/bridge-delivery.status
 /Verification/bridge-delivery-progress.txt
 /Verification/bridge-delivery-test-save.json*
+
+# Active workshop automation scratch files
+/Verification/active-workshop.request*
+/Verification/active-workshop.status
+/Verification/active-workshop-progress.txt
+/Verification/active-workshop-test-save.json*
+/Verification/active-games-visual-test-save.json*

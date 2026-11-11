@@ -5,9 +5,12 @@ using System.Linq;
 namespace ForgottenVillage {
     [Serializable]
     public class VillageSave {
-        public const int CurrentVersion = 7;
+        public const int CurrentVersion = 8;
         public int version = CurrentVersion;
         public bool carpenterBridgeWon, carpenterMemoryRecovered;
+        // Bridge victory is retained only to migrate older earned records.
+        public bool carpenterArcadeWon;
+        public int carpenterBestScore;
         public bool technicianGridWon, technicianMemoryRecovered;
         public bool clockRhythmWon, clockMemoryRecovered;
         public bool elderTennisWon, elderMemoryRecovered;
@@ -21,7 +24,7 @@ namespace ForgottenVillage {
         public bool ObjectVerified(int id) => id >= 0 && id < 5 && objects != null &&
             objects.Length == 5 && objects[id] != null && objects[id].ValidFor(id);
         public bool CanClaim(int id) => elder && id >= 0 && id < 5 && puzzleSolved != null &&
-            puzzleSolved.Length == 5 && puzzleSolved[id] && (id == 0 ? elderTennisWon && elderMemoryRecovered && photograph : id == 1 ? alchemistDreamWon && alchemistMemoryRecovered && alchemistEvidenceInspected : id == 2 ? carpenterBridgeWon && carpenterMemoryRecovered && ObjectVerified(id) : id == 3 ? technicianGridWon && technicianMemoryRecovered && ObjectVerified(id) : id == 4 && clockRhythmWon && clockMemoryRecovered && ObjectVerified(id));
+            puzzleSolved.Length == 5 && puzzleSolved[id] && (id == 0 ? elderTennisWon && elderMemoryRecovered && photograph : id == 1 ? alchemistDreamWon && alchemistMemoryRecovered && alchemistEvidenceInspected : id == 2 ? carpenterArcadeWon && carpenterMemoryRecovered && ObjectVerified(id) : id == 3 ? technicianGridWon && technicianMemoryRecovered && ObjectVerified(id) : id == 4 && clockRhythmWon && clockMemoryRecovered && ObjectVerified(id));
         public bool Unlocked => clues != null && clues.Length == 5 &&
             Enumerable.Range(0, 5).All(i => clues[i] && CanClaim(i));
         public bool Authorized => Unlocked && faultyTest && fixedTest && evidence != null &&
@@ -67,6 +70,15 @@ namespace ForgottenVillage {
                 carpenterBridgeWon=carpenterMemoryRecovered=clues[2]&&puzzleSolved[2]&&ObjectVerified(2);
                 puzzleSolved[2]=carpenterBridgeWon;version=7;
             }
+            if (version < 8) {
+                // Keep fully earned mouse records; incomplete bridge trials must play the new activity.
+                carpenterArcadeWon = clues[2] && puzzleSolved[2] && carpenterBridgeWon &&
+                    carpenterMemoryRecovered && ObjectVerified(2);
+                carpenterMemoryRecovered = puzzleSolved[2] = carpenterArcadeWon;
+                carpenterBestScore = 0;
+                version = 8;
+            }
+            carpenterBestScore = Math.Max(0, carpenterBestScore);
             for (int i = 0; i < 5; i++) if (!CanClaim(i)) clues[i] = false;
             if (!Authorized) ended = false;
         }

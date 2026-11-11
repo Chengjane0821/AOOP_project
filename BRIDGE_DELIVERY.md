@@ -1,5 +1,11 @@
 # Carpenter: Bridge Delivery
 
+> **Retired / historical implementation.** The current Carpenter activity is
+> [Quick Hands Workshop](ACTIVE_WORKSHOP.md), a body-action arcade. The bridge
+> description and test results below document the previous `ebf8091` delivery;
+> they are not acceptance results for the replacement. Current normal village
+> rebuilding installs Quick Hands. Preserve these notes when reviewing history.
+
 Build a miniature timber bridge, then send a real physics cart over it. Pick up
 pieces, rotate them and release near the bridge guides to fasten them in place.
 Try a design immediately; a failed crossing keeps the layout so it can be fixed.

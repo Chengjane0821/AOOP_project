@@ -6,6 +6,7 @@ namespace ForgottenVillage {
         public ClockRhythmView view;
         public ClockRhythmAudio sound;
         public Transform playingPoint;
+        public Transform vrPlayingPoint;
         public ClockSession Session { get; private set; }
         public double Elapsed { get; private set; }
         public bool Running { get; private set; }
@@ -13,17 +14,24 @@ namespace ForgottenVillage {
             house.game.house == 4 && !house.game.ui.IsOpen;
         double lastTime;
         int lastBeat = -1;
-        readonly double[] lastStrike = { -1, -1, -1 };
+        readonly double[] lastStrike = new double[ClockChart.LaneCount];
         string previousPrompt;
+        bool previousLock, previousPointer, previousJournal, ownsPlayer;
         public void Begin() {
             if (!house || !house.game || !house.game.playing || house.game.house != 4 || !house.game.state.elder) return;
             Stop();
             Session = new ClockSession(ClockChart.Create()); Elapsed = 0; lastBeat = -1;
-            for (int i = 0; i < 3; i++) lastStrike[i] = -1;
-            previousPrompt = house.game.player.ActivityPrompt;
-            house.game.player.ActivityPrompt = "";
-            house.game.player.ActivityLocksMovement = true;
-            house.game.player.Teleport(playingPoint.position, playingPoint.eulerAngles.y);
+            for (int i = 0; i < lastStrike.Length; i++) lastStrike[i] = -1;
+            var player = house.game.player;
+            previousPrompt = player.ActivityPrompt;
+            previousLock = player.ActivityLocksMovement; previousPointer = player.ActivityUsesPointer;
+            previousJournal = player.ActivityConsumesJournalKey; ownsPlayer = true;
+            player.ActivityPrompt = "";
+            player.ActivityLocksMovement = true; player.ActivityUsesPointer = false;
+            player.ActivityConsumesJournalKey = true;
+            var point = player.IsVR && vrPlayingPoint ? vrPlayingPoint : playingPoint;
+            if (point) player.Teleport(point.position, point.eulerAngles.y);
+            var input = GetComponent<ClockRhythmInput>(); if (input) input.ResetContacts();
             house.game.ui.Close();house.game.ui.notice.text=""; Running = true; lastTime = Time.realtimeSinceStartupAsDouble;
         }
         void Update() {
@@ -39,7 +47,7 @@ namespace ForgottenVillage {
             if (view && tuning) view.Render(Session, Elapsed, tuning, !Running && house && house.game && house.game.state.clockRhythmWon);
         }
         public void Strike(int lane) {
-            if (!AcceptsInput || lane < 0 || lane > 2 || Elapsed - lastStrike[lane] < tuning.strikeCooldown) return;
+            if (!AcceptsInput || lane < 0 || lane >= ClockChart.LaneCount || Elapsed - lastStrike[lane] < tuning.strikeCooldown) return;
             lastStrike[lane] = Elapsed;
             var judgement = Session.Strike(lane, Elapsed - tuning.inputOffsetSeconds);
             sound.Bell(lane, tuning.volume); ClockBell.Haptic(judgement != ClockHit.Miss);
@@ -51,14 +59,14 @@ namespace ForgottenVillage {
             if (passed) { house.Win(); return; }
             var ui = house.game.ui;
             ui.Show("The clocks need another try", "Hits " + Session.Hits + "/" + Session.Notes.Length +
-                " | Best combo " + Session.BestCombo + "\nHit at least 70% (23 notes), with no more than 8 extra strikes.\nWatch a hand reach the gold mark at twelve o'clock.");
+                " | Best combo " + Session.BestCombo + "\nHit at least " + Session.RequiredHits + " notes, with no more than " + Session.MaxStrays + " extra strikes.\nWatch a hand reach the gold mark at twelve o'clock.");
             ui.Button("Retry", Begin); ui.Button("Leave clock", ui.Close);
         }
         public void PauseMenu() {
             if (!Running) return;
             sound.Silence();
             var ui = house.game.ui;
-            ui.Show("Clock repair / Paused", "Musical time is frozen.\nA / S / D or select bells 1 / 2 / 3.\nStrike when the moving hand reaches the gold mark.");
+            ui.Show("Clock repair / Paused", "Musical time is frozen.\nTop row A / S / D; lower row J / K / L.\nVR: touch the bells with your controllers, or select them.\nStrike when the moving hand reaches the gold mark.");
             ui.Button("Resume", () => { lastTime = Time.realtimeSinceStartupAsDouble; ui.Close(); });
             ui.Button("Restart", Begin); ui.Button("Leave clock", () => { Stop(); ui.Close(); });
             ui.Button("Offset -10 ms", () => Calibrate(-.01f));
@@ -70,11 +78,13 @@ namespace ForgottenVillage {
         }
         public void Stop() {
             if (sound) sound.Silence();
-            if (Running && house && house.game && house.game.player) {
-                house.game.player.ActivityLocksMovement = false;
+            if (ownsPlayer && house && house.game && house.game.player) {
+                house.game.player.ActivityLocksMovement = previousLock;
+                house.game.player.ActivityUsesPointer = previousPointer;
+                house.game.player.ActivityConsumesJournalKey = previousJournal;
                 house.game.player.ActivityPrompt = previousPrompt;
             }
-            Running = false;
+            Running = false; ownsPlayer = false;
         }
         void OnDisable() { Stop(); }
     }

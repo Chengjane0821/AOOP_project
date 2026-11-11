@@ -19,7 +19,7 @@ namespace ForgottenVillage.Editor {
         static readonly Color Ivory = new Color(.94f, .89f, .74f);
         static readonly Color Muted = new Color(.62f, .72f, .69f);
 
-        [MenuItem("Forgotten Village/Install Carpenter bridge delivery")]
+
         public static void Build() {
             if (EditorApplication.isPlayingOrWillChangePlaymode || EditorApplication.isCompiling || EditorApplication.isUpdating)
                 throw new InvalidOperationException("Finish compilation and leave Play Mode before building the Carpenter game.");

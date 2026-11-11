@@ -10,13 +10,13 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 namespace ForgottenVillage.Editor {
     public static class BridgeDeliveryChecks {
         static TestRunnerApi api;
-        [MenuItem("Forgotten Village/Run bridge delivery unit tests")]
+
         public static void NUnit(){api=ScriptableObject.CreateInstance<TestRunnerApi>();api.RegisterCallbacks(new Results());api.Execute(new ExecutionSettings(new Filter{testMode=TestMode.EditMode,testNames=new[]{"ForgottenVillage.Tests"}}));}
         sealed class Results:ICallbacks {
             public void RunStarted(ITestAdaptor tests){}public void TestStarted(ITestAdaptor test){}public void TestFinished(ITestResultAdaptor result){}
             public void RunFinished(ITestResultAdaptor result){TestRunnerApi.SaveResultToFile(result,"Verification/bridge-delivery-editmode.xml");File.WriteAllText("Verification/bridge-delivery-editmode.txt",$"Passed: {result.PassCount}; failed: {result.FailCount}; skipped: {result.SkipCount}\n{result.ResultState}\n");}
         }
-        [MenuItem("Forgotten Village/Validate bridge delivery integration")]
+
         public static void Scenes(){
             var report=new StringBuilder();
             try{

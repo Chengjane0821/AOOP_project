@@ -1,0 +1,31 @@
+PASS: Village services initialized
+PASS: Quick Hands binds in the actual Carpenter additive scene
+PASS: Bridge and amplifier removed from the active house
+PASS: Legacy completion and early clue cannot bypass the challenge
+PASS: Invitation can be declined
+PASS: Challenge reserves movement and enables desktop pointer
+PASS: All control centers and inner edges have unobstructed selection rays
+PASS: Three-second count-in blocks scoring
+PASS: Count-in opens a real target cue
+PASS: Nonfinite device poses are rejected before visual or scoring updates
+PASS: Hand resting inside a new target or reacquired tracking cannot auto-hit
+PASS: Invalid hand tracking never scores a contact
+PASS: Leaving and reaching back into a target scores through the tracked-hand path
+PASS: Held contact cannot repeatedly score the same target
+PASS: Pause freezes countdown, cue windows and score
+PASS: Full 60-second idle failure cannot award progress
+PASS: Failure restores camera and activity controls
+PASS: Actual mouse hits, two-button pairs and A/D/S dodges complete a real 60-second run
+PASS: Success unlocks memory without granting the clue early
+PASS: Completed score persists as the personal best
+PASS: Success restores camera position rotation movement and pointer
+PASS: Recovered memory still requires original mouse evidence
+PASS: Existing mouse object quest accepts explicitly simulated evidence
+PASS: Mouse clue is awarded once after current activity memory and evidence
+PASS: Actual JSON disk save retains arcade victory clue and best score
+PASS: Additive exit and re-entry restore earned progress
+PASS: Recenter action resumes using a fresh neutral pose
+PASS: Returning to title cancels the activity and releases controls
+PASS: No runtime errors captured during the complete Quick Hands suite
+PASS: Quick Hands Workshop Play Mode suite completed
+Scope: actual Carpenter additive scene, injected mouse/keyboard, shared tracked-hand/head contact path, real-time count-in and 60-second failure/success, pause, memory, simulated mouse evidence, unique reward, disk save and re-entry. No success flags or physics/time scaling changed. Physical headset/controller feel and live Pi camera remain manual acceptance.

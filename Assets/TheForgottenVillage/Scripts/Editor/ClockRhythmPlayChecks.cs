@@ -19,6 +19,7 @@ namespace ForgottenVillage.Editor {
         static InputSettings.BackgroundBehavior oldBackground;
         static ClockRhythmRun live;
         static bool follow;
+        static readonly bool[] keysSeen = new bool[ClockChart.LaneCount];
         static readonly List<string> errors = new List<string>();
         static ClockRhythmPlayChecks() {
             EditorApplication.update += Tick;
@@ -45,7 +46,7 @@ namespace ForgottenVillage.Editor {
             if(keyboard!=null){InputSystem.RemoveDevice(keyboard);keyboard=null;InputSystem.settings.backgroundBehavior=oldBackground;}
             report.AppendLine(error==null?"PASS: Clock rhythm Play Mode suite completed":"FAIL: "+error);
             foreach(var e in errors)report.AppendLine("Runtime error: "+e);
-            report.AppendLine("Scope: actual additive scene, real-time complete runs, UI callbacks and injected A/S/D input. Camera evidence simulated. Physical VR and audio latency acceptance remain manual.");
+            report.AppendLine("Scope: actual additive scene, six bells, real-time 48-note failure/success runs, UI/XR select callbacks, controller-contact entry checks and injected A/S/D/J/K/L. Camera evidence simulated. Physical VR reach/grab feel and audio latency acceptance remain manual.");
             File.WriteAllText("Verification/clock-rhythm-playmode.txt",report.ToString());
             follow=false;live=null;routine=null;VillageStorage.overridePath=null;EditorApplication.isPlaying=false;
         }
@@ -58,7 +59,7 @@ namespace ForgottenVillage.Editor {
             if(keyboard==null)return; keyboard.MakeCurrent(); Key[] held=Array.Empty<Key>();
             if(follow&&live&&live.AcceptsInput)for(int i=0;i<live.Session.Notes.Length;i++) {
                 var note=live.Session.Notes[i];
-                if(!live.Session.IsResolved(i)&&Math.Abs(note.Time-live.Elapsed)<.065){held=new[]{new[]{Key.A,Key.S,Key.D}[note.Lane]};break;}
+                if(!live.Session.IsResolved(i)&&Math.Abs(note.Time-live.Elapsed)<.065){held=new[]{ClockRhythmInput.LaneKeys[note.Lane]};keysSeen[note.Lane]=true;break;}
             }
             InputState.Change(keyboard,new KeyboardState(held),InputUpdateType.Dynamic);
         }
@@ -96,6 +97,7 @@ namespace ForgottenVillage.Editor {
             g.NewGame();foreach(var x in Transition(g))yield return x;g.state.elder=true;g.ui.Close();g.Enter(4);foreach(var x in Transition(g))yield return x;
             var house=UnityEngine.Object.FindFirstObjectByType<ClockRhythmHouse>();
             Check(house&&house.game==g,"Clockmaker activity bound after additive entry");
+            Check(house.GetComponentsInChildren<ClockBell>().Length==ClockChart.LaneCount&&house.run.vrPlayingPoint,"Six bell bindings and reachable VR play point installed");
             Check(!UnityEngine.Object.FindFirstObjectByType<EngineeringStation>(),"Calculation station removed from Clockmaker scene");
             Check(!g.Award(4),"Fifth clue cannot be claimed before activity");
             var resident=UnityEngine.Object.FindObjectsByType<VillageAction>(FindObjectsSortMode.None).First(a=>a.kind=="dialogue"&&a.index==4);
@@ -107,22 +109,30 @@ namespace ForgottenVillage.Editor {
             CheckBellRays(live);
             var bell=live.GetComponentInChildren<ClockBell>();int strays=live.Session.Strays;
             bell.GetComponent<VillageInteractable>().Activate();Check(live.Session.Strays==strays+1,"Bell selection callback submits exactly one strike");
+            foreach(var x in Wait(.25))yield return x;
+            var input=live.GetComponent<ClockRhythmInput>();input.ResetContacts();
+            Vector3 contact=bell.GetComponent<Collider>().bounds.center,away=contact+Vector3.back*2;
+            input.SampleContact(0,away,true);strays=live.Session.Strays;input.SampleContact(0,contact,true);
+            Check(live.Session.Strays==strays+1,"A controller contact entry submits a physical bell strike");
+            foreach(var x in Wait(.25))yield return x;input.SampleContact(0,contact,true);
+            Check(live.Session.Strays==strays+1,"Holding a controller inside a bell never repeats strikes");
             foreach(var x in Wait(.5))yield return x;g.ui.Pause();double paused=live.Elapsed;
             foreach(var x in Wait(.4))yield return x;
             Check(live.Elapsed==paused,"Pause freezes musical time");
             Button(g,"Resume");foreach(var x in Wait(.2))yield return x;
             Check(live.Elapsed>paused&&live.Elapsed<paused+.35,"Resume does not catch up paused time");
-            g.ui.Pause();Button(g,"Leave clock");Check(!live.Running&&!g.player.ActivityLocksMovement,"Leave releases locomotion lock");
+            g.ui.Pause();Button(g,"Leave clock");Check(!live.Running&&!g.player.ActivityLocksMovement&&!g.player.ActivityConsumesJournalKey,"Leave restores locomotion and journal shortcut");
             live.Begin();foreach(var x in UntilFinished(live))yield return x;
-            Check(!g.state.clockRhythmWon&&live.Session.Misses==32&&g.ui.heading.text.Contains("another try"),"Full unattended run fails without awarding progress");
+            Check(!g.state.clockRhythmWon&&live.Session.Misses==ClockChart.NoteCount&&g.ui.heading.text.Contains("another try"),"Full unattended 48-note run fails without awarding progress");
             Button(g,"Retry");Check(live.Elapsed==0&&live.Session.Resolved==0,"Retry resets chart and score");
             oldBackground=InputSystem.settings.backgroundBehavior;InputSystem.settings.backgroundBehavior=InputSettings.BackgroundBehavior.IgnoreFocus;
-            keyboard=InputSystem.AddDevice<Keyboard>();keyboard.MakeCurrent();live.GetComponent<ClockRhythmInput>().BeforeCapture=Keys;follow=true;
+            keyboard=InputSystem.AddDevice<Keyboard>();keyboard.MakeCurrent();live.GetComponent<ClockRhythmInput>().BeforeCapture=Keys;follow=true;Array.Clear(keysSeen,0,keysSeen.Length);
             foreach(var x in Wait(5))yield return x;
             Check(live.Session.Hits>=2,"Injected desktop A key hits actual chart notes");
             VillageAutomation.Capture(g,"clock-rhythm-play-preview");
             foreach(var x in UntilFinished(live))yield return x;follow=false;
-            Check(g.state.clockRhythmWon&&g.state.puzzleSolved[4]&&live.Session.Hits==32,"Full 32-note run succeeds through real A/S/D input");
+            Check(g.state.clockRhythmWon&&g.state.puzzleSolved[4]&&live.Session.Hits==ClockChart.NoteCount,"Full 48-note run succeeds through real A/S/D/J/K/L input");
+            Check(keysSeen.All(seen=>seen),"All six keyboard lanes are exercised including J without opening the journal");
             Check(Vector3.Distance(position,g.player.View.transform.position)<.001f&&!g.player.ActivityLocksMovement,"Camera remains stationary and movement unlocks on success");
             Check(!g.state.clues[4]&&!g.state.clockMemoryRecovered,"Victory alone does not award memory or clue");
             Button(g,"Remember together");Check(g.state.clockMemoryRecovered&&!g.state.clues[4],"Memory recovery still requires object evidence");

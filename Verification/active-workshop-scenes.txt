@@ -1,0 +1,8 @@
+PASS: EldersHouse; six source roots, no missing scripts or enabled copied cameras/listeners.
+PASS: AlchemistsHouse; six source roots, no missing scripts or enabled copied cameras/listeners.
+PASS: Carpenter has six target anchors, six visual targets, calibrated VR/desktop stations and a visual-only obstacle; bridge retired.
+PASS: CarpentersHouse; six source roots, no missing scripts or enabled copied cameras/listeners.
+PASS: TechniciansHouse; six source roots, no missing scripts or enabled copied cameras/listeners.
+PASS: Clockmaker has six uniquely bound bell lanes and expanded chart integration.
+PASS: ClockmakersHouse; six source roots, no missing scripts or enabled copied cameras/listeners.
+PASS: AbandonedHouse; six source roots, no missing scripts or enabled copied cameras/listeners.

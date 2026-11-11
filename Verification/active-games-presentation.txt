@@ -1,0 +1,11 @@
+PASS: Open target field and all controls have clear center/edge rays
+PASS: Arcade uses separate readable HUD and instruction canvases
+PASS: Each target has a visible cue lifetime bar
+PASS: Presentation updates do not advance a paused challenge
+PASS: Arcade preview releases controls
+PASS: Six open bell targets retain their selection bindings
+PASS: Open six-bell display retains musical pause
+PASS: Clock preview restores movement and journal controls
+PASS: No runtime errors in the revised presentation fixture
+PASS: Open arcade and six-bell presentation fixture completed
+Scope: short live presentation, saved bindings, visible single/pair/dodge cues, target/control selection rays, six clock faces, pause and camera restoration. Full rule/progression suites are recorded separately; hardware remains manual.

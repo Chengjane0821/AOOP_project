@@ -10,7 +10,7 @@ public class EngineeringStation : MonoBehaviour {
  void Start(){ResetValues();}
  void OnEnable(){if(game&&game.hardware){game.hardware.Diagnostic-=HardwareDiagnostic;game.hardware.Diagnostic+=HardwareDiagnostic;}}
  void OnDisable(){if(game&&game.hardware)game.hardware.Diagnostic-=HardwareDiagnostic;}
- public void Open(){if(!game)return;if(topic==2){var bridge=GetComponentInParent<BridgeHouse>();if(bridge)bridge.Offer();return;}if(topic==3){var grid=GetComponentInParent<PowerGridHouse>();if(grid)grid.Offer();return;}if(topic==4){var clock=GetComponentInParent<ClockRhythmHouse>();if(clock)clock.Offer();return;}if(!game.state.elder){game.ui.Toast("Talk to the Village Elder first.");return;}active=true;Render();}
+ public void Open(){if(!game)return;if(topic==2){var workshop=GetComponentInParent<ActiveWorkshopHouse>();if(workshop)workshop.Offer();return;}if(topic==3){var grid=GetComponentInParent<PowerGridHouse>();if(grid)grid.Offer();return;}if(topic==4){var clock=GetComponentInParent<ClockRhythmHouse>();if(clock)clock.Offer();return;}if(!game.state.elder){game.ui.Toast("Talk to the Village Elder first.");return;}active=true;Render();}
  public void ResetValues(){setting=topic==0?10000:topic==1?1000:topic==2?2000:10;connected=true;measuredUnloaded=measuredLoaded=false;referenceFix=false;lastPot=-1;if(topic==1&&game&&game.hardware&&game.hardware.simulation)game.hardware.Receive("POT:0");}
  void Update(){if(!game)return;if(topic==1&&game.house==1&&Mathf.Abs(lastPot-game.hardware.potentiometer)>.002f)ApplyPotentiometer();Draw();}
  public void ApplyPotentiometer(){lastPot=game.hardware.potentiometer;setting=Mathf.Lerp(1000,15000,lastPot);if(active&&game.ui.IsOpen&&game.ui.heading.text.Contains("Engineering"))Render();}

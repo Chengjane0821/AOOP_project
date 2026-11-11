@@ -1,17 +1,17 @@
 PASS: Perfect timing boundary
 PASS: Good and miss timing boundaries
-PASS: 70 percent threshold requires 23 of 32 notes
+PASS: 70 percent threshold requires 34 of 48 notes
 PASS: A strike beyond the good boundary never increments hits
-PASS: Chart has 32 valid single-hand notes
+PASS: Chart has 48 notes across all six bells
 PASS: Chart notes are strictly chronological
-PASS: Full chart can be completed with exact strokes
+PASS: Full six-bell chart can be completed with exact strokes
 PASS: Duplicate strike never awards the same note twice
 PASS: Idle run fails and resolves all missed notes
 PASS: Wrong bell does not consume a correct note
 PASS: Excessive stray strikes cannot pass by key spamming
 PASS: Unfinished legacy timing progress does not invent a rhythm victory
 PASS: Earned legacy clock clue survives migration
-PASS: Schema five JSON round trip retains completion
+PASS: Current schema JSON round trip retains completion
 PASS: Memory is required before clock clue claim
 PASS: Object verification remains mandatory
 PASS: deterministic rhythm and save checks completed.

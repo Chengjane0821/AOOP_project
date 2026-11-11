@@ -3,7 +3,7 @@ using UnityEngine.XR;
 namespace ForgottenVillage {
     public sealed class ClockBell : MonoBehaviour {
         public ClockRhythmRun run;
-        [Range(0, 2)] public int lane;
+        [Range(0, ClockChart.LaneCount - 1)] public int lane;
         public void Strike() { if (run) run.Strike(lane); }
         public static void Haptic(bool success) {
             foreach (var node in new[] { XRNode.LeftHand, XRNode.RightHand }) {

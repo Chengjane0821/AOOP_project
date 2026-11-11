@@ -17,7 +17,7 @@ namespace ForgottenVillage.Editor {
         static Keyboard keyboard;static Mouse mouse;static Key[] held=Array.Empty<Key>();static Vector2 pointer;static bool down;
         static InputSettings.BackgroundBehavior oldBackground;static BridgeRun live;
         static BridgeDeliveryPlayChecks(){EditorApplication.update+=Tick;Application.logMessageReceived+=(m,s,t)=>{if(routine!=null&&(t==LogType.Error||t==LogType.Exception))errors.Add(m);};}
-        [MenuItem("Forgotten Village/Test Carpenter bridge delivery")]
+
         public static void Request(){if(EditorApplication.isPlayingOrWillChangePlaymode)throw new Exception("Exit current Play Mode first.");EditorSceneManager.OpenScene("Assets/Scenes/rpgpp_lt_scene_1.0.unity");var type=typeof(EditorWindow).Assembly.GetType("UnityEditor.GameView");if(type!=null)EditorWindow.GetWindow(type).Show();SessionState.SetBool("BRIDGE_TEST_PENDING",true);EditorApplication.isPlaying=true;}
         static void Tick(){
             if(!EditorApplication.isPlaying||EditorApplication.isCompiling)return;
