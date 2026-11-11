@@ -41,7 +41,7 @@ namespace ForgottenVillage.Editor {
             try{if(!routine.MoveNext())Finish(null);}catch(Exception e){Finish(e);}
         }
         static void Finish(Exception error) {
-            InputSystem.onBeforeUpdate-=Keys;
+            if(live)live.GetComponent<ClockRhythmInput>().BeforeCapture=null;
             if(keyboard!=null){InputSystem.RemoveDevice(keyboard);keyboard=null;InputSystem.settings.backgroundBehavior=oldBackground;}
             report.AppendLine(error==null?"PASS: Clock rhythm Play Mode suite completed":"FAIL: "+error);
             foreach(var e in errors)report.AppendLine("Runtime error: "+e);
@@ -102,7 +102,7 @@ namespace ForgottenVillage.Editor {
             Check(!g.state.clockRhythmWon&&live.Session.Misses==32&&g.ui.heading.text.Contains("another try"),"Full unattended run fails without awarding progress");
             Button(g,"Retry");Check(live.Elapsed==0&&live.Session.Resolved==0,"Retry resets chart and score");
             oldBackground=InputSystem.settings.backgroundBehavior;InputSystem.settings.backgroundBehavior=InputSettings.BackgroundBehavior.IgnoreFocus;
-            keyboard=InputSystem.AddDevice<Keyboard>();keyboard.MakeCurrent();InputSystem.onBeforeUpdate+=Keys;follow=true;
+            keyboard=InputSystem.AddDevice<Keyboard>();keyboard.MakeCurrent();live.GetComponent<ClockRhythmInput>().BeforeCapture=Keys;follow=true;
             foreach(var x in Wait(5))yield return x;
             Check(live.Session.Hits>=2,"Injected desktop A key hits actual chart notes");
             VillageAutomation.Capture(g,"clock-rhythm-play-preview");

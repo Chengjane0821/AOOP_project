@@ -49,6 +49,8 @@ namespace ForgottenVillage.Editor {
                     UnityEngine.Object.DestroyImmediate(tr.gameObject);
             }
             var owner = house.gameObject.AddComponent<ClockRhythmHouse>();
+            foreach(var root in scene.GetRootGameObjects())foreach(var text in root.GetComponentsInChildren<TMP_Text>(true))
+                if(text.text.Contains("REGISTER SETUP ANALYSIS"))text.text="RESTORE THE RHYTHM\n\nWatch the gold mark\nRing bells 1 / 2 / 3\n\n23 good notes repair the clocks";
             var arena = new GameObject("Rhythm repair workshop"); arena.transform.SetParent(house.transform, false);
             var run = arena.AddComponent<ClockRhythmRun>(); owner.run = run; run.house = owner;
             string path = Root + "ClockRhythmTuning.asset";
@@ -110,7 +112,7 @@ namespace ForgottenVillage.Editor {
         }
         static TextMeshPro Label(Transform parent, string text, Vector3 position, Vector2 size, float fontSize) {
             var go = new GameObject("Rhythm label",typeof(TextMeshPro)); go.transform.SetParent(parent,false);
-            go.transform.localPosition = position; go.transform.localRotation = Quaternion.Euler(0,180,0);
+            go.transform.localPosition = position; go.transform.localRotation = Quaternion.identity;
             var label = go.GetComponent<TextMeshPro>(); label.font = AssetDatabase.LoadAssetAtPath<TMP_FontAsset>("Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset");
             label.text = text; label.fontSize = fontSize; label.alignment = TextAlignmentOptions.Center;
             label.color = new Color(1,.9f,.65f); label.rectTransform.sizeDelta = size; return label;
