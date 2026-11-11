@@ -71,12 +71,12 @@ namespace ForgottenVillage.Editor {
                 for(int i=0;i<9;i++) session.Strike(0,100+i);
                 Check(!session.Passed, "Excessive stray strikes cannot pass by key spamming");
                 var save = new VillageSave { version=4,elder=true }; save.puzzleSolved[4]=true; save.Normalize();
-                Check(save.version==5&&!save.clockRhythmWon&&!save.puzzleSolved[4], "Unfinished legacy timing progress does not invent a rhythm victory");
+                Check(save.version==VillageSave.CurrentVersion&&!save.clockRhythmWon&&!save.puzzleSolved[4], "Unfinished legacy timing progress does not invent a rhythm victory");
                 save = new VillageSave {version=4,elder=true}; save.puzzleSolved[4]=save.clues[4]=true;
                 save.objects[4]=new ObjectEvidence { requestId=Guid.NewGuid().ToString("N"),objectName="clock",snapshot="",capturedUtc=DateTimeOffset.UtcNow.ToString("O"),confidence=.99f,frames=3,simulated=true};
                 save.Normalize(); Check(save.clockRhythmWon&&save.clockMemoryRecovered&&save.CanClaim(4)&&save.clues[4], "Earned legacy clock clue survives migration");
                 var restored=JsonUtility.FromJson<VillageSave>(JsonUtility.ToJson(save)); restored.Normalize();
-                Check(restored.CanClaim(4), "Schema five JSON round trip retains completion");
+                Check(restored.CanClaim(4), "Current schema JSON round trip retains completion");
                 restored.clockMemoryRecovered=false; Check(!restored.CanClaim(4), "Memory is required before clock clue claim");
                 restored.clockMemoryRecovered=true; restored.objects[4]=null; Check(!restored.CanClaim(4), "Object verification remains mandatory");
                 report.AppendLine("PASS: deterministic rhythm and save checks completed.");
