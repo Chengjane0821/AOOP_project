@@ -1,0 +1,25 @@
+PASS: Village services loaded
+PASS: Clockmaker activity bound after additive entry
+PASS: Calculation station removed from Clockmaker scene
+PASS: Fifth clue cannot be claimed before activity
+PASS: Declining invitation leaves progress unchanged
+PASS: Starting repairs locks locomotion
+PASS: Pause freezes musical time
+PASS: Resume does not catch up paused time
+PASS: Leave releases locomotion lock
+PASS: Full unattended run fails without awarding progress
+PASS: Retry resets chart and score
+PASS: Injected desktop A key hits actual chart notes
+PASS: Full 32-note run succeeds through real A/S/D input
+PASS: Camera remains stationary and movement unlocks on success
+PASS: Victory alone does not award memory or clue
+PASS: Memory recovery still requires object evidence
+PASS: Existing camera simulation accepts clock evidence
+PASS: Existing object quest awards fifth clue after rhythm and memory
+PASS: Repeat claim does not duplicate record
+PASS: Disk save restores rhythm memory and clue
+PASS: Re-entry retains progression without restarting activity
+PASS: Returning to title cancels active rhythm run
+PASS: No runtime errors during clock checks
+PASS: Clock rhythm Play Mode suite completed
+Scope: actual additive scene, real-time complete runs, UI callbacks and injected A/S/D input. Camera evidence simulated. Physical VR and audio latency acceptance remain manual.

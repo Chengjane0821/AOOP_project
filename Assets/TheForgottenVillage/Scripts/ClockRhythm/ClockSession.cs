@@ -16,7 +16,7 @@ namespace ForgottenVillage {
         public ClockSession(ClockNote[] notes) { Notes = notes; resolved = new bool[notes.Length]; }
         public bool IsResolved(int index) => resolved[index];
         public ClockHit Strike(int lane, double time) {
-            int best = -1; double distance = ClockJudgement.GoodWindow + .000001;
+            int best = -1; double distance = ClockJudgement.GoodWindow;
             for (int i = 0; i < Notes.Length; i++) {
                 double error = Math.Abs(Notes[i].Time - time);
                 if (!resolved[i] && Notes[i].Lane == lane && error <= distance) { best = i; distance = error; }

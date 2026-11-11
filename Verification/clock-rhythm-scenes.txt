@@ -1,0 +1,6 @@
+PASS: EldersHouse; missing scripts=0; enabled cameras/listeners=0; activity retained
+PASS: AlchemistsHouse; missing scripts=0; enabled cameras/listeners=0; activity retained
+PASS: CarpentersHouse; missing scripts=0; enabled cameras/listeners=0; activity retained
+PASS: TechniciansHouse; missing scripts=0; enabled cameras/listeners=0; activity retained
+PASS: ClockmakersHouse; missing scripts=0; enabled cameras/listeners=0; activity retained
+PASS: AbandonedHouse; missing scripts=0; enabled cameras/listeners=0; activity retained

@@ -49,8 +49,10 @@ namespace ForgottenVillage.Editor {
                     UnityEngine.Object.DestroyImmediate(tr.gameObject);
             }
             var owner = house.gameObject.AddComponent<ClockRhythmHouse>();
-            foreach(var root in scene.GetRootGameObjects())foreach(var text in root.GetComponentsInChildren<TMP_Text>(true))
+            foreach(var root in scene.GetRootGameObjects())foreach(var text in root.GetComponentsInChildren<TMP_Text>(true)) {
+                if(text.text==VillageGame.Houses[4])text.gameObject.SetActive(false); // Avoid overlapping the live score.
                 if(text.text.Contains("REGISTER SETUP ANALYSIS"))text.text="RESTORE THE RHYTHM\n\nWatch the gold mark\nRing bells 1 / 2 / 3\n\n23 good notes repair the clocks";
+            }
             var arena = new GameObject("Rhythm repair workshop"); arena.transform.SetParent(house.transform, false);
             var run = arena.AddComponent<ClockRhythmRun>(); owner.run = run; run.house = owner;
             string path = Root + "ClockRhythmTuning.asset";

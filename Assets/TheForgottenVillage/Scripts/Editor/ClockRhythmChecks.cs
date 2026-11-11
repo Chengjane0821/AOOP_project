@@ -53,6 +53,8 @@ namespace ForgottenVillage.Editor {
                 Check(ClockJudgement.Judge(0) == ClockHit.Perfect && ClockJudgement.Judge(-.09) == ClockHit.Perfect, "Perfect timing boundary");
                 Check(ClockJudgement.Judge(.2) == ClockHit.Good && ClockJudgement.Judge(-.201) == ClockHit.Miss, "Good and miss timing boundaries");
                 Check(ClockJudgement.Passed(23,32) && !ClockJudgement.Passed(22,32) && !ClockJudgement.Passed(0,0), "70 percent threshold requires 23 of 32 notes");
+                var boundary = new ClockSession(new[]{new ClockNote(0,0)});
+                Check(boundary.Strike(0,.2000005)==ClockHit.Miss&&boundary.Hits==0, "A strike beyond the good boundary never increments hits");
                 var notes = ClockChart.Create();
                 Check(notes.Length == 32 && notes.All(n=>n.Lane>=0&&n.Lane<3), "Chart has 32 valid single-hand notes");
                 Check(notes.Zip(notes.Skip(1),(a,b)=>b.Time>a.Time).All(x=>x), "Chart notes are strictly chronological");
