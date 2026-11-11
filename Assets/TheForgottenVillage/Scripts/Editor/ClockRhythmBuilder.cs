@@ -21,6 +21,17 @@ namespace ForgottenVillage.Editor {
             foreach (var idle in house.GetComponentsInChildren<ResidentIdle>(true)) UnityEngine.Object.DestroyImmediate(idle);
             foreach (var pulse in house.GetComponentsInChildren<GentlePulse>(true)) UnityEngine.Object.DestroyImmediate(pulse);
             foreach (var tr in house.GetComponentsInChildren<Transform>(true)) GameObjectUtility.RemoveMonoBehavioursWithMissingScript(tr.gameObject);
+            // Old scene-embedded MonoScripts can survive missing-script cleanup. Recreate
+            // the invisible resident interaction host; the coat/head are independent meshes.
+            foreach (var resident in house.GetComponentsInChildren<VillageAction>(true).Where(a=>a.kind=="dialogue"&&a.index==4).ToArray()) {
+                Vector3 position = resident.transform.position;
+                UnityEngine.Object.DestroyImmediate(resident.gameObject);
+                var host = new GameObject("Resident interaction"); host.transform.SetParent(house.transform,false); host.transform.position=position;
+                host.AddComponent<BoxCollider>().size=new Vector3(.45f,1.6f,.45f);
+                var action=host.AddComponent<VillageAction>(); action.kind="dialogue"; action.index=4;
+                host.AddComponent<XRSimpleInteractable>();var speak=host.AddComponent<VillageInteractable>();speak.prompt="Speak to the Clockmaker";
+                UnityEventTools.AddPersistentListener(speak.action,action.Use);
+            }
             var old = house.GetComponent<ClockRhythmHouse>();
             if (old) UnityEngine.Object.DestroyImmediate(old);
             var previous = house.transform.Find("Rhythm repair workshop");
