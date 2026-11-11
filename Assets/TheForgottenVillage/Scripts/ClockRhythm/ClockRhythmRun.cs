@@ -11,7 +11,7 @@ namespace ForgottenVillage {
         public bool Running { get; private set; }
         public bool AcceptsInput => Running && house && house.game && house.game.playing &&
             house.game.house == 4 && !house.game.ui.IsOpen;
-        double lastDsp;
+        double lastTime;
         int lastBeat = -1;
         readonly double[] lastStrike = { -1, -1, -1 };
         string previousPrompt;
@@ -24,10 +24,10 @@ namespace ForgottenVillage {
             house.game.player.ActivityPrompt = "A / S / D: bells 1 / 2 / 3 | Gold mark: strike | Esc: pause";
             house.game.player.ActivityLocksMovement = true;
             house.game.player.Teleport(playingPoint.position, playingPoint.eulerAngles.y);
-            house.game.ui.Close(); Running = true; lastDsp = AudioSettings.dspTime;
+            house.game.ui.Close(); Running = true; lastTime = Time.realtimeSinceStartupAsDouble;
         }
         void Update() {
-            double now = AudioSettings.dspTime, delta = System.Math.Max(0, now - lastDsp); lastDsp = now;
+            double now = Time.realtimeSinceStartupAsDouble, delta = System.Math.Max(0, now - lastTime); lastTime = now;
             if (Running && (!house.game.playing || house.game.house != 4)) { Stop(); return; }
             if (AcceptsInput) {
                 Elapsed += delta;
@@ -58,7 +58,7 @@ namespace ForgottenVillage {
             sound.Silence();
             var ui = house.game.ui;
             ui.Show("Clock repair / Paused", "Musical time is frozen.\nA / S / D or select bells 1 / 2 / 3.\nStrike when the moving hand reaches the gold mark.");
-            ui.Button("Resume", () => { lastDsp = AudioSettings.dspTime; ui.Close(); });
+            ui.Button("Resume", () => { lastTime = Time.realtimeSinceStartupAsDouble; ui.Close(); });
             ui.Button("Restart", Begin); ui.Button("Leave clock", () => { Stop(); ui.Close(); });
             ui.Button("Offset -10 ms", () => Calibrate(-.01f));
             ui.Button("Offset +10 ms", () => Calibrate(.01f));

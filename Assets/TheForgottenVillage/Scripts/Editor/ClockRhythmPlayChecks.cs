@@ -27,10 +27,13 @@ namespace ForgottenVillage.Editor {
         [MenuItem("Forgotten Village/Test Clockmaker rhythm repair")]
         public static void Request() {
             EditorSceneManager.OpenScene("Assets/Scenes/rpgpp_lt_scene_1.0.unity");
+            var gameView=typeof(EditorWindow).Assembly.GetType("UnityEditor.GameView");
+            if(gameView!=null)EditorWindow.GetWindow(gameView).Show();
             SessionState.SetBool("CLOCK_TEST_PENDING",true); EditorApplication.isPlaying=true;
         }
         static void Tick() {
             if(!EditorApplication.isPlaying||EditorApplication.isCompiling)return;
+            EditorApplication.QueuePlayerLoopUpdate();
             if(SessionState.GetBool("CLOCK_TEST_PENDING",false)&&Time.frameCount>12) {
                 SessionState.SetBool("CLOCK_TEST_PENDING",false); report=new StringBuilder();errors.Clear();routine=Run();
             }
@@ -58,6 +61,22 @@ namespace ForgottenVillage.Editor {
                 if(!live.Session.IsResolved(i)&&Math.Abs(note.Time-live.Elapsed)<.065){held=new[]{new[]{Key.A,Key.S,Key.D}[note.Lane]};break;}
             }
             InputState.Change(keyboard,new KeyboardState(held),InputUpdateType.Dynamic);
+        }
+        public static IEnumerable<object> CompleteClockmaker(VillageGame g) {
+            var house=UnityEngine.Object.FindFirstObjectByType<ClockRhythmHouse>();
+            if(!house)throw new Exception("Missing clock rhythm activity");
+            house.run.Begin(); double deadline=Time.realtimeSinceStartupAsDouble+90;
+            while(house.run.Running) {
+                if(Time.realtimeSinceStartupAsDouble>deadline)throw new Exception("Clock regression timeout");
+                for(int i=0;i<house.run.Session.Notes.Length;i++) {
+                    var note=house.run.Session.Notes[i];
+                    if(!house.run.Session.IsResolved(i)&&Math.Abs(note.Time-house.run.Elapsed)<.07)house.run.Strike(note.Lane);
+                }
+                yield return null;
+            }
+            if(!g.state.clockRhythmWon)throw new Exception("Clock regression did not win");
+            Button(g,"Remember together");g.recognition.simulation=true;g.recognition.Begin(4);g.recognition.SimulateDetection("clock");
+            if(!g.Award(4))throw new Exception("Clock regression failed clue claim");
         }
         static IEnumerator Run() {
             VillageStorage.overridePath=Path.GetFullPath("Verification/clock-rhythm-test-save.json");
