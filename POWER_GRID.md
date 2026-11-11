@@ -20,3 +20,37 @@ not count as a grid victory. Other house gameplay remains unchanged.
 Desktop: A/S select a generator; 1-5 connect a machine (repeat to disconnect);
 Space toggles main power; R resets the selected breaker; B toggles backup.
 Mouse clicks and normal VR ray/near selection operate the same physical panel.
+
+Start from `Assets/Scenes/rpgpp_lt_scene_1.0.unity`, finish the Elder introduction,
+enter the Technician's house, and speak to him or use PLAY. Choose "Restore
+power". A/S selects the cyan A or amber B generator, then 1-5 attaches that
+machine. Selecting the same generator/socket again removes its cable. A machine
+can have one source at a time. All loads are labelled in kW; generator labels
+show load/capacity, and red heat bars warn before the three-second breaker trip.
+
+Round 1 restores three machines using 6/6 kW generators. Round 2 adds a fourth
+machine and starts with breaker A tripped. Round 3 adds a fifth machine and
+requires B's +2 kW backup. Four continuous safe seconds complete each round.
+The 75-second timer runs only during active play. Escape/controller menu offers
+resume, retry current circuit, restart all, or leave. J/I also pauses time.
+The existing simulated/USB button toggles main power during the activity.
+
+After three rounds, choose "Recover diagnostic log", complete the existing
+cell-phone camera quest, and collect Clue #4. Recovery calculates and saves the
+deployed RUN and reference-fixed STOP using the existing controller model.
+No physical latch is commanded until the normal final-house evidence checks.
+Schema 6 preserves already-earned valid technician clues from earlier versions.
+
+Editor commands in the Forgotten Village menu:
+
+- Install Technician power-grid emergency: rebuild only this scene/prefab.
+- Check power-grid rules: run the focused rule/save unit tests.
+- Run power-grid regression unit tests: run all village unit regressions.
+- Validate power-grid integration: inspect all six houses and grid references.
+- Test Technician power-grid emergency: real scene/input/overload/timeout/reward
+  playthrough, with isolated saves in `Verification/power-grid-test-save.json`.
+
+Reports use `Verification/power-grid-*`. Hardware simulation is explicitly marked.
+Physical headset comfort, reach, USB wiring and the live Pi camera remain manual
+acceptance checks. Sources are in `Scripts/PowerGrid`; no additional camera,
+listener, XR rig, third-party art or downloaded audio is needed.
