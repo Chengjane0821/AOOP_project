@@ -7,7 +7,7 @@ namespace ForgottenVillage {
 public static class VillageStorage {
  public static string overridePath; public static string PathName=>overridePath??Path.Combine(Application.persistentDataPath,"forgotten-village-v1.json");
  public static void Save(VillageSave s){ var tmp=PathName+".tmp"; File.WriteAllText(tmp,JsonUtility.ToJson(s,true)); if(File.Exists(PathName))File.Replace(tmp,PathName,PathName+".bak");else File.Move(tmp,PathName); }
- public static VillageSave Load(){foreach(var p in new[]{PathName,PathName+".bak"}){try{if(File.Exists(p)){var s=JsonUtility.FromJson<VillageSave>(File.ReadAllText(p));if(s!=null&&s.version>=1&&s.version<=4){s.Normalize();return s;}}}catch(Exception e){Debug.LogWarning("Save recovery: "+e.Message);}}return new VillageSave();}
+ public static VillageSave Load(){foreach(var p in new[]{PathName,PathName+".bak"}){try{if(File.Exists(p)){var s=JsonUtility.FromJson<VillageSave>(File.ReadAllText(p));if(s!=null&&s.version>=1&&s.version<=5){s.Normalize();return s;}}}catch(Exception e){Debug.LogWarning("Save recovery: "+e.Message);}}return new VillageSave();}
 }
 public class VillageGame : MonoBehaviour {
  public HouseTransitions transitions;public UnityEngine.XR.Interaction.Toolkit.XRInteractionManager interactionManager; public VillageAudio audioFeedback; public VillagePlayer player; public VillageUI ui; public HardwareConsole hardware; public Transform villageSpawn; public Transform[] interiors, entrances; public Transform gate;
