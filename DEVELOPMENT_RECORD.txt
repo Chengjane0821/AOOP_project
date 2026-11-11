@@ -1,3 +1,32 @@
+TECHNICIAN POWER-GRID EMERGENCY - 2026-11-11 (Asia/Taipei)
+Implemented the Technician's three-round power-grid game. Generator A/B selection,
+visible cables, numbered machine demands, load/capacity displays, breaker heat,
+safe resets, main power and final-round backup replace the old diagnostic panel.
+Keyboard, mouse and XR select callbacks use the same controls. Workshop motors
+and lamps respond to power. Pause freezes heat and time. Each circuit needs four
+continuous safe seconds within 75 active seconds; failed rounds can be retried.
+
+Three-round victory unlocks the Technician's memory and recovered controller
+diagnostic log, then the existing cell-phone object verification and Clue #4.
+The deployed RUN and fixed STOP are calculated with the existing controller
+model. Final-house gate authorization and physical evidence requirements remain.
+Save schema 6 preserves valid earned technician clues from earlier versions;
+unfinished diagnostic work does not invent a power-grid victory. Normal village
+rebuilding installs the new activity. Other house scene/prefab assets are unchanged.
+
+Verification: runtime/Editor compilation and 48 unit tests passed. Six saved
+houses passed static checks. Actual Technician Play Mode checks passed keyboard,
+mouse and shared XR callback controls, unobstructed rays, overload recovery,
+pause, full 75-second timeout, retry, three rounds, simulated camera/USB evidence,
+single clue reward, real disk save, additive re-entry and title cancellation.
+Final gameplay/overload captures were visually inspected. No runtime errors
+occurred in the suite. Physical Quest, electronics and live Pi camera acceptance
+remain manual; the full village ending runtime suite was not rerun.
+
+See POWER_GRID.md and Verification/power-grid-* for controls and evidence.
+Delivered as 33 ordered nonempty local commits, grid 01 through grid 33.
+No push requested or performed. Earlier entries below remain historical context.
+
 CLOCKMAKER RHYTHM REPAIR - 2026-11-11 (Asia/Taipei)
 Implemented only the Clockmaker gameplay replacement. Tennis, plane, Carpenter,
 Technician and final-house gameplay are retained. Clockmaker now has three bell

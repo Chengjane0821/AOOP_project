@@ -29,7 +29,8 @@ Runtime source is under `Assets/TheForgottenVillage/Scripts`:
 - `Core/VillageAudio.cs`: generated confirmation, reward and ambient audio.
 - `Player/VillagePlayer.cs`: mutually exclusive XR/desktop control and transitions.
 - `Puzzles/Engineering.cs`: pure circuit and timing calculations.
-- `Puzzles/EngineeringStation.cs`: the three remaining house stations, measurements, diagnostics, traces and validation; legacy divider/filter calculations remain unused by Elder/Alchemist gameplay.
+- `Puzzles/EngineeringStation.cs`: the Carpenter station and legacy measurements, diagnostics, traces and validation; legacy divider/filter calculations remain unused by Elder/Alchemist gameplay.
+- `PowerGrid/`: Technician cable routing, breaker heat, timed rounds, physical controls and recovered memory.
 - `Puzzles/WorkshopSocket.cs`: optional trigger-based component inspection.
 - `Hardware/SerialProtocol.cs`, `Hardware/HardwareConsole.cs`: parsing, threaded serial transport, simulation, bounded message queue and acknowledged gate requests.
 - `UI/VillageUI.cs`: world-space title/menu/dialogue, puzzle controls, journal, inventory, settings and ending.

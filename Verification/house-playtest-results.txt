@@ -1,3 +1,23 @@
+TECHNICIAN POWER-GRID UPDATE - 2026-11-11 (Asia/Taipei)
+PASS: Technician code panel replaced by three physical power-grid emergency rounds.
+PASS: Runtime and Editor compilation; 48 unit regressions, zero failures.
+PASS: All six saved houses retain six source roots and no enabled copied cameras/listeners.
+PASS: Keyboard wiring, actual mouse ray selection and shared VR control callbacks.
+PASS: Every active machine socket, reset and backup control has an unobstructed selection ray.
+PASS: Real overload heat, breaker trip, blocked unsafe reset and successful load redistribution.
+PASS: Pause freezes heat/time; three rounds require continuous safe power and backup capacity.
+PASS: Full real-time 75-second timeout, current-round retry and successful three-round recovery.
+PASS: Recovered memory and original deployed RUN / repaired STOP evidence.
+PASS: Existing simulated cell-phone camera quest awards Clue #4 once; disk save and re-entry retain it.
+PASS: Stationary view, locomotion/pointer restoration, operating machine visuals and title cancellation.
+PASS: Old props cleared from the panel; final preview visually inspected; no runtime errors in suite.
+Details: power-grid-compile.txt, power-grid-editmode.xml, power-grid-scenes.txt,
+power-grid-playmode.txt, power-grid-play-preview.png and power-grid-overload-preview.png.
+Scope: focused Technician runtime checks and unit/static six-house regressions.
+The full village ending runtime suite was updated but not rerun for this change.
+Physical headset, controller reach/feel, USB electronics and live Pi camera remain untested.
+Delivery: 33 nonempty local commits (grid 01 through grid 33); no push performed.
+
 CLOCKMAKER UPDATE - 2026-11-11 (Asia/Taipei)
 PASS: Clockmaker timing calculation replaced by three-bell rhythm repair.
 PASS: Runtime and Editor compile; 29 regression unit tests pass, zero failures.

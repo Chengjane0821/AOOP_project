@@ -54,3 +54,11 @@ Reports use `Verification/power-grid-*`. Hardware simulation is explicitly marke
 Physical headset comfort, reach, USB wiring and the live Pi camera remain manual
 acceptance checks. Sources are in `Scripts/PowerGrid`; no additional camera,
 listener, XR rig, third-party art or downloaded audio is needed.
+
+Verification on 2026-11-11: runtime/Editor compilation passed; 48 unit tests passed;
+all six scene checks and the complete Technician Play Mode suite passed. The
+runtime suite includes a full 75-second failure, retry, three successful rounds,
+keyboard/mouse input, shared XR callbacks, ray obstruction checks, simulated
+camera/USB, clue/save/re-entry checks. Final panel and overload PNGs were inspected.
+The complete village ending suite was updated but not rerun. Device testing
+remains as described above. Work is recorded in 33 nonempty local grid commits.
