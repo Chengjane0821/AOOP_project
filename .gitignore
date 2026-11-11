@@ -122,3 +122,8 @@ InitTestScene*.unity*
 /Verification/plane-dream-test-save.json*
 
 /Verification/plane-input-trace.txt
+
+# Clock rhythm automation scratch files
+/Verification/clock-rhythm.request*
+/Verification/clock-rhythm-test-save.json*
+/Verification/clock-rhythm-progress.txt
