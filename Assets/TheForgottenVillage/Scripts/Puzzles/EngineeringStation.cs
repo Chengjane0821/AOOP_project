@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 namespace ForgottenVillage {
 public class EngineeringStation : MonoBehaviour {
@@ -10,7 +10,7 @@ public class EngineeringStation : MonoBehaviour {
  void Start(){ResetValues();}
  void OnEnable(){if(game&&game.hardware){game.hardware.Diagnostic-=HardwareDiagnostic;game.hardware.Diagnostic+=HardwareDiagnostic;}}
  void OnDisable(){if(game&&game.hardware)game.hardware.Diagnostic-=HardwareDiagnostic;}
- public void Open(){if(!game)return;if(topic==4){var clock=GetComponentInParent<ClockRhythmHouse>();if(clock)clock.Offer();return;}if(!game.state.elder){game.ui.Toast("Talk to the Village Elder first.");return;}active=true;Render();}
+ public void Open(){if(!game)return;if(topic==3){var grid=GetComponentInParent<PowerGridHouse>();if(grid)grid.Offer();return;}if(topic==4){var clock=GetComponentInParent<ClockRhythmHouse>();if(clock)clock.Offer();return;}if(!game.state.elder){game.ui.Toast("Talk to the Village Elder first.");return;}active=true;Render();}
  public void ResetValues(){setting=topic==0?10000:topic==1?1000:topic==2?2000:10;connected=true;measuredUnloaded=measuredLoaded=false;referenceFix=false;lastPot=-1;if(topic==1&&game&&game.hardware&&game.hardware.simulation)game.hardware.Receive("POT:0");}
  void Update(){if(!game)return;if(topic==1&&game.house==1&&Mathf.Abs(lastPot-game.hardware.potentiometer)>.002f)ApplyPotentiometer();Draw();}
  public void ApplyPotentiometer(){lastPot=game.hardware.potentiometer;setting=Mathf.Lerp(1000,15000,lastPot);if(active&&game.ui.IsOpen&&game.ui.heading.text.Contains("Engineering"))Render();}
@@ -21,7 +21,7 @@ public class EngineeringStation : MonoBehaviour {
  public void Diagnostic(){if(topic!=3)return;bool decision=Engineering.ControllerAllowsRun(referenceFix,true);if(referenceFix&&!decision)game.state.fixedTest=true;else if(!referenceFix&&decision)game.state.faultyTest=true;game.Commit();game.ui.Toast(referenceFix?"Reference diagnostic: STOP (expected safe behavior)":"Deployed diagnostic: RUN (unsafe state asserted; incorrect)");Render();}
  void HardwareDiagnostic(){if(game&&topic==3&&game.house==3&&game.playing)Diagnostic();}
  public bool Validate(){
-  if(!game||!game.playing||!game.state.elder||topic<0||topic>=4)return false;
+  if(!game||!game.playing||!game.state.elder||topic<0||topic>=3)return false;
   bool ok=topic==0?game.state.photograph&&measuredLoaded&&measuredUnloaded&&connected&&Engineering.DividerSolved(setting):
    topic==1?Engineering.FilterSolved(setting):topic==2?Engineering.GainSolved(setting):
    topic==3?game.state.faultyTest&&game.state.fixedTest&&referenceFix:
