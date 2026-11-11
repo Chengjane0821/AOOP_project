@@ -42,6 +42,7 @@ public class VillageUI : MonoBehaviour {
  int inventoryPage;public void Inventory(){if(game.state.inventory.Count==0){Message("Inventory","Your satchel is empty. Inspect evidence and collect supplies inside the houses.");return;}inventoryPage%=game.state.inventory.Count;string id=game.state.inventory[inventoryPage];int clue=Array.IndexOf(VillageGame.Clues,id);Show("Satchel ??"+(inventoryPage+1)+" / "+game.state.inventory.Count,"[ FIELD RECORD ]\n"+id+"\n\n"+(clue>=0?VillageGame.Notes[clue]:id=="Scratched photograph"?"Six villagers. A scratched-out face. A familiar researcher's wristband.":"A collected village specimen, retained in your satchel for inspection."));Button("Previous",()=>{inventoryPage=(inventoryPage+game.state.inventory.Count-1)%game.state.inventory.Count;Inventory();});Button("Next",()=>{inventoryPage++;Inventory();});Button("Close",Close);}
  public void Dialogue(int npc){
   if(npc<0||npc>=5)return;
+  if(npc==3&&game.house==3){var grid=FindFirstObjectByType<PowerGridHouse>();if(grid){grid.Offer();return;}}
   if(npc==4&&game.house==4){var clock=FindFirstObjectByType<ClockRhythmHouse>();if(clock){clock.Offer();return;}}
   if(npc==1&&game.house==1){var dream=FindFirstObjectByType<AlchemistDreamHouse>();if(dream){dream.Offer();return;}}
   if(npc==0&&game.house==0){var tennis=FindFirstObjectByType<ElderTennis>();if(tennis){tennis.Offer();return;}}
@@ -59,7 +60,7 @@ public class VillageUI : MonoBehaviour {
    new[]{"That photograph once showed all six of us. Why was one face erased?","Come to my house. Perhaps a game of table tennis will help me remember."},
    new[]{"My dream is an endless sky. Can you guide the airplane to the horizon?","Come to my house and help me end the dream."},
    new[]{"The front end inverted and amplified the signal. I built it from the Technician's controller notes.","Use gm = 2 mS and RL = 10 kilohms. Find a drain resistance for gain near -8."},
-   new[]{"The unsafe sensor was asserted, yet the deployed controller logged RUN. I remember the status lamp turning green.","Run the pass-by-value diagnostic, then preserve the derived override with a const reference. The physical button repeats the deployed test."},
+   new[]{"My workshop lost power that night. The machines may still hold our missing records.","Come to my house. Help me reconnect the generators and restart the workshop."},
    new[]{"All my clocks stopped that night. Their rhythm might help me remember.","Come to my house. Help me ring the bells and repair the clocks."}
   };lines=before[Mathf.Clamp(npc,0,4)];}
   int index=0;Action advance=null;advance=()=>{if(index>=lines.Length){if(npc==0){game.state.elder=true;game.Commit();}Close();return;}Show(npc==0?"Village Elder":VillageGame.Houses[npc].Replace("'s House",""),lines[index++]);Button(index==lines.Length?"Finish conversation":"Next",advance);};advance();
