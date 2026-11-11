@@ -15,7 +15,7 @@ namespace ForgottenVillage {
             line.positionCount=16;
             for(int i=0;i<16;i++) {
                 float t=i/15f;Vector3 p=Vector3.Lerp(from,to,t);
-                p+=Vector3.down*(Mathf.Sin(t*Mathf.PI)*.12f)+Vector3.back*(Mathf.Sin(t*Mathf.PI)*.08f);
+                p+=Vector3.down*(Mathf.Sin(t*Mathf.PI)*.12f)+Vector3.forward*(Mathf.Sin(t*Mathf.PI)*.05f);
                 line.SetPosition(i,p);
             }
         }

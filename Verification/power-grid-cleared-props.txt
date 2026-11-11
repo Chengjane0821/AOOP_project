@@ -1,0 +1,8 @@
+TV_FlatWithStand at (-1.45, 0.87, 1.09)
+Screen at (-1.45, 0.94, 1.04)
+Tennis_Racket_Blue at (-1.74, 0.48, 0.90)
+Tablet_Black room dressing at (0.65, 1.00, 0.73)
+Screen at (0.64, 1.02, 0.72)
+Instrument cable coil at (-1.68, 0.80, 0.64)
+Instrument cable coil at (-1.42, 0.80, 0.64)
+Instrument cable coil at (-1.17, 0.80, 0.64)

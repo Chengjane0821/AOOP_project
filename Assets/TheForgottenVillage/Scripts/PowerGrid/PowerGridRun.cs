@@ -23,7 +23,7 @@ namespace ForgottenVillage {
             Running=true;roundShown=false;lastTime=Time.realtimeSinceStartupAsDouble;
             house.game.player.ActivityLocksMovement=true;house.game.player.ActivityUsesPointer=true;
             house.game.player.ActivityPrompt="A/S: source | 1-5: cable | Space: power | R: reset | B: backup | Esc: pause";
-            house.game.player.Teleport(playingPoint.position,playingPoint.eulerAngles.y);house.game.ui.Close();Render(0);
+            house.game.player.Teleport(playingPoint.position,playingPoint.eulerAngles.y);house.game.ui.Close();house.game.ui.notice.text="";Render(0);
         }
         void Update(){
             double now=Time.realtimeSinceStartupAsDouble,delta=System.Math.Max(0,now-lastTime);lastTime=now;

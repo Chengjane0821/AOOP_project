@@ -50,6 +50,14 @@ namespace ForgottenVillage.Editor {
         static IEnumerable<object> RoundDone(PowerGridRun run){double end=Time.realtimeSinceStartupAsDouble+15;while(run.Running&&!run.Session.RoundComplete){if(Time.realtimeSinceStartupAsDouble>end)throw new Exception("Stable power did not finish round");yield return null;}}
         static void Inject(){keyboard.MakeCurrent();mouse.MakeCurrent();InputState.Change(keyboard,new KeyboardState(held),InputUpdateType.Dynamic);var state=new MouseState{position=pointer};if(clicking)state=state.WithButton(MouseButton.Left);InputState.Change(mouse,state,InputUpdateType.Dynamic);}
         static void Control(PowerGridRun run,GridCommand command,int index=0){run.GetComponentsInChildren<PowerGridControl>(true).First(c=>c.command==command&&c.index==index).GetComponent<VillageInteractable>().Activate();}
+        static void ClearControls(PowerGridRun run){
+            Physics.SyncTransforms();var camera=run.house.game.player.View.transform;
+            foreach(var control in run.GetComponentsInChildren<PowerGridControl>()){
+                var direction=control.transform.position-camera.position;
+                if(!Physics.Raycast(camera.position,direction.normalized,out var hit,5)||hit.collider.GetComponentInParent<PowerGridControl>()!=control)
+                    throw new Exception("Panel control obstructed: "+control.name+" by "+(hit.collider?hit.collider.name:"no hit"));
+            }
+        }
         public static IEnumerable<object> CompleteTechnician(VillageGame g){
             var house=UnityEngine.Object.FindFirstObjectByType<PowerGridHouse>();if(!house)throw new Exception("Missing grid activity");house.run.Begin();
             for(int round=0;round<3;round++){
@@ -71,6 +79,7 @@ namespace ForgottenVillage.Editor {
             Check(UnityEngine.Object.FindObjectsByType<Camera>(FindObjectsSortMode.None).Count(c=>c.enabled)==1,"One active player camera");
             g.ui.Dialogue(3);Button(g,"Maybe later");Check(!g.ui.IsOpen&&!house.run.Running,"Declining invitation makes no progress");g.ui.Dialogue(3);Button(g,"Restore power");live=house.run;
             Check(live.Running&&g.player.ActivityLocksMovement&&g.player.ActivityUsesPointer,"Panel reserves stationary view with usable mouse pointer");var position=g.player.View.transform.position;
+            ClearControls(live);Check(true,"All first-round controls have unobstructed selection rays");
             oldBackground=InputSystem.settings.backgroundBehavior;InputSystem.settings.backgroundBehavior=InputSettings.BackgroundBehavior.IgnoreFocus;
             keyboard=InputSystem.AddDevice<Keyboard>();mouse=InputSystem.AddDevice<Mouse>();live.GetComponent<PowerGridInput>().BeforeCapture=Inject;
             var sourceB=live.GetComponentsInChildren<PowerGridControl>().First(c=>c.command==GridCommand.SelectSource&&c.index==1);
@@ -91,6 +100,7 @@ namespace ForgottenVillage.Editor {
             Control(live,GridCommand.SelectSource,0);Control(live,GridCommand.ConnectMachine,0);Control(live,GridCommand.ConnectMachine,1);Control(live,GridCommand.SelectSource,1);Control(live,GridCommand.ConnectMachine,2);Control(live,GridCommand.ConnectMachine,3);
             Control(live,GridCommand.ResetBreaker,0);g.hardware.SimulateButton();Check(live.Session.Circuit.MainPower&&live.Session.Circuit.Safe,"Shared VR callbacks and USB simulation operate repaired workshop");
             foreach(var x in RoundDone(live))yield return x;Button(g,"Next circuit");Check(live.Session.Round==2,"Final archive circuit starts");
+            ClearControls(live);Check(true,"All five machine sockets and backup controls remain unobstructed");
             double deadline=Time.realtimeSinceStartupAsDouble+90;while(live.Running){if(Time.realtimeSinceStartupAsDouble>deadline)throw new Exception("Timeout check stalled");yield return null;}
             Check(live.Session.Failed&&!g.state.technicianGridWon&&!g.player.ActivityUsesPointer,"Full 75-second timeout fails without progress and releases pointer");
             Button(g,"Retry circuit");Check(live.Session.Round==2&&live.Session.Elapsed==0&&!live.Session.Circuit.BackupOnline,"Retry preserves round and clears connections timer and backup");

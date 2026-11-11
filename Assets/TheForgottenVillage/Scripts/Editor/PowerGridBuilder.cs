@@ -36,11 +36,12 @@ namespace ForgottenVillage.Editor {
             }
             foreach(var root in scene.GetRootGameObjects())foreach(var text in root.GetComponentsInChildren<TMP_Text>(true)){
                 if(text.text==VillageGame.Houses[3])text.gameObject.SetActive(false);
-                if(text.text.Contains("OBJECT SLICING")||text.text.Contains("PASS BY VALUE")||text.text.Contains("PASS-BY-VALUE")||text.text.Contains("CONTROLLER SOFTWARE"))
+                if(text.text.Contains("OBJECT SLICING")||text.text.Contains("PASS BY VALUE")||text.text.Contains("PASS-BY-VALUE")||text.text.Contains("CONTROLLER SOFTWARE")||text.text.Contains("MIC-17 SAFETY CONTROLLER"))
                     text.text="RESTORE THE WORKSHOP\n\nSelect generator A or B\nConnect numbered machines\nKeep loads within capacity";
             }
             var owner=house.gameObject.AddComponent<PowerGridHouse>();
-            var panel=new GameObject("Power-grid emergency workshop");panel.transform.SetParent(house.transform,false);
+            ClearPanelSpace(house);
+            var panel=new GameObject("Power-grid emergency workshop");panel.transform.SetParent(house.transform,false);panel.transform.localPosition=new Vector3(-.3f,0,0);
             var run=panel.AddComponent<PowerGridRun>();owner.run=run;run.house=owner;
             string path=Root+"PowerGridTuning.asset";var tuning=AssetDatabase.LoadAssetAtPath<PowerGridTuning>(path);
             if(!tuning){tuning=ScriptableObject.CreateInstance<PowerGridTuning>();AssetDatabase.CreateAsset(tuning,path);}run.tuning=tuning;
@@ -95,6 +96,21 @@ namespace ForgottenVillage.Editor {
             if(!saved)throw new Exception("Technician prefab could not be saved.");
             EditorSceneManager.MarkSceneDirty(scene);if(!EditorSceneManager.SaveScene(scene))throw new Exception("Technician scene could not be saved.");AssetDatabase.SaveAssets();
             File.WriteAllText("Verification/power-grid-build.txt","PASS: Technician scene/prefab saved with two generators, five cable sockets, load and heat displays, working machines, main/reset/backup controls; obsolete diagnostic station removed. No new camera or XR rig.\n");
+        }
+        static void ClearPanelSpace(HouseSceneRoot house){
+            var area=new Bounds(new Vector3(0,1,.1f),new Vector3(3.6f,1.2f,2.7f));
+            var cleared=new System.Collections.Generic.List<string>();
+            var roots=house.copiedRoots.Concat(house.GetComponentsInChildren<Transform>(true).Where(t=>t.name.StartsWith("Atmosphere & set dressing")).Select(t=>t.gameObject)).Distinct();
+            foreach(var root in roots){
+                if(!root||!root.activeSelf)continue;
+                foreach(var renderer in root.GetComponentsInChildren<Renderer>(true))
+                    if(area.Contains(renderer.bounds.center)&&renderer.bounds.size.magnitude<2.8f){
+                        cleared.Add(renderer.name+" at "+renderer.bounds.center);renderer.gameObject.SetActive(false);
+                    }
+                foreach(var collider in root.GetComponentsInChildren<Collider>(true))
+                    if(area.Contains(collider.bounds.center)&&collider.bounds.size.magnitude<2.8f)collider.enabled=false;
+            }
+            File.WriteAllLines("Verification/power-grid-cleared-props.txt",cleared);
         }
         static GameObject Button(string name,Transform parent,Vector3 position,Vector3 size,Material mat,PowerGridRun run,GridCommand command,int index){
             var go=Box(name,parent,position,size,mat);var control=go.AddComponent<PowerGridControl>();control.run=run;control.command=command;control.index=index;
