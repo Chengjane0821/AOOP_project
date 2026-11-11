@@ -1,3 +1,20 @@
+CLOCKMAKER UPDATE - 2026-11-11 (Asia/Taipei)
+PASS: Clockmaker timing calculation replaced by three-bell rhythm repair.
+PASS: Runtime and Editor compile; 29 regression unit tests pass, zero failures.
+PASS: Deterministic timing boundaries, scoring and save migration checks.
+PASS: All six saved houses checked for missing scripts and active copied cameras/listeners.
+PASS: Full real-time idle failure, retry and 32-note A/S/D success in actual house.
+PASS: Pause/resume, stationary camera, locomotion release and menu cancellation.
+PASS: Recovered memory, simulated clock object verification and fifth clue claim.
+PASS: Duplicate reward prevention, actual disk save and additive exit/re-entry.
+PASS: Corrected score and control-label layout visually inspected.
+Details: clock-rhythm-playmode.txt, clock-rhythm-model.txt, clock-rhythm-editmode.xml,
+clock-rhythm-scenes.txt, clock-rhythm-compile.txt and clock-rhythm-play-preview.png.
+Scope: focused Clockmaker runtime checks plus static six-house checks and existing
+unit regressions. The full village ending suite was updated but not rerun here.
+Physical Quest/controller/audio latency and real Pi camera acceptance remain manual.
+This report does not turn the legacy checks below into current runtime results.
+
 LEGACY PLAYTEST REPORT - preserved at the 2026-11-08 development checkpoint.
 The original results below cover the pre-camera quest workflow. They do NOT
 validate the current puzzle -> object verification -> clue implementation or

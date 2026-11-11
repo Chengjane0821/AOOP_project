@@ -1,3 +1,24 @@
+CLOCKMAKER RHYTHM REPAIR - 2026-11-11 (Asia/Taipei)
+Implemented only the Clockmaker gameplay replacement. Tennis, plane, Carpenter,
+Technician and final-house gameplay are retained. Clockmaker now has three bell
+lanes, animated hands, generated bell/tick audio, keyboard and XR selection,
+pause/restart/leave, latency offset, 32-note scoring and a recovered memory.
+The existing real-world clock verification and fifth clue are still required.
+Schema 5 preserves fully earned clock clues from earlier saves; unfinished timing
+work does not grant a rhythm victory. Rebuilding all houses installs this activity.
+
+Validation: runtime/Editor compilation passed; 29 existing unit regressions passed;
+deterministic rhythm/save checks passed; six-house static checks passed; the actual
+Clockmaker Play Mode suite passed full failure and success runs, injected A/S/D,
+pause, retry, progression, simulated object evidence, disk save and scene re-entry.
+Corrected game preview: Verification/clock-rhythm-play-preview.png.
+Reports and acceptance limits: Verification/house-playtest-results.txt.
+Controls and editor commands: CLOCK_RHYTHM.md.
+Delivery uses 30 ordered, nonempty commits named clock 01/30 through clock 30/30.
+Commits are local; no push was requested or performed.
+
+The earlier checkpoint below is preserved as historical context.
+
 THE FORGOTTEN VILLAGE - DEVELOPMENT CHECKPOINT
 Recorded: 2026-11-08 (Asia/Taipei)
 Branch: main
