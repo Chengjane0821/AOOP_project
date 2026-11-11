@@ -21,10 +21,10 @@ namespace ForgottenVillage {
             Session = new ClockSession(ClockChart.Create()); Elapsed = 0; lastBeat = -1;
             for (int i = 0; i < 3; i++) lastStrike[i] = -1;
             previousPrompt = house.game.player.ActivityPrompt;
-            house.game.player.ActivityPrompt = "A / S / D: bells 1 / 2 / 3 | Gold mark: strike | Esc: pause";
+            house.game.player.ActivityPrompt = "";
             house.game.player.ActivityLocksMovement = true;
             house.game.player.Teleport(playingPoint.position, playingPoint.eulerAngles.y);
-            house.game.ui.Close(); Running = true; lastTime = Time.realtimeSinceStartupAsDouble;
+            house.game.ui.Close();house.game.ui.notice.text=""; Running = true; lastTime = Time.realtimeSinceStartupAsDouble;
         }
         void Update() {
             double now = Time.realtimeSinceStartupAsDouble, delta = System.Math.Max(0, now - lastTime); lastTime = now;
@@ -44,6 +44,7 @@ namespace ForgottenVillage {
             var judgement = Session.Strike(lane, Elapsed - tuning.inputOffsetSeconds);
             sound.Bell(lane, tuning.volume); ClockBell.Haptic(judgement != ClockHit.Miss);
             view.Feedback(judgement == ClockHit.Perfect ? "PERFECT!" : judgement == ClockHit.Good ? "GOOD" : "OFF BEAT");
+            view.Pulse(lane,judgement);
         }
         void Finish() {
             bool passed = Session.Passed; Stop();

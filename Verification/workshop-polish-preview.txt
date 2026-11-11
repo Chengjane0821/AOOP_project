@@ -1,0 +1,30 @@
+PASS: Village services initialized with isolated preview save
+PASS: Clock workshop loaded and bound
+PASS: Clock workshop retains three bell targets
+PASS: Exactly one active player camera
+PASS: Selection collider available for Bell 1
+PASS: Selection collider available for Bell 2
+PASS: Selection collider available for Bell 3
+PASS: Clock bell center and four inset selection rays remain clear
+PASS: Actual timed bell callback hits one note without altering clock or score
+PASS: Power-grid workshop loaded and bound
+PASS: Grid workshop retains twelve controls
+PASS: Exactly one active player camera
+PASS: Selection collider available for Generator A
+PASS: Selection collider available for Generator B
+PASS: Selection collider available for Machine socket 1
+PASS: Selection collider available for Machine socket 2
+PASS: Selection collider available for Machine socket 3
+PASS: Selection collider available for Main power
+PASS: Selection collider available for Reset A
+PASS: Selection collider available for Reset B
+PASS: Selection collider available for Backup
+PASS: Selection collider available for Start grid repairs
+PASS: Active grid center and four inset selection rays remain clear
+PASS: Panel callbacks establish balanced 5/6 and 4/6 power
+PASS: Panel callback creates a real 9/6 overload with rising heat
+PASS: Player view restored after returning to village
+PASS: Preview leaves challenge and clue rewards unearned
+PASS: No runtime errors during quick visual fixture
+PASS: Polished workshop visual preview completed
+Scope: quick art preview fixture using actual additive scenes, one real timed bell interaction, physical panel callbacks, safe power and overload captures, selection rays and camera checks. No gameplay time/score is modified. This does not replace complete playtests or physical VR/device acceptance.

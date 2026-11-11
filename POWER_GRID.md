@@ -26,7 +26,15 @@ enter the Technician's house, and speak to him or use PLAY. Choose "Restore
 power". A/S selects the cyan A or amber B generator, then 1-5 attaches that
 machine. Selecting the same generator/socket again removes its cable. A machine
 can have one source at a time. All loads are labelled in kW; generator labels
-show load/capacity, and red heat bars warn before the three-second breaker trip.
+show load/capacity. Separate LOAD and TEMP gauges distinguish assigned power
+from breaker heat, which warns before the three-second breaker trip.
+
+The metal equipment cabinet has a bright outline around the selected source,
+numbered sockets, reserved covers for later rounds and distinct machine models.
+Moving lights along powered cables show current flow. Controls carry their key
+labels, with a compact operation legend along the panel's lower edge. Short
+action feedback replaces the header's circuit/time/stability status for two
+seconds, then the status returns. These presentation changes retain the rules.
 
 Round 1 restores three machines using 6/6 kW generators. Round 2 adds a fourth
 machine and starts with breaker A tripped. Round 3 adds a fifth machine and
@@ -55,7 +63,7 @@ Physical headset comfort, reach, USB wiring and the live Pi camera remain manual
 acceptance checks. Sources are in `Scripts/PowerGrid`; no additional camera,
 listener, XR rig, third-party art or downloaded audio is needed.
 
-Verification on 2026-11-11: runtime/Editor compilation passed; 48 unit tests passed;
+Original implementation verification on 2026-11-11: runtime/Editor compilation passed; 48 unit tests passed;
 all six scene checks and the complete Technician Play Mode suite passed. The
 runtime suite includes a full 75-second failure, retry, three successful rounds,
 keyboard/mouse input, shared XR callbacks, ray obstruction checks, simulated

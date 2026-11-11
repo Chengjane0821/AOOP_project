@@ -53,9 +53,12 @@ namespace ForgottenVillage.Editor {
         static void ClearControls(PowerGridRun run){
             Physics.SyncTransforms();var camera=run.house.game.player.View.transform;
             foreach(var control in run.GetComponentsInChildren<PowerGridControl>()){
-                var direction=control.transform.position-camera.position;
-                if(!Physics.Raycast(camera.position,direction.normalized,out var hit,5)||hit.collider.GetComponentInParent<PowerGridControl>()!=control)
-                    throw new Exception("Panel control obstructed: "+control.name+" by "+(hit.collider?hit.collider.name:"no hit"));
+                var bounds=control.GetComponent<Collider>().bounds;
+                foreach(var offset in new[]{Vector3.zero,Vector3.left,Vector3.right,Vector3.up,Vector3.down}){
+                    var target=bounds.center+Vector3.Scale(offset,bounds.extents)*.6f;
+                    if(!Physics.Raycast(camera.position,(target-camera.position).normalized,out var hit,5)||hit.collider.GetComponentInParent<PowerGridControl>()!=control)
+                        throw new Exception("Panel control obstructed: "+control.name+" by "+(hit.collider?hit.collider.name:"no hit"));
+                }
             }
         }
         public static IEnumerable<object> CompleteTechnician(VillageGame g){
@@ -88,12 +91,14 @@ namespace ForgottenVillage.Editor {
             foreach(var x in Press(Key.A))yield return x;foreach(var x in Press(Key.Digit1,Key.Digit2,Key.Digit3))yield return x;foreach(var x in Press(Key.Space))yield return x;
             Check(live.Session.Circuit.Load(0)==9&&live.Session.Circuit.MainPower,"Actual A/1/2/3/Space input creates overload");
             foreach(var x in Wait(.6))yield return x;Check(live.Session.Circuit.Heat(0)>0,"Overload heats visible breaker");VillageAutomation.Capture(g,"power-grid-overload-preview");
-            g.ui.Pause();double elapsed=live.Session.Elapsed,heat=live.Session.Circuit.Heat(0);foreach(var x in Wait(.5))yield return x;
-            Check(live.Session.Elapsed==elapsed&&live.Session.Circuit.Heat(0)==heat,"Pause freezes both timer and overload heat");Button(g,"Resume");foreach(var x in Wait(3))yield return x;
+            g.ui.Pause();double elapsed=live.Session.Elapsed,heat=live.Session.Circuit.Heat(0);var pausedRotor=live.view.machines[1].rotor.localRotation;foreach(var x in Wait(.5))yield return x;
+            Check(live.Session.Elapsed==elapsed&&live.Session.Circuit.Heat(0)==heat,"Pause freezes both timer and overload heat");
+            Check(Quaternion.Angle(pausedRotor,live.view.machines[1].rotor.localRotation)<.001f,"Refined machine animation freezes while paused");
+            Button(g,"Resume");foreach(var x in Wait(3))yield return x;
             Check(live.Session.Circuit.Tripped(0)&&!live.Session.Circuit.Powered(0),"Sustained actual overload trips breaker and stops machines");
             foreach(var x in Press(Key.R))yield return x;Check(live.Session.Circuit.Tripped(0),"Reset rejected while generator remains overloaded");
             foreach(var x in Press(Key.S))yield return x;foreach(var x in Press(Key.Digit3))yield return x;foreach(var x in Press(Key.A,Key.R))yield return x;
-            Check(live.Session.Circuit.Safe,"Rerouting cable and resetting repairs circuit");foreach(var x in Wait(1))yield return x;
+            Check(live.Session.Circuit.Safe,"Rerouting cable and resetting repairs circuit");foreach(var x in Wait(2.2))yield return x;
             Check(live.view.machines.Take(3).All(m=>m.Online),"Connected machines visibly run");VillageAutomation.Capture(g,"power-grid-play-preview");
             foreach(var x in RoundDone(live))yield return x;Check(live.Session.RoundComplete&&!g.state.technicianGridWon,"First circuit alone never awards victory");Button(g,"Next circuit");
             Check(live.Session.Round==1&&live.Session.Circuit.Tripped(0),"Second round starts with damaged breaker");

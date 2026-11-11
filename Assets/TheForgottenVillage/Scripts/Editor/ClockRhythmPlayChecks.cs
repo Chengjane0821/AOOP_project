@@ -62,6 +62,18 @@ namespace ForgottenVillage.Editor {
             }
             InputState.Change(keyboard,new KeyboardState(held),InputUpdateType.Dynamic);
         }
+        static void CheckBellRays(ClockRhythmRun run){
+            Physics.SyncTransforms();var camera=run.house.game.player.View.transform;
+            foreach(var bell in run.GetComponentsInChildren<ClockBell>()){
+                var bounds=bell.GetComponent<Collider>().bounds;
+                foreach(var offset in new[]{Vector3.zero,Vector3.left,Vector3.right,Vector3.up,Vector3.down}){
+                    var target=bounds.center+Vector3.Scale(offset,bounds.extents)*.6f;
+                    if(!Physics.Raycast(camera.position,(target-camera.position).normalized,out var hit,4)||hit.collider.GetComponentInParent<ClockBell>()!=bell)
+                        throw new Exception("Clock bell selection obstructed: "+bell.name+" by "+(hit.collider?hit.collider.name:"no hit"));
+                }
+            }
+            Check(true,"All refined bell targets remain unobstructed across center and inner edges");
+        }
         public static IEnumerable<object> CompleteClockmaker(VillageGame g) {
             var house=UnityEngine.Object.FindFirstObjectByType<ClockRhythmHouse>();
             if(!house)throw new Exception("Missing clock rhythm activity");
@@ -92,6 +104,9 @@ namespace ForgottenVillage.Editor {
             resident.GetComponent<VillageInteractable>().Activate();Button(g,"Repair the clocks");live=house.run;
             var position=g.player.View.transform.position;
             Check(live.Running&&g.player.ActivityLocksMovement,"Starting repairs locks locomotion");
+            CheckBellRays(live);
+            var bell=live.GetComponentInChildren<ClockBell>();int strays=live.Session.Strays;
+            bell.GetComponent<VillageInteractable>().Activate();Check(live.Session.Strays==strays+1,"Bell selection callback submits exactly one strike");
             foreach(var x in Wait(.5))yield return x;g.ui.Pause();double paused=live.Elapsed;
             foreach(var x in Wait(.4))yield return x;
             Check(live.Elapsed==paused,"Pause freezes musical time");

@@ -22,7 +22,7 @@ namespace ForgottenVillage {
             if(!Running)previousPrompt=house.game.player.ActivityPrompt;
             Running=true;roundShown=false;lastTime=Time.realtimeSinceStartupAsDouble;
             house.game.player.ActivityLocksMovement=true;house.game.player.ActivityUsesPointer=true;
-            house.game.player.ActivityPrompt="A/S: source | 1-5: cable | Space: power | R: reset | B: backup | Esc: pause";
+            house.game.player.ActivityPrompt="";
             house.game.player.Teleport(playingPoint.position,playingPoint.eulerAngles.y);house.game.ui.Close();house.game.ui.notice.text="";Render(0);
         }
         void Update(){
@@ -35,7 +35,8 @@ namespace ForgottenVillage {
                 else if(Session.Won){Stop();house.Win();}
                 else if(Session.RoundComplete&&!roundShown){roundShown=true;ShowNext();}
             }
-            Render((float)(Running&&!house.game.ui.IsOpen?delta:0));
+            bool animate=house&&house.game&&!house.game.ui.IsOpen&&(Running||house.game.state.technicianGridWon);
+            Render((float)(animate?delta:0));
         }
         void Render(float delta){if(view&&house&&house.game)view.Render(Session,SelectedSource,tuning,Running,house.game.state.technicianGridWon,delta);}
         public void SelectSource(int source){if(!AcceptsInput||source<0||source>1)return;SelectedSource=source;Click("Generator "+(source==0?"A":"B")+" selected");}

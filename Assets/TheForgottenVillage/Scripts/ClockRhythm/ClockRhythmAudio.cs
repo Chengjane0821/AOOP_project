@@ -8,14 +8,16 @@ namespace ForgottenVillage {
         void Awake() {
             source = GetComponent<AudioSource>(); source.playOnAwake = false;
             source.spatialBlend = 0; source.ignoreListenerPause = false;
-            for (int i = 0; i < 3; i++) bells[i] = Tone("Repair bell " + i, 440f * Mathf.Pow(2, i / 3f), .35f);
+            for (int i = 0; i < 3; i++) bells[i] = Tone("Repair bell " + i, 440f * Mathf.Pow(2, i / 3f), .8f);
             tick = Tone("Clock tick", 1100, .035f);
         }
         static AudioClip Tone(string name, float frequency, float duration) {
             int count = Mathf.CeilToInt(44100 * duration); var samples = new float[count];
             for (int i = 0; i < count; i++) {
                 float t = i / 44100f;
-                samples[i] = Mathf.Sin(2 * Mathf.PI * frequency * t) * Mathf.Exp(-t * 14) * Mathf.Min(1, i / 80f);
+                float fundamental=Mathf.Sin(2*Mathf.PI*frequency*t)*Mathf.Exp(-t*5.5f);
+                float overtones=.35f*Mathf.Sin(2*Mathf.PI*frequency*2.71f*t)*Mathf.Exp(-t*11)+.12f*Mathf.Sin(2*Mathf.PI*frequency*4.03f*t)*Mathf.Exp(-t*18);
+                samples[i]=(duration<.1f?Mathf.Sin(2*Mathf.PI*frequency*t)*Mathf.Exp(-t*55):(fundamental+overtones)*.65f)*Mathf.Min(1,i/80f);
             }
             var clip = AudioClip.Create(name, count, 1, 44100, false); clip.SetData(samples, 0); return clip;
         }

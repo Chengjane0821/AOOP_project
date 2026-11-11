@@ -1,1 +1,1 @@
-PASS: Technician scene/prefab saved with two generators, five cable sockets, load and heat displays, working machines, main/reset/backup controls; obsolete diagnostic station removed. No new camera or XR rig.
+PASS: Technician scene/prefab saved with navy enamel/steel enclosure, inset generator cards, selection rims, separate load/heat gauges, five fixed machine bays, powered current pulses and industrial controls. Twelve original control bindings retained; decoration has no colliders. No new camera or XR rig.

@@ -133,3 +133,6 @@ InitTestScene*.unity*
 /Verification/power-grid.status
 /Verification/power-grid-progress.txt
 /Verification/power-grid-test-save.json*
+
+# Polished workshop visual fixture save
+/Verification/workshop-polish-test-save.json*

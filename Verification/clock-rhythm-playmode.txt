@@ -4,6 +4,8 @@ PASS: Calculation station removed from Clockmaker scene
 PASS: Fifth clue cannot be claimed before activity
 PASS: Declining invitation leaves progress unchanged
 PASS: Starting repairs locks locomotion
+PASS: All refined bell targets remain unobstructed across center and inner edges
+PASS: Bell selection callback submits exactly one strike
 PASS: Pause freezes musical time
 PASS: Resume does not catch up paused time
 PASS: Leave releases locomotion lock

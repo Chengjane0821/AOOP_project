@@ -11,6 +11,7 @@ PASS: Mouse ray selects actual generator B control
 PASS: Actual A/1/2/3/Space input creates overload
 PASS: Overload heats visible breaker
 PASS: Pause freezes both timer and overload heat
+PASS: Refined machine animation freezes while paused
 PASS: Sustained actual overload trips breaker and stops machines
 PASS: Reset rejected while generator remains overloaded
 PASS: Rerouting cable and resetting repairs circuit

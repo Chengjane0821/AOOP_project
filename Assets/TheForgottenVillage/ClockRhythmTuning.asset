@@ -16,6 +16,6 @@ MonoBehaviour:
   volume: 0.18
   inputOffsetSeconds: 0
   idle: {r: 0.15, g: 0.3, b: 0.35, a: 1}
-  incoming: {r: 0.2, g: 0.85, b: 1, a: 1}
+  incoming: {r: 0.18, g: 0.8, b: 0.68, a: 1}
   perfect: {r: 1, g: 0.8, b: 0.25, a: 1}
   missed: {r: 1, g: 0.3, b: 0.25, a: 1}

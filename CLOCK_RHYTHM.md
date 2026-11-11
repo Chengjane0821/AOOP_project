@@ -1,6 +1,6 @@
 # Clockmaker: rhythm repair
 
-Only the Clockmaker changes. Repair three clock mechanisms by striking the lit
+Repair three clock mechanisms by striking the lit
 bell as its moving hand reaches the gold mark. Three lanes use A / S / D on
 desktop and selectable bells in VR. No camera movement is required.
 
@@ -18,18 +18,24 @@ not count as a rhythm victory. Replay cannot duplicate rewards.
 Play from the village's normal starting scene, finish the Elder introduction,
 enter the Clockmaker's house, and speak to him or use the PLAY control. Choose
 "Repair the clocks". Each numbered clock has a hand and a gold twelve-o'clock
-mark. The face turns blue as a note approaches and gold inside the hit window.
+mark. The ivory face stays readable while the outer ring and countdown lights
+indicate approaching notes and the hit window.
 Press A/S/D for bells 1/2/3; in VR use the normal controller selection on the
-numbered bell blocks. The camera stays still and locomotion is reserved during
+numbered brass bells. The camera stays still and locomotion is reserved during
 the challenge. Escape or the left controller menu opens pause, restart, leave
 and input-offset calibration. J/I panels also freeze musical time.
 
 At 90 BPM the 32-note run lasts about 44 seconds, plus menu time. Perfect is
 within 90 ms; Good within 200 ms. At least 23 hits and at most 8 extra strikes
-are required. A missed note or off-beat strike breaks the combo. Bell colours,
+are required. A missed note or off-beat strike breaks the combo. Lit rings,
 numbers, hand positions, text feedback and distinct sounds communicate timing.
 Positive input offset permits later strikes (for audio/device latency); this
 offset is limited to +/-250 ms. It is an advanced pause-menu option.
+
+The wood-and-brass clock cabinet now includes detailed dial marks, separate
+repair/combo/timing cards and a progress strip. Brass bells briefly depress when
+struck. Numbered key labels and the cabinet's pause legend replace the long
+floating control hint; the scoring and timing rules are unchanged.
 
 After success, choose "Remember together", verify the requested clock with the
 existing camera workflow, and collect the fifth clue. No camera or hardware
