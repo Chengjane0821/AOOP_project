@@ -1,0 +1,1 @@
+PASS: Technician scene/prefab saved with two generators, five cable sockets, load and heat displays, working machines, main/reset/backup controls; obsolete diagnostic station removed. No new camera or XR rig.
