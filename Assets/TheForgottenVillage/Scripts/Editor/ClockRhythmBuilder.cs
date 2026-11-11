@@ -16,6 +16,11 @@ namespace ForgottenVillage.Editor {
             var scene = EditorSceneManager.OpenScene(Root + "Scenes/ClockmakersHouse.unity");
             var house = UnityEngine.Object.FindFirstObjectByType<HouseSceneRoot>();
             if (!house || house.houseIndex != 4) throw new Exception("Expected Clockmaker scene.");
+            // Legacy polish types share a source file and cannot serialize as prefab scripts.
+            // Remove these optional animations only from this house; keep its resident meshes.
+            foreach (var idle in house.GetComponentsInChildren<ResidentIdle>(true)) UnityEngine.Object.DestroyImmediate(idle);
+            foreach (var pulse in house.GetComponentsInChildren<GentlePulse>(true)) UnityEngine.Object.DestroyImmediate(pulse);
+            foreach (var tr in house.GetComponentsInChildren<Transform>(true)) GameObjectUtility.RemoveMonoBehavioursWithMissingScript(tr.gameObject);
             var old = house.GetComponent<ClockRhythmHouse>();
             if (old) UnityEngine.Object.DestroyImmediate(old);
             var previous = house.transform.Find("Rhythm repair workshop");
@@ -77,7 +82,10 @@ namespace ForgottenVillage.Editor {
             Save(house); EditorSceneManager.MarkSceneDirty(scene); EditorSceneManager.SaveScene(scene); AssetDatabase.SaveAssets();
             File.WriteAllText("Verification/clock-rhythm-build.txt", "PASS: Clockmaker scene, content prefab and tuning saved. Three numbered bells, stationary play point, rhythm HUD. Old timing station removed. Other houses untouched.\n");
         }
-        public static void Save(HouseSceneRoot house) { PrefabUtility.SaveAsPrefabAsset(house.gameObject, Root + "Prefabs/ClockmakersHouseContent.prefab"); }
+        public static void Save(HouseSceneRoot house) {
+            PrefabUtility.SaveAsPrefabAsset(house.gameObject, Root + "Prefabs/ClockmakersHouseContent.prefab", out bool saved);
+            if (!saved) throw new Exception("Clockmaker prefab save failed; scene installation incomplete.");
+        }
         static Material Material(string name, Color color) {
             string path = Root + "Materials/" + name + ".mat";
             var result = AssetDatabase.LoadAssetAtPath<Material>(path);
