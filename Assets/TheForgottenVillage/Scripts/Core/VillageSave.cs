@@ -5,7 +5,9 @@ using System.Linq;
 namespace ForgottenVillage {
     [Serializable]
     public class VillageSave {
-        public int version = 5;
+        public const int CurrentVersion = 6;
+        public int version = CurrentVersion;
+        public bool technicianGridWon, technicianMemoryRecovered;
         public bool clockRhythmWon, clockMemoryRecovered;
         public bool elderTennisWon, elderMemoryRecovered;
         public bool alchemistDreamWon, alchemistMemoryRecovered, alchemistEvidenceInspected;
@@ -54,6 +56,11 @@ namespace ForgottenVillage {
                 clockRhythmWon = clockMemoryRecovered = clues[4] && puzzleSolved[4] && ObjectVerified(4);
                 puzzleSolved[4] = clockRhythmWon;
                 version = 5;
+            }
+            if (version < 6) {
+                technicianGridWon = technicianMemoryRecovered = clues[3] && puzzleSolved[3] && ObjectVerified(3) && faultyTest && fixedTest;
+                puzzleSolved[3] = technicianGridWon;
+                version = 6;
             }
             for (int i = 0; i < 5; i++) if (!CanClaim(i)) clues[i] = false;
             if (!Authorized) ended = false;
