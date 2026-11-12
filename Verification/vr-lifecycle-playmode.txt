@@ -1,0 +1,164 @@
+PASS: Regression fixture contains intentionally disabled legacy Main Camera
+PASS: Original XR rig and headset camera references retained
+PASS: Player and selected view active
+PASS: Exactly one active camera
+PASS: Exactly one active listener
+PASS: No duplicate active XR origins
+PASS: Time scale restored
+PASS: Plane dream entered and movement reserved
+PASS: Plane dream returns to room
+PASS: Direct exit while dream paused restores control
+PASS: Returning never activates legacy camera/inactive outdoors
+PASS: Original XR rig and headset camera references retained
+PASS: Player and selected view active
+PASS: Exactly one active camera
+PASS: Exactly one active listener
+PASS: No duplicate active XR origins
+PASS: Time scale restored
+PASS: Original XR rig and headset camera references retained
+PASS: Player and selected view active
+PASS: Exactly one active camera
+PASS: Exactly one active listener
+PASS: No duplicate active XR origins
+PASS: Time scale restored
+PASS: Elder entry initializes ball and paddle references
+PASS: Table tennis starts
+PASS: Leave table restores house movement
+PASS: Original XR rig and headset camera references retained
+PASS: Player and selected view active
+PASS: Exactly one active camera
+PASS: Exactly one active listener
+PASS: No duplicate active XR origins
+PASS: Time scale restored
+PASS: Exit during match restores village input
+PASS: Original XR rig and headset camera references retained
+PASS: Player and selected view active
+PASS: Exactly one active camera
+PASS: Exactly one active listener
+PASS: No duplicate active XR origins
+PASS: Time scale restored
+PASS: Only village remains loaded after each cycle
+PASS: Cancelled activities do not award quest clues
+PASS: Original XR rig and headset camera references retained
+PASS: Player and selected view active
+PASS: Exactly one active camera
+PASS: Exactly one active listener
+PASS: No duplicate active XR origins
+PASS: Time scale restored
+PASS: Plane dream entered and movement reserved
+PASS: Plane dream returns to room
+PASS: Direct exit while dream paused restores control
+PASS: Returning never activates legacy camera/inactive outdoors
+PASS: Original XR rig and headset camera references retained
+PASS: Player and selected view active
+PASS: Exactly one active camera
+PASS: Exactly one active listener
+PASS: No duplicate active XR origins
+PASS: Time scale restored
+PASS: Original XR rig and headset camera references retained
+PASS: Player and selected view active
+PASS: Exactly one active camera
+PASS: Exactly one active listener
+PASS: No duplicate active XR origins
+PASS: Time scale restored
+PASS: Elder entry initializes ball and paddle references
+PASS: Table tennis starts
+PASS: Leave table restores house movement
+PASS: Original XR rig and headset camera references retained
+PASS: Player and selected view active
+PASS: Exactly one active camera
+PASS: Exactly one active listener
+PASS: No duplicate active XR origins
+PASS: Time scale restored
+PASS: Exit during match restores village input
+PASS: Original XR rig and headset camera references retained
+PASS: Player and selected view active
+PASS: Exactly one active camera
+PASS: Exactly one active listener
+PASS: No duplicate active XR origins
+PASS: Time scale restored
+PASS: Only village remains loaded after each cycle
+PASS: Cancelled activities do not award quest clues
+PASS: Original XR rig and headset camera references retained
+PASS: Player and selected view active
+PASS: Exactly one active camera
+PASS: Exactly one active listener
+PASS: No duplicate active XR origins
+PASS: Time scale restored
+PASS: Plane dream entered and movement reserved
+PASS: Plane dream returns to room
+PASS: Direct exit while dream paused restores control
+PASS: Returning never activates legacy camera/inactive outdoors
+PASS: Original XR rig and headset camera references retained
+PASS: Player and selected view active
+PASS: Exactly one active camera
+PASS: Exactly one active listener
+PASS: No duplicate active XR origins
+PASS: Time scale restored
+PASS: Original XR rig and headset camera references retained
+PASS: Player and selected view active
+PASS: Exactly one active camera
+PASS: Exactly one active listener
+PASS: No duplicate active XR origins
+PASS: Time scale restored
+PASS: Elder entry initializes ball and paddle references
+PASS: Table tennis starts
+PASS: Leave table restores house movement
+PASS: Original XR rig and headset camera references retained
+PASS: Player and selected view active
+PASS: Exactly one active camera
+PASS: Exactly one active listener
+PASS: No duplicate active XR origins
+PASS: Time scale restored
+PASS: Exit during match restores village input
+PASS: Original XR rig and headset camera references retained
+PASS: Player and selected view active
+PASS: Exactly one active camera
+PASS: Exactly one active listener
+PASS: No duplicate active XR origins
+PASS: Time scale restored
+PASS: Only village remains loaded after each cycle
+PASS: Cancelled activities do not award quest clues
+PASS: Original XR rig and headset camera references retained
+PASS: Player and selected view active
+PASS: Exactly one active camera
+PASS: Exactly one active listener
+PASS: No duplicate active XR origins
+PASS: Time scale restored
+PASS: Plane dream entered and movement reserved
+PASS: Plane dream returns to room
+PASS: Direct exit while dream paused restores control
+PASS: Returning never activates legacy camera/inactive outdoors
+PASS: Original XR rig and headset camera references retained
+PASS: Player and selected view active
+PASS: Exactly one active camera
+PASS: Exactly one active listener
+PASS: No duplicate active XR origins
+PASS: Time scale restored
+PASS: Original XR rig and headset camera references retained
+PASS: Player and selected view active
+PASS: Exactly one active camera
+PASS: Exactly one active listener
+PASS: No duplicate active XR origins
+PASS: Time scale restored
+PASS: Elder entry initializes ball and paddle references
+PASS: Table tennis starts
+PASS: Leave table restores house movement
+PASS: Original XR rig and headset camera references retained
+PASS: Player and selected view active
+PASS: Exactly one active camera
+PASS: Exactly one active listener
+PASS: No duplicate active XR origins
+PASS: Time scale restored
+PASS: Exit during match restores village input
+PASS: Original XR rig and headset camera references retained
+PASS: Player and selected view active
+PASS: Exactly one active camera
+PASS: Exactly one active listener
+PASS: No duplicate active XR origins
+PASS: Time scale restored
+PASS: Only village remains loaded after each cycle
+PASS: Cancelled activities do not award quest clues
+PASS: No runtime errors or repeated-load failures
+PASS: focused lifecycle suite
+Unity Editor Play Mode; desktop plus simulated XR activation. No physical headset/controller tracking assertion.

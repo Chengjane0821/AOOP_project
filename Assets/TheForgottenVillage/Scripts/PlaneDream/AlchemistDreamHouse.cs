@@ -23,6 +23,13 @@ public class AlchemistDreamHouse : MonoBehaviour {
  public void Recovery(){if(!game.state.alchemistDreamWon)return;game.ui.Show("Alchemist — I remember now","The dream... it's finally over.\nThat airplane wasn't just a dream. It was connected to an experiment about memories.\nI found this strange record after the incident.\nPlease take a look. Maybe it will help you discover the truth.");game.ui.Button("Show me the record",()=>{game.state.alchemistMemoryRecovered=true;game.Commit();RefreshEvidence();game.ui.Close();game.ui.Toast("Inspect the recovered dream record to collect Clue #2.");});}
  public void InspectEvidence(){if(!game||game.house!=1||!game.state.alchemistDreamWon||!game.state.alchemistMemoryRecovered){if(game)game.ui.Toast("End the dream and hear the Alchemist's memory first.");return;}game.state.alchemistEvidenceInspected=true;if(game.Award(1))game.ui.Message("Recovered dream record",VillageGame.Notes[1]);}
  public void RefreshEvidence(){if(evidence&&game)evidence.SetActive(game.state.alchemistDreamWon&&game.state.alchemistMemoryRecovered);}
- void OnDisable(){if(game&&game.player&&InDream){game.player.ActivityLocksMovement=false;game.player.ActivityPrompt=oldPrompt;}InDream=false;}
+ public void LeaveHouse(){
+  StopAllCoroutines();transitioning=false;
+  if(!InDream)return;
+  if(dream)dream.Stop();
+  if(game&&game.player){game.player.ActivityLocksMovement=false;game.player.ActivityPrompt=oldPrompt;}
+  InDream=false;hidden.Clear();
+ }
+ void OnDisable(){LeaveHouse();}
 }
 }

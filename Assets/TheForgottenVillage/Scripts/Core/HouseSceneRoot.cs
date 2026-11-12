@@ -6,6 +6,10 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 namespace ForgottenVillage {
 public class HouseSceneRoot : MonoBehaviour {
  public int houseIndex;public Transform arrival;public Transform safetyGate;public GameObject[] copiedRoots;
+ public void PrepareForUnload(){
+  var alchemist=GetComponent<AlchemistDreamHouse>();if(alchemist)alchemist.LeaveHouse();
+  foreach(var tennis in GetComponentsInChildren<ElderTennis>(true))if(tennis.Running)tennis.StopMatch();
+ }
  void Awake(){ClearInactiveStartingSelections(gameObject.scene.GetRootGameObjects());}
  // XRI starting selections bypass target validation. Hidden props have not run
  // Awake yet, so their cached Rigidbody is null even if the component exists.
