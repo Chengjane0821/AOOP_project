@@ -32,24 +32,9 @@ PASS: Actual JSON save and scene unload preserve Elder completion
 PASS: Elder clue alone does not unlock Abandoned House
 PASS: Reentering Elder house restores unlocked evidence
 PASS: Alchemist dream completes through full survival and evidence
-PASS: One active camera in house 2
-PASS: One active audio listener in house 2
-PASS: Original engineering station retained in house 2
-PASS: Other house puzzle still solves 2
-PASS: Other house still requires camera evidence 2
-PASS: Other house simulated object quest awards original clue 2
-PASS: One active camera in house 3
-PASS: One active audio listener in house 3
-PASS: Original engineering station retained in house 3
-PASS: Other house puzzle still solves 3
-PASS: Other house still requires camera evidence 3
-PASS: Other house simulated object quest awards original clue 3
-PASS: One active camera in house 4
-PASS: One active audio listener in house 4
-PASS: Original engineering station retained in house 4
-PASS: Other house puzzle still solves 4
-PASS: Other house still requires camera evidence 4
-PASS: Other house simulated object quest awards original clue 4
+PASS: Quick Hands challenge and object evidence recover third clue
+PASS: Grid emergency and object evidence recover fourth clue
+PASS: Clock rhythm and object evidence recover fifth clue
 PASS: All five clues unlock Abandoned House
 PASS: Original final ending remains reachable
 PASS: Arduino simulation still receives final gate command
