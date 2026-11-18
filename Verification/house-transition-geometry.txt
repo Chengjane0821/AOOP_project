@@ -1,0 +1,144 @@
+rpgpp_lt_scene_1.0 / Elder's House entrance index=0 position=(60.391, 23.139, 26.486)
+  reference-eye=(62.370, 24.370, 28.750)
+  reference-ray=Elder's House entrance@3.152
+  approach=0 first=Elder's House entrance hits=Elder's House entrance@1.882
+  approach=45 first=Elder's House entrance hits=Elder's House entrance@1.910, rpgpp_lt_building_01@2.410
+  approach=90 first=Elder's House entrance hits=Elder's House entrance@1.861
+  approach=135 first=rpgpp_lt_building_01 hits=rpgpp_lt_building_01@0.990, Elder's House entrance@1.448
+  approach=180 first=Elder's House entrance hits=Elder's House entrance@1.882
+  approach=225 first=Elder's House entrance hits=Elder's House entrance@1.910
+  approach=270 first=rpgpp_lt_building_01 hits=rpgpp_lt_building_01@1.356, Elder's House entrance@1.861
+  approach=315 first=Elder's House entrance hits=Elder's House entrance@1.448
+  nearby=rpgpp_lt_building_01 bounds=Center: (55.95, 26.15, 21.87), Extents: (7.57, 5.09, 7.79)
+rpgpp_lt_scene_1.0 / Alchemist's House entrance index=1 position=(80.470, 23.435, 25.600)
+  reference-eye=(80.549, 24.045, 26.619)
+  reference-ray=Alchemist's House entrance@1.073
+  approach=0 first=Alchemist's House entrance hits=Alchemist's House entrance@1.903, rpgpp_lt_building_02@2.234
+  approach=45 first=Alchemist's House entrance hits=Alchemist's House entrance@1.766, rpgpp_lt_building_02@2.492
+  approach=90 first=Alchemist's House entrance hits=Alchemist's House entrance@1.763
+  approach=135 first=Alchemist's House entrance hits=Alchemist's House entrance@1.902
+  approach=180 first=Alchemist's House entrance hits=Alchemist's House entrance@1.903
+  approach=225 first=rpgpp_lt_building_02 hits=rpgpp_lt_building_02@1.443, Alchemist's House entrance@1.766
+  approach=270 first=Alchemist's House entrance hits=Alchemist's House entrance@1.763
+  approach=315 first=Alchemist's House entrance hits=Alchemist's House entrance@1.902, rpgpp_lt_building_02@2.244
+  nearby=rpgpp_lt_building_02 bounds=Center: (81.90, 24.43, 21.48), Extents: (5.47, 3.21, 5.67)
+rpgpp_lt_scene_1.0 / Carpenter's House entrance index=2 position=(66.190, 23.300, 64.430)
+  reference-eye=(66.630, 24.104, 63.980)
+  reference-ray=Carpenter's House entrance@0.872
+  approach=0 first=Carpenter's House entrance hits=Carpenter's House entrance@1.893
+  approach=45 first=rpgpp_lt_building_03 hits=rpgpp_lt_building_03@0.004, Carpenter's House entrance@1.587
+  approach=90 first=Carpenter's House entrance hits=Carpenter's House entrance@1.832, rpgpp_lt_building_03@2.282
+  approach=135 first=Carpenter's House entrance hits=Carpenter's House entrance@1.908, rpgpp_lt_building_03@2.150
+  approach=180 first=Carpenter's House entrance hits=Carpenter's House entrance@1.893, rpgpp_lt_building_03@2.206
+  approach=225 first=rpgpp_lt_building_03 hits=rpgpp_lt_building_03@0.448, Carpenter's House entrance@1.587
+  approach=270 first=Carpenter's House entrance hits=Carpenter's House entrance@1.832
+  approach=315 first=Carpenter's House entrance hits=Carpenter's House entrance@1.908
+  nearby=rpgpp_lt_building_03 bounds=Center: (65.11, 26.64, 68.26), Extents: (7.02, 5.35, 6.88)
+rpgpp_lt_scene_1.0 / Technician's House entrance index=3 position=(85.180, 23.555, 67.720)
+  reference-eye=(84.880, 24.050, 67.490)
+  reference-ray=Technician's House entrance@0.461
+  approach=0 first=Technician's House entrance hits=Technician's House entrance@1.897
+  approach=45 first=Technician's House entrance hits=Technician's House entrance@1.906
+  approach=90 first=rpgpp_lt_building_04 hits=rpgpp_lt_building_04@0.386, Technician's House entrance@1.814
+  approach=135 first=Technician's House entrance hits=Technician's House entrance@1.675
+  approach=180 first=Technician's House entrance hits=Technician's House entrance@1.897
+  approach=225 first=Technician's House entrance hits=Technician's House entrance@1.906
+  approach=270 first=Technician's House entrance hits=Technician's House entrance@1.814
+  approach=315 first=rpgpp_lt_building_04 hits=rpgpp_lt_building_04@0.415, Technician's House entrance@1.675
+  nearby=rpgpp_lt_terrain_grass_01 (29) bounds=Center: (89.72, 21.69, 76.71), Extents: (39.93, 0.67, 39.13)
+  nearby=rpgpp_lt_building_04 bounds=Center: (86.96, 26.05, 71.35), Extents: (6.23, 4.82, 5.93)
+  nearby=rpgpp_lt_terrain_path_01b (10) bounds=Center: (84.07, 22.21, 65.81), Extents: (3.67, 0.48, 5.82)
+rpgpp_lt_scene_1.0 / Clockmaker's House entrance index=4 position=(54.650, 23.380, 43.490)
+  reference-eye=(55.060, 23.980, 43.610)
+  reference-ray=Clockmaker's House entrance@0.569
+  approach=0 first=rpgpp_lt_building_05 hits=rpgpp_lt_building_05@0.147, Clockmaker's House entrance@1.447
+  approach=45 first=Clockmaker's House entrance hits=Clockmaker's House entrance@1.857, rpgpp_lt_building_05@2.064
+  approach=90 first=Clockmaker's House entrance hits=Clockmaker's House entrance@1.910, rpgpp_lt_building_05@2.043
+  approach=135 first=Clockmaker's House entrance hits=Clockmaker's House entrance@1.884, rpgpp_lt_building_05@2.059
+  approach=180 first=rpgpp_lt_building_05 hits=rpgpp_lt_building_05@0.419, Clockmaker's House entrance@1.447
+  approach=225 first=Clockmaker's House entrance hits=Clockmaker's House entrance@1.857
+  approach=270 first=Clockmaker's House entrance hits=Clockmaker's House entrance@1.910
+  approach=315 first=Clockmaker's House entrance hits=Clockmaker's House entrance@1.884
+  nearby=rpgpp_lt_building_05 bounds=Center: (49.26, 26.19, 42.30), Extents: (5.83, 4.97, 5.81)
+rpgpp_lt_scene_1.0 / Abandoned House entrance index=5 position=(87.040, 23.468, 46.400)
+  reference-eye=(84.900, 24.520, 47.430)
+  reference-ray=Abandoned House entrance@2.498
+  approach=0 first=Abandoned House entrance hits=Abandoned House entrance@1.843, rpgpp_lt_building_02 (1)@2.482
+  approach=45 first=rpgpp_lt_building_02 (1) hits=rpgpp_lt_building_02 (1)@0.629, Abandoned House entrance@1.478
+  approach=90 first=Abandoned House entrance hits=Abandoned House entrance@1.890
+  approach=135 first=Abandoned House entrance hits=Abandoned House entrance@1.909
+  approach=180 first=Abandoned House entrance hits=Abandoned House entrance@1.843
+  approach=225 first=Abandoned House entrance hits=Abandoned House entrance@1.478
+  approach=270 first=Abandoned House entrance hits=Abandoned House entrance@1.890, rpgpp_lt_building_02 (1)@2.351
+  approach=315 first=Abandoned House entrance hits=Abandoned House entrance@1.909, rpgpp_lt_building_02 (1)@2.287
+  nearby=rpgpp_lt_terrain_grass_01 (25) bounds=Center: (95.31, 21.69, 50.48), Extents: (32.28, 0.58, 33.31)
+  nearby=rpgpp_lt_building_02 (1) bounds=Center: (90.66, 24.77, 43.87), Extents: (6.12, 3.20, 6.03)
+  nearby=rpgpp_lt_wood_path_01a (10) bounds=Center: (85.81, 22.26, 47.21), Extents: (2.62, 0.14, 2.58)
+  nearby=rpgpp_lt_terrain_path_01b (8) bounds=Center: (84.42, 22.08, 48.97), Extents: (5.44, 0.64, 5.16)
+EldersHouse / Return to village index=0 position=(0.056, 1.200, -3.523)
+  reference-eye=(-1.650, 1.350, -2.250)
+  reference-ray=Return to village@2.033, Room_Rustic_Door@2.095
+  approach=0 first=Return to village hits=Return to village@1.940, Room_Rustic_Door@1.977
+  approach=45 first=Return to village hits=Return to village@1.915, Room_Rustic_Door@1.967
+  approach=90 first=Room_Rustic_Panel hits=Room_Rustic_Panel@0.144, Room_Rustic_DoorPanel@0.327, Room_Rustic_DoorPanel@0.525, Room_Rustic_DoorPanel@1.216, Room_Rustic_Door@1.338
+  approach=135 first=Return to village hits=Return to village@1.915, Room_Rustic_Door@1.965
+  approach=180 first=Return to village hits=Return to village@1.940, Room_Rustic_Door@1.975
+  approach=225 first=Return to village hits=Return to village@1.915, Room_Rustic_Door@1.965
+  approach=270 first=Room_Rustic_Panel (1) hits=Room_Rustic_Panel (1)@0.048, Room_Rustic_DoorPanel@0.221, Room_Rustic_DoorPanel@0.420, Room_Rustic_DoorPanel@0.420, Room_Rustic_DoorPanel@1.094
+  approach=315 first=Return to village hits=Return to village@1.915, Room_Rustic_Door@1.967
+  nearby=Room_Rustic_Door bounds=Center: (0.03, 1.19, -3.52), Extents: (0.69, 1.21, 0.02)
+AlchemistsHouse / Return to village index=1 position=(0.000, 1.200, -3.150)
+  reference-eye=(0.500, 1.350, -1.250)
+  reference-ray=Return to village@1.908
+  approach=0 first=Return to village hits=Return to village@1.940, Room_Rustic_Door@2.350
+  approach=45 first=Return to village hits=Return to village@1.915, Room_Rustic_Door@2.495
+  approach=90 first=Return to village hits=Return to village@1.775
+  approach=135 first=Room_Rustic_Door hits=Room_Rustic_Door@1.454, Return to village@1.915
+  approach=180 first=Room_Rustic_Door hits=Room_Rustic_Door@1.602, Return to village@1.940
+  approach=225 first=Room_Rustic_Door hits=Room_Rustic_Door@1.454, Return to village@1.915
+  approach=270 first=Return to village hits=Return to village@1.775
+  approach=315 first=Return to village hits=Return to village@1.915, Room_Rustic_Door@2.495
+CarpentersHouse / Return to village index=2 position=(0.000, 1.200, -3.150)
+  reference-eye=(0.500, 1.350, -1.250)
+  reference-ray=Return to village@1.908
+  approach=0 first=Return to village hits=Return to village@1.940, Room_Rustic_Door@2.350
+  approach=45 first=Return to village hits=Return to village@1.915, Room_Rustic_Door@2.495
+  approach=90 first=Return to village hits=Return to village@1.775
+  approach=135 first=Room_Rustic_Door hits=Room_Rustic_Door@1.454, Return to village@1.915
+  approach=180 first=Room_Rustic_Door hits=Room_Rustic_Door@1.602, Return to village@1.940
+  approach=225 first=Room_Rustic_Door hits=Room_Rustic_Door@1.454, Return to village@1.915
+  approach=270 first=Return to village hits=Return to village@1.775
+  approach=315 first=Return to village hits=Return to village@1.915, Room_Rustic_Door@2.495
+TechniciansHouse / Return to village index=3 position=(0.000, 1.200, -3.150)
+  reference-eye=(0.500, 1.350, -1.250)
+  reference-ray=Return to village@1.908
+  approach=0 first=Return to village hits=Return to village@1.940, Room_Rustic_Door@2.350
+  approach=45 first=Return to village hits=Return to village@1.915, Room_Rustic_Door@2.495
+  approach=90 first=Return to village hits=Return to village@1.775
+  approach=135 first=Room_Rustic_Door hits=Room_Rustic_Door@1.454, Return to village@1.915
+  approach=180 first=Room_Rustic_Door hits=Room_Rustic_Door@1.602, Return to village@1.940
+  approach=225 first=Room_Rustic_Door hits=Room_Rustic_Door@1.454, Return to village@1.915
+  approach=270 first=Return to village hits=Return to village@1.775
+  approach=315 first=Return to village hits=Return to village@1.915, Room_Rustic_Door@2.495
+ClockmakersHouse / Return to village index=4 position=(0.000, 1.200, -3.150)
+  reference-eye=(0.500, 1.350, -1.250)
+  reference-ray=Return to village@1.908
+  approach=0 first=Return to village hits=Return to village@1.940, Room_Rustic_Door@2.350
+  approach=45 first=Return to village hits=Return to village@1.915, Room_Rustic_Door@2.495
+  approach=90 first=Return to village hits=Return to village@1.775
+  approach=135 first=Room_Rustic_Door hits=Room_Rustic_Door@1.454, Return to village@1.915
+  approach=180 first=Room_Rustic_Door hits=Room_Rustic_Door@1.602, Return to village@1.940
+  approach=225 first=Room_Rustic_Door hits=Room_Rustic_Door@1.454, Return to village@1.915
+  approach=270 first=Return to village hits=Return to village@1.775
+  approach=315 first=Return to village hits=Return to village@1.915, Room_Rustic_Door@2.495
+AbandonedHouse / Return to village index=5 position=(0.000, 1.200, -3.150)
+  reference-eye=(0.500, 1.350, -1.250)
+  reference-ray=Return to village@1.908
+  approach=0 first=Return to village hits=Return to village@1.940, Room_Rustic_Door@2.350
+  approach=45 first=Return to village hits=Return to village@1.915, Room_Rustic_Door@2.495
+  approach=90 first=Return to village hits=Return to village@1.775
+  approach=135 first=Room_Rustic_Door hits=Room_Rustic_Door@1.454, Return to village@1.915
+  approach=180 first=Room_Rustic_Door hits=Room_Rustic_Door@1.602, Return to village@1.940
+  approach=225 first=Room_Rustic_Door hits=Room_Rustic_Door@1.454, Return to village@1.915
+  approach=270 first=Return to village hits=Return to village@1.775
+  approach=315 first=Return to village hits=Return to village@1.915, Room_Rustic_Door@2.495

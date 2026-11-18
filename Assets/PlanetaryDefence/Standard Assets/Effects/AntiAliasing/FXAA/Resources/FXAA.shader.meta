@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 3eaaee164ee0fed4d9a0bbe8434805a6
+timeCreated: 1453736553
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 104099
+  packageName: Planetary Defence
+  packageVersion: 1.0
+  assetPath: Assets/PlanetaryDefence/Standard Assets/Effects/AntiAliasing/FXAA/Resources/FXAA.shader
+  uploadId: 210030

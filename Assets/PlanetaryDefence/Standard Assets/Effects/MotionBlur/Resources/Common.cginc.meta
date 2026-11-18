@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 7870b7d5fe5254a289a7d94f722430af
+timeCreated: 1467169007
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 104099
+  packageName: Planetary Defence
+  packageVersion: 1.0
+  assetPath: Assets/PlanetaryDefence/Standard Assets/Effects/MotionBlur/Resources/Common.cginc
+  uploadId: 210030

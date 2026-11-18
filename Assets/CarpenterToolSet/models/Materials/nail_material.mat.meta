@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9de35782da82b4ac29a6265f93258d7c
+timeCreated: 1502606765
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 97815
+  packageName: Carpenter Tool Set
+  packageVersion: 1.0
+  assetPath: Assets/CarpenterToolSet/models/Materials/nail_material.mat
+  uploadId: 198902

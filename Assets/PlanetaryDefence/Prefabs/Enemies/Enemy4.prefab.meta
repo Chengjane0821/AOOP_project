@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: fcacad31b665182438151592eff2ffdc
+timeCreated: 1509415605
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 104099
+  packageName: Planetary Defence
+  packageVersion: 1.0
+  assetPath: Assets/PlanetaryDefence/Prefabs/Enemies/Enemy4.prefab
+  uploadId: 210030

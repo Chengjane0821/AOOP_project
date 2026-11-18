@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 949feddb120bac74287b0da63dbb48e8
+timeCreated: 1509705172
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 104099
+  packageName: Planetary Defence
+  packageVersion: 1.0
+  assetPath: Assets/PlanetaryDefence/Scripts/AudioManager.cs
+  uploadId: 210030

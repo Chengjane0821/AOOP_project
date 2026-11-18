@@ -1,0 +1,43 @@
+Testing EldersHouse
+PASS: Entry loaded house 0
+PASS: Only village and current house loaded 0
+PASS: Arrival position 0
+PASS: Exit action bound 0
+PASS: Exit unloaded house 0
+PASS: Correct village return 0
+Testing AlchemistsHouse
+PASS: Entry loaded house 1
+PASS: Only village and current house loaded 1
+PASS: Arrival position 1
+PASS: Exit action bound 1
+PASS: Exit unloaded house 1
+PASS: Correct village return 1
+Testing CarpentersHouse
+PASS: Entry loaded house 2
+PASS: Only village and current house loaded 2
+PASS: Arrival position 2
+PASS: Exit action bound 2
+PASS: Exit unloaded house 2
+PASS: Correct village return 2
+Testing TechniciansHouse
+PASS: Entry loaded house 3
+PASS: Only village and current house loaded 3
+PASS: Arrival position 3
+PASS: Exit action bound 3
+PASS: Exit unloaded house 3
+PASS: Correct village return 3
+Testing ClockmakersHouse
+PASS: Entry loaded house 4
+PASS: Only village and current house loaded 4
+PASS: Arrival position 4
+PASS: Exit action bound 4
+PASS: Exit unloaded house 4
+PASS: Correct village return 4
+Testing AbandonedHouse
+PASS: Entry loaded house 5
+PASS: Only village and current house loaded 5
+PASS: Arrival position 5
+PASS: Exit action bound 5
+PASS: Exit unloaded house 5
+PASS: Correct village return 5
+PASS: transition checks complete

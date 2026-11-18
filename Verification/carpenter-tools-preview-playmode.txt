@@ -1,0 +1,5 @@
+PASS: Tool warning clears the side card and lifts the existing direction/score HUD
+PASS: Stopping restores the authored instruction and score panel positions
+PASS: Tool presentation preview has no runtime errors
+PASS: tool presentation preview completed
+Scope: actual additive scenes and normal elapsed time, simulated XR selection and tracked poses; temporary save, explicitly simulated camera evidence. No physical Quest/Pi/Arduino acceptance testing.

@@ -1,5 +1,9 @@
 # Technician: Power-grid emergency
 
+> Historical implementation. The active Technician room now uses
+> [Planetary Defence](PLANETARY_DEFENCE.md), retaining the same Technician save
+> and clue requirements. The results below describe the original grid game.
+
 Restore the workshop's lights, conveyor and archive machines in three short
 rounds. Select generator A or B, then connect a numbered machine socket. Cables
 appear immediately. Each generator has a visible capacity and current load.

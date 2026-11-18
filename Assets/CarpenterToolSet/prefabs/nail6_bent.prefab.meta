@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: fc450de1bc2954c9d88d145e16f2b68f
+timeCreated: 1504190631
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 97815
+  packageName: Carpenter Tool Set
+  packageVersion: 1.0
+  assetPath: Assets/CarpenterToolSet/prefabs/nail6_bent.prefab
+  uploadId: 198902

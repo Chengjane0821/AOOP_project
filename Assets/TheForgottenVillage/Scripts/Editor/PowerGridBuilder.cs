@@ -11,8 +11,10 @@ namespace ForgottenVillage.Editor {
     public static class PowerGridBuilder {
         const string Root="Assets/TheForgottenVillage/";
         static readonly Color shadowColour=new Color(.015f,.035f,.05f);
-        [MenuItem("Forgotten Village/Install Technician power-grid emergency")]
-        public static void Build(){
+        [MenuItem("Forgotten Village/Install Technician Planetary Defence")]
+        public static void Build(){PlanetaryDefenceBuilder.Build();}
+        // Retained for historical scene tooling; normal rebuilds install the replacement.
+        public static void BuildLegacy(){
             if(EditorApplication.isPlayingOrWillChangePlaymode)throw new InvalidOperationException("Exit Play Mode before building.");
             var scene=EditorSceneManager.OpenScene(Root+"Scenes/TechniciansHouse.unity");
             var house=UnityEngine.Object.FindFirstObjectByType<HouseSceneRoot>();

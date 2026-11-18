@@ -1,0 +1,5 @@
+PASS: village scenes, build list, transitions, save/progression implementation, player/XR rig, hardware, other mini-games and Carpenter rules/input/movement/view source unchanged.
+PASS: TechniciansHouse copied room foundation unchanged (23 GameObjects / 79 serialized object/component blocks).
+PASS: CarpentersHouse copied room foundation unchanged (23 GameObjects / 79 serialized object/component blocks).
+PASS: TechniciansHouse retains all 24 original prefab instance placements/overrides without changes.
+PASS: CarpentersHouse retains all 23 original prefab instance placements/overrides without changes.

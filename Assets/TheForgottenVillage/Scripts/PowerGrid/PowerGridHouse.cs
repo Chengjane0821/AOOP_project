@@ -3,14 +3,16 @@ namespace ForgottenVillage {
     public sealed class PowerGridHouse : MonoBehaviour {
         public VillageGame game;
         public PowerGridRun run;
-        public void Bind(VillageGame owner){Unsubscribe();game=owner;run.house=this;Subscribe();run.RefreshIdle();}
+        public PlanetaryDefenceRun defence;
+        public void Bind(VillageGame owner){Unsubscribe();game=owner;if(defence){defence.house=this;}else if(run){run.house=this;run.RefreshIdle();}Subscribe();}
         void Subscribe(){if(game&&game.hardware){game.hardware.Diagnostic-=HardwareButton;game.hardware.Diagnostic+=HardwareButton;}}
         void Unsubscribe(){if(game&&game.hardware)game.hardware.Diagnostic-=HardwareButton;}
         void HardwareButton(){if(run&&run.AcceptsInput)run.TogglePower();}
         void OnEnable(){Subscribe();}
-        void OnDisable(){Unsubscribe();if(run)run.Stop();}
+        void OnDisable(){Unsubscribe();if(run)run.Stop();if(defence)defence.Stop();}
         public void Offer(){
             if(!game||game.house!=3||!game.playing||!game.state.elder)return;
+            if(defence){if(game.state.technicianGridWon&&!game.state.technicianMemoryRecovered)Recovery();else defence.Offer();return;}
             if(run.Running){run.PauseMenu();return;}
             if(game.state.technicianGridWon&&!game.state.technicianMemoryRecovered){Recovery();return;}
             game.ui.Show("Technician / Power-grid emergency",game.state.technicianGridWon?
@@ -21,7 +23,9 @@ namespace ForgottenVillage {
             game.ui.Button("Maybe later",game.ui.Close);
         }
         public void Win(){
-            if(!game||!game.playing||game.house!=3||run.Session==null||!run.Session.Won)return;
+            if(!game||!game.playing||game.house!=3)return;
+            if(defence){if(defence.Session==null||!defence.Session.Won)return;}
+            else if(!run||run.Session==null||!run.Session.Won)return;
             game.state.technicianGridWon=true;game.state.puzzleSolved[3]=true;game.Commit();
             if(game.audioFeedback)game.audioFeedback.Success();Recovery();
         }

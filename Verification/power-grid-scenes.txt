@@ -1,7 +1,8 @@
 PASS: EldersHouse; six source roots; missing scripts=0; enabled copied cameras/listeners=0
 PASS: AlchemistsHouse; six source roots; missing scripts=0; enabled copied cameras/listeners=0
 PASS: CarpentersHouse; six source roots; missing scripts=0; enabled copied cameras/listeners=0
+PASS: Planetary Defence replaces active PowerGrid gameplay and retains Technician progression adapter.
 PASS: TechniciansHouse; six source roots; missing scripts=0; enabled copied cameras/listeners=0
 PASS: ClockmakersHouse; six source roots; missing scripts=0; enabled copied cameras/listeners=0
 PASS: AbandonedHouse; six source roots; missing scripts=0; enabled copied cameras/listeners=0
-PASS: Technician has two generators, five bound cables, twelve controls and no legacy station.
+PASS: Technician activity references validated; copied rooms retained.

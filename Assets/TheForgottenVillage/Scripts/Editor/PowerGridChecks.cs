@@ -34,14 +34,19 @@ namespace ForgottenVillage.Editor {
                     if(missing!=0||roots.Sum(r=>r.GetComponentsInChildren<Camera>().Count(c=>c.enabled))!=0||roots.Sum(r=>r.GetComponentsInChildren<AudioListener>().Count(l=>l.enabled))!=0)throw new Exception("Copied camera/listener/script problem in "+name);
                     if(house.houseIndex==3){
                         var grid=house.GetComponent<PowerGridHouse>();
+                        if(grid&&grid.defence){
+                            if(grid.run||house.GetComponentInChildren<PowerGridRun>(true)||grid.defence.threats.Length!=8||grid.defence.projectiles.Length!=8||!grid.defence.planet||!grid.defence.playingPoint)throw new Exception("Incomplete Planetary Defence replacement");
+                            report.AppendLine("PASS: Planetary Defence replaces active PowerGrid gameplay and retains Technician progression adapter.");
+                        }else{
                         if(!grid||!grid.run||!grid.run.tuning||!grid.run.view||!grid.run.sound||!grid.run.playingPoint)throw new Exception("Incomplete grid binding");
                         if(house.GetComponentsInChildren<PowerGridCable>(true).Length!=5||house.GetComponentsInChildren<PowerGridControl>(true).Length!=12||
                             roots.Sum(r=>r.GetComponentsInChildren<EngineeringStation>(true).Length)!=0)throw new Exception("Wrong grid controls or legacy station remains");
                         foreach(var cable in house.GetComponentsInChildren<PowerGridCable>(true))if(!cable.socket||cable.generators.Length!=2||cable.generators.Any(g=>!g))throw new Exception("Unbound cable");
+                        }
                     }
                     report.AppendLine("PASS: "+name+"; six source roots; missing scripts=0; enabled copied cameras/listeners=0");
                 }
-                report.AppendLine("PASS: Technician has two generators, five bound cables, twelve controls and no legacy station.");
+                report.AppendLine("PASS: Technician activity references validated; copied rooms retained.");
             }catch(Exception ex){report.AppendLine("FAIL: "+ex);throw;}
             finally{File.WriteAllText("Verification/power-grid-scenes.txt",report.ToString());EditorSceneManager.OpenScene("Assets/Scenes/rpgpp_lt_scene_1.0.unity");}
         }

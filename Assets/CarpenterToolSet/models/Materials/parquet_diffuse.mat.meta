@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6144ee405786047648e30c552da2959b
+timeCreated: 1502612339
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 97815
+  packageName: Carpenter Tool Set
+  packageVersion: 1.0
+  assetPath: Assets/CarpenterToolSet/models/Materials/parquet_diffuse.mat
+  uploadId: 198902

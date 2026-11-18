@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: a058b22d4123add4b807e832604e5e7b
+timeCreated: 1449046205
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 104099
+  packageName: Planetary Defence
+  packageVersion: 1.0
+  assetPath: Assets/PlanetaryDefence/Standard Assets/Effects/DepthOfField/Resources/MedianFilter.shader
+  uploadId: 210030

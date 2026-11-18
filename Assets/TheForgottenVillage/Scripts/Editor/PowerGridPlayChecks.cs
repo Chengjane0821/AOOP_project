@@ -18,8 +18,11 @@ namespace ForgottenVillage.Editor {
         static Vector2 pointer;static bool clicking;static InputSettings.BackgroundBehavior oldBackground;
         static PowerGridRun live;
         static PowerGridPlayChecks(){EditorApplication.update+=Tick;Application.logMessageReceived+=(m,s,t)=>{if(routine!=null&&(t==LogType.Error||t==LogType.Exception))errors.Add(m);};}
-        [MenuItem("Forgotten Village/Test Technician power-grid emergency")]
+        [MenuItem("Forgotten Village/Test Technician Planetary Defence")]
         public static void Request(){
+            ImportedMiniGamePlayChecks.Request();
+        }
+        public static void RequestLegacy(){
             if(EditorApplication.isPlayingOrWillChangePlaymode)throw new Exception("Stop the current play session first.");
             EditorSceneManager.OpenScene("Assets/Scenes/rpgpp_lt_scene_1.0.unity");
             var type=typeof(EditorWindow).Assembly.GetType("UnityEditor.GameView");if(type!=null)EditorWindow.GetWindow(type).Show();
@@ -62,6 +65,7 @@ namespace ForgottenVillage.Editor {
             }
         }
         public static IEnumerable<object> CompleteTechnician(VillageGame g){
+            if(UnityEngine.Object.FindFirstObjectByType<PlanetaryDefenceRun>()){foreach(var step in ImportedMiniGamePlayChecks.CompleteTechnician(g))yield return step;yield break;}
             var house=UnityEngine.Object.FindFirstObjectByType<PowerGridHouse>();if(!house)throw new Exception("Missing grid activity");house.run.Begin();
             for(int round=0;round<3;round++){
                 var circuit=house.run.Session.Circuit;int mask=BalancedMask(circuit);

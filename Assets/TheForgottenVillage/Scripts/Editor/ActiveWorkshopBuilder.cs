@@ -67,6 +67,7 @@ namespace ForgottenVillage.Editor {
             run.leftHandVisual.gameObject.SetActive(false); run.rightHandVisual.gameObject.SetActive(false);
             run.obstacleVisual = BuildObstacle(arena, coral, dark, out var obstacleRenderer);
             run.view.obstacleRenderer = obstacleRenderer; run.obstacleVisual.gameObject.SetActive(false);
+            CarpenterToolsBuilder.Apply(run);
             Button(arena, run, ActiveWorkshopCommand.Offer, "PLAY", new Vector3(1.20f, 1.43f, .30f), dark, cyan);
             Button(arena, run, ActiveWorkshopCommand.Calibrate, "RECENTER", new Vector3(1.20f, 1.15f, .30f), dark, violet);
             Button(arena, run, ActiveWorkshopCommand.Pause, "PAUSE", new Vector3(1.20f, .87f, .30f), dark, coral);

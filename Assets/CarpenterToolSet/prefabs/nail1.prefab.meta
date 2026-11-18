@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7ef8c97723fa2463bb400c64db7e970e
+timeCreated: 1504190598
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 97815
+  packageName: Carpenter Tool Set
+  packageVersion: 1.0
+  assetPath: Assets/CarpenterToolSet/prefabs/nail1.prefab
+  uploadId: 198902

@@ -51,7 +51,7 @@ namespace ForgottenVillage.Editor {
                         if (house.GetComponent<BridgeHouse>() || house.GetComponentInChildren<BridgeRun>(true) ||
                             roots.Any(r => r.GetComponentInChildren<EngineeringStation>(true) || r.GetComponentInChildren<WorkshopSocket>(true)))
                             throw new Exception("Retired bridge or amplifier remains in playable scene");
-                        if (run.obstacleVisual.GetComponentsInChildren<Collider>(true).Any(c => c.enabled))
+                        if (run.obstacleVisual.GetComponentsInChildren<Collider>(true).Any(c => c.enabled && !c.isTrigger) || run.obstacleVisual.GetComponentsInChildren<Rigidbody>(true).Length != 0)
                             throw new Exception("Dodge visuals must not physically push the player");
                         report.AppendLine("PASS: Carpenter has six target anchors, six visual targets, calibrated VR/desktop stations and a visual-only obstacle; bridge retired.");
                     }

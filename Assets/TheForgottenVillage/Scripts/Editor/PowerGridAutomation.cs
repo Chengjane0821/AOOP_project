@@ -19,7 +19,7 @@ namespace ForgottenVillage.Editor {
                 else if(command=="refresh")AssetDatabase.Refresh();
                 else {
                     string menu=command=="model-tests"?"Check power-grid rules":command=="scene-checks"?"Validate power-grid integration":
-                        command=="nunit"?"Run power-grid regression unit tests":command=="play-tests"?"Test Technician power-grid emergency":null;
+                        command=="nunit"?"Run power-grid regression unit tests":command=="play-tests"?"Test Technician Planetary Defence":null;
                     if(menu==null||!EditorApplication.ExecuteMenuItem("Forgotten Village/"+menu))throw new ArgumentException("Unavailable grid command: "+command);
                 }
                 File.WriteAllText("Verification/power-grid.status",command+" dispatched "+DateTimeOffset.Now.ToString("O"));

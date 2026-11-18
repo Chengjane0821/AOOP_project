@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 0679881eadedf4ddbaf8f0002c674eab
+timeCreated: 1458928093
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 104099
+  packageName: Planetary Defence
+  packageVersion: 1.0
+  assetPath: Assets/PlanetaryDefence/Standard Assets/Effects/TemporalAntiAliasing/Resources/TemporalAntiAliasing.shader
+  uploadId: 210030

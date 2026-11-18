@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 3648a5151f416834fa9eafb473a9e275
+timeCreated: 1509356502
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 104099
+  packageName: Planetary Defence
+  packageVersion: 1.0
+  assetPath: Assets/PlanetaryDefence/Prefabs/Enemies/Enemy2.prefab
+  uploadId: 210030

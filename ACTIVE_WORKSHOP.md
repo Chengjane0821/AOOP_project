@@ -2,8 +2,13 @@
 
 Quick Hands replaces the Carpenter's former Bridge Delivery activity with a
 60-second body-action arcade. Reach for highlighted targets, touch paired targets
-with two hands, and react to striped-board warnings by leaning or lowering your
+with two hands, and react to incoming-tool warnings by leaning or lowering your
 head. A three-second ready period precedes the timed challenge.
+
+The flying visuals now use the imported Carpenter Tools hammer, hand saw and
+crowbar. Their original cue timing, path, head-displacement collision rules and
+score are retained. See [Planetary Defence and imported tools](PLANETARY_DEFENCE.md)
+for asset details and setup.
 
 ## Rules and feedback
 

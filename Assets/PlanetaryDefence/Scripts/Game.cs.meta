@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: b44ef7d8a94226747849da7c81206c19
+timeCreated: 1509370971
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 104099
+  packageName: Planetary Defence
+  packageVersion: 1.0
+  assetPath: Assets/PlanetaryDefence/Scripts/Game.cs
+  uploadId: 210030

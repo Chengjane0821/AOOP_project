@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 4505fec7a81214243b8e59edf89e3a53
+timeCreated: 1432603500
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 104099
+  packageName: Planetary Defence
+  packageVersion: 1.0
+  assetPath: Assets/PlanetaryDefence/Standard Assets/Effects/AntiAliasing/SMAA/Resources/SMAA.shader
+  uploadId: 210030

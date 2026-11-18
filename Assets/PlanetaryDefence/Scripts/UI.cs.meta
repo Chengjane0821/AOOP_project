@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 1e25cbfa94c5c2e448905c622cbcdc70
+timeCreated: 1509601808
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 104099
+  packageName: Planetary Defence
+  packageVersion: 1.0
+  assetPath: Assets/PlanetaryDefence/Scripts/UI.cs
+  uploadId: 210030

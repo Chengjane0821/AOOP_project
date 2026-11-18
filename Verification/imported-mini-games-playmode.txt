@@ -1,0 +1,31 @@
+PASS: Existing village services loaded
+PASS: Planetary Defence replaces active PowerGrid inside the retained house
+PASS: Imported desktop singleton game/camera was not loaded
+PASS: Early completion/clue cannot bypass defence
+PASS: Existing Technician invitation starts defence
+PASS: Shared player teleports into large isolated space arena while Technician house remains loaded
+PASS: Room geometry and normal tracker are hidden during orbital defence
+PASS: Incoming imported enemy ships spawn after countdown
+PASS: Pause freezes threat movement and wave clock
+PASS: Resume restarts incoming threat movement
+PASS: Five actual planet impacts fail without awarding progress
+PASS: Failure restores house position, sky, camera and room presentation
+PASS: Retry resets planet and pooled wave
+PASS: Leaving the orbital arena restores the house and shared player controls
+PASS: Unloading a running arena keeps the village return destination and releases shared controls
+PASS: Actual desktop click and simulated XR selections launch real moving interceptors and clear all twenty ships
+PASS: Original Technician victory, recovery, controller records and cell-phone clue path retained
+PASS: Defence restores movement and pointer after completion
+PASS: Existing save schema round-trip retains earned Technician clue
+PASS: Technician exit teleports to original village destination
+PASS: Technician scene unload completes after leaving defence
+PASS: Three imported Carpenter tool variants are bound to original obstacle transform
+PASS: Tool colliders fit visuals and cannot physically shove the player
+PASS: Hammer, saw and crowbar all appear on original timed dodge cues with undistorted dimensions
+PASS: Instructions hide only during tool warnings and return after the challenge
+PASS: Unchanged 60-second Carpenter rules, tracked contacts/dodges, score and mouse clue still complete
+PASS: Carpenter exit teleports to original village destination before normal ground settling
+PASS: Carpenter scene unload completes
+PASS: No runtime errors during imported mini-game checks
+PASS: imported mini-game suite completed
+Scope: actual additive scenes and normal elapsed time, simulated XR selection and tracked poses; temporary save, explicitly simulated camera evidence. No physical Quest/Pi/Arduino acceptance testing.

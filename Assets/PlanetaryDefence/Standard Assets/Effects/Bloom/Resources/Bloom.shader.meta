@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: e45d4f28262b04d10a075856ab5fdb5e
+timeCreated: 1454052270
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 104099
+  packageName: Planetary Defence
+  packageVersion: 1.0
+  assetPath: Assets/PlanetaryDefence/Standard Assets/Effects/Bloom/Resources/Bloom.shader
+  uploadId: 210030
