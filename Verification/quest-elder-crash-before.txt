@@ -1,0 +1,141 @@
+--------- beginning of crash
+11-19 11:50:03.601  8289  8403 F libc    : Fatal signal 5 (SIGTRAP), code -6 (SI_TKILL) in tid 8403 (Loading.Preload), pid 8289 (nity.ModernRoom)
+11-19 11:50:03.968  8756  8756 F DEBUG   : *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
+11-19 11:50:03.968  8756  8756 F DEBUG   : Build fingerprint: 'oculus/panther/panther:14/UP1A.231005.007.A1/3814840036500610:user/abl_signing_keys:release,amss_signing_keys:release,release-keys'
+11-19 11:50:03.968  8756  8756 F DEBUG   : Revision: '0'
+11-19 11:50:03.968  8756  8756 F DEBUG   : ABI: 'arm64'
+11-19 11:50:03.968  8756  8756 F DEBUG   : Timestamp: 2026-11-19 11:50:03.690161042+0800
+11-19 11:50:03.968  8756  8756 F DEBUG   : Process uptime: 4981s
+11-19 11:50:03.968  8756  8756 F DEBUG   : Diagnostic-Collection-Type: Tombstone Proto
+11-19 11:50:03.968  8756  8756 F DEBUG   : Has-Diagnostic-Summary: Yes
+11-19 11:50:03.968  8756  8756 F DEBUG   : Vm-Swap-Kb: 0
+11-19 11:50:03.968  8756  8756 F DEBUG   : Rss-Shmem-Kb: 1512
+11-19 11:50:03.968  8756  8756 F DEBUG   : Rss-Anon-Kb: 275952
+11-19 11:50:03.968  8756  8756 F DEBUG   : Rss-Hwm-Kb: 525104
+11-19 11:50:03.968  8756  8756 F DEBUG   : APK-Location: /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/base.apk
+11-19 11:50:03.968  8756  8756 F DEBUG   : Debugging: No
+11-19 11:50:03.968  8756  8756 F DEBUG   : Rss-Kb: 524532
+11-19 11:50:03.968  8756  8756 F DEBUG   : Has-Waited-For-Debugger: No
+11-19 11:50:03.968  8756  8756 F DEBUG   : Last-Activity-Time: 3961432
+11-19 11:50:03.968  8756  8756 F DEBUG   : Process-Runtime: 1082549
+11-19 11:50:03.968  8756  8756 F DEBUG   : Waiting-To-Kill:
+11-19 11:50:03.968  8756  8756 F DEBUG   : Killed-By-AM: No
+11-19 11:50:03.968  8756  8756 F DEBUG   : Removed: No
+11-19 11:50:03.968  8756  8756 F DEBUG   : Wanted-ANR-Ui: No
+11-19 11:50:03.968  8756  8756 F DEBUG   : Killed: No
+11-19 11:50:03.968  8756  8756 F DEBUG   : OOM-Score-Adj: 0
+11-19 11:50:03.968  8756  8756 F DEBUG   : Wanted-Error-Ui: No
+11-19 11:50:03.968  8756  8756 F DEBUG   : Kill-Time: 0
+11-19 11:50:03.968  8756  8756 F DEBUG   : State: TOP
+11-19 11:50:03.968  8756  8756 F DEBUG   : Foreground: Yes
+11-19 11:50:03.968  8756  8756 F DEBUG   : Executable: /system/bin/app_process64
+11-19 11:50:03.968  8756  8756 F DEBUG   : Cmdline: com.Unity.ModernRoom
+11-19 11:50:03.968  8756  8756 F DEBUG   : pid: 8289, tid: 8403, name: Loading.Preload  >>> com.Unity.ModernRoom <<<
+11-19 11:50:03.968  8756  8756 F DEBUG   : uid: 10163
+11-19 11:50:03.968  8756  8756 F DEBUG   : tagged_addr_ctrl: 0000000000000001 (PR_TAGGED_ADDR_ENABLE)
+11-19 11:50:03.968  8756  8756 F DEBUG   : syscall: 131 00000000 0x0020d3 0x000005 0x223830 0x5355584f5550344d 0x5355584f5550344d
+11-19 11:50:03.968  8756  8756 F DEBUG   : signal 5 (SIGTRAP), code -6 (SI_TKILL), fault addr --------
+11-19 11:50:03.968  8756  8756 F DEBUG   :     x0  0000000000000000  x1  00000000000020d3  x2  0000000000000005  x3  0000000000223830
+11-19 11:50:03.968  8756  8756 F DEBUG   :     x4  5355584f5550344d  x5  5355584f5550344d  x6  5355584f5550344d  x7  7f7f7f7f7f7f7f7f
+11-19 11:50:03.968  8756  8756 F DEBUG   :     x8  0000000000000083  x9  0e275ff0d56f1815  x10 0000000000000001  x11 fffffffffffffffd
+11-19 11:50:03.968  8756  8756 F DEBUG   :     x12 00000072c714a260  x13 00000000000000c9  x14 00000072c714a310  x15 00000016589f20f0
+11-19 11:50:03.968  8756  8756 F DEBUG   :     x16 00000075255949d0  x17 000000752556c120  x18 00000072c7142828  x19 00000072c714bcd0
+11-19 11:50:03.968  8756  8756 F DEBUG   :     x20 0000000000000000  x21 00000072c714bdc0  x22 00000072c714cd40  x23 000000740ecb9430
+11-19 11:50:03.968  8756  8756 F DEBUG   :     x24 00000073e02ca140  x25 0000000000037080  x26 00000072f04f7980  x27 0000000000800101
+11-19 11:50:03.968  8756  8756 F DEBUG   :     x28 000000000000002e  x29 00000072f04f5280
+11-19 11:50:03.968  8756  8756 F DEBUG   :     lr  000000740ecb9074  sp  00000072c714bc20  pc  000000752556c128  pst 0000000000001000
+11-19 11:50:03.968  8756  8756 F DEBUG   : 23 total frames
+11-19 11:50:03.968  8756  8756 F DEBUG   : backtrace:
+11-19 11:50:03.968  8756  8756 F DEBUG   :       #00 pc 0000000000122128  /apex/com.android.runtime/lib64/bionic/libc.so (tgkill+8) (BuildId: 802681f07ca5a0c7cd6224d3088e4b3a)
+11-19 11:50:03.968  8756  8756 F DEBUG   :       #01 pc 0000000000e9a070  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:50:03.968  8756  8756 F DEBUG   :       #02 pc 0000000000e9a600  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:50:03.968  8756  8756 F DEBUG   :       #03 pc 00000000006810b8  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:50:03.968  8756  8756 F DEBUG   :       #04 pc 0000000000681340  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:50:03.968  8756  8756 F DEBUG   :       #05 pc 000000000053400c  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:50:03.968  8756  8756 F DEBUG   :       #06 pc 000000000078bb80  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:50:03.968  8756  8756 F DEBUG   :       #07 pc 0000000000782f50  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:50:03.968  8756  8756 F DEBUG   :       #08 pc 000000000078c678  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:50:03.968  8756  8756 F DEBUG   :       #09 pc 00000000007ab9a0  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:50:03.968  8756  8756 F DEBUG   :       #10 pc 000000000077f6d4  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:50:03.968  8756  8756 F DEBUG   :       #11 pc 00000000007ba17c  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:50:03.968  8756  8756 F DEBUG   :       #12 pc 00000000007b9718  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:50:03.968  8756  8756 F DEBUG   :       #13 pc 00000000007c4358  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:50:03.968  8756  8756 F DEBUG   :       #14 pc 00000000007bea9c  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:50:03.968  8756  8756 F DEBUG   :       #15 pc 00000000007bf10c  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:50:03.968  8756  8756 F DEBUG   :       #16 pc 0000000000673954  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:50:03.968  8756  8756 F DEBUG   :       #17 pc 00000000006752a8  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:50:03.968  8756  8756 F DEBUG   :       #18 pc 0000000000674ff0  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:50:03.968  8756  8756 F DEBUG   :       #19 pc 0000000000674e7c  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:50:03.968  8756  8756 F DEBUG   :       #20 pc 00000000006e30ac  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:50:03.968  8756  8756 F DEBUG   :       #21 pc 00000000001372ac  /apex/com.android.runtime/lib64/bionic/libc.so (__pthread_start(void*)+204) (BuildId: 802681f07ca5a0c7cd6224d3088e4b3a)
+11-19 11:50:03.968  8756  8756 F DEBUG   :       #22 pc 00000000000cf170  /apex/com.android.runtime/lib64/bionic/libc.so (__start_thread+64) (BuildId: 802681f07ca5a0c7cd6224d3088e4b3a)
+11-19 11:51:08.129  8851  8965 F libc    : Fatal signal 5 (SIGTRAP), code -6 (SI_TKILL) in tid 8965 (Loading.Preload), pid 8851 (nity.ModernRoom)
+11-19 11:51:08.337  8994  8994 F DEBUG   : *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
+11-19 11:51:08.337  8994  8994 F DEBUG   : Build fingerprint: 'oculus/panther/panther:14/UP1A.231005.007.A1/3814840036500610:user/abl_signing_keys:release,amss_signing_keys:release,release-keys'
+11-19 11:51:08.337  8994  8994 F DEBUG   : Revision: '0'
+11-19 11:51:08.337  8994  8994 F DEBUG   : ABI: 'arm64'
+11-19 11:51:08.337  8994  8994 F DEBUG   : Timestamp: 2026-11-19 11:51:08.185416478+0800
+11-19 11:51:08.337  8994  8994 F DEBUG   : Process uptime: 5046s
+11-19 11:51:08.337  8994  8994 F DEBUG   : Diagnostic-Collection-Type: Tombstone Proto
+11-19 11:51:08.337  8994  8994 F DEBUG   : Has-Diagnostic-Summary: Yes
+11-19 11:51:08.337  8994  8994 F DEBUG   : Vm-Swap-Kb: 0
+11-19 11:51:08.337  8994  8994 F DEBUG   : Rss-Shmem-Kb: 1492
+11-19 11:51:08.337  8994  8994 F DEBUG   : Rss-Anon-Kb: 263136
+11-19 11:51:08.337  8994  8994 F DEBUG   : Rss-Hwm-Kb: 487184
+11-19 11:51:08.337  8994  8994 F DEBUG   : APK-Location: /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/base.apk
+11-19 11:51:08.337  8994  8994 F DEBUG   : Debugging: No
+11-19 11:51:08.337  8994  8994 F DEBUG   : Rss-Kb: 487184
+11-19 11:51:08.337  8994  8994 F DEBUG   : Has-Waited-For-Debugger: No
+11-19 11:51:08.337  8994  8994 F DEBUG   : Last-Activity-Time: 4158604
+11-19 11:51:08.337  8994  8994 F DEBUG   : Process-Runtime: 902513
+11-19 11:51:08.337  8994  8994 F DEBUG   : Waiting-To-Kill:
+11-19 11:51:08.337  8994  8994 F DEBUG   : Killed-By-AM: No
+11-19 11:51:08.337  8994  8994 F DEBUG   : Removed: No
+11-19 11:51:08.337  8994  8994 F DEBUG   : Wanted-ANR-Ui: No
+11-19 11:51:08.337  8994  8994 F DEBUG   : Killed: No
+11-19 11:51:08.337  8994  8994 F DEBUG   : OOM-Score-Adj: 0
+11-19 11:51:08.337  8994  8994 F DEBUG   : Wanted-Error-Ui: No
+11-19 11:51:08.337  8994  8994 F DEBUG   : Kill-Time: 0
+11-19 11:51:08.337  8994  8994 F DEBUG   : State: TOP
+11-19 11:51:08.337  8994  8994 F DEBUG   : Foreground: Yes
+11-19 11:51:08.337  8994  8994 F DEBUG   : Executable: /system/bin/app_process64
+11-19 11:51:08.338  8994  8994 F DEBUG   : Cmdline: com.Unity.ModernRoom
+11-19 11:51:08.338  8994  8994 F DEBUG   : pid: 8851, tid: 8965, name: Loading.Preload  >>> com.Unity.ModernRoom <<<
+11-19 11:51:08.338  8994  8994 F DEBUG   : uid: 10163
+11-19 11:51:08.338  8994  8994 F DEBUG   : tagged_addr_ctrl: 0000000000000001 (PR_TAGGED_ADDR_ENABLE)
+11-19 11:51:08.338  8994  8994 F DEBUG   : syscall: 131 00000000 0x002305 0x000005 0x22cffc 0x5355584f5550344d 0x5355584f5550344d
+11-19 11:51:08.338  8994  8994 F DEBUG   : signal 5 (SIGTRAP), code -6 (SI_TKILL), fault addr --------
+11-19 11:51:08.338  8994  8994 F DEBUG   :     x0  0000000000000000  x1  0000000000002305  x2  0000000000000005  x3  000000000022cffc
+11-19 11:51:08.338  8994  8994 F DEBUG   :     x4  5355584f5550344d  x5  5355584f5550344d  x6  5355584f5550344d  x7  7f7f7f7f7f7f7f7f
+11-19 11:51:08.338  8994  8994 F DEBUG   :     x8  0000000000000083  x9  fe441064b1286ed1  x10 0000000000000001  x11 fffffffffffffffd
+11-19 11:51:08.338  8994  8994 F DEBUG   :     x12 00000073011ce260  x13 00000000000000c9  x14 00000073011ce310  x15 00000016a2bda8bf
+11-19 11:51:08.338  8994  8994 F DEBUG   :     x16 00000075255949d0  x17 000000752556c120  x18 00000073011c6828  x19 00000073011cfcd0
+11-19 11:51:08.338  8994  8994 F DEBUG   :     x20 0000000000000000  x21 00000073011cfdc0  x22 00000073011d0d40  x23 000000740d17e430
+11-19 11:51:08.338  8994  8994 F DEBUG   :     x24 00000073e02a4580  x25 0000000000037080  x26 00000072e011a950  x27 0000000000800101
+11-19 11:51:08.338  8994  8994 F DEBUG   :     x28 000000000000002e  x29 00000072e0118250
+11-19 11:51:08.338  8994  8994 F DEBUG   :     lr  000000740d17e074  sp  00000073011cfc20  pc  000000752556c128  pst 0000000000001000
+11-19 11:51:08.338  8994  8994 F DEBUG   : 23 total frames
+11-19 11:51:08.338  8994  8994 F DEBUG   : backtrace:
+11-19 11:51:08.338  8994  8994 F DEBUG   :       #00 pc 0000000000122128  /apex/com.android.runtime/lib64/bionic/libc.so (tgkill+8) (BuildId: 802681f07ca5a0c7cd6224d3088e4b3a)
+11-19 11:51:08.338  8994  8994 F DEBUG   :       #01 pc 0000000000e9a070  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:51:08.338  8994  8994 F DEBUG   :       #02 pc 0000000000e9a600  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:51:08.338  8994  8994 F DEBUG   :       #03 pc 00000000006810b8  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:51:08.338  8994  8994 F DEBUG   :       #04 pc 0000000000681340  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:51:08.338  8994  8994 F DEBUG   :       #05 pc 000000000053400c  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:51:08.338  8994  8994 F DEBUG   :       #06 pc 000000000078bb80  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:51:08.338  8994  8994 F DEBUG   :       #07 pc 0000000000782f50  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:51:08.338  8994  8994 F DEBUG   :       #08 pc 000000000078c678  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:51:08.338  8994  8994 F DEBUG   :       #09 pc 00000000007ab9a0  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:51:08.338  8994  8994 F DEBUG   :       #10 pc 000000000077f6d4  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:51:08.338  8994  8994 F DEBUG   :       #11 pc 00000000007ba17c  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:51:08.338  8994  8994 F DEBUG   :       #12 pc 00000000007b9718  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:51:08.338  8994  8994 F DEBUG   :       #13 pc 00000000007c4358  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:51:08.338  8994  8994 F DEBUG   :       #14 pc 00000000007bea9c  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:51:08.338  8994  8994 F DEBUG   :       #15 pc 00000000007bf10c  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:51:08.338  8994  8994 F DEBUG   :       #16 pc 0000000000673954  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:51:08.338  8994  8994 F DEBUG   :       #17 pc 00000000006752a8  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:51:08.338  8994  8994 F DEBUG   :       #18 pc 0000000000674ff0  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:51:08.338  8994  8994 F DEBUG   :       #19 pc 0000000000674e7c  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:51:08.338  8994  8994 F DEBUG   :       #20 pc 00000000006e30ac  /data/app/~~4pN5QVPYVTzBE-elygstOw==/com.Unity.ModernRoom-5sQ7Xgker48F0adBAP5kQQ==/lib/arm64/libunity.so (BuildId: 9515966d488c188f)
+11-19 11:51:08.338  8994  8994 F DEBUG   :       #21 pc 00000000001372ac  /apex/com.android.runtime/lib64/bionic/libc.so (__pthread_start(void*)+204) (BuildId: 802681f07ca5a0c7cd6224d3088e4b3a)
+11-19 11:51:08.338  8994  8994 F DEBUG   :       #22 pc 00000000000cf170  /apex/com.android.runtime/lib64/bionic/libc.so (__start_thread+64) (BuildId: 802681f07ca5a0c7cd6224d3088e4b3a)

@@ -1,0 +1,70 @@
+--------- beginning of crash
+11-19 11:50:03.601  8289  8403 F libc    : Fatal signal 5 (SIGTRAP), code -6 (SI_TKILL) in tid 8403 (Loading.Preload), pid 8289 (nity.ModernRoom)
+11-19 11:51:08.129  8851  8965 F libc    : Fatal signal 5 (SIGTRAP), code -6 (SI_TKILL) in tid 8965 (Loading.Preload), pid 8851 (nity.ModernRoom)
+--------- beginning of main
+11-19 11:54:54.653  9137  9137 W libc    : Access denied finding property "ro.product.name_for_attestation"
+11-19 11:54:54.653  9137  9137 W libc    : Access denied finding property "ro.product.brand_for_attestation"
+11-19 11:54:54.653  9137  9137 W libc    : Access denied finding property "ro.product.model_for_attestation"
+11-19 11:54:54.775  9156  9156 V Unity   : Context Type: GameActivity
+11-19 11:54:54.778  9156  9182 I Unity   : UnityApplication::CreateInstance
+11-19 11:54:54.778  9156  9182 I Unity   : GameActivity Package Version '4.4.2'
+11-19 11:54:54.778  9156  9182 I Unity   : Starting Game Loop
+11-19 11:54:54.782  9156  9182 I Unity   : Handle cmd APP_CMD_START(11)
+11-19 11:54:54.783  9156  9182 I Unity   : Handle cmd APP_CMD_RESUME(12)
+11-19 11:54:54.788  9156  9182 I Unity   : Handle cmd APP_CMD_PAUSE(14)
+11-19 11:54:54.789  9156  9182 I Unity   : Handle cmd APP_CMD_LOW_MEMORY(10)
+11-19 11:54:54.802  9156  9182 I Unity   : Handle cmd APP_CMD_GAINED_FOCUS(7)
+11-19 11:54:54.803  9156  9182 I Unity   : Handle cmd APP_CMD_LOST_FOCUS(8)
+11-19 11:54:54.807  9156  9182 I Unity   : Handle cmd APP_CMD_CONTENT_RECT_CHANGED(5)
+11-19 11:54:54.809  9156  9182 I Unity   : Handle cmd APP_CMD_INIT_WINDOW(1)
+11-19 11:54:54.813  9156  9182 I Unity   : MemoryManager: Using 'Dynamic Heap' Allocator.
+11-19 11:54:54.822  9156  9182 I Unity   : SystemInfo CPU = ARM64 FP ASIMD AES, Cores = 3, Memory = 7757mb
+11-19 11:54:54.822  9156  9182 I Unity   : SystemInfo ARM big.LITTLE configuration: 3 big (mask: 0x38), 0 little (mask: 0x0)
+11-19 11:54:54.822  9156  9182 I Unity   : XR UsableCoreMask: 0x38
+11-19 11:54:54.822  9156  9182 I Unity   : ApplicationInfo 'com.Unity.ModernRoom', Version '0.1', Min API Level '32', Target API Level '36'
+11-19 11:54:54.822  9156  9182 I Unity   : Built from '6000.0/staging' branch, Version '6000.0.80f1 (2dfd32957da2)', Build type 'Release', Scripting Backend 'il2cpp', CPU 'arm64-v8a', Stripping 'Enabled'
+11-19 11:54:54.822  9156  9182 I Unity   : Device Model 'Oculus Quest 3S', OS 'Android OS 14 (API 34)'
+11-19 11:54:54.883  9156  9182 I Unity   : Company Name: Unity
+11-19 11:54:54.883  9156  9182 I Unity   : Product Name: Modern Room
+11-19 11:54:54.931  9156  9182 W libc    : Access denied finding property "ro.vendor.product.model_extended"
+11-19 11:54:54.933  9156  9182 I Unity   : [XR] [500069816816] [11:54:54.933][Info   ] Available Layers: (0)
+11-19 11:54:54.937  9156  9182 W libc    : Access denied finding property "ro.device.feature.tracking.inside_out_body_tracking.disabled"
+11-19 11:54:54.937  9156  9182 W libc    : Access denied finding property "ro.vendor.hw.device_config"
+11-19 11:54:54.937  9156  9182 W libc    : Access denied finding property "ro.vendor.product.model_extended"
+11-19 11:54:54.987  9156  9182 W libc    : Access denied finding property "vendor.debug.egl.profiler"
+11-19 11:54:55.185  9156  9182 I Unity   : Script error: OnTriggerEnter2D
+11-19 11:54:55.185  9156  9182 I Unity   : This message parameter has to be of type: [UNREGISTERED]
+11-19 11:54:55.185  9156  9182 I Unity   : The message will be ignored.
+11-19 11:54:55.193  9156  9182 I Unity   : Script error: OnTriggerEnter2D
+11-19 11:54:55.193  9156  9182 I Unity   : This message parameter has to be of type: [UNREGISTERED]
+11-19 11:54:55.193  9156  9182 I Unity   : The message will be ignored.
+11-19 11:54:55.196  9156  9182 I Unity   : Script error: OnTriggerEnter2D
+11-19 11:54:55.196  9156  9182 I Unity   : This message parameter has to be of type: [UNREGISTERED]
+11-19 11:54:55.196  9156  9182 I Unity   : The message will be ignored.
+11-19 11:54:55.264  9156  9182 I Unity   : XRGeneral Settings awakening...
+11-19 11:54:55.264  9156  9182 I Unity   : UnityEngine.DebugLogHandler:Internal_Log(LogType, LogOption, String, Object)
+11-19 11:54:55.264  9156  9182 I Unity   : UnityEngine.XR.Management.XRGeneralSettings:Awake()
+11-19 11:54:55.264  9156  9182 I Unity   :
+11-19 11:54:55.264  9156  9182 W Unity   : <b>[App UI]</b> Unable to find an AppUISettings instance, creating a default one...
+11-19 11:54:55.264  9156  9182 W Unity   : UnityEngine.DebugLogHandler:Internal_Log(LogType, LogOption, String, Object)
+11-19 11:54:55.264  9156  9182 W Unity   : Unity.AppUI.Core.AppUI:InitializeInPlayer()
+11-19 11:54:55.264  9156  9182 W Unity   :
+11-19 11:54:55.306  9156  9182 I Unity   : Loading OpenXR loader library at path: openxr_loader
+11-19 11:54:55.306  9156  9182 I Unity   : UnityEngine.DebugLogHandler:Internal_Log(LogType, LogOption, String, Object)
+11-19 11:54:55.306  9156  9182 I Unity   : UnityEngine.XR.OpenXR.OpenXRLoaderBase:LoadOpenXRSymbols()
+11-19 11:54:55.306  9156  9182 I Unity   : UnityEngine.XR.OpenXR.OpenXRLoaderBase:InitializeInternal()
+11-19 11:54:55.306  9156  9182 I Unity   : UnityEngine.XR.OpenXR.OpenXRLoaderBase:Initialize()
+11-19 11:54:55.306  9156  9182 I Unity   : UnityEngine.XR.Management.XRManagerSettings:InitializeLoaderSync()
+11-19 11:54:55.306  9156  9182 I Unity   : UnityEngine.XR.Management.XRGeneralSettings:InitXRSDK()
+11-19 11:54:55.306  9156  9182 I Unity   :
+11-19 11:54:55.306  9156  9182 W Unity   : [XR] XR_META_performance_metrics: Attempted to stop before session ready
+11-19 11:54:55.322  9156  9182 I Unity   : [XR] [500069816816] [11:54:55.322][Info   ] Available Layers: (0)
+11-19 11:54:55.350  9156  9182 W Unity   : Orientation Listener cannot detect orientation.
+11-19 11:54:55.350  9156  9182 I Unity   :     HasWindow = 1, HasFocus = 0
+11-19 11:54:55.350  9156  9182 I Unity   : Handle cmd APP_CMD_WINDOW_RESIZED(3)
+11-19 11:54:55.350  9156  9182 I Unity   : Handle cmd APP_CMD_WINDOW_REDRAW_NEEDED(4)
+11-19 11:54:55.351  9156  9182 I Unity   : Handle cmd APP_CMD_TERM_WINDOW(2)
+11-19 11:54:55.354  9156  9182 I Unity   : Handle cmd APP_CMD_STOP(15)
+11-19 11:54:55.354  9156  9182 I Unity   : Handle cmd APP_CMD_SAVE_STATE(13)
+11-19 11:54:55.373  9156  9182 I Unity   : Handle cmd APP_CMD_WINDOW_INSETS_CHANGED(17)
+11-19 11:54:55.374  9156  9182 I Unity   : Handle cmd APP_CMD_WINDOW_INSETS_CHANGED(17)

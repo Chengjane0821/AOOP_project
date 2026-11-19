@@ -1,0 +1,22 @@
+CachedReader::OutOfBoundsError(unsigned long, unsigned long)
+??:?
+CachedReader::UpdateReadCache(void*, unsigned long)
+??:?
+void TransferPPtr<StreamedBinaryRead>(int&, StreamedBinaryRead&)
+??:?
+void TransferField<StreamedBinaryRead, false, Converter_UnityEngineObject>(StaticTransferFieldInfo const&, RuntimeSerializationCommandInfo&, Converter_UnityEngineObject&)
+??:?
+void Transfer_UnityEngineObject<StreamedBinaryRead, false>(SerializationCommandArguments const&, RuntimeSerializationCommandInfo&)
+??:?
+void ExecuteSerializationCommands<StreamedBinaryRead>(SerializationCommandProvider&, StreamedBinaryRead&, GeneralMonoObject const&)
+??:?
+TransferScriptingObject<StreamedBinaryRead>(StreamedBinaryRead&, ScriptingObjectPtr, ScriptingClassPtr, SerializationCache::Data*&)::{lambda(bool, bool)#1}::operator()(bool, bool) const
+??:?
+SerializedFile::ReadObject(long, ObjectCreationMode, bool, TypeTree const**, bool*, Object&, CacheReaderBase*) const
+??:?
+PersistentManager::LoadFileCompletelyThreaded(core::basic_string_ref<char>, long*, int*, int, PersistentManager::LoadFlags, LoadProgress&, PersistentManager::LockFlags)
+??:?
+LoadSceneOperation::Perform()
+??:?
+PreloadManager::ProcessSingleOperation()
+??:?
