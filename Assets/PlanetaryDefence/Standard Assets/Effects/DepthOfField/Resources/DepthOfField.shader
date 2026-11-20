@@ -47,7 +47,7 @@ Shader "Hidden/DepthOfField/DepthOfField"
             SamplerState sampler_MainTex;
         #else
             sampler2D _MainTex;
-            sampler2D _CameraDepthTexture;
+            UNITY_DECLARE_DEPTH_TEXTURE(_CameraDepthTexture);
         #endif
 
         ///////////////////////////////////////////////////////////////////////////////
