@@ -136,3 +136,7 @@ Tooling: old Unity CLI 1.0.0-beta.6 cannot connect because this project lacks Pi
 Device: Quest 3S connected through ADB. Captured historical Loading.Preload SIGTRAP crashes (10:48-10:52), before installed application's 11:21 update. Native symbols currently on disk do not match those historical Build IDs; they must not be used to infer an exact native function.
 Remaining hardware verification: run the patched build on Quest; repeatedly enter/exit both activities and verify head pose, left/right controller tracking, menu/ray input and locomotion; enter another house afterwards. No claim of patched hardware test pass yet.
 Bug 2 remains under investigation pending latest Elder-entry reproduction/device logs; no speculative tennis rules or room changes made.
+
+
+NPC INTEGRATION — 2026-11-20
+Baseline: existing user edits to scene, Carpenter materials and legacy post-processing assets preserved. Nolant package: one FBX, four material/texture/prefab variants (Brown, Green, Blue, Yellow), humanoid importer, Idle and Walk clips; demo controller alternates Walk/Idle. No talking/greeting clips provided. Original source package will remain unmodified. Logs inspected: Verification/editor-errors.txt and Windows Unity Editor.log. Historical errors include XRGrabInteractable inactive starting selection (existing guard present), CS1513 (closing brace already present), legacy stereo shader errors; latest errors include empty shader parse error and Oculus package path resolution exception. Unity Editor is running with Android target. Validation pending.
