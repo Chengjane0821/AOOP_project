@@ -44,7 +44,7 @@ namespace ForgottenVillage.Editor {
                         Require(action.GetComponent<XRSimpleInteractable>() && action.GetComponent<VillageInteractable>(), "Desktop/XR interaction missing");
                         var interaction=action.GetComponent<VillageInteractable>();
                         Require(interaction.action.GetPersistentEventCount()>0 && interaction.action.GetPersistentTarget(0)==action, "Dialogue event disconnected");
-                        if(npc.keepFacingCourt)Require(action.GetComponent<Collider>().isTrigger, "Elder blocks ball");
+                        if(npc.keepFacingCourt)Require(!action.GetComponent<Collider>().isTrigger, "Elder must remain visible to XR rays that ignore triggers");
                         report.AppendLine("PASS: " + scene.name + " / " + action.index + " height=" + bounds.size.y.ToString("F2") + "; avatar, idle, materials, feet, interaction and collision verified");
                         Capture(npc, scene.name);
                         total++;

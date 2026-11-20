@@ -18,6 +18,14 @@ namespace ForgottenVillage {
             if (animator) animator.applyRootMotion = false;
         }
 
+        void Start() {
+            if (!keepFacingCourt || !action) return;
+            var match = action.GetComponentInParent<ElderTennis>();
+            var target = action.GetComponent<Collider>();
+            if (match && match.ball && target)
+                Physics.IgnoreCollision(target, match.ball.GetComponent<Collider>());
+        }
+
         public void Greet() { conversing = true; greetingUntil = Time.time + 1.4f; }
 
         void LateUpdate() {
