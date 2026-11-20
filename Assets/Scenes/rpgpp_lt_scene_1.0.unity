@@ -30111,21 +30111,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 264414c28ea0fbb41b924fd17d9228b3, type: 3}
---- !u!115 &1560196771
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: GentlePulse
-  m_Namespace: ForgottenVillage
-  m_AssemblyName: Assembly-CSharp
 --- !u!1001 &1561016663
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37440,7 +37425,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1855082643}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1560196771}
+  m_Script: {fileID: 11500000, guid: dbf516fd560c43e8990423de192094b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1855082646}

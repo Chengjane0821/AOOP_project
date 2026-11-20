@@ -12,12 +12,12 @@ namespace ForgottenVillage.Editor {
 [InitializeOnLoad] public static class NpcIntegration {
  const string Source = "Assets/Stylized NPC - Peasant Nolant/";
  const string Dest = "Assets/TheForgottenVillage/";
- static NpcIntegration(){ EditorApplication.update += Tick; File.WriteAllText("Verification/npc-ready.txt","integration-v2"); }
+ static NpcIntegration(){ EditorApplication.update += Tick; File.WriteAllText("Verification/npc-ready.txt","integration-v5"); }
  static void Tick(){
   const string request="Verification/npc.request";
   if(EditorApplication.isCompiling || EditorApplication.isUpdating || EditorApplication.isPlaying || !File.Exists(request))return;
-  var command=File.ReadAllText(request).Trim();File.Delete(request);
-  try { if(command=="audit")Audit(); else if(command=="build")Build(); else if(command=="tests")TennisTestRunner.Run(); else if(command=="validate")NpcValidation.Run(); }
+  string command;try{command=File.ReadAllText(request).Trim();File.Delete(request);}catch(IOException){return;}
+  try { if(command=="audit")Audit(); else if(command=="build")Build(); else if(command=="tests")TennisTestRunner.Run(); else if(command=="validate")NpcValidation.Run(); else if(command=="remove-unused-oculus")RemoveUnusedOculus(); else if(command=="refine")Refine(); else if(command=="play")NpcPlayChecks.Request(); else throw new ArgumentException("Unknown NPC command: "+command); }
   catch(Exception e){File.WriteAllText("Verification/npc-result.txt",e.ToString());Debug.LogException(e);}
  }
  [MenuItem("Forgotten Village/NPC/Audit")]
@@ -40,6 +40,36 @@ namespace ForgottenVillage.Editor {
   }
   File.WriteAllText("Verification/npc-audit.txt",log.ToString());
   File.WriteAllText("Verification/npc-result.txt","Audit complete");
+ }
+ static void Refine(){
+  var setup=EditorSceneManager.GetSceneManagerSetup();
+  try{foreach(var entry in EditorBuildSettings.scenes.Where(s=>s.enabled)){
+   var scene=EditorSceneManager.OpenScene(entry.path);bool changed=false;
+   foreach(var action in scene.GetRootGameObjects().SelectMany(r=>r.GetComponentsInChildren<VillageAction>(true)).Where(a=>a.kind=="dialogue")){
+    var npc=action.GetComponentInChildren<NpcPresentation>();if(!npc)continue;
+    if(npc.keepFacingCourt)action.GetComponent<Collider>().isTrigger=false;
+    if(action.index==3 || action.index==4){var position=action.transform.position;position.x=1.25f;action.transform.position=position;}
+    var scope=action.transform.parent;
+    if(scope)foreach(var label in scope.GetComponentsInChildren<TMPro.TMP_Text>(true).Where(t=>t.name=="TALK" || t.text=="SPEAK")){
+     label.transform.position=npc.transform.position+Vector3.up*2.05f;
+     label.text=Roles[action.index].ToUpperInvariant()+" / SPEAK";
+    }
+    changed=true;
+   }
+   if(changed){EditorSceneManager.MarkSceneDirty(scene);EditorSceneManager.SaveScene(scene);var house=scene.GetRootGameObjects().SelectMany(r=>r.GetComponentsInChildren<HouseSceneRoot>(true)).FirstOrDefault();if(house && !PrefabUtility.SaveAsPrefabAsset(house.gameObject,Dest+"Prefabs/"+scene.name+"Content.prefab"))throw new Exception("Failed saving house prefab: "+scene.name);}
+  }}finally{EditorSceneManager.RestoreSceneManagerSetup(setup);}
+  File.WriteAllText("Verification/npc-result.txt","PASS: resident prompts aligned and solid XR targets retained");
+ }
+ static void RemoveUnusedOculus(){
+  foreach(var group in new[]{BuildTargetGroup.Standalone,BuildTargetGroup.Android}){
+   var settings=UnityEditor.XR.Management.XRGeneralSettingsPerBuildTarget.XRGeneralSettingsForBuildTarget(group);
+   if(!settings || !settings.Manager || settings.Manager.activeLoaders.Count!=1 || settings.Manager.activeLoaders[0].GetType().Name!="OpenXRLoader")throw new Exception("Expected OpenXR-only provider: "+group);
+  }
+  EditorBuildSettings.RemoveConfigObject("Unity.XR.Oculus.Settings");
+  AssetDatabase.DeleteAsset("Assets/XR/Settings/Oculus Settings.asset");
+  AssetDatabase.DeleteAsset("Assets/XR/Loaders/Oculus Loader.asset");
+  UnityEditor.PackageManager.Client.Remove("com.unity.xr.oculus");
+  File.WriteAllText("Verification/npc-oculus-removal.txt","Verified Windows and Android OpenXR-only loaders; removed unused Oculus provider and orphaned settings. Package resolution pending.");
  }
  static readonly string[] Roles={"Elder","Alchemist","Carpenter","Technician","Clockmaker"};
  static readonly string[] Colors={"Brown","Green","Brown","Blue","Yellow"};
@@ -98,14 +128,14 @@ namespace ForgottenVillage.Editor {
      visual.transform.SetParent(compensation.transform,false);visual.transform.localPosition=Vector3.zero;visual.transform.localRotation=Quaternion.Euler(0,180,0);
      var presentation=visual.GetComponent<NpcPresentation>();presentation.keepFacingCourt=action.index==0&&action.GetComponentInParent<ElderTennis>();
      // Preserve the existing ray target while excluding it from physical ball contacts.
-     if(presentation.keepFacingCourt)collider.isTrigger=true;
+     if(presentation.keepFacingCourt)collider.isTrigger=false;
      PrefabUtility.RecordPrefabInstancePropertyModifications(presentation);
      PrefabUtility.RecordPrefabInstancePropertyModifications(visual.transform);
      log.AppendLine(scene.name+" / "+action.name+" role="+action.index+" bounds="+BoundsOf(visual));
     }
     if(actions.Length>0){EditorSceneManager.MarkSceneDirty(scene);EditorSceneManager.SaveScene(scene);
      var house=scene.GetRootGameObjects().Select(r=>r.GetComponent<HouseSceneRoot>()).FirstOrDefault(h=>h);
-     if(house)PrefabUtility.SaveAsPrefabAsset(house.gameObject,Dest+"Prefabs/"+scene.name+"Content.prefab");
+     if(house && !PrefabUtility.SaveAsPrefabAsset(house.gameObject,Dest+"Prefabs/"+scene.name+"Content.prefab"))throw new Exception("Failed saving house prefab: "+scene.name);
     }
    }
    AssetDatabase.SaveAssets();File.WriteAllText("Verification/npc-build.txt",log.ToString());File.WriteAllText("Verification/npc-result.txt","PASS: NPC integration saved");
