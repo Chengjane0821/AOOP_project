@@ -9,11 +9,11 @@ PASS: PlaneRunner aircraft and valley assets loaded
 PASS: Run begins with fresh timer and calibration
 PASS: Automatic forward flight starts after countdown: Flying / distance 0.08999997
 PASS: Random pooled obstacles spawn ahead of aircraft
-PASS: Desktop D and Space steer and raise airplane: (1.40, 2.78, 0.00) input (1.00, 1.00)
+PASS: Desktop D and Space steer and raise airplane: (1.43, 2.78, 0.00) input (1.00, 1.00)
 PASS: Aircraft motion does not move the viewing camera
 PASS: Pause freezes both survival time and obstacles
 PASS: Paused recalibration succeeds
-PASS: Desktop A and Ctrl steer and lower airplane: (-1.47, 0.91, 0.00) input (-1.00, -1.00)
+PASS: Desktop A and Ctrl steer and lower airplane: (-1.49, 0.90, 0.00) input (-1.00, -1.00)
 PASS: Actual approaching obstacle collision fails the run
 PASS: Crash stops survival timer
 PASS: Retry clears obstacles, position and all elapsed time

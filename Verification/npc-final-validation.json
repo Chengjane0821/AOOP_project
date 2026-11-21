@@ -1,0 +1,73 @@
+{
+  "unity": "6000.0.80f1",
+  "project": "The Forgotten Village",
+  "edit_mode": {
+    "total": "111",
+    "passed": "111",
+    "failed": "0",
+    "skipped": "0",
+    "start-time": "2026-11-21 03:34:33Z",
+    "end-time": "2026-11-21 03:34:35Z"
+  },
+  "editor_checks": [
+    {
+      "file": "Verification/npc-playmode.txt",
+      "passed": true,
+      "modified_at": "2026-11-21T03:22:41.509059+00:00",
+      "sha256": "9b445b9471fae8a9134fb911d41776763a3878fba47e2295e1ebd7240e73c99f",
+      "checks": 69
+    },
+    {
+      "file": "Verification/npc-validation.txt",
+      "passed": true,
+      "modified_at": "2026-11-20T06:30:10.697680+00:00",
+      "sha256": "6431ec8c0c384be5dd2fc7ad6118895f853a940a28900445a613470628cd59b4",
+      "checks": 14
+    },
+    {
+      "file": "Verification/elder-tennis-playmode.txt",
+      "passed": true,
+      "modified_at": "2026-11-21T13:54:08.730292+00:00",
+      "sha256": "3150c6c6f3a929170b458e828d2c55cd869af2dc9e4dc7cccbcfc07ae8dd210a",
+      "checks": 42
+    },
+    {
+      "file": "Verification/plane-dream-playmode.txt",
+      "passed": true,
+      "modified_at": "2026-11-21T03:31:05.180165+00:00",
+      "sha256": "d6db44758abda193bd0396723ff6a0da04ce77646a8ee8564494d1b6f831cbb9",
+      "checks": 27
+    },
+    {
+      "file": "Verification/vr-lifecycle-playmode.txt",
+      "passed": true,
+      "modified_at": "2026-11-21T03:31:24.369629+00:00",
+      "sha256": "41bb228d079d114065a685f85b077ed797bf521fdbe6764362fd036754e6c4a3",
+      "checks": 163
+    },
+    {
+      "file": "Verification/imported-mini-games-playmode.txt",
+      "passed": true,
+      "modified_at": "2026-11-21T03:29:37.994760+00:00",
+      "sha256": "42369704c86cfdf0f5a9097a2f2d090d911d580376b31c35381806d7f9205278",
+      "checks": 30
+    },
+    {
+      "file": "Verification/clock-rhythm-playmode.txt",
+      "passed": true,
+      "modified_at": "2026-11-21T03:36:16.919116+00:00",
+      "sha256": "a713e0e6bdb078c5cf6be2f6e8ab1f6da72d24e6385855cdbcf5126423437353",
+      "checks": 30
+    }
+  ],
+  "android_build": {
+    "result": "Succeeded",
+    "errors": 0,
+    "apk": "Builds/ForgottenVillage-Quest.apk",
+    "bytes": 64371849,
+    "modified_at": "2026-11-21T14:03:23.092037+00:00",
+    "sha256": "5758e84380f03e81998fccf0c661e22be948bf94300e670228271bd696eaf0ba"
+  },
+  "hardware": "adb devices -l returned no attached devices; no physical Quest testing",
+  "scope": "Existing working tree, including user-owned pre-existing uncommitted changes; not a clean-checkout assertion."
+}

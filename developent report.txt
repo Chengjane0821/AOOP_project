@@ -167,3 +167,61 @@ Fresh Plane dream suite PASS (2026-11-21): actual injected A/D/Space/Ctrl input,
 Clock regression found a real save failure: File.Replace threw IOException "無法移除要被取代的檔案" from VillageStorage.Save during consecutive memory/clue commits. This is Windows atomic replacement failure (1175), consistent with transient file-handle contention. Added bounded retries for only sharing/lock/replace-removal codes 32/33/1175 (15/30/45 ms), retaining atomic replace and backup semantics. Permanent or exhausted errors still propagate; no delete/copy/truncate fallback hides failures. Added actual filesystem tests for rapid successive saves/backup rotation, a briefly held Windows read handle, and persistent directory errors. Revalidation pending.
 
 Fresh EditMode result: 111 passed / 0 failed / 0 skipped on 2026-11-21, including all three new disk-save tests. Windows lock test passed against a real FileStream holding the destination for 35 ms; repeated saves preserved current data and previous backup. Clock/full-story reruns pending.
+
+Clock Play Mode rerun PASS after bounded atomic-save retry: full 48-note failed/successful runs, all six keyboard lanes, XR/contact callbacks, memory/evidence gates, Clue #5, disk save/load and re-entry all passed with no captured runtime errors. All 111 EditMode tests passed. Full combined story and final Android build remain pending at this entry.
+
+
+FINAL NPC INTEGRATION ACCEPTANCE — 2026-11-21 (supersedes earlier pending entries)
+Implemented in the actual seven enabled scenes, not only generated prefabs.
+Six actors: village Elder, house Elder, Alchemist, Carpenter, Technician, Clockmaker.
+Abandoned House contains evidence and the player-researcher reveal; no interactive researcher NPC existed to replace.
+
+Resources: unchanged Nolant FBX, valid Humanoid Avatar, body (1,345 vertices) and hat (178 vertices), four original textures/material variants. Source Idle is 3 seconds/looping; Walk exists but is not used for stationary residents. No supplied talking/greeting clips. Game Idle controller plus bounded visual yaw and small procedural conversational/greeting head nods; applyRootMotion=false. Two skinned renderers per actor, no added lights or model physics. Role palette Brown/Green/Brown/Blue/Yellow; heights 1.68/1.72/1.82/1.76/1.70 m. Single supplied face is reused; no unsupported age/gender meshes or clips invented.
+
+Reusable assets: Assets/TheForgottenVillage/Prefabs/NPC/{Elder,Alchemist,Carpenter,Technician,Clockmaker}.prefab; Animations/ResidentIdle.controller; Materials/NPC/{Brown,Green,Blue,Yellow}.mat. Shared original textures/meshes/rig/clips; project-owned materials. Source package unchanged from import commit.
+Gameplay roots/dialogue IDs/events retained. Visual children compensate root scale; quest/inventory/clue/scene-transition references remain. Technician and Clockmaker roots moved beside equipment (x=1.25) after actual visibility/ray failures. Elder solid interaction collider remains ray-selectable; only its collision pair with the tennis ball is ignored. Existing opponent motion/paddles/smash/best-of-three rules preserved.
+
+Confirmed fixes:
+- Empty DepthOfField shader parse error: restored tracked implementation; stereo depth declaration corrected. Android clean build succeeded.
+- OculusLoader.AssetPathToAbsolutePath NullReferenceException at reload: unused provider removed; Windows/Android selected OpenXR providers retained.
+- ResidentIdle prefab serialization error: matching MonoBehaviour source files and migrated embedded MonoScript references; house prefabs save successfully.
+- Unsupported URP managed settings: removed the two unavailable cross-version types; Unity normalized the remaining null registry entry on build.
+- Windows File.Replace save failures: bounded retries for transient sharing/removal errors, preserving atomic replacement and backup; permanent failures still report.
+- Automated moving-target mouse fixture: current-frame injection through normal DesktopInput/Physics.Raycast; Editor-only hook omitted from Player builds.
+Historical CS1513 and XRGrabInteractable exceptions were inspected; the closing brace and inactive-selection guard already existed before this task. They are not claimed as newly implemented fixes.
+
+Final actual verification:
+111 EditMode tests passed, 0 failed, 0 skipped, including real filesystem save/backup/temporary-lock tests.
+NPC saved-scene validation and Play Mode: all six actors visible, human scale, valid rigs/materials/clips, no missing scripts in seven scenes, Desktop activation and XR manager selection open dialogue, animation advances without root displacement, six-house entry/return and one active listener verified.
+Elder/full-story suite PASS: real serve/ball/paddle contacts, NPC return, Grip smash, best-of-three victory, Clue #1, all other activity reward paths, five-clue Abandoned House unlock, original final ending, JSON persistence and simulated Arduino GATE:OPEN.
+Plane suite PASS: real A/D/Space/Ctrl input, pause/recalibration, obstacle failure, retry, full real-time 60-second survival, Clue #2 and room/village return.
+VR lifecycle suite PASS: repeated Desktop/simulated-XR cycles, original rig/head camera retained, no duplicate active XR origins/cameras/listeners, paused activity exits restore time/movement. No captured runtime exceptions in passing suites.
+Imported mini-game suite PASS: Technician desktop ray/XR selection, fail/retry/win and rewards; Carpenter 60-second tracked contacts/dodges/tools, reward and return.
+Clock suite PASS: 48-note failure/success runs, six keyboard lanes, controller-contact/XR callbacks, memory/object evidence, Clue #5, actual disk save/load and re-entry.
+Clean Android IL2CPP build: Succeeded, 0 errors. APK: Builds/ForgottenVillage-Quest.apk (64,371,849 bytes). SHA256 and report timestamps are recorded in Verification/npc-final-validation.json. Build/cache/log directories and APK are not committed.
+Earlier combined-suite Paused/Quick Hands timeout runs are retained in this report as failures; the final uninterrupted combined suite passed. No failing run is presented as passing.
+
+Remaining acceptance/known limits:
+No device attached in adb devices -l; physical Quest comfort, controller feel, tracking, performance, original native entry-crash reproduction and on-device return acceptance remain manual. Desktop has no active PC OpenXR runtime; its native runtime-unavailable diagnostics require an installed PC VR runtime/headset to validate. Desktop fallback and simulated XR tests passed. Arduino/camera evidence paths used simulation; no hardware claim.
+Validation used the existing working tree, including the user's prior Carpenter materials, legacy-effect removals and village scene edits; a clean clone excluding those changes was not built. User-owned changes remain uncommitted. Original village delta remains 167 additions/1 deletion, separate from committed NPC changes.
+
+Changed project code: NpcPresentation; NpcIntegration/NpcValidation/NpcPlayChecks; VillageAction; VillageGame/VillageStorage; VillageStorageTests; BirdCallAmbience/GentlePulse/ResidentIdle split from PolishAtmosphere; Editor input fixture and conditional PlanetaryDefenceRun hook. Data: playable village/five resident house scenes and content prefabs, NPC assets/palette/controller, URP global settings, unused Oculus package/settings/config removal, DepthOfField shader. Corresponding .meta files included. Final reports and six role renders are in Verification/.
+
+Git milestones (15 implementation/verification commits below, plus this final acceptance commit; meaningful milestones prioritized over an artificial 50):
+23b09b83 feat(npc): preserve Nolant source assets and add Unity integration audit
+c7d3ed14 fix(shader): restore empty depth-of-field shader and declare stereo depth texture
+ae7d4088 feat(npc): add bounded visual gaze and conversation nods without moving gameplay roots
+70861e01 feat(npc): integrate role prefabs into existing dialogue roots and audit saved scenes
+2ce295d1 feat(npc): add five human-scale Nolant role prefabs with stationary idle
+7c224a75 feat(npc): replace village and house placeholder visuals while preserving dialogue roots
+34535db5 fix(npc): preserve solid XR targets while excluding Elder ball collisions
+c2c9fb5f fix(xr): remove unused Oculus provider that fails during editor assembly reload
+fa9b2597 fix(unity): give ambience and resident behaviours serializable matching script files
+7cc7e88f fix(npc): clear equipment sightlines and migrate resident scene script references
+850cadc8 feat(npc): isolate game material palette while sharing imported textures
+8b440b41 fix(rendering): remove unavailable cross-version URP managed settings
+ddc2c7d1 test(defence): synchronize synthetic pointer with the moving target input frame
+238ca263 test(npc): record scene renders and passing interaction and workshop regressions
+996251a4 fix(save): retry transient Windows atomic replacement locks without losing backups
+
+Git history retained; no force-push or new branch. Final push status is reported in the conversation after verification.
