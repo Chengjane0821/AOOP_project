@@ -1,0 +1,1 @@
+Verified Windows and Android OpenXR-only loaders; removed unused Oculus provider and orphaned settings. Package resolution pending.

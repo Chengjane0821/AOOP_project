@@ -1,0 +1,69 @@
+PASS: Visible animated resident 0
+PASS: Solid desktop/XR ray reaches resident 0
+PASS: Desktop activation opens role dialogue 0
+PASS: NPC collider registered with XR manager
+PASS: XR ray selection allowed
+PASS: XR selection opens dialogue 0
+PASS: Idle animation advances
+PASS: Animation does not displace resident
+PASS: House entry 0
+PASS: Visible animated resident 0
+PASS: Solid desktop/XR ray reaches resident 0
+PASS: Desktop activation opens role dialogue 0
+PASS: NPC collider registered with XR manager
+PASS: XR ray selection allowed
+PASS: XR selection opens dialogue 0
+PASS: Idle animation advances
+PASS: Animation does not displace resident
+PASS: Elder ray collider excluded from ball contacts
+PASS: One active listener in house 0
+PASS: Return restores village control 0
+PASS: House entry 1
+PASS: Visible animated resident 1
+PASS: Solid desktop/XR ray reaches resident 1
+PASS: Desktop activation opens role dialogue 1
+PASS: NPC collider registered with XR manager
+PASS: XR ray selection allowed
+PASS: XR selection opens dialogue 1
+PASS: Idle animation advances
+PASS: Animation does not displace resident
+PASS: One active listener in house 1
+PASS: Return restores village control 1
+PASS: House entry 2
+PASS: Visible animated resident 2
+PASS: Solid desktop/XR ray reaches resident 2
+PASS: Desktop activation opens role dialogue 2
+PASS: NPC collider registered with XR manager
+PASS: XR ray selection allowed
+PASS: XR selection opens dialogue 2
+PASS: Idle animation advances
+PASS: Animation does not displace resident
+PASS: One active listener in house 2
+PASS: Return restores village control 2
+PASS: House entry 3
+PASS: Visible animated resident 3
+PASS: Solid desktop/XR ray reaches resident 3
+PASS: Desktop activation opens role dialogue 3
+PASS: NPC collider registered with XR manager
+PASS: XR ray selection allowed
+PASS: XR selection opens dialogue 3
+PASS: Idle animation advances
+PASS: Animation does not displace resident
+PASS: One active listener in house 3
+PASS: Return restores village control 3
+PASS: House entry 4
+PASS: Visible animated resident 4
+PASS: Solid desktop/XR ray reaches resident 4
+PASS: Desktop activation opens role dialogue 4
+PASS: NPC collider registered with XR manager
+PASS: XR ray selection allowed
+PASS: XR selection opens dialogue 4
+PASS: Idle animation advances
+PASS: Animation does not displace resident
+PASS: One active listener in house 4
+PASS: Return restores village control 4
+PASS: House entry 5
+PASS: One active listener in house 5
+PASS: Return restores village control 5
+PASS: No runtime exceptions during NPC interaction and six-house transitions
+PASS: NPC Play Mode suite

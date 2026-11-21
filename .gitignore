@@ -149,3 +149,10 @@ InitTestScene*.unity*
 /Verification/active-workshop-progress.txt
 /Verification/active-workshop-test-save.json*
 /Verification/active-games-visual-test-save.json*
+
+# NPC integration automation scratch (final reports and role renders are tracked)
+/Verification/npc.request*
+/Verification/npc-ready.txt
+/Verification/npc-result.txt
+/Verification/npc-desktop.*
+/Verification/npc-window.*

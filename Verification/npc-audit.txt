@@ -1,0 +1,129 @@
+PLUGIN Packages/com.unity.xr.oculus/Runtime/x64/OVRPlugin.dll package=C:\Github_rep\AOOP_project\Library\PackageCache\com.unity.xr.oculus@68ef97a4d91e
+PLUGIN Packages/com.unity.xr.oculus/Runtime/Android/OVRPlugin.aar package=C:\Github_rep\AOOP_project\Library\PackageCache\com.unity.xr.oculus@68ef97a4d91e
+AnimationClip metarig|Idle
+length=3 loop=True
+AnimationClip metarig|Walk
+length=1.333333 loop=True
+Avatar Peasant Nolant(Free Version)Avatar
+valid=True human=True
+Mesh Hat
+vertices=178 submeshes=1
+Mesh Peasant Nolant
+vertices=1345 submeshes=1
+AnimationClip __preview__metarig|Idle
+length=3 loop=False
+AnimationClip __preview__metarig|Walk
+length=1.333333 loop=False
+GameObject Peasant Nolant(Free Version)
+GameObject Hat
+GameObject metarig
+GameObject Peasant Nolant
+Material Material
+Transform thumb.R
+Transform spine.006_end
+Transform Peasant Nolant(Free Version)
+Transform spine.004
+Transform shoulder.L
+GameObject finger.002.R
+GameObject breast.L
+GameObject thigh.L
+GameObject hand.R
+Transform thumb.L_end
+Transform thigh.R
+Transform pelvis.L_end
+GameObject shoulder.R
+Transform forearm.L
+GameObject foot.R
+Transform shin.R
+GameObject forearm.R
+GameObject foot.L
+Transform Peasant Nolant
+Transform thumb.R_end
+GameObject toe.L_end
+Transform foot.R
+GameObject thumb.L
+GameObject thumb.R
+GameObject finger.002.L
+Transform upper_arm.L
+GameObject shoulder.L
+Transform spine.002
+GameObject finger.001.R
+Transform upper_arm.R
+Transform Hat
+GameObject spine.006_end
+Transform spine.006
+Transform spine.001
+Transform metarig
+Transform pelvis.L
+GameObject breast.L_end
+SkinnedMeshRenderer Hat
+GameObject finger.001.L
+GameObject pelvis.L
+GameObject spine
+Transform shin.L
+GameObject hand.L
+Transform spine.005
+GameObject upper_arm.L
+GameObject spine.004
+GameObject thumb.R_end
+GameObject thigh.R
+GameObject finger.002.L_end
+GameObject thumb.L_end
+GameObject toe.L
+GameObject spine.005
+Transform toe.R
+GameObject pelvis.R_end
+Transform finger.001.L
+GameObject spine.003
+Transform thumb.L
+GameObject spine.006
+Transform toe.L
+Transform thigh.L
+Transform spine.003
+Transform pelvis.R
+Transform hand.L
+GameObject breast.R_end
+GameObject toe.R
+Transform pelvis.R_end
+Transform toe.L_end
+Transform spine
+GameObject pelvis.L_end
+Animator Peasant Nolant(Free Version)
+GameObject upper_arm.R
+Transform forearm.R
+GameObject breast.R
+Transform breast.L_end
+GameObject forearm.L
+Transform breast.R_end
+Transform shoulder.R
+Transform hand.R
+GameObject shin.R
+Transform finger.002.L
+GameObject shin.L
+Transform finger.002.L_end
+GameObject finger.002.R_end
+SkinnedMeshRenderer Peasant Nolant
+Transform foot.L
+Transform finger.001.R
+GameObject pelvis.R
+Transform breast.R
+GameObject toe.R_end
+Transform breast.L
+GameObject spine.002
+Transform finger.002.R_end
+GameObject spine.001
+Transform finger.002.R
+Transform toe.R_end
+SCENE Assets/Scenes/rpgpp_lt_scene_1.0.unity
+NPC 0 Village Elder meeting point position=(74.10, 22.43, 48.18) scale=(0.70, 1.80, 0.60) collider=Center: (74.10, 22.43, 48.18), Extents: (0.35, 0.90, 0.30)
+SCENE Assets/TheForgottenVillage/Scenes/EldersHouse.unity
+NPC 0 Resident interaction position=(0.00, 0.80, 1.95) scale=(0.45, 1.60, 0.45) collider=Center: (0.00, 0.80, 1.95), Extents: (0.23, 0.80, 0.23)
+SCENE Assets/TheForgottenVillage/Scenes/AlchemistsHouse.unity
+NPC 1 Resident interaction position=(2.28, 0.80, 1.10) scale=(0.45, 1.60, 0.45) collider=Center: (2.28, 0.80, 1.10), Extents: (0.22, 0.80, 0.23)
+SCENE Assets/TheForgottenVillage/Scenes/CarpentersHouse.unity
+NPC 2 Resident interaction position=(2.28, 0.80, 1.10) scale=(1.00, 1.00, 1.00) collider=Center: (2.28, 0.80, 1.10), Extents: (0.22, 0.80, 0.23)
+SCENE Assets/TheForgottenVillage/Scenes/TechniciansHouse.unity
+NPC 3 Resident interaction position=(2.28, 0.80, 1.10) scale=(1.00, 1.00, 1.00) collider=Center: (2.28, 0.80, 1.10), Extents: (0.22, 0.80, 0.23)
+SCENE Assets/TheForgottenVillage/Scenes/ClockmakersHouse.unity
+NPC 4 Resident interaction position=(2.28, 0.80, 1.10) scale=(1.00, 1.00, 1.00) collider=Center: (2.28, 0.80, 1.10), Extents: (0.22, 0.80, 0.23)
+SCENE Assets/TheForgottenVillage/Scenes/AbandonedHouse.unity

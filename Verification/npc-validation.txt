@@ -1,0 +1,14 @@
+PASS: rpgpp_lt_scene_1.0 / 0 height=1.68; avatar, idle, materials, feet, interaction and collision verified
+PASS: rpgpp_lt_scene_1.0 missing scripts=0
+PASS: EldersHouse / 0 height=1.68; avatar, idle, materials, feet, interaction and collision verified
+PASS: EldersHouse missing scripts=0
+PASS: AlchemistsHouse / 1 height=1.72; avatar, idle, materials, feet, interaction and collision verified
+PASS: AlchemistsHouse missing scripts=0
+PASS: CarpentersHouse / 2 height=1.82; avatar, idle, materials, feet, interaction and collision verified
+PASS: CarpentersHouse missing scripts=0
+PASS: TechniciansHouse / 3 height=1.76; avatar, idle, materials, feet, interaction and collision verified
+PASS: TechniciansHouse missing scripts=0
+PASS: ClockmakersHouse / 4 height=1.70; avatar, idle, materials, feet, interaction and collision verified
+PASS: ClockmakersHouse missing scripts=0
+PASS: AbandonedHouse missing scripts=0
+PASS: all six NPC instances validated. Screenshots are Editor camera renders, not headset tests.
