@@ -106,11 +106,25 @@ namespace ForgottenVillage.Editor {
                 var first = run.threats.First(t => t.Live);
                 oldBackground = InputSystem.settings.backgroundBehavior; InputSystem.settings.backgroundBehavior = InputSettings.BackgroundBehavior.IgnoreFocus;
                 testMouse = InputSystem.AddDevice<Mouse>();
-                var pointer = (Vector2)g.player.View.WorldToScreenPoint(first.transform.position);
-                InputSystem.QueueStateEvent(testMouse, new MouseState { position = pointer }); yield return null;
-                InputSystem.QueueStateEvent(testMouse, new MouseState { position = pointer }.WithButton(MouseButton.Left)); yield return null;
-                InputSystem.QueueStateEvent(testMouse, new MouseState { position = pointer }); yield return null;
-                if (!first.Targeted && first.Live) throw new Exception("Desktop mouse ray did not launch an interceptor.");
+                int injectedFrames = 0;
+                run.AutomationBeforeDesktopInput = () => {
+                    testMouse.MakeCurrent();
+                    var pointer = (Vector2)g.player.View.WorldToScreenPoint(first.transform.position);
+                    var state = new MouseState { position = pointer };
+                    if (injectedFrames++ == 1) state = state.WithButton(MouseButton.Left);
+                    InputState.Change(testMouse, state, InputUpdateType.Dynamic);
+                };
+                try {
+                    while (injectedFrames < 3) {
+                        if (Time.realtimeSinceStartupAsDouble > end) throw new TimeoutException("Desktop input frames");
+                        yield return null;
+                    }
+                    if (!first.Targeted && first.Live) {
+                        var ray = g.player.View.ScreenPointToRay(testMouse.position.ReadValue());
+                        Physics.Raycast(ray, out var hit, 10, ~0, QueryTriggerInteraction.Collide);
+                        throw new Exception("Desktop mouse ray did not launch an interceptor. Hit=" + (hit.collider ? hit.collider.name : "NONE") + "; accepts=" + run.AcceptsInput);
+                    }
+                } finally { run.AutomationBeforeDesktopInput = null; }
                 InputSystem.RemoveDevice(testMouse); testMouse = null; InputSystem.settings.backgroundBehavior = oldBackground;
             }
             while (run.Running) {

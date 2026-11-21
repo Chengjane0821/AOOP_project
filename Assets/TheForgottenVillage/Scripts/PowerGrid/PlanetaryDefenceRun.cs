@@ -85,7 +85,13 @@ namespace ForgottenVillage {
             }
             Render();
         }
+#if UNITY_EDITOR
+        public System.Action AutomationBeforeDesktopInput;
+#endif
         void DesktopInput() {
+#if UNITY_EDITOR
+            AutomationBeforeDesktopInput?.Invoke();
+#endif
             var player = house.game.player;
             if (!AcceptsInput || player.IsVR || Mouse.current == null || !Mouse.current.leftButton.wasPressedThisFrame) return;
             var ray = player.View.ScreenPointToRay(Mouse.current.position.ReadValue());
