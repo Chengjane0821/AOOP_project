@@ -12,7 +12,7 @@ namespace ForgottenVillage.Editor {
 [InitializeOnLoad] public static class NpcIntegration {
  const string Source = "Assets/Stylized NPC - Peasant Nolant/";
  const string Dest = "Assets/TheForgottenVillage/";
- static NpcIntegration(){ EditorApplication.update += Tick; File.WriteAllText("Verification/npc-ready.txt","integration-v7"); }
+ static NpcIntegration(){ EditorApplication.update += Tick; File.WriteAllText("Verification/npc-ready.txt","integration-v8"); }
  static void Tick(){
   const string request="Verification/npc.request";
   if(EditorApplication.isCompiling || EditorApplication.isUpdating || EditorApplication.isPlaying || !File.Exists(request))return;

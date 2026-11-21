@@ -6,7 +6,19 @@ using UnityEngine;
 namespace ForgottenVillage {
 public static class VillageStorage {
  public static string overridePath; public static string PathName=>overridePath??Path.Combine(Application.persistentDataPath,"forgotten-village-v1.json");
- public static void Save(VillageSave s){ var tmp=PathName+".tmp"; File.WriteAllText(tmp,JsonUtility.ToJson(s,true)); if(File.Exists(PathName))File.Replace(tmp,PathName,PathName+".bak");else File.Move(tmp,PathName); }
+ public static void Save(VillageSave s){
+  string path=PathName,tmp=path+".tmp";File.WriteAllText(tmp,JsonUtility.ToJson(s,true));
+  for(int attempt=0;;attempt++){
+   try{if(File.Exists(path))File.Replace(tmp,path,path+".bak");else File.Move(tmp,path);return;}
+   catch(IOException e){
+    // Windows scanners/readers can briefly deny deletion during atomic replacement.
+    // Keep the old save and completed temp file; never fall back to truncating either.
+    int code=e.HResult&0xffff;
+    if(attempt>=3 || (code!=32&&code!=33&&code!=1175) || !File.Exists(tmp))throw;
+    System.Threading.Thread.Sleep(15*(attempt+1));
+   }
+  }
+ }
  public static VillageSave Load(){foreach(var p in new[]{PathName,PathName+".bak"}){try{if(File.Exists(p)){var s=JsonUtility.FromJson<VillageSave>(File.ReadAllText(p));if(s!=null&&s.version>=1&&s.version<=VillageSave.CurrentVersion){s.Normalize();return s;}}}catch(Exception e){Debug.LogWarning("Save recovery: "+e.Message);}}return new VillageSave();}
 }
 public class VillageGame : MonoBehaviour {

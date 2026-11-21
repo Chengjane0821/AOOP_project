@@ -1,97 +1,652 @@
 <?xml version="1.0" encoding="utf-8"?>
-<test-run id="2" testcasecount="21" result="Passed" total="21" passed="21" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-11-08 14:11:45Z" end-time="2026-11-08 14:11:45Z" duration="0.8029784">
-  <test-suite type="TestSuite" id="1000" name="Modern Room" fullname="Modern Room" runstate="Runnable" testcasecount="21" result="Passed" start-time="2026-11-08 14:11:45Z" end-time="2026-11-08 14:11:45Z" duration="0.802978" total="21" passed="21" failed="0" inconclusive="0" skipped="0" asserts="0">
+<test-run id="2" testcasecount="111" result="Passed" total="111" passed="111" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-11-21 03:34:33Z" end-time="2026-11-21 03:34:35Z" duration="2.4633786">
+  <test-suite type="TestSuite" id="1000" name="Modern Room" fullname="Modern Room" runstate="Runnable" testcasecount="111" result="Passed" start-time="2026-11-21 03:34:33Z" end-time="2026-11-21 03:34:35Z" duration="2.463379" total="111" passed="111" failed="0" inconclusive="0" skipped="0" asserts="0">
     <properties>
       <property name="platform" value="EditMode" />
     </properties>
-    <test-suite type="Assembly" id="1026" name="Assembly-CSharp-Editor.dll" fullname="C:/Github_rep/AOOP_project/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll" runstate="Runnable" testcasecount="21" result="Passed" start-time="2026-11-08 14:11:45Z" end-time="2026-11-08 14:11:45Z" duration="0.700676" total="21" passed="21" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <test-suite type="Assembly" id="1128" name="Assembly-CSharp-Editor.dll" fullname="C:/Github_rep/AOOP_project/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll" runstate="Runnable" testcasecount="111" result="Passed" start-time="2026-11-21 03:34:33Z" end-time="2026-11-21 03:34:35Z" duration="2.377041" total="111" passed="111" failed="0" inconclusive="0" skipped="0" asserts="0">
       <properties>
-        <property name="_PID" value="28652" />
+        <property name="_PID" value="29300" />
         <property name="_APPDOMAIN" value="Unity Child Domain" />
         <property name="platform" value="EditMode" />
         <property name="EditorOnly" value="True" />
       </properties>
-      <test-suite type="TestSuite" id="1027" name="ForgottenVillage" fullname="ForgottenVillage" runstate="Runnable" testcasecount="21" result="Passed" start-time="2026-11-08 14:11:45Z" end-time="2026-11-08 14:11:45Z" duration="0.607092" total="21" passed="21" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <test-suite type="TestSuite" id="1129" name="ForgottenVillage" fullname="ForgottenVillage" runstate="Runnable" testcasecount="111" result="Passed" start-time="2026-11-21 03:34:33Z" end-time="2026-11-21 03:34:35Z" duration="2.281533" total="111" passed="111" failed="0" inconclusive="0" skipped="0" asserts="0">
         <properties />
-        <test-suite type="TestSuite" id="1028" name="Tests" fullname="ForgottenVillage.Tests" runstate="Runnable" testcasecount="21" result="Passed" start-time="2026-11-08 14:11:45Z" end-time="2026-11-08 14:11:45Z" duration="0.505238" total="21" passed="21" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <test-suite type="TestSuite" id="1130" name="Tests" fullname="ForgottenVillage.Tests" runstate="Runnable" testcasecount="111" result="Passed" start-time="2026-11-21 03:34:33Z" end-time="2026-11-21 03:34:35Z" duration="2.176167" total="111" passed="111" failed="0" inconclusive="0" skipped="0" asserts="0">
           <properties />
-          <test-suite type="TestFixture" id="1001" name="TennisTests" fullname="ForgottenVillage.Tests.TennisTests" classname="ForgottenVillage.Tests.TennisTests" runstate="Runnable" testcasecount="13" result="Passed" start-time="2026-11-08 14:11:45Z" end-time="2026-11-08 14:11:45Z" duration="0.204151" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <test-suite type="TestFixture" id="1001" name="ActiveWorkshopSessionTests" fullname="ForgottenVillage.Tests.ActiveWorkshopSessionTests" classname="ForgottenVillage.Tests.ActiveWorkshopSessionTests" runstate="Runnable" testcasecount="18" result="Passed" start-time="2026-11-21 03:34:33Z" end-time="2026-11-21 03:34:34Z" duration="0.319802" total="18" passed="18" failed="0" inconclusive="0" skipped="0" asserts="0">
             <properties />
-            <test-case id="1005" name="BestOfThreeWinAndLossReset" fullname="ForgottenVillage.Tests.TennisTests.BestOfThreeWinAndLossReset" methodname="BestOfThreeWinAndLossReset" classname="ForgottenVillage.Tests.TennisTests" runstate="Runnable" seed="1262889538" result="Passed" start-time="2026-11-08 14:11:45Z" end-time="2026-11-08 14:11:45Z" duration="0.027245" asserts="0">
+            <test-case id="1020" name="AFailedCueBreaksMultiplierButPreservesBestCombo" fullname="ForgottenVillage.Tests.ActiveWorkshopSessionTests.AFailedCueBreaksMultiplierButPreservesBestCombo" methodname="AFailedCueBreaksMultiplierButPreservesBestCombo" classname="ForgottenVillage.Tests.ActiveWorkshopSessionTests" runstate="Runnable" seed="618802855" result="Passed" start-time="2026-11-21 03:34:33Z" end-time="2026-11-21 03:34:33Z" duration="0.026038" asserts="0">
               <properties>
                 <property name="retryIteration" value="0" />
                 <property name="repeatIteration" value="0" />
               </properties>
             </test-case>
-            <test-case id="1013" name="CompletedLegacyClueMigratesButUnfinishedDividerDoesNot" fullname="ForgottenVillage.Tests.TennisTests.CompletedLegacyClueMigratesButUnfinishedDividerDoesNot" methodname="CompletedLegacyClueMigratesButUnfinishedDividerDoesNot" classname="ForgottenVillage.Tests.TennisTests" runstate="Runnable" seed="1719393288" result="Passed" start-time="2026-11-08 14:11:45Z" end-time="2026-11-08 14:11:45Z" duration="0.002531" asserts="0">
+            <test-case id="1009" name="CorrectReachesAndDodgesCanWinWithoutChangingSuccessFlags" fullname="ForgottenVillage.Tests.ActiveWorkshopSessionTests.CorrectReachesAndDodgesCanWinWithoutChangingSuccessFlags" methodname="CorrectReachesAndDodgesCanWinWithoutChangingSuccessFlags" classname="ForgottenVillage.Tests.ActiveWorkshopSessionTests" runstate="Runnable" seed="1097030831" result="Passed" start-time="2026-11-21 03:34:33Z" end-time="2026-11-21 03:34:33Z" duration="0.003399" asserts="0">
               <properties>
                 <property name="retryIteration" value="0" />
                 <property name="repeatIteration" value="0" />
               </properties>
             </test-case>
-            <test-case id="1003" name="ContactsAccumulateAcrossRalliesButNotOutsidePlay" fullname="ForgottenVillage.Tests.TennisTests.ContactsAccumulateAcrossRalliesButNotOutsidePlay" methodname="ContactsAccumulateAcrossRalliesButNotOutsidePlay" classname="ForgottenVillage.Tests.TennisTests" runstate="Runnable" seed="1587260046" result="Passed" start-time="2026-11-08 14:11:45Z" end-time="2026-11-08 14:11:45Z" duration="0.000467" asserts="0">
-              <properties>
-                <property name="retryIteration" value="0" />
-                <property name="repeatIteration" value="0" />
-              </properties>
-            </test-case>
-            <test-case id="1012" name="ElderClueRequiresWinMemoryAndInspection" fullname="ForgottenVillage.Tests.TennisTests.ElderClueRequiresWinMemoryAndInspection" methodname="ElderClueRequiresWinMemoryAndInspection" classname="ForgottenVillage.Tests.TennisTests" runstate="Runnable" seed="402630197" result="Passed" start-time="2026-11-08 14:11:45Z" end-time="2026-11-08 14:11:45Z" duration="0.000350" asserts="0">
-              <properties>
-                <property name="retryIteration" value="0" />
-                <property name="repeatIteration" value="0" />
-              </properties>
-            </test-case>
-            <test-case id="1014" name="PhysicalChestNeedsPhotographAndFourLiveObjectRecords" fullname="ForgottenVillage.Tests.TennisTests.PhysicalChestNeedsPhotographAndFourLiveObjectRecords" methodname="PhysicalChestNeedsPhotographAndFourLiveObjectRecords" classname="ForgottenVillage.Tests.TennisTests" runstate="Runnable" seed="1964013074" result="Passed" start-time="2026-11-08 14:11:45Z" end-time="2026-11-08 14:11:45Z" duration="0.021074" asserts="0">
-              <properties>
-                <property name="retryIteration" value="0" />
-                <property name="repeatIteration" value="0" />
-              </properties>
-            </test-case>
-            <test-case id="1015" name="SaveRoundTripPreservesElderEvidence" fullname="ForgottenVillage.Tests.TennisTests.SaveRoundTripPreservesElderEvidence" methodname="SaveRoundTripPreservesElderEvidence" classname="ForgottenVillage.Tests.TennisTests" runstate="Runnable" seed="689425267" result="Passed" start-time="2026-11-08 14:11:45Z" end-time="2026-11-08 14:11:45Z" duration="0.000606" asserts="0">
-              <properties>
-                <property name="retryIteration" value="0" />
-                <property name="repeatIteration" value="0" />
-              </properties>
-            </test-case>
-            <test-case id="1007" name="ShotSpeedCannotExceedConfiguredCap" fullname="ForgottenVillage.Tests.TennisTests.ShotSpeedCannotExceedConfiguredCap" methodname="ShotSpeedCannotExceedConfiguredCap" classname="ForgottenVillage.Tests.TennisTests" runstate="Runnable" seed="1611070269" result="Passed" start-time="2026-11-08 14:11:45Z" end-time="2026-11-08 14:11:45Z" duration="0.006744" asserts="0">
-              <properties>
-                <property name="retryIteration" value="0" />
-                <property name="repeatIteration" value="0" />
-              </properties>
-            </test-case>
-            <test-case id="1006" name="SmashRequiresHeightDescentSpeedDirectionAndPlayerSide" fullname="ForgottenVillage.Tests.TennisTests.SmashRequiresHeightDescentSpeedDirectionAndPlayerSide" methodname="SmashRequiresHeightDescentSpeedDirectionAndPlayerSide" classname="ForgottenVillage.Tests.TennisTests" runstate="Runnable" seed="1693890247" result="Passed" start-time="2026-11-08 14:11:45Z" end-time="2026-11-08 14:11:45Z" duration="0.001147" asserts="0">
-              <properties>
-                <property name="retryIteration" value="0" />
-                <property name="repeatIteration" value="0" />
-              </properties>
-            </test-case>
-            <test-case id="1002" name="ThresholdIsInclusiveAndFreshEachGame" fullname="ForgottenVillage.Tests.TennisTests.ThresholdIsInclusiveAndFreshEachGame" methodname="ThresholdIsInclusiveAndFreshEachGame" classname="ForgottenVillage.Tests.TennisTests" runstate="Runnable" seed="1177409128" result="Passed" start-time="2026-11-08 14:11:45Z" end-time="2026-11-08 14:11:45Z" duration="0.002418" asserts="0">
-              <properties>
-                <property name="retryIteration" value="0" />
-                <property name="repeatIteration" value="0" />
-              </properties>
-            </test-case>
-            <test-case id="1004" name="TwoSmashesWaitForFinalOutcome" fullname="ForgottenVillage.Tests.TennisTests.TwoSmashesWaitForFinalOutcome" methodname="TwoSmashesWaitForFinalOutcome" classname="ForgottenVillage.Tests.TennisTests" runstate="Runnable" seed="717465127" result="Passed" start-time="2026-11-08 14:11:45Z" end-time="2026-11-08 14:11:45Z" duration="0.000357" asserts="0">
-              <properties>
-                <property name="retryIteration" value="0" />
-                <property name="repeatIteration" value="0" />
-              </properties>
-            </test-case>
-            <test-suite type="ParameterizedMethod" id="1011" name="ValidSmashClearsNetAndLandsOnOpponentTable" fullname="ForgottenVillage.Tests.TennisTests.ValidSmashClearsNetAndLandsOnOpponentTable" classname="ForgottenVillage.Tests.TennisTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-11-08 14:11:45Z" end-time="2026-11-08 14:11:45Z" duration="0.029297" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <test-suite type="ParameterizedMethod" id="1018" name="DodgeNeedsWarningThenCorrectDirectionHeldContinuously" fullname="ForgottenVillage.Tests.ActiveWorkshopSessionTests.DodgeNeedsWarningThenCorrectDirectionHeldContinuously" classname="ForgottenVillage.Tests.ActiveWorkshopSessionTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-11-21 03:34:33Z" end-time="2026-11-21 03:34:33Z" duration="0.062239" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
               <properties />
-              <test-case id="1008" name="ValidSmashClearsNetAndLandsOnOpponentTable(-1.2f,1.1f)" fullname="ForgottenVillage.Tests.TennisTests.ValidSmashClearsNetAndLandsOnOpponentTable(-1.2f,1.1f)" methodname="ValidSmashClearsNetAndLandsOnOpponentTable" classname="ForgottenVillage.Tests.TennisTests" runstate="Runnable" seed="93834366" result="Passed" start-time="2026-11-08 14:11:45Z" end-time="2026-11-08 14:11:45Z" duration="0.002946" asserts="0">
+              <test-case id="1015" name="DodgeNeedsWarningThenCorrectDirectionHeldContinuously(DodgeLeft)" fullname="ForgottenVillage.Tests.ActiveWorkshopSessionTests.DodgeNeedsWarningThenCorrectDirectionHeldContinuously(DodgeLeft)" methodname="DodgeNeedsWarningThenCorrectDirectionHeldContinuously" classname="ForgottenVillage.Tests.ActiveWorkshopSessionTests" runstate="Runnable" seed="2027927168" result="Passed" start-time="2026-11-21 03:34:33Z" end-time="2026-11-21 03:34:33Z" duration="0.000958" asserts="0">
                 <properties>
                   <property name="retryIteration" value="0" />
                   <property name="repeatIteration" value="0" />
                 </properties>
               </test-case>
-              <test-case id="1009" name="ValidSmashClearsNetAndLandsOnOpponentTable(-2.1f,1.6f)" fullname="ForgottenVillage.Tests.TennisTests.ValidSmashClearsNetAndLandsOnOpponentTable(-2.1f,1.6f)" methodname="ValidSmashClearsNetAndLandsOnOpponentTable" classname="ForgottenVillage.Tests.TennisTests" runstate="Runnable" seed="769931712" result="Passed" start-time="2026-11-08 14:11:45Z" end-time="2026-11-08 14:11:45Z" duration="0.000253" asserts="0">
+              <test-case id="1016" name="DodgeNeedsWarningThenCorrectDirectionHeldContinuously(DodgeRight)" fullname="ForgottenVillage.Tests.ActiveWorkshopSessionTests.DodgeNeedsWarningThenCorrectDirectionHeldContinuously(DodgeRight)" methodname="DodgeNeedsWarningThenCorrectDirectionHeldContinuously" classname="ForgottenVillage.Tests.ActiveWorkshopSessionTests" runstate="Runnable" seed="100680023" result="Passed" start-time="2026-11-21 03:34:33Z" end-time="2026-11-21 03:34:33Z" duration="0.000165" asserts="0">
                 <properties>
                   <property name="retryIteration" value="0" />
                   <property name="repeatIteration" value="0" />
                 </properties>
               </test-case>
-              <test-case id="1010" name="ValidSmashClearsNetAndLandsOnOpponentTable(-0.4f,2.0f)" fullname="ForgottenVillage.Tests.TennisTests.ValidSmashClearsNetAndLandsOnOpponentTable(-0.4f,2.0f)" methodname="ValidSmashClearsNetAndLandsOnOpponentTable" classname="ForgottenVillage.Tests.TennisTests" runstate="Runnable" seed="1562092200" result="Passed" start-time="2026-11-08 14:11:45Z" end-time="2026-11-08 14:11:45Z" duration="0.000197" asserts="0">
+              <test-case id="1017" name="DodgeNeedsWarningThenCorrectDirectionHeldContinuously(Duck)" fullname="ForgottenVillage.Tests.ActiveWorkshopSessionTests.DodgeNeedsWarningThenCorrectDirectionHeldContinuously(Duck)" methodname="DodgeNeedsWarningThenCorrectDirectionHeldContinuously" classname="ForgottenVillage.Tests.ActiveWorkshopSessionTests" runstate="Runnable" seed="654452973" result="Passed" start-time="2026-11-21 03:34:33Z" end-time="2026-11-21 03:34:33Z" duration="0.000088" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1013" name="DoubleAcceptsASecondHandInsideItsWindow" fullname="ForgottenVillage.Tests.ActiveWorkshopSessionTests.DoubleAcceptsASecondHandInsideItsWindow" methodname="DoubleAcceptsASecondHandInsideItsWindow" classname="ForgottenVillage.Tests.ActiveWorkshopSessionTests" runstate="Runnable" seed="505647133" result="Passed" start-time="2026-11-21 03:34:33Z" end-time="2026-11-21 03:34:33Z" duration="0.003523" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1012" name="DoubleRequiresTwoDifferentTargetsAndTwoDifferentHands" fullname="ForgottenVillage.Tests.ActiveWorkshopSessionTests.DoubleRequiresTwoDifferentTargetsAndTwoDifferentHands" methodname="DoubleRequiresTwoDifferentTargetsAndTwoDifferentHands" classname="ForgottenVillage.Tests.ActiveWorkshopSessionTests" runstate="Runnable" seed="1683788001" result="Passed" start-time="2026-11-21 03:34:33Z" end-time="2026-11-21 03:34:33Z" duration="0.000460" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1006" name="EveryChallengeFitsSixtySecondsWithReachableSeparatedCues" fullname="ForgottenVillage.Tests.ActiveWorkshopSessionTests.EveryChallengeFitsSixtySecondsWithReachableSeparatedCues" classname="ForgottenVillage.Tests.ActiveWorkshopSessionTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-11-21 03:34:33Z" end-time="2026-11-21 03:34:34Z" duration="0.106165" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1003" name="EveryChallengeFitsSixtySecondsWithReachableSeparatedCues(0)" fullname="ForgottenVillage.Tests.ActiveWorkshopSessionTests.EveryChallengeFitsSixtySecondsWithReachableSeparatedCues(0)" methodname="EveryChallengeFitsSixtySecondsWithReachableSeparatedCues" classname="ForgottenVillage.Tests.ActiveWorkshopSessionTests" runstate="Runnable" seed="424985727" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.010571" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1004" name="EveryChallengeFitsSixtySecondsWithReachableSeparatedCues(42)" fullname="ForgottenVillage.Tests.ActiveWorkshopSessionTests.EveryChallengeFitsSixtySecondsWithReachableSeparatedCues(42)" methodname="EveryChallengeFitsSixtySecondsWithReachableSeparatedCues" classname="ForgottenVillage.Tests.ActiveWorkshopSessionTests" runstate="Runnable" seed="1937032785" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000384" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1005" name="EveryChallengeFitsSixtySecondsWithReachableSeparatedCues(1842)" fullname="ForgottenVillage.Tests.ActiveWorkshopSessionTests.EveryChallengeFitsSixtySecondsWithReachableSeparatedCues(1842)" methodname="EveryChallengeFitsSixtySecondsWithReachableSeparatedCues" classname="ForgottenVillage.Tests.ActiveWorkshopSessionTests" runstate="Runnable" seed="894065551" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000330" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1014" name="ExpiredDoubleContactMustBePairedAgainButCanRecover" fullname="ForgottenVillage.Tests.ActiveWorkshopSessionTests.ExpiredDoubleContactMustBePairedAgainButCanRecover" methodname="ExpiredDoubleContactMustBePairedAgainButCanRecover" classname="ForgottenVillage.Tests.ActiveWorkshopSessionTests" runstate="Runnable" seed="594773127" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000283" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1011" name="HitsBeforeCueAppearsCannotPreloadAReward" fullname="ForgottenVillage.Tests.ActiveWorkshopSessionTests.HitsBeforeCueAppearsCannotPreloadAReward" methodname="HitsBeforeCueAppearsCannotPreloadAReward" classname="ForgottenVillage.Tests.ActiveWorkshopSessionTests" runstate="Runnable" seed="2107151395" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000627" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1008" name="IdlePlayerFailsEvenAfterTimeJumpsAcrossAllCues" fullname="ForgottenVillage.Tests.ActiveWorkshopSessionTests.IdlePlayerFailsEvenAfterTimeJumpsAcrossAllCues" methodname="IdlePlayerFailsEvenAfterTimeJumpsAcrossAllCues" classname="ForgottenVillage.Tests.ActiveWorkshopSessionTests" runstate="Runnable" seed="1686230855" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000951" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1021" name="InvalidTimeAndPostFinishInputDoNotChangeCompletedResults" fullname="ForgottenVillage.Tests.ActiveWorkshopSessionTests.InvalidTimeAndPostFinishInputDoNotChangeCompletedResults" methodname="InvalidTimeAndPostFinishInputDoNotChangeCompletedResults" classname="ForgottenVillage.Tests.ActiveWorkshopSessionTests" runstate="Runnable" seed="1162381757" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000241" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1007" name="LaterStagesAskForFasterReactionsAndIncludeBothHandsAndDodges" fullname="ForgottenVillage.Tests.ActiveWorkshopSessionTests.LaterStagesAskForFasterReactionsAndIncludeBothHandsAndDodges" methodname="LaterStagesAskForFasterReactionsAndIncludeBothHandsAndDodges" classname="ForgottenVillage.Tests.ActiveWorkshopSessionTests" runstate="Runnable" seed="269407663" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.001761" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1019" name="NonFiniteDodgeTimeCannotPoisonTheNextValidHold" fullname="ForgottenVillage.Tests.ActiveWorkshopSessionTests.NonFiniteDodgeTimeCannotPoisonTheNextValidHold" methodname="NonFiniteDodgeTimeCannotPoisonTheNextValidHold" classname="ForgottenVillage.Tests.ActiveWorkshopSessionTests" runstate="Runnable" seed="442903756" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000530" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1010" name="OneTargetCanOnlyScoreOnceAndInvalidHitsDoNotGrantPoints" fullname="ForgottenVillage.Tests.ActiveWorkshopSessionTests.OneTargetCanOnlyScoreOnceAndInvalidHitsDoNotGrantPoints" methodname="OneTargetCanOnlyScoreOnceAndInvalidHitsDoNotGrantPoints" classname="ForgottenVillage.Tests.ActiveWorkshopSessionTests" runstate="Runnable" seed="611486612" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000304" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1002" name="SeedReproducesTheChallengeWhileDifferentSeedsChangeIt" fullname="ForgottenVillage.Tests.ActiveWorkshopSessionTests.SeedReproducesTheChallengeWhileDifferentSeedsChangeIt" methodname="SeedReproducesTheChallengeWhileDifferentSeedsChangeIt" classname="ForgottenVillage.Tests.ActiveWorkshopSessionTests" runstate="Runnable" seed="1622526093" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.002582" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1022" name="BridgeDeliveryTests" fullname="ForgottenVillage.Tests.BridgeDeliveryTests" classname="ForgottenVillage.Tests.BridgeDeliveryTests" runstate="Runnable" testcasecount="18" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.190061" total="18" passed="18" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1034" name="BridgeClueRequiresVictoryMemoryAndCorrectObject" fullname="ForgottenVillage.Tests.BridgeDeliveryTests.BridgeClueRequiresVictoryMemoryAndCorrectObject" methodname="BridgeClueRequiresVictoryMemoryAndCorrectObject" classname="ForgottenVillage.Tests.BridgeDeliveryTests" runstate="Runnable" seed="2051689764" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.001857" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1037" name="EarnedLegacyMouseClueSurvivesMigration" fullname="ForgottenVillage.Tests.BridgeDeliveryTests.EarnedLegacyMouseClueSurvivesMigration" methodname="EarnedLegacyMouseClueSurvivesMigration" classname="ForgottenVillage.Tests.BridgeDeliveryTests" runstate="Runnable" seed="2021019097" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.013137" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1040" name="FinalArchiveStillRequiresCarpenterMemory" fullname="ForgottenVillage.Tests.BridgeDeliveryTests.FinalArchiveStillRequiresCarpenterMemory" methodname="FinalArchiveStillRequiresCarpenterMemory" classname="ForgottenVillage.Tests.BridgeDeliveryTests" runstate="Runnable" seed="858051122" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000926" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1032" name="HeavyDeliveryAddsThreeReinforcements" fullname="ForgottenVillage.Tests.BridgeDeliveryTests.HeavyDeliveryAddsThreeReinforcements" methodname="HeavyDeliveryAddsThreeReinforcements" classname="ForgottenVillage.Tests.BridgeDeliveryTests" runstate="Runnable" seed="1695276790" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000849" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1038" name="InvalidLegacyEvidenceDoesNotCreateVictory" fullname="ForgottenVillage.Tests.BridgeDeliveryTests.InvalidLegacyEvidenceDoesNotCreateVictory" methodname="InvalidLegacyEvidenceDoesNotCreateVictory" classname="ForgottenVillage.Tests.BridgeDeliveryTests" runstate="Runnable" seed="325896625" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000200" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1039" name="JsonRoundTripPreservesBridgeAndExistingMemories" fullname="ForgottenVillage.Tests.BridgeDeliveryTests.JsonRoundTripPreservesBridgeAndExistingMemories" methodname="JsonRoundTripPreservesBridgeAndExistingMemories" classname="ForgottenVillage.Tests.BridgeDeliveryTests" runstate="Runnable" seed="805433184" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000406" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1033" name="NewGameDoesNotInventBridgeProgress" fullname="ForgottenVillage.Tests.BridgeDeliveryTests.NewGameDoesNotInventBridgeProgress" methodname="NewGameDoesNotInventBridgeProgress" classname="ForgottenVillage.Tests.BridgeDeliveryTests" runstate="Runnable" seed="1189069845" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000161" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1030" name="OnlyAlignedTimberCanFasten" fullname="ForgottenVillage.Tests.BridgeDeliveryTests.OnlyAlignedTimberCanFasten" classname="ForgottenVillage.Tests.BridgeDeliveryTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.088371" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1023" name="OnlyAlignedTimberCanFasten(0,True)" fullname="ForgottenVillage.Tests.BridgeDeliveryTests.OnlyAlignedTimberCanFasten(0,True)" methodname="OnlyAlignedTimberCanFasten" classname="ForgottenVillage.Tests.BridgeDeliveryTests" runstate="Runnable" seed="1924257615" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.004093" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1024" name="OnlyAlignedTimberCanFasten(180,True)" fullname="ForgottenVillage.Tests.BridgeDeliveryTests.OnlyAlignedTimberCanFasten(180,True)" methodname="OnlyAlignedTimberCanFasten" classname="ForgottenVillage.Tests.BridgeDeliveryTests" runstate="Runnable" seed="1508123443" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000190" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1025" name="OnlyAlignedTimberCanFasten(360,True)" fullname="ForgottenVillage.Tests.BridgeDeliveryTests.OnlyAlignedTimberCanFasten(360,True)" methodname="OnlyAlignedTimberCanFasten" classname="ForgottenVillage.Tests.BridgeDeliveryTests" runstate="Runnable" seed="534188751" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000333" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1026" name="OnlyAlignedTimberCanFasten(-180,True)" fullname="ForgottenVillage.Tests.BridgeDeliveryTests.OnlyAlignedTimberCanFasten(-180,True)" methodname="OnlyAlignedTimberCanFasten" classname="ForgottenVillage.Tests.BridgeDeliveryTests" runstate="Runnable" seed="1450603082" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000161" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1027" name="OnlyAlignedTimberCanFasten(20,True)" fullname="ForgottenVillage.Tests.BridgeDeliveryTests.OnlyAlignedTimberCanFasten(20,True)" methodname="OnlyAlignedTimberCanFasten" classname="ForgottenVillage.Tests.BridgeDeliveryTests" runstate="Runnable" seed="1785351540" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000105" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1028" name="OnlyAlignedTimberCanFasten(21,False)" fullname="ForgottenVillage.Tests.BridgeDeliveryTests.OnlyAlignedTimberCanFasten(21,False)" methodname="OnlyAlignedTimberCanFasten" classname="ForgottenVillage.Tests.BridgeDeliveryTests" runstate="Runnable" seed="1173268423" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000100" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1029" name="OnlyAlignedTimberCanFasten(90,False)" fullname="ForgottenVillage.Tests.BridgeDeliveryTests.OnlyAlignedTimberCanFasten(90,False)" methodname="OnlyAlignedTimberCanFasten" classname="ForgottenVillage.Tests.BridgeDeliveryTests" runstate="Runnable" seed="854842385" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000821" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1041" name="PhysicalChestRequiresRealMouseEvidenceAfterBridge" fullname="ForgottenVillage.Tests.BridgeDeliveryTests.PhysicalChestRequiresRealMouseEvidenceAfterBridge" methodname="PhysicalChestRequiresRealMouseEvidenceAfterBridge" classname="ForgottenVillage.Tests.BridgeDeliveryTests" runstate="Runnable" seed="1093854065" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000875" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1036" name="UnfinishedLegacyGainPuzzleMustPlayBridge" fullname="ForgottenVillage.Tests.BridgeDeliveryTests.UnfinishedLegacyGainPuzzleMustPlayBridge" methodname="UnfinishedLegacyGainPuzzleMustPlayBridge" classname="ForgottenVillage.Tests.BridgeDeliveryTests" runstate="Runnable" seed="1322238411" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000302" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1031" name="WideCrossingRejectsShortTimber" fullname="ForgottenVillage.Tests.BridgeDeliveryTests.WideCrossingRejectsShortTimber" methodname="WideCrossingRejectsShortTimber" classname="ForgottenVillage.Tests.BridgeDeliveryTests" runstate="Runnable" seed="1095264114" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000245" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1035" name="WrongCameraCategoryCannotAwardBridgeClue" fullname="ForgottenVillage.Tests.BridgeDeliveryTests.WrongCameraCategoryCannotAwardBridgeClue" methodname="WrongCameraCategoryCannotAwardBridgeClue" classname="ForgottenVillage.Tests.BridgeDeliveryTests" runstate="Runnable" seed="1381584053" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000199" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1042" name="CarpenterArcadeSaveTests" fullname="ForgottenVillage.Tests.CarpenterArcadeSaveTests" classname="ForgottenVillage.Tests.CarpenterArcadeSaveTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.102088" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1048" name="BestScorePersistsAlongsideCurrentVictory" fullname="ForgottenVillage.Tests.CarpenterArcadeSaveTests.BestScorePersistsAlongsideCurrentVictory" methodname="BestScorePersistsAlongsideCurrentVictory" classname="ForgottenVillage.Tests.CarpenterArcadeSaveTests" runstate="Runnable" seed="804171275" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.001623" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1046" name="CurrentSchemaBridgeFlagCannotBypassArcade" fullname="ForgottenVillage.Tests.CarpenterArcadeSaveTests.CurrentSchemaBridgeFlagCannotBypassArcade" methodname="CurrentSchemaBridgeFlagCannotBypassArcade" classname="ForgottenVillage.Tests.CarpenterArcadeSaveTests" runstate="Runnable" seed="1444834038" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000303" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1047" name="CurrentVictoryStillNeedsMemoryAndMouse" fullname="ForgottenVillage.Tests.CarpenterArcadeSaveTests.CurrentVictoryStillNeedsMemoryAndMouse" methodname="CurrentVictoryStillNeedsMemoryAndMouse" classname="ForgottenVillage.Tests.CarpenterArcadeSaveTests" runstate="Runnable" seed="263273267" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000282" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1043" name="EarnedVersionSevenMouseClueSurvivesWithoutInventedHighScore" fullname="ForgottenVillage.Tests.CarpenterArcadeSaveTests.EarnedVersionSevenMouseClueSurvivesWithoutInventedHighScore" methodname="EarnedVersionSevenMouseClueSurvivesWithoutInventedHighScore" classname="ForgottenVillage.Tests.CarpenterArcadeSaveTests" runstate="Runnable" seed="534681176" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000423" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1045" name="InvalidOldMouseEvidenceCannotMigrateIntoArcadeVictory" fullname="ForgottenVillage.Tests.CarpenterArcadeSaveTests.InvalidOldMouseEvidenceCannotMigrateIntoArcadeVictory" methodname="InvalidOldMouseEvidenceCannotMigrateIntoArcadeVictory" classname="ForgottenVillage.Tests.CarpenterArcadeSaveTests" runstate="Runnable" seed="511678604" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000221" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1049" name="NegativeScoresNormalizeToZero" fullname="ForgottenVillage.Tests.CarpenterArcadeSaveTests.NegativeScoresNormalizeToZero" methodname="NegativeScoresNormalizeToZero" classname="ForgottenVillage.Tests.CarpenterArcadeSaveTests" runstate="Runnable" seed="917968924" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000378" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1044" name="UnclaimedBridgeVictoryMustPlayCurrentChallenge" fullname="ForgottenVillage.Tests.CarpenterArcadeSaveTests.UnclaimedBridgeVictoryMustPlayCurrentChallenge" methodname="UnclaimedBridgeVictoryMustPlayCurrentChallenge" classname="ForgottenVillage.Tests.CarpenterArcadeSaveTests" runstate="Runnable" seed="1886644367" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000216" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1050" name="ClockSixBellTests" fullname="ForgottenVillage.Tests.ClockSixBellTests" classname="ForgottenVillage.Tests.ClockSixBellTests" runstate="Runnable" testcasecount="13" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.207916" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1064" name="ANewRunReceivesItsOwnChartArray" fullname="ForgottenVillage.Tests.ClockSixBellTests.ANewRunReceivesItsOwnChartArray" methodname="ANewRunReceivesItsOwnChartArray" classname="ForgottenVillage.Tests.ClockSixBellTests" runstate="Runnable" seed="987713797" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.002019" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1051" name="ChartVisitsEveryBellWithAReadableSingleNoteGap" fullname="ForgottenVillage.Tests.ClockSixBellTests.ChartVisitsEveryBellWithAReadableSingleNoteGap" methodname="ChartVisitsEveryBellWithAReadableSingleNoteGap" classname="ForgottenVillage.Tests.ClockSixBellTests" runstate="Runnable" seed="68863025" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.015519" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1059" name="EveryBellCanResolveItsNoteExactlyOnce" fullname="ForgottenVillage.Tests.ClockSixBellTests.EveryBellCanResolveItsNoteExactlyOnce" classname="ForgottenVillage.Tests.ClockSixBellTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.086590" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1053" name="EveryBellCanResolveItsNoteExactlyOnce(0)" fullname="ForgottenVillage.Tests.ClockSixBellTests.EveryBellCanResolveItsNoteExactlyOnce(0)" methodname="EveryBellCanResolveItsNoteExactlyOnce" classname="ForgottenVillage.Tests.ClockSixBellTests" runstate="Runnable" seed="734186528" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.003198" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1054" name="EveryBellCanResolveItsNoteExactlyOnce(1)" fullname="ForgottenVillage.Tests.ClockSixBellTests.EveryBellCanResolveItsNoteExactlyOnce(1)" methodname="EveryBellCanResolveItsNoteExactlyOnce" classname="ForgottenVillage.Tests.ClockSixBellTests" runstate="Runnable" seed="1931176721" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000242" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1055" name="EveryBellCanResolveItsNoteExactlyOnce(2)" fullname="ForgottenVillage.Tests.ClockSixBellTests.EveryBellCanResolveItsNoteExactlyOnce(2)" methodname="EveryBellCanResolveItsNoteExactlyOnce" classname="ForgottenVillage.Tests.ClockSixBellTests" runstate="Runnable" seed="319196409" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000144" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1056" name="EveryBellCanResolveItsNoteExactlyOnce(3)" fullname="ForgottenVillage.Tests.ClockSixBellTests.EveryBellCanResolveItsNoteExactlyOnce(3)" methodname="EveryBellCanResolveItsNoteExactlyOnce" classname="ForgottenVillage.Tests.ClockSixBellTests" runstate="Runnable" seed="1523827336" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000179" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1057" name="EveryBellCanResolveItsNoteExactlyOnce(4)" fullname="ForgottenVillage.Tests.ClockSixBellTests.EveryBellCanResolveItsNoteExactlyOnce(4)" methodname="EveryBellCanResolveItsNoteExactlyOnce" classname="ForgottenVillage.Tests.ClockSixBellTests" runstate="Runnable" seed="1838336221" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000125" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1058" name="EveryBellCanResolveItsNoteExactlyOnce(5)" fullname="ForgottenVillage.Tests.ClockSixBellTests.EveryBellCanResolveItsNoteExactlyOnce(5)" methodname="EveryBellCanResolveItsNoteExactlyOnce" classname="ForgottenVillage.Tests.ClockSixBellTests" runstate="Runnable" seed="371774303" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000142" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1052" name="FinaleIsFasterThanWarmupAndAllThreePhrasesUseBothRows" fullname="ForgottenVillage.Tests.ClockSixBellTests.FinaleIsFasterThanWarmupAndAllThreePhrasesUseBothRows" methodname="FinaleIsFasterThanWarmupAndAllThreePhrasesUseBothRows" classname="ForgottenVillage.Tests.ClockSixBellTests" runstate="Runnable" seed="580964025" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.006431" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1063" name="InvalidInputCannotCorruptAnUnresolvedSession" fullname="ForgottenVillage.Tests.ClockSixBellTests.InvalidInputCannotCorruptAnUnresolvedSession" methodname="InvalidInputCannotCorruptAnUnresolvedSession" classname="ForgottenVillage.Tests.ClockSixBellTests" runstate="Runnable" seed="1517835471" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000431" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1060" name="ThirtyFourHitsPassButThirtyThreeDoNot" fullname="ForgottenVillage.Tests.ClockSixBellTests.ThirtyFourHitsPassButThirtyThreeDoNot" methodname="ThirtyFourHitsPassButThirtyThreeDoNot" classname="ForgottenVillage.Tests.ClockSixBellTests" runstate="Runnable" seed="1925585046" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.005742" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1061" name="TwelveExtraStrikesAreAllowedButThirteenFail" fullname="ForgottenVillage.Tests.ClockSixBellTests.TwelveExtraStrikesAreAllowedButThirteenFail" methodname="TwelveExtraStrikesAreAllowedButThirteenFail" classname="ForgottenVillage.Tests.ClockSixBellTests" runstate="Runnable" seed="2028419919" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000262" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1062" name="WrongRowDoesNotConsumeTheExpectedBell" fullname="ForgottenVillage.Tests.ClockSixBellTests.WrongRowDoesNotConsumeTheExpectedBell" methodname="WrongRowDoesNotConsumeTheExpectedBell" classname="ForgottenVillage.Tests.ClockSixBellTests" runstate="Runnable" seed="5968514" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000330" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1065" name="PlaneDreamTests" fullname="ForgottenVillage.Tests.PlaneDreamTests" classname="ForgottenVillage.Tests.PlaneDreamTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.133502" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1069" name="CalibratedLiftCrouchAndSidesMapAndRelease" fullname="ForgottenVillage.Tests.PlaneDreamTests.CalibratedLiftCrouchAndSidesMapAndRelease" methodname="CalibratedLiftCrouchAndSidesMapAndRelease" classname="ForgottenVillage.Tests.PlaneDreamTests" runstate="Runnable" seed="1991992518" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.005778" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1072" name="ClueTwoRequiresDreamMemoryAndInspection" fullname="ForgottenVillage.Tests.PlaneDreamTests.ClueTwoRequiresDreamMemoryAndInspection" methodname="ClueTwoRequiresDreamMemoryAndInspection" classname="ForgottenVillage.Tests.PlaneDreamTests" runstate="Runnable" seed="540102226" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000966" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1070" name="EveryPatternHasAchievableCollisionFreeRoute" fullname="ForgottenVillage.Tests.PlaneDreamTests.EveryPatternHasAchievableCollisionFreeRoute" methodname="EveryPatternHasAchievableCollisionFreeRoute" classname="ForgottenVillage.Tests.PlaneDreamTests" runstate="Runnable" seed="423661965" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.005349" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1067" name="ExactlySixtyActiveSecondsAndNoPartialRetry" fullname="ForgottenVillage.Tests.PlaneDreamTests.ExactlySixtyActiveSecondsAndNoPartialRetry" methodname="ExactlySixtyActiveSecondsAndNoPartialRetry" classname="ForgottenVillage.Tests.PlaneDreamTests" runstate="Runnable" seed="1752222297" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.001054" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1068" name="HeadBobbingIsNotALift" fullname="ForgottenVillage.Tests.PlaneDreamTests.HeadBobbingIsNotALift" methodname="HeadBobbingIsNotALift" classname="ForgottenVillage.Tests.PlaneDreamTests" runstate="Runnable" seed="2039175739" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.030068" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1066" name="InspectorExtremesRetainReachableRoutes" fullname="ForgottenVillage.Tests.PlaneDreamTests.InspectorExtremesRetainReachableRoutes" methodname="InspectorExtremesRetainReachableRoutes" classname="ForgottenVillage.Tests.PlaneDreamTests" runstate="Runnable" seed="513779161" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.005941" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1073" name="LegacyEarnedClueMigratesButUnfinishedFilterDoesNot" fullname="ForgottenVillage.Tests.PlaneDreamTests.LegacyEarnedClueMigratesButUnfinishedFilterDoesNot" methodname="LegacyEarnedClueMigratesButUnfinishedFilterDoesNot" classname="ForgottenVillage.Tests.PlaneDreamTests" runstate="Runnable" seed="1903350573" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000418" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1071" name="SweptCollisionCatchesFastThinBarrier" fullname="ForgottenVillage.Tests.PlaneDreamTests.SweptCollisionCatchesFastThinBarrier" methodname="SweptCollisionCatchesFastThinBarrier" classname="ForgottenVillage.Tests.PlaneDreamTests" runstate="Runnable" seed="292702342" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000992" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1074" name="PlanetaryDefenceTests" fullname="ForgottenVillage.Tests.PlanetaryDefenceTests" classname="ForgottenVillage.Tests.PlanetaryDefenceTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.047769" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1075" name="CountdownAndSpawnCadenceCannotBeSkippedByRepeatedCalls" fullname="ForgottenVillage.Tests.PlanetaryDefenceTests.CountdownAndSpawnCadenceCannotBeSkippedByRepeatedCalls" methodname="CountdownAndSpawnCadenceCannotBeSkippedByRepeatedCalls" classname="ForgottenVillage.Tests.PlanetaryDefenceTests" runstate="Runnable" seed="299437453" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000825" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1076" name="EmptySurvivalIsNotVictoryAndFiveImpactsFail" fullname="ForgottenVillage.Tests.PlanetaryDefenceTests.EmptySurvivalIsNotVictoryAndFiveImpactsFail" methodname="EmptySurvivalIsNotVictoryAndFiveImpactsFail" classname="ForgottenVillage.Tests.PlanetaryDefenceTests" runstate="Runnable" seed="1132645794" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000335" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1077" name="EveryThreatMustResolveAndDuplicatesNeverAwardTwice" fullname="ForgottenVillage.Tests.PlanetaryDefenceTests.EveryThreatMustResolveAndDuplicatesNeverAwardTwice" methodname="EveryThreatMustResolveAndDuplicatesNeverAwardTwice" classname="ForgottenVillage.Tests.PlanetaryDefenceTests" runstate="Runnable" seed="778352443" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000493" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1078" name="InvalidTimeDoesNotAdvanceAndRetryStartsClean" fullname="ForgottenVillage.Tests.PlanetaryDefenceTests.InvalidTimeDoesNotAdvanceAndRetryStartsClean" methodname="InvalidTimeDoesNotAdvanceAndRetryStartsClean" classname="ForgottenVillage.Tests.PlanetaryDefenceTests" runstate="Runnable" seed="1448098393" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000291" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1079" name="PowerGridTests" fullname="ForgottenVillage.Tests.PowerGridTests" classname="ForgottenVillage.Tests.PowerGridTests" runstate="Runnable" testcasecount="19" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.112176" total="19" passed="19" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1081" name="CablesMoveInsteadOfDuplicatingLoad" fullname="ForgottenVillage.Tests.PowerGridTests.CablesMoveInsteadOfDuplicatingLoad" methodname="CablesMoveInsteadOfDuplicatingLoad" classname="ForgottenVillage.Tests.PowerGridTests" runstate="Runnable" seed="1229836175" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.001629" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1088" name="EarlierRoundsCannotInventBackupCapacity" fullname="ForgottenVillage.Tests.PowerGridTests.EarlierRoundsCannotInventBackupCapacity" methodname="EarlierRoundsCannotInventBackupCapacity" classname="ForgottenVillage.Tests.PowerGridTests" runstate="Runnable" seed="1155420422" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000684" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1095" name="EarnedLegacyClueAndOtherProgressSurviveMigration" fullname="ForgottenVillage.Tests.PowerGridTests.EarnedLegacyClueAndOtherProgressSurviveMigration" methodname="EarnedLegacyClueAndOtherProgressSurviveMigration" classname="ForgottenVillage.Tests.PowerGridTests" runstate="Runnable" seed="157640617" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000797" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1089" name="EveryMachineMustBeConnectedAndStable" fullname="ForgottenVillage.Tests.PowerGridTests.EveryMachineMustBeConnectedAndStable" methodname="EveryMachineMustBeConnectedAndStable" classname="ForgottenVillage.Tests.PowerGridTests" runstate="Runnable" seed="871473822" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.002411" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1080" name="EveryRoundHasReachableBalancedSolution" fullname="ForgottenVillage.Tests.PowerGridTests.EveryRoundHasReachableBalancedSolution" methodname="EveryRoundHasReachableBalancedSolution" classname="ForgottenVillage.Tests.PowerGridTests" runstate="Runnable" seed="689526421" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000618" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1087" name="FinalRoundRequiresBackupCapacity" fullname="ForgottenVillage.Tests.PowerGridTests.FinalRoundRequiresBackupCapacity" methodname="FinalRoundRequiresBackupCapacity" classname="ForgottenVillage.Tests.PowerGridTests" runstate="Runnable" seed="264533519" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000366" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1094" name="GridClueRequiresWinMemoryAndObject" fullname="ForgottenVillage.Tests.PowerGridTests.GridClueRequiresWinMemoryAndObject" methodname="GridClueRequiresWinMemoryAndObject" classname="ForgottenVillage.Tests.PowerGridTests" runstate="Runnable" seed="644104417" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000278" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1096" name="IncompleteLegacyDiagnosticIsNotGridVictory" fullname="ForgottenVillage.Tests.PowerGridTests.IncompleteLegacyDiagnosticIsNotGridVictory" methodname="IncompleteLegacyDiagnosticIsNotGridVictory" classname="ForgottenVillage.Tests.PowerGridTests" runstate="Runnable" seed="246809768" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000276" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1082" name="InvalidSocketAndSourceDoNotMutateCircuit" fullname="ForgottenVillage.Tests.PowerGridTests.InvalidSocketAndSourceDoNotMutateCircuit" methodname="InvalidSocketAndSourceDoNotMutateCircuit" classname="ForgottenVillage.Tests.PowerGridTests" runstate="Runnable" seed="1418503582" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000294" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1090" name="LosingPowerResetsStability" fullname="ForgottenVillage.Tests.PowerGridTests.LosingPowerResetsStability" methodname="LosingPowerResetsStability" classname="ForgottenVillage.Tests.PowerGridTests" runstate="Runnable" seed="639622490" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000296" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1097" name="NewSaveRoundTripRetainsGridRecord" fullname="ForgottenVillage.Tests.PowerGridTests.NewSaveRoundTripRetainsGridRecord" methodname="NewSaveRoundTripRetainsGridRecord" classname="ForgottenVillage.Tests.PowerGridTests" runstate="Runnable" seed="643816592" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000403" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1093" name="NonFiniteAndNegativeTimeCannotCorruptState" fullname="ForgottenVillage.Tests.PowerGridTests.NonFiniteAndNegativeTimeCannotCorruptState" methodname="NonFiniteAndNegativeTimeCannotCorruptState" classname="ForgottenVillage.Tests.PowerGridTests" runstate="Runnable" seed="186867765" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000333" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1084" name="OverloadCannotBeResetUntilLoadsMove" fullname="ForgottenVillage.Tests.PowerGridTests.OverloadCannotBeResetUntilLoadsMove" methodname="OverloadCannotBeResetUntilLoadsMove" classname="ForgottenVillage.Tests.PowerGridTests" runstate="Runnable" seed="261430328" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000457" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1083" name="OverloadTripsAfterThreeActiveSeconds" fullname="ForgottenVillage.Tests.PowerGridTests.OverloadTripsAfterThreeActiveSeconds" methodname="OverloadTripsAfterThreeActiveSeconds" classname="ForgottenVillage.Tests.PowerGridTests" runstate="Runnable" seed="246198567" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000386" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1085" name="PowerOffCoolsWithoutTripping" fullname="ForgottenVillage.Tests.PowerGridTests.PowerOffCoolsWithoutTripping" methodname="PowerOffCoolsWithoutTripping" classname="ForgottenVillage.Tests.PowerGridTests" runstate="Runnable" seed="20440786" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000272" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1098" name="RecoveryDiagnosticsPreserveFinalEvidenceMeaning" fullname="ForgottenVillage.Tests.PowerGridTests.RecoveryDiagnosticsPreserveFinalEvidenceMeaning" methodname="RecoveryDiagnosticsPreserveFinalEvidenceMeaning" classname="ForgottenVillage.Tests.PowerGridTests" runstate="Runnable" seed="223382625" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000344" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1086" name="SecondRoundStartsWithRepairableBreaker" fullname="ForgottenVillage.Tests.PowerGridTests.SecondRoundStartsWithRepairableBreaker" methodname="SecondRoundStartsWithRepairableBreaker" classname="ForgottenVillage.Tests.PowerGridTests" runstate="Runnable" seed="681565545" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000239" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1092" name="ThreeActualRoundsAreRequiredForWin" fullname="ForgottenVillage.Tests.PowerGridTests.ThreeActualRoundsAreRequiredForWin" methodname="ThreeActualRoundsAreRequiredForWin" classname="ForgottenVillage.Tests.PowerGridTests" runstate="Runnable" seed="221765711" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000362" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1091" name="TimeoutFailsAndRetryResetsOnlyCurrentRound" fullname="ForgottenVillage.Tests.PowerGridTests.TimeoutFailsAndRetryResetsOnlyCurrentRound" methodname="TimeoutFailsAndRetryResetsOnlyCurrentRound" classname="ForgottenVillage.Tests.PowerGridTests" runstate="Runnable" seed="988666047" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000381" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1099" name="TennisTests" fullname="ForgottenVillage.Tests.TennisTests" classname="ForgottenVillage.Tests.TennisTests" runstate="Runnable" testcasecount="13" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:35Z" duration="0.189411" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1103" name="BestOfThreeWinAndLossReset" fullname="ForgottenVillage.Tests.TennisTests.BestOfThreeWinAndLossReset" methodname="BestOfThreeWinAndLossReset" classname="ForgottenVillage.Tests.TennisTests" runstate="Runnable" seed="1941087865" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.001663" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1111" name="CompletedLegacyClueMigratesButUnfinishedDividerDoesNot" fullname="ForgottenVillage.Tests.TennisTests.CompletedLegacyClueMigratesButUnfinishedDividerDoesNot" methodname="CompletedLegacyClueMigratesButUnfinishedDividerDoesNot" classname="ForgottenVillage.Tests.TennisTests" runstate="Runnable" seed="1987347868" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000600" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1101" name="ContactsAccumulateAcrossRalliesButNotOutsidePlay" fullname="ForgottenVillage.Tests.TennisTests.ContactsAccumulateAcrossRalliesButNotOutsidePlay" methodname="ContactsAccumulateAcrossRalliesButNotOutsidePlay" classname="ForgottenVillage.Tests.TennisTests" runstate="Runnable" seed="1566755381" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000731" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1110" name="ElderClueRequiresWinMemoryAndInspection" fullname="ForgottenVillage.Tests.TennisTests.ElderClueRequiresWinMemoryAndInspection" methodname="ElderClueRequiresWinMemoryAndInspection" classname="ForgottenVillage.Tests.TennisTests" runstate="Runnable" seed="64655283" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000433" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1112" name="PhysicalChestNeedsRecoveredMemoriesAndThreeLiveObjectRecords" fullname="ForgottenVillage.Tests.TennisTests.PhysicalChestNeedsRecoveredMemoriesAndThreeLiveObjectRecords" methodname="PhysicalChestNeedsRecoveredMemoriesAndThreeLiveObjectRecords" classname="ForgottenVillage.Tests.TennisTests" runstate="Runnable" seed="1006254935" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000800" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1113" name="SaveRoundTripPreservesElderEvidence" fullname="ForgottenVillage.Tests.TennisTests.SaveRoundTripPreservesElderEvidence" methodname="SaveRoundTripPreservesElderEvidence" classname="ForgottenVillage.Tests.TennisTests" runstate="Runnable" seed="275908625" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000561" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1105" name="ShotSpeedCannotExceedConfiguredCap" fullname="ForgottenVillage.Tests.TennisTests.ShotSpeedCannotExceedConfiguredCap" methodname="ShotSpeedCannotExceedConfiguredCap" classname="ForgottenVillage.Tests.TennisTests" runstate="Runnable" seed="1380331937" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.002868" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1104" name="SmashRequiresHeightDescentSpeedDirectionAndPlayerSide" fullname="ForgottenVillage.Tests.TennisTests.SmashRequiresHeightDescentSpeedDirectionAndPlayerSide" methodname="SmashRequiresHeightDescentSpeedDirectionAndPlayerSide" classname="ForgottenVillage.Tests.TennisTests" runstate="Runnable" seed="985085473" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.001286" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1100" name="ThresholdIsInclusiveAndFreshEachGame" fullname="ForgottenVillage.Tests.TennisTests.ThresholdIsInclusiveAndFreshEachGame" methodname="ThresholdIsInclusiveAndFreshEachGame" classname="ForgottenVillage.Tests.TennisTests" runstate="Runnable" seed="1877887239" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.001780" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1102" name="TwoSmashesWaitForFinalOutcome" fullname="ForgottenVillage.Tests.TennisTests.TwoSmashesWaitForFinalOutcome" methodname="TwoSmashesWaitForFinalOutcome" classname="ForgottenVillage.Tests.TennisTests" runstate="Runnable" seed="1870086394" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:34Z" duration="0.000342" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1109" name="ValidSmashClearsNetAndLandsOnOpponentTable" fullname="ForgottenVillage.Tests.TennisTests.ValidSmashClearsNetAndLandsOnOpponentTable" classname="ForgottenVillage.Tests.TennisTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-11-21 03:34:34Z" end-time="2026-11-21 03:34:35Z" duration="0.090459" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1106" name="ValidSmashClearsNetAndLandsOnOpponentTable(-1.2f,1.1f)" fullname="ForgottenVillage.Tests.TennisTests.ValidSmashClearsNetAndLandsOnOpponentTable(-1.2f,1.1f)" methodname="ValidSmashClearsNetAndLandsOnOpponentTable" classname="ForgottenVillage.Tests.TennisTests" runstate="Runnable" seed="418373475" result="Passed" start-time="2026-11-21 03:34:35Z" end-time="2026-11-21 03:34:35Z" duration="0.002500" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1107" name="ValidSmashClearsNetAndLandsOnOpponentTable(-2.1f,1.6f)" fullname="ForgottenVillage.Tests.TennisTests.ValidSmashClearsNetAndLandsOnOpponentTable(-2.1f,1.6f)" methodname="ValidSmashClearsNetAndLandsOnOpponentTable" classname="ForgottenVillage.Tests.TennisTests" runstate="Runnable" seed="977157302" result="Passed" start-time="2026-11-21 03:34:35Z" end-time="2026-11-21 03:34:35Z" duration="0.000342" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1108" name="ValidSmashClearsNetAndLandsOnOpponentTable(-0.4f,2.0f)" fullname="ForgottenVillage.Tests.TennisTests.ValidSmashClearsNetAndLandsOnOpponentTable(-0.4f,2.0f)" methodname="ValidSmashClearsNetAndLandsOnOpponentTable" classname="ForgottenVillage.Tests.TennisTests" runstate="Runnable" seed="453723631" result="Passed" start-time="2026-11-21 03:34:35Z" end-time="2026-11-21 03:34:35Z" duration="0.000243" asserts="0">
                 <properties>
                   <property name="retryIteration" value="0" />
                   <property name="repeatIteration" value="0" />
@@ -99,61 +654,82 @@
               </test-case>
             </test-suite>
           </test-suite>
-          <test-suite type="TestFixture" id="1016" name="VillageModelTests" fullname="ForgottenVillage.Tests.VillageModelTests" classname="ForgottenVillage.Tests.VillageModelTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-11-08 14:11:45Z" end-time="2026-11-08 14:11:45Z" duration="0.197208" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <test-suite type="TestFixture" id="1114" name="VillageModelTests" fullname="ForgottenVillage.Tests.VillageModelTests" classname="ForgottenVillage.Tests.VillageModelTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-11-21 03:34:35Z" end-time="2026-11-21 03:34:35Z" duration="0.202753" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
             <properties />
-            <test-case id="1018" name="MalformedEvidenceCannotAuthorizeFinalGate" fullname="ForgottenVillage.Tests.VillageModelTests.MalformedEvidenceCannotAuthorizeFinalGate" methodname="MalformedEvidenceCannotAuthorizeFinalGate" classname="ForgottenVillage.Tests.VillageModelTests" runstate="Runnable" seed="921443860" result="Passed" start-time="2026-11-08 14:11:45Z" end-time="2026-11-08 14:11:45Z" duration="0.000509" asserts="0">
+            <test-case id="1116" name="MalformedEvidenceCannotAuthorizeFinalGate" fullname="ForgottenVillage.Tests.VillageModelTests.MalformedEvidenceCannotAuthorizeFinalGate" methodname="MalformedEvidenceCannotAuthorizeFinalGate" classname="ForgottenVillage.Tests.VillageModelTests" runstate="Runnable" seed="1905232157" result="Passed" start-time="2026-11-21 03:34:35Z" end-time="2026-11-21 03:34:35Z" duration="0.000928" asserts="0">
               <properties>
                 <property name="retryIteration" value="0" />
                 <property name="repeatIteration" value="0" />
               </properties>
             </test-case>
-            <test-case id="1017" name="NormalizeRepairsMissingProgressArraysAndInventory" fullname="ForgottenVillage.Tests.VillageModelTests.NormalizeRepairsMissingProgressArraysAndInventory" methodname="NormalizeRepairsMissingProgressArraysAndInventory" classname="ForgottenVillage.Tests.VillageModelTests" runstate="Runnable" seed="1331687191" result="Passed" start-time="2026-11-08 14:11:45Z" end-time="2026-11-08 14:11:45Z" duration="0.005205" asserts="0">
+            <test-case id="1115" name="NormalizeRepairsMissingProgressArraysAndInventory" fullname="ForgottenVillage.Tests.VillageModelTests.NormalizeRepairsMissingProgressArraysAndInventory" methodname="NormalizeRepairsMissingProgressArraysAndInventory" classname="ForgottenVillage.Tests.VillageModelTests" runstate="Runnable" seed="1049027758" result="Passed" start-time="2026-11-21 03:34:35Z" end-time="2026-11-21 03:34:35Z" duration="0.004041" asserts="0">
               <properties>
                 <property name="retryIteration" value="0" />
                 <property name="repeatIteration" value="0" />
               </properties>
             </test-case>
-            <test-case id="1019" name="OtherHouseEngineeringTargetsRemainUnchanged" fullname="ForgottenVillage.Tests.VillageModelTests.OtherHouseEngineeringTargetsRemainUnchanged" methodname="OtherHouseEngineeringTargetsRemainUnchanged" classname="ForgottenVillage.Tests.VillageModelTests" runstate="Runnable" seed="1439614732" result="Passed" start-time="2026-11-08 14:11:45Z" end-time="2026-11-08 14:11:45Z" duration="0.002908" asserts="0">
+            <test-case id="1117" name="OtherHouseEngineeringTargetsRemainUnchanged" fullname="ForgottenVillage.Tests.VillageModelTests.OtherHouseEngineeringTargetsRemainUnchanged" methodname="OtherHouseEngineeringTargetsRemainUnchanged" classname="ForgottenVillage.Tests.VillageModelTests" runstate="Runnable" seed="1711792111" result="Passed" start-time="2026-11-21 03:34:35Z" end-time="2026-11-21 03:34:35Z" duration="0.000750" asserts="0">
               <properties>
                 <property name="retryIteration" value="0" />
                 <property name="repeatIteration" value="0" />
               </properties>
             </test-case>
-            <test-suite type="ParameterizedMethod" id="1025" name="SerialProtocolAcceptsOnlyBoundedMessages" fullname="ForgottenVillage.Tests.VillageModelTests.SerialProtocolAcceptsOnlyBoundedMessages" classname="ForgottenVillage.Tests.VillageModelTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-11-08 14:11:45Z" end-time="2026-11-08 14:11:45Z" duration="0.093595" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <test-suite type="ParameterizedMethod" id="1123" name="SerialProtocolAcceptsOnlyBoundedMessages" fullname="ForgottenVillage.Tests.VillageModelTests.SerialProtocolAcceptsOnlyBoundedMessages" classname="ForgottenVillage.Tests.VillageModelTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-11-21 03:34:35Z" end-time="2026-11-21 03:34:35Z" duration="0.098685" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
               <properties />
-              <test-case id="1020" name="SerialProtocolAcceptsOnlyBoundedMessages(&quot;ACK:GATE:OPEN&quot;,True,&quot;ACK:GATE:OPEN&quot;,0)" fullname="ForgottenVillage.Tests.VillageModelTests.SerialProtocolAcceptsOnlyBoundedMessages(&quot;ACK:GATE:OPEN&quot;,True,&quot;ACK:GATE:OPEN&quot;,0)" methodname="SerialProtocolAcceptsOnlyBoundedMessages" classname="ForgottenVillage.Tests.VillageModelTests" runstate="Runnable" seed="114060842" result="Passed" start-time="2026-11-08 14:11:45Z" end-time="2026-11-08 14:11:45Z" duration="0.002669" asserts="0">
+              <test-case id="1118" name="SerialProtocolAcceptsOnlyBoundedMessages(&quot;ACK:GATE:OPEN&quot;,True,&quot;ACK:GATE:OPEN&quot;,0)" fullname="ForgottenVillage.Tests.VillageModelTests.SerialProtocolAcceptsOnlyBoundedMessages(&quot;ACK:GATE:OPEN&quot;,True,&quot;ACK:GATE:OPEN&quot;,0)" methodname="SerialProtocolAcceptsOnlyBoundedMessages" classname="ForgottenVillage.Tests.VillageModelTests" runstate="Runnable" seed="1906368880" result="Passed" start-time="2026-11-21 03:34:35Z" end-time="2026-11-21 03:34:35Z" duration="0.004856" asserts="0">
                 <properties>
                   <property name="retryIteration" value="0" />
                   <property name="repeatIteration" value="0" />
                 </properties>
               </test-case>
-              <test-case id="1021" name="SerialProtocolAcceptsOnlyBoundedMessages(&quot;BTN:1&quot;,True,&quot;BTN&quot;,1)" fullname="ForgottenVillage.Tests.VillageModelTests.SerialProtocolAcceptsOnlyBoundedMessages(&quot;BTN:1&quot;,True,&quot;BTN&quot;,1)" methodname="SerialProtocolAcceptsOnlyBoundedMessages" classname="ForgottenVillage.Tests.VillageModelTests" runstate="Runnable" seed="1221009512" result="Passed" start-time="2026-11-08 14:11:45Z" end-time="2026-11-08 14:11:45Z" duration="0.000191" asserts="0">
+              <test-case id="1119" name="SerialProtocolAcceptsOnlyBoundedMessages(&quot;BTN:1&quot;,True,&quot;BTN&quot;,1)" fullname="ForgottenVillage.Tests.VillageModelTests.SerialProtocolAcceptsOnlyBoundedMessages(&quot;BTN:1&quot;,True,&quot;BTN&quot;,1)" methodname="SerialProtocolAcceptsOnlyBoundedMessages" classname="ForgottenVillage.Tests.VillageModelTests" runstate="Runnable" seed="2046348014" result="Passed" start-time="2026-11-21 03:34:35Z" end-time="2026-11-21 03:34:35Z" duration="0.000944" asserts="0">
                 <properties>
                   <property name="retryIteration" value="0" />
                   <property name="repeatIteration" value="0" />
                 </properties>
               </test-case>
-              <test-case id="1022" name="SerialProtocolAcceptsOnlyBoundedMessages(&quot;POT:512&quot;,True,&quot;POT&quot;,512)" fullname="ForgottenVillage.Tests.VillageModelTests.SerialProtocolAcceptsOnlyBoundedMessages(&quot;POT:512&quot;,True,&quot;POT&quot;,512)" methodname="SerialProtocolAcceptsOnlyBoundedMessages" classname="ForgottenVillage.Tests.VillageModelTests" runstate="Runnable" seed="306175912" result="Passed" start-time="2026-11-08 14:11:45Z" end-time="2026-11-08 14:11:45Z" duration="0.000239" asserts="0">
+              <test-case id="1120" name="SerialProtocolAcceptsOnlyBoundedMessages(&quot;POT:512&quot;,True,&quot;POT&quot;,512)" fullname="ForgottenVillage.Tests.VillageModelTests.SerialProtocolAcceptsOnlyBoundedMessages(&quot;POT:512&quot;,True,&quot;POT&quot;,512)" methodname="SerialProtocolAcceptsOnlyBoundedMessages" classname="ForgottenVillage.Tests.VillageModelTests" runstate="Runnable" seed="721485811" result="Passed" start-time="2026-11-21 03:34:35Z" end-time="2026-11-21 03:34:35Z" duration="0.000399" asserts="0">
                 <properties>
                   <property name="retryIteration" value="0" />
                   <property name="repeatIteration" value="0" />
                 </properties>
               </test-case>
-              <test-case id="1023" name="SerialProtocolAcceptsOnlyBoundedMessages(&quot;POT:1024&quot;,False,&quot;&quot;,0)" fullname="ForgottenVillage.Tests.VillageModelTests.SerialProtocolAcceptsOnlyBoundedMessages(&quot;POT:1024&quot;,False,&quot;&quot;,0)" methodname="SerialProtocolAcceptsOnlyBoundedMessages" classname="ForgottenVillage.Tests.VillageModelTests" runstate="Runnable" seed="229440233" result="Passed" start-time="2026-11-08 14:11:45Z" end-time="2026-11-08 14:11:45Z" duration="0.000102" asserts="0">
+              <test-case id="1121" name="SerialProtocolAcceptsOnlyBoundedMessages(&quot;POT:1024&quot;,False,&quot;&quot;,0)" fullname="ForgottenVillage.Tests.VillageModelTests.SerialProtocolAcceptsOnlyBoundedMessages(&quot;POT:1024&quot;,False,&quot;&quot;,0)" methodname="SerialProtocolAcceptsOnlyBoundedMessages" classname="ForgottenVillage.Tests.VillageModelTests" runstate="Runnable" seed="1709978" result="Passed" start-time="2026-11-21 03:34:35Z" end-time="2026-11-21 03:34:35Z" duration="0.000178" asserts="0">
                 <properties>
                   <property name="retryIteration" value="0" />
                   <property name="repeatIteration" value="0" />
                 </properties>
               </test-case>
-              <test-case id="1024" name="SerialProtocolAcceptsOnlyBoundedMessages(&quot;garbage&quot;,False,&quot;&quot;,0)" fullname="ForgottenVillage.Tests.VillageModelTests.SerialProtocolAcceptsOnlyBoundedMessages(&quot;garbage&quot;,False,&quot;&quot;,0)" methodname="SerialProtocolAcceptsOnlyBoundedMessages" classname="ForgottenVillage.Tests.VillageModelTests" runstate="Runnable" seed="758906352" result="Passed" start-time="2026-11-08 14:11:45Z" end-time="2026-11-08 14:11:45Z" duration="0.000092" asserts="0">
+              <test-case id="1122" name="SerialProtocolAcceptsOnlyBoundedMessages(&quot;garbage&quot;,False,&quot;&quot;,0)" fullname="ForgottenVillage.Tests.VillageModelTests.SerialProtocolAcceptsOnlyBoundedMessages(&quot;garbage&quot;,False,&quot;&quot;,0)" methodname="SerialProtocolAcceptsOnlyBoundedMessages" classname="ForgottenVillage.Tests.VillageModelTests" runstate="Runnable" seed="105715789" result="Passed" start-time="2026-11-21 03:34:35Z" end-time="2026-11-21 03:34:35Z" duration="0.000236" asserts="0">
                 <properties>
                   <property name="retryIteration" value="0" />
                   <property name="repeatIteration" value="0" />
                 </properties>
-                <output><![CDATA[Saving results to: C:/Users/ccy08/AppData/LocalLow/Unity/Modern Room\TestResults.xml
-]]></output>
               </test-case>
             </test-suite>
+          </test-suite>
+          <test-suite type="TestFixture" id="1124" name="VillageStorageTests" fullname="ForgottenVillage.Tests.VillageStorageTests" classname="ForgottenVillage.Tests.VillageStorageTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-11-21 03:34:35Z" end-time="2026-11-21 03:34:35Z" duration="0.570437" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1127" name="MissingDestinationDirectoryStillReportsFailure" fullname="ForgottenVillage.Tests.VillageStorageTests.MissingDestinationDirectoryStillReportsFailure" methodname="MissingDestinationDirectoryStillReportsFailure" classname="ForgottenVillage.Tests.VillageStorageTests" runstate="Runnable" seed="867110869" result="Passed" start-time="2026-11-21 03:34:35Z" end-time="2026-11-21 03:34:35Z" duration="0.014407" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1125" name="RepeatedAtomicSavesRetainLatestStateAndPreviousBackup" fullname="ForgottenVillage.Tests.VillageStorageTests.RepeatedAtomicSavesRetainLatestStateAndPreviousBackup" methodname="RepeatedAtomicSavesRetainLatestStateAndPreviousBackup" classname="ForgottenVillage.Tests.VillageStorageTests" runstate="Runnable" seed="348924997" result="Passed" start-time="2026-11-21 03:34:35Z" end-time="2026-11-21 03:34:35Z" duration="0.389512" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1126" name="TemporaryWindowsReadHandleDoesNotLoseProgress" fullname="ForgottenVillage.Tests.VillageStorageTests.TemporaryWindowsReadHandleDoesNotLoseProgress" methodname="TemporaryWindowsReadHandleDoesNotLoseProgress" classname="ForgottenVillage.Tests.VillageStorageTests" runstate="Runnable" seed="1748320673" result="Passed" start-time="2026-11-21 03:34:35Z" end-time="2026-11-21 03:34:35Z" duration="0.074239" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: C:/Users/ccy08/AppData/LocalLow/Unity/Modern Room\TestResults.xml
+]]></output>
+            </test-case>
           </test-suite>
         </test-suite>
       </test-suite>
