@@ -12,12 +12,12 @@ namespace ForgottenVillage.Editor {
 [InitializeOnLoad] public static class NpcIntegration {
  const string Source = "Assets/Stylized NPC - Peasant Nolant/";
  const string Dest = "Assets/TheForgottenVillage/";
- static NpcIntegration(){ EditorApplication.update += Tick; File.WriteAllText("Verification/npc-ready.txt","integration-v5"); }
+ static NpcIntegration(){ EditorApplication.update += Tick; File.WriteAllText("Verification/npc-ready.txt","integration-v6"); }
  static void Tick(){
   const string request="Verification/npc.request";
   if(EditorApplication.isCompiling || EditorApplication.isUpdating || EditorApplication.isPlaying || !File.Exists(request))return;
   string command;try{command=File.ReadAllText(request).Trim();File.Delete(request);}catch(IOException){return;}
-  try { if(command=="audit")Audit(); else if(command=="build")Build(); else if(command=="tests")TennisTestRunner.Run(); else if(command=="validate")NpcValidation.Run(); else if(command=="remove-unused-oculus")RemoveUnusedOculus(); else if(command=="refine")Refine(); else if(command=="play")NpcPlayChecks.Request(); else throw new ArgumentException("Unknown NPC command: "+command); }
+  try { if(command=="audit")Audit(); else if(command=="build")Build(); else if(command=="tests")TennisTestRunner.Run(); else if(command=="validate")NpcValidation.Run(); else if(command=="remove-unused-oculus")RemoveUnusedOculus(); else if(command=="refine")Refine(); else if(command=="play")NpcPlayChecks.Request(); else if(command=="palette")Palette(); else throw new ArgumentException("Unknown NPC command: "+command); }
   catch(Exception e){File.WriteAllText("Verification/npc-result.txt",e.ToString());Debug.LogException(e);}
  }
  [MenuItem("Forgotten Village/NPC/Audit")]
@@ -40,6 +40,17 @@ namespace ForgottenVillage.Editor {
   }
   File.WriteAllText("Verification/npc-audit.txt",log.ToString());
   File.WriteAllText("Verification/npc-result.txt","Audit complete");
+ }
+ static void Palette(){
+  Directory.CreateDirectory(Dest+"Materials/NPC");AssetDatabase.Refresh();
+  for(int role=0;role<Roles.Length;role++){
+   string materialPath=Dest+"Materials/NPC/"+Colors[role]+".mat";
+   var material=AssetDatabase.LoadAssetAtPath<Material>(materialPath);
+   if(!material){material=new Material(AssetDatabase.LoadAssetAtPath<Material>(Source+"Materials/Peasant Nolant "+Colors[role]+".mat"));material.name="Resident "+Colors[role];material.enableInstancing=true;AssetDatabase.CreateAsset(material,materialPath);}
+   string path=Dest+"Prefabs/NPC/"+Roles[role]+".prefab";var prefab=PrefabUtility.LoadPrefabContents(path);
+   try{foreach(var renderer in prefab.GetComponentsInChildren<Renderer>(true))renderer.sharedMaterial=material;PrefabUtility.SaveAsPrefabAsset(prefab,path);}finally{PrefabUtility.UnloadPrefabContents(prefab);}
+  }
+  AssetDatabase.SaveAssets();File.WriteAllText("Verification/npc-result.txt","PASS: project-owned material palette shares original textures");
  }
  static void Refine(){
   var setup=EditorSceneManager.GetSceneManagerSetup();

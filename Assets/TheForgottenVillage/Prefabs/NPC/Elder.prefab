@@ -113,6 +113,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Peasant Nolant Brown(Free Version)
       objectReference: {fileID: 0}
+    - target: {fileID: 4760251673952790204, guid: 3c0b66c1fb55cd34994e034186a852c1, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f8ae10252c77a7b4a90d6989af509c00, type: 2}
+    - target: {fileID: 6436514654887021712, guid: 3c0b66c1fb55cd34994e034186a852c1, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f8ae10252c77a7b4a90d6989af509c00, type: 2}
     - target: {fileID: 8490003404539540688, guid: 3c0b66c1fb55cd34994e034186a852c1, type: 3}
       propertyPath: m_Controller
       value: 
