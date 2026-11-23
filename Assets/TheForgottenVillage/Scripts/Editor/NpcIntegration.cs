@@ -15,7 +15,7 @@ namespace ForgottenVillage.Editor {
   const string request="Verification/npc.request";
   if(EditorApplication.isCompiling || EditorApplication.isUpdating || EditorApplication.isPlaying || !File.Exists(request))return;
   string command;try{command=File.ReadAllText(request).Trim();File.Delete(request);}catch(IOException){return;}
-  try { if(command=="audit")Audit(); else if(command=="build")Build(); else if(command=="tests")TennisTestRunner.Run(); else if(command=="validate")NpcValidation.Run(); else if(command=="remove-unused-oculus")RemoveUnusedOculus(); else if(command=="refine")Refine(); else if(command=="play")NpcPlayChecks.Request(); else throw new ArgumentException("Unknown NPC command: "+command); }
+  try { if(command=="audit")Audit(); else if(command=="build")Build(); else if(command=="tests")TennisTestRunner.Run(); else if(command=="validate")NpcValidation.Run(); else if(command=="peasants"){PeasantResidents.UpdatePrefabs();NpcValidation.Run();} else if(command=="remove-unused-oculus")RemoveUnusedOculus(); else if(command=="refine")Refine(); else if(command=="play")NpcPlayChecks.Request(); else throw new ArgumentException("Unknown NPC command: "+command); }
   catch(Exception e){File.WriteAllText("Verification/npc-result.txt",e.ToString());Debug.LogException(e);}
  }
  [MenuItem("Forgotten Village/NPC/Audit")]
@@ -72,7 +72,7 @@ namespace ForgottenVillage.Editor {
   var setup=EditorSceneManager.GetSceneManagerSetup();
   var log=new StringBuilder();
   try {
-   CityPeopleResidents.UpdatePrefabs();
+   PeasantResidents.UpdatePrefabs();
    foreach(var entry in EditorBuildSettings.scenes.Where(s=>s.enabled)){
     var scene=EditorSceneManager.OpenScene(entry.path);
     var actions=scene.GetRootGameObjects().SelectMany(r=>r.GetComponentsInChildren<VillageAction>(true)).Where(a=>a.kind=="dialogue").ToArray();

@@ -28,11 +28,11 @@ namespace ForgottenVillage.Editor {
                         Require(npc && npc.role == action.index, "NPC role does not match dialogue " + action.name);
                         Require(npc.animator && npc.animator.avatar && npc.animator.avatar.isValid && npc.animator.avatar.isHuman, "Avatar invalid");
                         Require(!npc.animator.applyRootMotion, "Root motion enabled");
-                        Require(CityPeopleResidents.UsesExpectedAssets(npc), "Incorrect City People model or looping idle");
+                        Require(PeasantResidents.UsesExpectedAssets(npc), "Incorrect peasant model, outfit, or looping idle");
                         Require(npc.head && npc.head == npc.animator.GetBoneTransform(HumanBodyBones.Head), "Head bone missing or incorrectly bound");
                         Require(npc.GetComponentsInChildren<Collider>(true).Length == 0 && npc.GetComponentsInChildren<Rigidbody>(true).Length == 0, "Visual adds physics");
                         var renderers = npc.GetComponentsInChildren<SkinnedMeshRenderer>();
-                        Require(renderers.Length > 0, "Expected skinned City People meshes");
+                        Require(renderers.Length > 0, "Expected skinned peasant meshes");
                         var bounds = renderers[0].bounds;
                         foreach (var r in renderers) {
                             Require(r.enabled && r.sharedMesh, "Hidden or missing mesh");
@@ -59,7 +59,7 @@ namespace ForgottenVillage.Editor {
                 report.AppendLine("PASS: all six NPC instances validated. Validation ran in the Unity Editor.");
             } catch(Exception e) {report.AppendLine("FAIL: "+e);throw;}
             finally {
-                File.WriteAllText("Verification/city-people-validation.txt", report.ToString());
+                File.WriteAllText("Verification/peasant-validation.txt", report.ToString());
                 if (setup.Any(scene => scene.isLoaded && scene.isActive))
                     EditorSceneManager.RestoreSceneManagerSetup(setup);
             }
@@ -85,7 +85,7 @@ namespace ForgottenVillage.Editor {
                 RenderTexture.active = texture;
                 image.ReadPixels(new Rect(0, 0, 640, 640), 0, 0);
                 image.Apply();
-                File.WriteAllBytes("Verification/city-people-" + scene + ".png", image.EncodeToPNG());
+                File.WriteAllBytes("Verification/peasant-" + scene + ".png", image.EncodeToPNG());
             } finally {
                 preview.Destroy();
                 RenderTexture.active = previous;
