@@ -9,12 +9,12 @@ namespace ForgottenVillage.Tests {
             frames = 3, capturedUtc = DateTimeOffset.UtcNow.ToString("O"), snapshot = "", simulated = true
         };
         static VillageSave EarnedBridge() {
-            var save = new VillageSave { version = 7, elder = true, carpenterBridgeWon = true, carpenterMemoryRecovered = true };
+            var save = new VillageSave { simulation = true, version = 7, elder = true, carpenterBridgeWon = true, carpenterMemoryRecovered = true };
             save.clues[2] = save.puzzleSolved[2] = true; save.objects[2] = Mouse(); return save;
         }
         [Test] public void EarnedVersionSevenMouseClueSurvivesWithoutInventedHighScore() {
             var save = EarnedBridge(); save.Normalize();
-            Assert.That(save.version, Is.EqualTo(8)); Assert.IsTrue(save.CanClaim(2));
+            Assert.That(save.version, Is.EqualTo(VillageSave.CurrentVersion)); Assert.IsTrue(save.CanClaim(2));
             Assert.IsTrue(save.carpenterArcadeWon); Assert.That(save.carpenterBestScore, Is.Zero);
         }
         [Test] public void UnclaimedBridgeVictoryMustPlayCurrentChallenge() {
@@ -30,7 +30,7 @@ namespace ForgottenVillage.Tests {
             Assert.IsFalse(save.CanClaim(2) || save.clues[2]);
         }
         [Test] public void CurrentVictoryStillNeedsMemoryAndMouse() {
-            var save = new VillageSave { elder = true, carpenterArcadeWon = true }; save.puzzleSolved[2] = true;
+            var save = new VillageSave { simulation = true, elder = true, carpenterArcadeWon = true }; save.puzzleSolved[2] = true;
             Assert.IsFalse(save.CanClaim(2)); save.carpenterMemoryRecovered = true;
             Assert.IsFalse(save.CanClaim(2)); save.objects[2] = Mouse(); Assert.IsTrue(save.CanClaim(2));
         }

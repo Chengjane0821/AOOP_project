@@ -33,7 +33,7 @@ namespace ForgottenVillage.Tests {
         [Test] public void NewSaveRoundTripRetainsGridRecord(){var s=CompletedSave();var restored=JsonUtility.FromJson<VillageSave>(JsonUtility.ToJson(s));restored.Normalize();Assert.IsTrue(restored.CanClaim(3)&&restored.clues[3]);}
         [Test] public void RecoveryDiagnosticsPreserveFinalEvidenceMeaning(){Assert.IsTrue(Engineering.ControllerAllowsRun(false,true));Assert.IsFalse(Engineering.ControllerAllowsRun(true,true));}
         static PowerGridCircuit Overloaded(){var c=new PowerGridCircuit(PowerGridLevels.Create(0));for(int i=0;i<3;i++)c.Connect(i,0);c.TogglePower();return c;}
-        static VillageSave CompletedSave(){var s=new VillageSave{elder=true,technicianGridWon=true,technicianMemoryRecovered=true,faultyTest=true,fixedTest=true};s.puzzleSolved[3]=s.clues[3]=true;s.objects[3]=new ObjectEvidence{requestId=Guid.NewGuid().ToString("N"),objectName="cell phone",capturedUtc=DateTimeOffset.UtcNow.ToString("O"),snapshot="",confidence=.99f,frames=3,simulated=true};return s;}
+        static VillageSave CompletedSave(){var s=new VillageSave{simulation=true,elder=true,technicianGridWon=true,technicianMemoryRecovered=true,faultyTest=true,fixedTest=true};s.puzzleSolved[3]=s.clues[3]=true;s.objects[3]=new ObjectEvidence{requestId=Guid.NewGuid().ToString("N"),objectName="cell phone",capturedUtc=DateTimeOffset.UtcNow.ToString("O"),snapshot="",confidence=.99f,frames=3,simulated=true};return s;}
         public static void Balance(PowerGridCircuit circuit){
             if(circuit.Level.NeedsBackup&&!circuit.BackupOnline)circuit.ToggleBackup();
             for(int mask=0;mask<(1<<circuit.MachineCount);mask++){
