@@ -24,7 +24,7 @@ def worker_main(connection, settings):
             result = verify(request, settings, camera, detector,
                 lambda frame, rid: save_snapshot(settings.evidence_dir, frame, rid))
             connection.send(result)
-    except (CameraError, ModelError, Exception) as exc:
+    except Exception as exc:
         try:
             connection.send((camera_ok, model_ok, str(exc)))
         except (OSError, EOFError):
@@ -68,6 +68,7 @@ class ProcessEngine:
             if not self.connection.poll(self.settings.inference_timeout + 5):
                 result.status = "timeout"
                 result.message = "Camera/inference stalled; restart recognition service"
+                self.message = result.message
                 self.close()
                 return result
             value = self.connection.recv()
@@ -86,6 +87,12 @@ class ProcessEngine:
     def close(self):
         self.camera = self.model = False
         if self.process is not None:
+            if self.process.is_alive() and self.connection is not None:
+                try:
+                    self.connection.send(None)
+                    self.process.join(timeout=1)
+                except (OSError, EOFError):
+                    pass
             if self.process.is_alive():
                 self.process.terminate()
             self.process.join(timeout=3)
