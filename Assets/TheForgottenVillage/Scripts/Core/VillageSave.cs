@@ -5,8 +5,9 @@ using System.Linq;
 namespace ForgottenVillage {
     [Serializable]
     public class VillageSave {
-        public const int CurrentVersion = 8;
+        public const int CurrentVersion = 9;
         public int version = CurrentVersion;
+        public bool simulation;
         public bool carpenterBridgeWon, carpenterMemoryRecovered;
         // Bridge victory is retained only to migrate older earned records.
         public bool carpenterArcadeWon;
@@ -22,14 +23,14 @@ namespace ForgottenVillage {
         public bool[] evidence = new bool[4];
         public List<string> inventory = new List<string>();
         public bool ObjectVerified(int id) => id >= 0 && id < 5 && objects != null &&
-            objects.Length == 5 && objects[id] != null && objects[id].ValidFor(id);
+            objects.Length == 5 && objects[id] != null && objects[id].simulated == simulation && objects[id].ValidFor(id);
         public bool CanClaim(int id) => elder && id >= 0 && id < 5 && puzzleSolved != null &&
-            puzzleSolved.Length == 5 && puzzleSolved[id] && (id == 0 ? elderTennisWon && elderMemoryRecovered && photograph : id == 1 ? alchemistDreamWon && alchemistMemoryRecovered && alchemistEvidenceInspected : id == 2 ? carpenterArcadeWon && carpenterMemoryRecovered && ObjectVerified(id) : id == 3 ? technicianGridWon && technicianMemoryRecovered && ObjectVerified(id) : id == 4 && clockRhythmWon && clockMemoryRecovered && ObjectVerified(id));
+            puzzleSolved.Length == 5 && puzzleSolved[id] && ObjectVerified(id) && (id == 0 ? elderTennisWon && elderMemoryRecovered && photograph : id == 1 ? alchemistDreamWon && alchemistMemoryRecovered && alchemistEvidenceInspected : id == 2 ? carpenterArcadeWon && carpenterMemoryRecovered && ObjectVerified(id) : id == 3 ? technicianGridWon && technicianMemoryRecovered && ObjectVerified(id) : id == 4 && clockRhythmWon && clockMemoryRecovered && ObjectVerified(id));
         public bool Unlocked => clues != null && clues.Length == 5 &&
             Enumerable.Range(0, 5).All(i => clues[i] && CanClaim(i));
         public bool Authorized => Unlocked && faultyTest && fixedTest && evidence != null &&
             evidence.Length == 4 && evidence.All(x => x);
-        public bool PhysicalChestAuthorized => Authorized && Enumerable.Range(2, 3).All(i => ObjectVerified(i) && !objects[i].simulated);
+        public bool PhysicalChestAuthorized => Authorized && Enumerable.Range(0, 5).All(i => ObjectVerified(i) && !objects[i].simulated);
         public void Normalize() {
             if (inventory == null) inventory = new List<string>();
             inventory = inventory.Where(x => !string.IsNullOrWhiteSpace(x)).Distinct().ToList();
@@ -78,8 +79,16 @@ namespace ForgottenVillage {
                 carpenterBestScore = 0;
                 version = 8;
             }
+            if (version < 9) {
+                // Old first/second clues lacked object evidence: require the actual new scans.
+                inventory.Remove("Analog Front-End Record");
+                version = 9;
+            }
             carpenterBestScore = Math.Max(0, carpenterBestScore);
-            for (int i = 0; i < 5; i++) if (!CanClaim(i)) clues[i] = false;
+            for (int i = 0; i < 5; i++) {
+                if (!CanClaim(i)) { clues[i] = false; inventory.Remove(VillageGame.Clues[i]); }
+                else if (clues[i] && !inventory.Contains(VillageGame.Clues[i])) inventory.Add(VillageGame.Clues[i]);
+            }
             if (!Authorized) ended = false;
         }
     }
