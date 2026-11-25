@@ -156,3 +156,14 @@ InitTestScene*.unity*
 /Verification/npc-result.txt
 /Verification/npc-desktop.*
 /Verification/npc-window.*
+
+# Raspberry Pi local credentials, model weights and camera data
+raspberry_pi/.env
+raspberry_pi/.venv/
+raspberry_pi/evidence/
+raspberry_pi/*.jpg
+raspberry_pi/models/*.pt
+raspberry_pi/models/*.onnx
+raspberry_pi/models/*.local
+__pycache__/
+.pytest_cache/
