@@ -6,7 +6,7 @@ try {
     $destination = Join-Path $projectRoot 'Temp/VerificationCompile'
     New-Item -ItemType Directory -Force $destination | Out-Null
     foreach ($assembly in @('Assembly-CSharp', 'Assembly-CSharp-Editor')) {
-        $source = Get-ChildItem Library/Bee -Recurse -Filter "$assembly.rsp" | Sort-Object LastWriteTime -Descending | Select-Object -First 1
+        $source = Get-ChildItem Library/Bee/artifacts -Recurse -Filter "$assembly.rsp" | Sort-Object LastWriteTime -Descending | Select-Object -First 1
         if (!$source) { throw 'Open the project in Unity once to generate compiler references.' }
         $lines = Get-Content -LiteralPath $source.FullName | Where-Object { $_ -notmatch '^-(out|refout):|^/additionalfile:|^/analyzer:' }
         $lines = $lines | Where-Object { $_ -notmatch '^"Assets/TheForgottenVillage/.*\.cs"$' }

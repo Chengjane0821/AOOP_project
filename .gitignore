@@ -167,3 +167,4 @@ raspberry_pi/models/*.onnx
 raspberry_pi/models/*.local
 __pycache__/
 .pytest_cache/
+/Verification/recognition-tests.request
