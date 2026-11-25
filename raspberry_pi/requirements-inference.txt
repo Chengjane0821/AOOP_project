@@ -1,0 +1,4 @@
+# Pi OS Bookworm ARM64 / Python 3.11 baseline; CPU inference only.
+ultralytics==8.3.152
+numpy<2
+opencv-python==4.11.0.86

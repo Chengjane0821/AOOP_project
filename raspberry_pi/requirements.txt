@@ -1,0 +1,6 @@
+fastapi==0.115.12
+uvicorn==0.34.2
+pydantic==2.11.4
+pydantic-settings==2.9.1
+# Picamera2, libcamera, numpy and OpenCV come from apt for matching ABI.
+# Install ML packages separately with requirements-inference.txt.
