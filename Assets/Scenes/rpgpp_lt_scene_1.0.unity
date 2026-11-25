@@ -40473,6 +40473,7 @@ GameObject:
   - component: {fileID: 1977585041}
   - component: {fileID: 1977585040}
   - component: {fileID: 1977585043}
+  - component: {fileID: 1977585044}
   m_Layer: 0
   m_Name: "The Forgotten Village \u2014 Systems"
   m_TagString: Untagged
@@ -40560,7 +40561,7 @@ MonoBehaviour:
     inventory: []
   playing: 0
   house: -1
-  recognition: {fileID: 0}
+  recognition: {fileID: 1977585044}
 --- !u!114 &1977585040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46085,3 +46086,23 @@ SceneRoots:
   - {fileID: 1624743833}
   - {fileID: 242137334}
   - {fileID: 798234348}
+--- !u!114 &1977585044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1977585038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8119ea572fa94bfd879b74bb0fa73804, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  game: {fileID: 1977585039}
+  simulation: 0
+  endpoint: http://raspberrypi.local:8765
+  accessToken:
+  status: LIVE camera - connection not tested
+  requestTimeout: 5
+  verificationTimeout: 120
+  mockOutcome: 0
