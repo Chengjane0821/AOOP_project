@@ -1,0 +1,23 @@
+[Unit]
+Description=V=IR local camera recognition
+After=network-online.target
+Wants=network-online.target
+StartLimitIntervalSec=120
+StartLimitBurst=3
+
+[Service]
+Type=simple
+User=@USER@
+WorkingDirectory=@ROOT@
+ExecStart=/bin/bash @ROOT@/scripts/start_server.sh
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=110
+KillMode=control-group
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target
