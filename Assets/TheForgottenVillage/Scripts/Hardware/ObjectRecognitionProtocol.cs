@@ -3,14 +3,15 @@ using System.Globalization;
 
 namespace ForgottenVillage {
     public static class ObjectQuests {
-        public static readonly string[] Categories = { "book", "bottle", "mouse", "cell phone", "clock" };
+        public static readonly string[] Categories = { "keyboard", "laptop", "mouse", "cell phone", "clock" };
         public static readonly string[] Roles = { "research notes", "sample container", "workstation tool", "diagnostic record", "experiment timeline" };
+        public static readonly string[] HouseIds = { "elder", "alchemist", "carpenter", "technician", "clockmaker" };
         public const float MinimumConfidence = .70f;
         public const int MinimumFrames = 3;
         public static bool ValidId(string value) => value != null && value.Length == 32 && Guid.TryParseExact(value, "N", out _);
         public static bool Accept(RecognitionResult result, int house, string request, bool simulation) {
             return result != null && house >= 0 && house < 5 && ValidId(request) &&
-                result.requestId == request && result.questIndex == house && result.status == "verified" &&
+                result.requestId == request && result.questIndex == house && result.status == "success" &&
                 result.objectName == Categories[house] && result.simulated == simulation && result.ToEvidence().ValidFor(house);
         }
     }
