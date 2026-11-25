@@ -26,7 +26,8 @@ public class HouseTransitions : MonoBehaviour {
  }
  void RestoreOutdoors(){foreach(var root in hiddenOutdoorRoots)if(root)root.SetActive(true);hiddenOutdoorRoots.Clear();}
  IEnumerator Load(int index){
-  Busy=true;game.ui.Message("Entering "+VillageGame.Houses[index],"Loading the room and restoring your investigation...");
+  if(index==5&&!game.state.Unlocked){game.ui.Toast("Collect all five verified clues first.");yield break;}
+  game.recognition.Cancel();Busy=true;game.ui.Message("Entering "+VillageGame.Houses[index],"Loading the room and restoring your investigation...");
   var op=SceneManager.LoadSceneAsync(SceneNames[index],LoadSceneMode.Additive);if(op==null){Busy=false;game.ui.Message("Room unavailable","The house scene is missing from Build Settings.");yield break;}yield return op;
   var scene=SceneManager.GetSceneByName(SceneNames[index]);foreach(var root in scene.GetRootGameObjects()){var candidate=root.GetComponent<HouseSceneRoot>();if(candidate){Current=candidate;break;}}
   if(!Current){yield return SceneManager.UnloadSceneAsync(scene);Busy=false;game.ui.Message("Room unavailable","No configured house root was found.");yield break;}
@@ -36,7 +37,7 @@ public class HouseTransitions : MonoBehaviour {
  public void Exit(){if(Busy||!Current)return;StartCoroutine(Return(false));}
  public void ReturnToStart(){if(Busy)return;if(Current)StartCoroutine(Return(true));else game.player.Teleport(game.villageSpawn.position,game.villageSpawn.eulerAngles.y);}
  IEnumerator Return(bool start){
-  Busy=true;int index=Current.houseIndex;var scene=Current.gameObject.scene;
+  game.recognition.Cancel();Busy=true;int index=Current.houseIndex;var scene=Current.gameObject.scene;
   // Finish activity cleanup before moving the persistent player or unloading its references.
   Current.PrepareForUnload();Time.timeScale=1;
   game.ui.Message("Returning to village","Your records have been saved.");game.Commit();SceneManager.SetActiveScene(villageScene);RestoreOutdoors();
