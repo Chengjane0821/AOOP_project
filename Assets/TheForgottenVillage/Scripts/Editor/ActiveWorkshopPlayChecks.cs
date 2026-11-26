@@ -145,7 +145,30 @@ namespace ForgottenVillage.Editor {
             game.CompletePuzzle(2); Check(!game.state.puzzleSolved[2] && !game.Award(2), "Legacy completion and early clue cannot bypass the challenge");
             game.ui.Dialogue(2); Button(game, "Maybe later"); Check(!house.run.Running && !game.ui.IsOpen, "Invitation can be declined");
             var camera = game.player.desktopCamera.transform; var originalPosition = camera.localPosition; var originalRotation = camera.localRotation;
-            game.ui.Dialogue(2); Button(game, "Let's play!"); live = house.run;
+            var housePosition = game.player.transform.position;
+            game.ui.Dialogue(2); Button(game, "Enter shed and practice"); live = house.run;
+            foreach (var step in Wait(.5)) yield return step;
+            Check(live.Running && live.Session.Practice && Vector3.Distance(game.player.transform.position, housePosition) > 10,
+                "Practice opens in a separate shed with a fresh unscored session");
+            var shedPosition = game.player.transform.position;
+            oldBackground = InputSystem.settings.backgroundBehavior;
+            InputSystem.settings.backgroundBehavior = InputSettings.BackgroundBehavior.IgnoreFocus;
+            keyboard = InputSystem.AddDevice<Keyboard>(); mouse = InputSystem.AddDevice<Mouse>();
+            live.GetComponent<ActiveWorkshopInput>().BeforeCapture = Inject; follow = true;
+            double practiceDeadline = Time.realtimeSinceStartupAsDouble + 20;
+            while (live.Running) {
+                if (Time.realtimeSinceStartupAsDouble > practiceDeadline) throw new TimeoutException("Practice timed out.");
+                yield return null;
+            }
+            follow = false; held = Array.Empty<Key>(); leftDown = rightDown = false;
+            Check(live.Session.Misses == 0 && live.Session.Score == 0 && !game.state.carpenterArcadeWon,
+                "Single, pair and dodge practice completes without score or story progress");
+            Button(game, "Return to Carpenter");
+            foreach (var step in Wait(.5)) yield return step;
+            Check(Vector3.Distance(game.player.transform.position, housePosition) < .1f && !game.player.ActivityLocksMovement,
+                "Returning from practice restores the house position and movement");
+            game.ui.Dialogue(2); Button(game, "Start challenge");
+            foreach (var step in Wait(.5)) yield return step;
             Check(live.Running && game.player.ActivityLocksMovement && game.player.ActivityUsesPointer, "Challenge reserves movement and enables desktop pointer");
             ControlRays(live); Check(true, "All control centers and inner edges have unobstructed selection rays");
             Check(!live.AcceptsInput, "Three-second count-in blocks scoring");
@@ -173,10 +196,10 @@ namespace ForgottenVillage.Editor {
             double timeout = Time.realtimeSinceStartupAsDouble + 66;
             while (live.Running) { if (Time.realtimeSinceStartupAsDouble > timeout) throw new TimeoutException("Idle challenge failed to end."); yield return null; }
             Check(live.Session.Finished && !live.Session.Passed && !game.state.carpenterArcadeWon, "Full 60-second idle failure cannot award progress");
-            Check(!game.player.ActivityLocksMovement && !game.player.ActivityUsesPointer && Vector3.Distance(camera.localPosition, originalPosition) < .001f, "Failure restores camera and activity controls");
+            Check(game.player.ActivityLocksMovement && Vector3.Distance(game.player.transform.position, shedPosition) < .1f,
+                "A failed round keeps the player in the shed for an immediate retry");
             Button(game, "Try again");
-            oldBackground = InputSystem.settings.backgroundBehavior; InputSystem.settings.backgroundBehavior = InputSettings.BackgroundBehavior.IgnoreFocus;
-            keyboard = InputSystem.AddDevice<Keyboard>(); mouse = InputSystem.AddDevice<Mouse>(); live.GetComponent<ActiveWorkshopInput>().BeforeCapture = Inject; follow = true;
+            follow = true;
             bool captured = false; timeout = Time.realtimeSinceStartupAsDouble + 75;
             while (live.Running) {
                 if (Time.realtimeSinceStartupAsDouble > timeout) throw new TimeoutException("Mouse/key challenge timed out.");

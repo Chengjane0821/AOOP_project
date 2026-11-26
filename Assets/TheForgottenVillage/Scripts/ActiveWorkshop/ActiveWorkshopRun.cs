@@ -1,11 +1,14 @@
 using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.XR;
 
 namespace ForgottenVillage {
     [RequireComponent(typeof(ActiveWorkshopInput), typeof(ActiveWorkshopAudio))]
     public sealed class ActiveWorkshopRun : MonoBehaviour {
         public const double CountIn = 3;
+        const float ContactRadius = .145f;
         public ActiveWorkshopHouse house;
         public ActiveWorkshopView view;
         public Transform desktopPoint, vrPoint;
@@ -16,7 +19,7 @@ namespace ForgottenVillage {
         public int seedOverride = -1;
         public bool Running { get; private set; }
         public bool IsPaused => Running && (!Allowed() || house.game.ui.IsOpen);
-        public bool AcceptsInput => Running && Allowed() && !house.game.ui.IsOpen && Elapsed >= CountIn;
+        public bool AcceptsInput => Running && !changingRoom && Allowed() && !house.game.ui.IsOpen && Elapsed >= CountIn;
         public double Elapsed { get; private set; }
         public double CountInRemaining => Math.Max(0, CountIn - Elapsed);
         public ActiveWorkshopSession Session { get; private set; }
@@ -32,13 +35,19 @@ namespace ForgottenVillage {
         bool targetsRecorded, savedPlayer, previousLock, previousPointer;
         string previousPrompt;
         Quaternion previousCameraRotation;
-        Vector3 previousCameraPosition, desktopRest;
+        Vector3 previousCameraPosition, desktopRest, returnPosition, houseArenaPosition;
+        float returnYaw;
+        Vector3 desktopVelocity;
+        GameObject shed;
+        Image curtain;
+        bool changingRoom;
         double lastTime;
         int lastCue = -1, lastRevision;
         ActiveWorkshopAudio sound;
         double trackingLostFor;
 
-        bool Allowed() => house && house.game && house.game.playing && house.game.house == 2 && house.game.state.elder;
+        bool Allowed() => house && house.game && house.game.playing && house.game.house == 2 && house.game.state.elder &&
+            (!house.game.transitions || !house.game.transitions.Busy);
         void Awake() {
             sound = GetComponent<ActiveWorkshopAudio>();
             var input = GetComponent<ActiveWorkshopInput>(); if (input) input.run = this;
@@ -49,36 +58,132 @@ namespace ForgottenVillage {
             for (int i = 0; i < targetPoints.Length && i < 6; i++) if (targetPoints[i]) authoredTargets[i] = targetPoints[i].localPosition;
             targetsRecorded = true;
         }
-        public void Begin() {
+        public void Begin() => StartRound(false);
+        public void BeginPractice() => StartRound(true);
+        public void EnterShed(bool practice) {
+            if (!changingRoom && Allowed()) StartCoroutine(ChangeRoom(() => StartRound(practice)));
+        }
+
+        IEnumerator ChangeRoom(Action move) {
+            changingRoom = true;
+            if (!curtain) {
+                var canvas = new GameObject("Workshop transition", typeof(RectTransform), typeof(Canvas));
+                canvas.transform.SetParent(transform, false);
+                var display = canvas.GetComponent<Canvas>();
+                display.renderMode = RenderMode.WorldSpace;
+                display.sortingOrder = short.MaxValue;
+                curtain = VillageUI.Rect("Fade", canvas.transform, new Vector2(4, 4), Vector2.zero).gameObject.AddComponent<Image>();
+                curtain.material = house.game.ui.panelMaterial;
+                curtain.raycastTarget = false;
+            }
+            curtain.transform.parent.gameObject.SetActive(true);
+            for (float time = 0; time < .18f; time += Time.unscaledDeltaTime) {
+                DrawCurtain(Mathf.SmoothStep(0, 1, time / .18f));
+                yield return null;
+            }
+            DrawCurtain(1);
+            if (Allowed()) move();
+            for (float time = 0; time < .22f; time += Time.unscaledDeltaTime) {
+                DrawCurtain(Mathf.SmoothStep(1, 0, time / .22f));
+                yield return null;
+            }
+            curtain.transform.parent.gameObject.SetActive(false);
+            changingRoom = false;
+        }
+
+        void DrawCurtain(float alpha) {
+            var camera = house.game.player.View.transform;
+            curtain.transform.parent.SetPositionAndRotation(camera.position + camera.forward * .35f, camera.rotation);
+            curtain.color = new Color(0, 0, 0, alpha);
+        }
+
+        void StartRound(bool practice) {
             if (!Allowed()) return;
-            Stop(); RecordTargets();
+            RecordTargets();
             var player = house.game.player;
-            previousLock = player.ActivityLocksMovement; previousPointer = player.ActivityUsesPointer;
-            previousPrompt = player.ActivityPrompt;
-            if (player.desktopCamera) {
-                previousCameraRotation = player.desktopCamera.transform.localRotation;
-                previousCameraPosition = player.desktopCamera.transform.localPosition;
+            if (!savedPlayer) {
+                previousLock = player.ActivityLocksMovement; previousPointer = player.ActivityUsesPointer;
+                previousPrompt = player.ActivityPrompt;
+                returnPosition = player.IsVR
+                    ? player.View.transform.position - Vector3.up * player.origin.CameraInOriginSpaceHeight
+                    : player.transform.position;
+                returnYaw = player.IsVR ? player.origin.transform.eulerAngles.y : player.transform.eulerAngles.y;
+                if (player.desktopCamera) {
+                    previousCameraRotation = player.desktopCamera.transform.localRotation;
+                    previousCameraPosition = player.desktopCamera.transform.localPosition;
+                }
+                houseArenaPosition = transform.position;
+                // Keep the shed inside the loaded house scene, above the original room.
+                transform.position += Vector3.up * 24;
+                if (!shed) BuildShed();
+                shed.SetActive(true);
             }
             savedPlayer = true; player.ActivityLocksMovement = true; player.ActivityUsesPointer = !player.IsVR; player.ActivityPrompt = "";
             var point = player.IsVR && vrPoint ? vrPoint : desktopPoint;
             if (point) player.Teleport(point.position, point.eulerAngles.y);
             if (!player.IsVR && player.desktopCamera) {
                 player.desktopCamera.transform.localRotation = Quaternion.identity;
+                player.desktopCamera.transform.localPosition = previousCameraPosition;
                 desktopRest = player.desktopCamera.transform.localPosition;
-                for (int i = 0; i < targetPoints.Length && i < 6; i++) if (targetPoints[i]) targetPoints[i].localPosition = authoredTargets[i];
+                for (int i = 0; i < targetPoints.Length && i < 6; i++) if (targetPoints[i]) {
+                    var authored = authoredTargets[i];
+                    targetPoints[i].localPosition = new Vector3(authored.x * 1.55f, authored.y, authored.z + .30f);
+                }
             }
-            Session = new ActiveWorkshopSession(seedOverride < 0 ? UnityEngine.Random.Range(0, int.MaxValue) : seedOverride);
+            Physics.SyncTransforms();
+            Session = new ActiveWorkshopSession(seedOverride < 0 ? UnityEngine.Random.Range(0, int.MaxValue) : seedOverride, practice);
             Elapsed = 0; lastCue = -1; lastRevision = 0; HeadOffset = Vector3.zero; trackingLostFor = 0;
+            desktopVelocity = Vector3.zero;
             LeftTracked = RightTracked = false; HeadTracked = true;
             house.game.ui.Close(); if (house.game.ui.notice) house.game.ui.notice.text = "";
             Running = true; CalibratePose(); lastTime = Time.realtimeSinceStartupAsDouble;
             if (view) view.Feedback("GET READY / stand or sit comfortably, hands in front", true);
         }
 
+        void BuildShed() {
+            shed = new GameObject("Quick Hands practice shed");
+            shed.transform.SetParent(transform, false);
+            var finish = new MaterialPropertyBlock();
+            var surface = view && view.targetRenderers.Length > 0 && view.targetRenderers[0]
+                ? view.targetRenderers[0].sharedMaterial : null;
+            void Panel(string label, Vector3 center, Vector3 size, Color color) {
+                var panel = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                panel.name = label;
+                panel.transform.SetParent(shed.transform, false);
+                panel.transform.localPosition = center;
+                panel.transform.localScale = size;
+                panel.GetComponent<Collider>().enabled = false;
+                var renderer = panel.GetComponent<Renderer>();
+                if (surface) renderer.sharedMaterial = surface;
+                finish.SetColor("_BaseColor", color);
+                renderer.SetPropertyBlock(finish);
+            }
+            var timber = new Color(.30f, .21f, .14f);
+            var wall = new Color(.21f, .26f, .29f);
+            Panel("Floor", new Vector3(0, .025f, 0), new Vector3(7, .20f, 8), timber);
+            Panel("Ceiling", new Vector3(0, 4, 0), new Vector3(7, .20f, 8), timber);
+            Panel("Back wall", new Vector3(0, 2, 4), new Vector3(7, 4, .18f), wall);
+            Panel("Entry wall", new Vector3(0, 2, -4), new Vector3(7, 4, .18f), wall);
+            for (int side = -1; side <= 1; side += 2) {
+                Panel("Side wall", new Vector3(side * 3.5f, 2, 0), new Vector3(.18f, 4, 8), wall);
+                for (int beam = -1; beam <= 1; beam++)
+                    Panel("Wall stud", new Vector3(side * 3.32f, 2, beam * 2.6f), new Vector3(.18f, 4, .22f), timber);
+            }
+            var fixture = new GameObject("Warm overhead light");
+            fixture.transform.SetParent(shed.transform, false);
+            fixture.transform.localPosition = new Vector3(0, 3.5f, -1.5f);
+            var light = fixture.AddComponent<Light>();
+            light.type = LightType.Point;
+            light.range = 10;
+            light.intensity = 2;
+            light.color = new Color(1, .87f, .73f);
+        }
+
         void Update() {
             double now = Time.realtimeSinceStartupAsDouble;
             double dt = Math.Max(0, now - lastTime); lastTime = now;
-            if (Running && !Allowed()) { Stop(); return; }
+            if (savedPlayer && (!Allowed() || (!Running && !house.game.ui.IsOpen))) { Stop(); return; }
+            if (changingRoom) return;
             if (Running && !IsPaused) {
                 double previousActive = Math.Max(0, Elapsed - CountIn);
                 Elapsed += dt;
@@ -139,7 +244,7 @@ namespace ForgottenVillage {
                     bool valid = hand == 0 ? leftValid : rightValid;
                     // Tracking loss is not a real withdrawal. Reacquiring a resting hand must not score.
                     if (!valid) { armed[hand, target] = false; continue; }
-                    bool inside = Vector3.Distance(hand == 0 ? left : right, targetPoints[target].position) <= .18f;
+                    bool inside = Vector3.Distance(hand == 0 ? left : right, targetPoints[target].position) <= ContactRadius;
                     if (newCue) armed[hand, target] = !inside;
                     if (!inside) armed[hand, target] = true;
                     else if (relevant && armed[hand, target]) {
@@ -166,11 +271,12 @@ namespace ForgottenVillage {
         }
         public void DesktopPose(float lean, bool duck, double dt) {
             if (!Running || IsVR || !house || !house.game || !house.game.player.desktopCamera) return;
-            if (IsPaused) return;
+            if (IsPaused || changingRoom) return;
             Vector3 offset = new Vector3(Mathf.Clamp(lean, -1, 1) * .24f, duck ? -.25f : 0, 0);
-            house.game.player.desktopCamera.transform.localPosition = desktopRest + offset;
-            HeadOffset = offset; HeadTracked = true;
-            if (AcceptsInput) Session.ObserveDodge(offset.x, offset.y, dt);
+            HeadOffset = Vector3.SmoothDamp(HeadOffset, offset, ref desktopVelocity, .10f, Mathf.Infinity, (float)dt);
+            house.game.player.desktopCamera.transform.localPosition = desktopRest + HeadOffset;
+            HeadTracked = true;
+            if (AcceptsInput) Session.ObserveDodge(HeadOffset.x, HeadOffset.y, dt);
         }
         void HandleHit(WorkshopHit result) {
             if (!view) return;
@@ -185,7 +291,7 @@ namespace ForgottenVillage {
             if (player.IsVR) {
                 Vector3 head = transform.InverseTransformPoint(NeutralHead);
                 for (int i = 0; i < targetPoints.Length && i < 6; i++) if (targetPoints[i])
-                    targetPoints[i].localPosition = head + new Vector3((i % 3 - 1) * .36f, i < 3 ? -.30f : .02f, .50f);
+                    targetPoints[i].localPosition = head + new Vector3((i % 3 - 1) * .44f, i < 3 ? -.32f : -.04f, i % 3 == 1 ? .59f : .62f);
             }
             lastCue = -1;
         }
@@ -193,6 +299,7 @@ namespace ForgottenVillage {
             if (!Running || !Allowed()) return;
             if (!IsVR && house.game.player.desktopCamera) house.game.player.desktopCamera.transform.localPosition = desktopRest;
             CalibratePose();
+            desktopVelocity = Vector3.zero;
             if (view) view.Feedback("NEUTRAL POSE SAVED / comfortable reach, small lean or duck", true);
             house.game.ui.Close(); lastTime = Time.realtimeSinceStartupAsDouble;
         }
@@ -200,28 +307,54 @@ namespace ForgottenVillage {
             if (!Running || !Allowed()) return;
             if (sound) sound.Silence();
             var ui = house.game.ui;
-            ui.Show("Quick Hands / Paused", "Time and targets are frozen.\nReach for lit toys; use two hands on a pair. Follow LEFT / RIGHT / DUCK warnings.\nDesktop: left/right mouse = hands; both buttons = pair; A/D = lean; S = duck.\nRecenter while sitting or standing comfortably to adjust your neutral pose.");
+            ui.Show("Quick Hands / Paused", "Time and targets are frozen.\nReach for lit targets; use two hands on a pair. Follow LEFT / RIGHT / DUCK warnings.\nDesktop: left/right mouse = hands; both buttons = pair; A/D = lean; S = duck.\nRecenter while sitting or standing comfortably to adjust your neutral pose.");
             ui.Button("Resume", () => { lastTime = Time.realtimeSinceStartupAsDouble; ui.Close(); });
-            ui.Button("Recenter reach", Recalibrate); ui.Button("Restart", Begin);
-            ui.Button("Leave workshop", () => { Stop(); ui.Close(); });
+            ui.Button("Recenter reach", Recalibrate); ui.Button("Restart", () => StartRound(Session.Practice));
+            ui.Button("Leave workshop", () => ReturnToCarpenter(ui.Close));
         }
         void Finish() {
+            Running = false;
+            if (sound) sound.Silence();
+            if (view) view.Render(this, 0);
+            if (Session.Practice) {
+                var ui = house.game.ui;
+                ui.Show("Quick Hands / Practice complete", "Actions completed " + (Session.Cues.Length - Session.Misses) + " / " + Session.Cues.Length);
+                ui.Button("Start challenge", Begin);
+                ui.Button("Practice again", BeginPractice);
+                ui.Button("Return to Carpenter", () => ReturnToCarpenter(ui.Close));
+                return;
+            }
             bool passed = Session.Passed;
             var game = house.game;
             game.state.carpenterBestScore = Math.Max(game.state.carpenterBestScore, Session.Score); game.Commit();
-            Stop();
-            if (passed) { house.Win(); return; }
+            if (passed) {
+                Running = true;
+                ReturnToCarpenter(house.Win);
+                return;
+            }
             game.ui.Show("Quick Hands / Keep trying!", "Score " + Session.Score + " / goal " + ActiveWorkshopSession.Goal +
+                "\nAccuracy " + Session.AccuracyPercent + "% / goal " + ActiveWorkshopSession.MinimumAccuracyPercent + "%" +
                 "\nBest combo " + Session.BestCombo + " / targets " + Session.TargetsHit + " / dodges " + Session.Dodges +
-                "\nReach for the next toy, then watch the striped-board warning. Every retry has a fresh pattern.");
-            game.ui.Button("Try again", Begin); game.ui.Button("Leave workshop", game.ui.Close);
+                "\nEvery retry has a fresh pattern.");
+            game.ui.Button("Try again", Begin); game.ui.Button("Return to Carpenter", () => ReturnToCarpenter(game.ui.Close));
+        }
+        void ReturnToCarpenter(Action next) {
+            if (!changingRoom) StartCoroutine(ChangeRoom(() => { Stop(); next(); }));
         }
         public void Stop() {
             if (sound) sound.Silence();
             if (savedPlayer && house && house.game && house.game.player) {
                 var player = house.game.player;
+                if (house.game.house == 2) player.Teleport(returnPosition, returnYaw);
                 player.ActivityLocksMovement = previousLock; player.ActivityUsesPointer = previousPointer; player.ActivityPrompt = previousPrompt;
                 if (player.desktopCamera) { player.desktopCamera.transform.localRotation = previousCameraRotation; player.desktopCamera.transform.localPosition = previousCameraPosition; }
+            }
+            if (savedPlayer) {
+                transform.position = houseArenaPosition;
+                if (shed) shed.SetActive(false);
+                for (int i = 0; i < targetPoints.Length && i < 6; i++)
+                    if (targetPoints[i]) targetPoints[i].localPosition = authoredTargets[i];
+                Physics.SyncTransforms();
             }
             savedPlayer = false; Running = false; LeftTracked = RightTracked = false;
             if (leftHandVisual) leftHandVisual.gameObject.SetActive(false);

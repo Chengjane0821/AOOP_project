@@ -77528,3 +77528,8 @@ UnityEditor.EditorAssemblies:ProcessInitializeOnLoadMethodAttributes ()
   at UnityEditor.EditorAssemblies.ProcessInitializeOnLoadMethodAttributes () [0x00056] in <15bb73cbe4984c7e86e71673213f0881>:0 
 UnityEditor.EditorAssemblies:ProcessInitializeOnLoadMethodAttributes ()
 
+2026-11-23T20:11:08 Error Failed to create domain‐reload token.
+UnityEngine.Debug:LogError (object)
+Unity.AI.Generators.UI.Utilities.DomainReloadUtilities:CreateToken () (at ./Library/PackageCache/com.unity.ai.assistant@890548b66362/Modules/Unity.AI.Generators.UI/Utilities/DomainReloadUtilities.cs:50)
+UnityEditor.AssemblyReloadEvents:OnBeforeAssemblyReload ()
+

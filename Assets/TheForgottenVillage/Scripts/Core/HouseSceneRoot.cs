@@ -8,6 +8,7 @@ public class HouseSceneRoot : MonoBehaviour {
  public int houseIndex;public Transform arrival;public Transform safetyGate;public GameObject[] copiedRoots;
  public void PrepareForUnload(){
   var alchemist=GetComponent<AlchemistDreamHouse>();if(alchemist)alchemist.LeaveHouse();
+  var workshop=GetComponent<ActiveWorkshopHouse>();if(workshop&&workshop.run)workshop.run.Stop();
   foreach(var tennis in GetComponentsInChildren<ElderTennis>(true))if(tennis.Running)tennis.StopMatch();
  }
  void Awake(){ClearInactiveStartingSelections(gameObject.scene.GetRootGameObjects());}

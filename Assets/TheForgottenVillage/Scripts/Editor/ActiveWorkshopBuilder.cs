@@ -96,7 +96,7 @@ namespace ForgottenVillage.Editor {
             view.feedback = Text(header.transform, "Action feedback", "READY WHEN YOU ARE", new Vector2(920, 30), new Vector2(0, 9), 24, White);
             Text(header.transform, "Score heading", "SCORE / GOAL", new Vector2(430, 30), new Vector2(-245, -27), 23, Muted);
             Text(header.transform, "Time heading", "TIME", new Vector2(200, 30), new Vector2(95, -27), 23, Muted);
-            Text(header.transform, "Combo heading", "COMBO", new Vector2(220, 30), new Vector2(345, -27), 23, Muted);
+            Text(header.transform, "Combo heading", "ACCURACY", new Vector2(220, 30), new Vector2(345, -27), 23, Muted);
             view.score = Text(header.transform, "Score", "0000 / 900", new Vector2(430, 78), new Vector2(-245, -83), 52, White);
             view.time = Text(header.transform, "Time", "60s", new Vector2(200, 78), new Vector2(95, -83), 52, White);
             view.combo = Text(header.transform, "Combo", "0 / x1", new Vector2(220, 78), new Vector2(345, -83), 46, White);

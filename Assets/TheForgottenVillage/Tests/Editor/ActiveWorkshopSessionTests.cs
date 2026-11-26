@@ -47,6 +47,29 @@ namespace ForgottenVillage.Tests {
         }
 
         [Test]
+        public void HighScoreAloneDoesNotPassWithoutAccuracy() {
+            var session = new ActiveWorkshopSession(42);
+            foreach (var cue in session.Cues.Take(14)) Complete(session, cue);
+            session.Advance(ActiveWorkshopSession.Duration - session.Elapsed);
+            Assert.That(session.Score, Is.GreaterThanOrEqualTo(ActiveWorkshopSession.Goal));
+            Assert.That(session.AccuracyPercent, Is.LessThan(ActiveWorkshopSession.MinimumAccuracyPercent));
+            Assert.That(session.Passed, Is.False);
+        }
+
+        [Test]
+        public void PracticeIncludesAllActionsWithoutAwardingPointsOrVictory() {
+            var session = new ActiveWorkshopSession(42, true);
+            Assert.That(session.Cues.Select(cue => cue.Kind), Is.EqualTo(new[] {
+                WorkshopCueKind.Target, WorkshopCueKind.Double, WorkshopCueKind.DodgeLeft
+            }));
+            foreach (var cue in session.Cues) Complete(session, cue);
+            session.Advance(session.Remaining);
+            Assert.That(session.Finished && !session.Passed, Is.True);
+            Assert.That(session.AccuracyPercent, Is.EqualTo(100));
+            Assert.That(session.Score, Is.Zero);
+        }
+
+        [Test]
         public void IdlePlayerFailsEvenAfterTimeJumpsAcrossAllCues() {
             var session = new ActiveWorkshopSession(42);
             session.Advance(ActiveWorkshopSession.Duration + 10);

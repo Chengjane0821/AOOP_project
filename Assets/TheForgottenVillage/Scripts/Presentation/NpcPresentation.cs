@@ -10,6 +10,7 @@ namespace ForgottenVillage {
         VillageAction action;
         Quaternion restRotation;
         float greetingUntil;
+        float carpenterTurnSpeed;
         bool conversing;
 
         void Awake() {
@@ -42,11 +43,19 @@ namespace ForgottenVillage {
                 // Avoid spinning all the way around when the player walks behind the resident.
                 if (Quaternion.Angle(restRotation, desired) > 80f) desired = restRotation;
             }
-            transform.localRotation = Quaternion.RotateTowards(transform.localRotation, desired, 70f * Time.deltaTime);
+            float turnSpeed = 70f;
+            if (role == 2) {
+                float angle = Quaternion.Angle(transform.localRotation, desired);
+                carpenterTurnSpeed = Mathf.MoveTowards(carpenterTurnSpeed, Mathf.Min(95, angle * 6), 360 * Time.deltaTime);
+                turnSpeed = carpenterTurnSpeed;
+            }
+            transform.localRotation = Quaternion.RotateTowards(transform.localRotation, desired, turnSpeed * Time.deltaTime);
             // The imported Idle pose is evaluated first. Add a small nod, never root displacement.
             if (head && animator && animator.isActiveAndEnabled && nearby && conversing) {
-                float amplitude = Time.time < greetingUntil ? 5f : 1.5f;
-                head.localRotation *= Quaternion.Euler(Mathf.Sin(Time.time * 5f) * amplitude, 0, 0);
+                float nod = role == 2
+                    ? 7f * Mathf.Pow(Mathf.Sin(Mathf.PI * Mathf.Clamp01((greetingUntil - Time.time) / 1.4f)), 2)
+                    : Mathf.Sin(Time.time * 5f) * (Time.time < greetingUntil ? 5f : 1.5f);
+                head.localRotation *= Quaternion.Euler(nod, 0, 0);
             }
         }
     }

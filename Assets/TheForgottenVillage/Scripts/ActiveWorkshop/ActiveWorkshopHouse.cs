@@ -9,9 +9,10 @@ namespace ForgottenVillage {
             if (!game || !run || !game.playing || game.house != 2 || !game.state.elder) return;
             if (run.Running) { run.PauseMenu(); return; }
             if (game.state.carpenterArcadeWon && !game.state.carpenterMemoryRecovered) { Recovery(); return; }
-            game.ui.Show("Carpenter / Quick Hands Workshop", "Hit the lit targets, use BOTH hands on a pair, and dodge the striped boards.\n60 seconds / goal " + ActiveWorkshopSession.Goal + " points / best " + game.state.carpenterBestScore +
+            game.ui.Show("Carpenter / Quick Hands Workshop", "The targets are set up in my practice shed. Hit the lights, use both hands on pairs, and dodge the incoming tools.\n60 seconds / " + ActiveWorkshopSession.Goal + " points and " + ActiveWorkshopSession.MinimumAccuracyPercent + "% accuracy / best " + game.state.carpenterBestScore +
                 "\nVR: touch targets with controllers; lean left/right or lower your head at the warning.\nDesktop: mouse left/right = hands; A/D = lean; S = duck. Press both mouse buttons on a glowing pair.");
-            game.ui.Button("Let's play!", run.Begin);
+            game.ui.Button("Enter shed and practice", () => run.EnterShed(true));
+            game.ui.Button("Start challenge", () => run.EnterShed(false));
             if (game.state.carpenterMemoryRecovered) game.ui.Button("Investigate record", () => game.ui.ObjectQuest(2));
             game.ui.Button("Maybe later", game.ui.Close);
         }
