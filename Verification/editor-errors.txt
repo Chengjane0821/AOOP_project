@@ -77598,3 +77598,25 @@ Disabled keywords: SHADER_API_GLES30 SHADER_API_GLES31 SHADER_API_GLES32 UNITY_A
 5 errors
 UnityEditor.EditorApplication:Internal_CallDelayFunctions ()
 
+2026-11-26T10:15:50 Error System.IO.IOException: Sharing violation on path C:\Github_rep\AOOP_project\Verification\elder-automation-ready.txt
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <4449e9424e7e4d4d81a660907c68cb97>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <4449e9424e7e4d4d81a660907c68cb97>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <4449e9424e7e4d4d81a660907c68cb97>:0 
+  at System.IO.StreamWriter..ctor (System.String path) [0x00008] in <4449e9424e7e4d4d81a660907c68cb97>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string)
+  at System.IO.File.WriteAllText (System.String path, System.String contents) [0x00026] in <4449e9424e7e4d4d81a660907c68cb97>:0 
+  at ForgottenVillage.Editor.ElderTennisAutomation..cctor () [0x00020] in C:\Github_rep\AOOP_project\Assets\TheForgottenVillage\Scripts\Editor\ElderTennisAutomation.cs:8 
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+2026-11-26T10:37:34 Error System.IO.IOException: Sharing violation on path C:\Github_rep\AOOP_project\Verification\elder-automation-ready.txt
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <4449e9424e7e4d4d81a660907c68cb97>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <4449e9424e7e4d4d81a660907c68cb97>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <4449e9424e7e4d4d81a660907c68cb97>:0 
+  at System.IO.StreamWriter..ctor (System.String path) [0x00008] in <4449e9424e7e4d4d81a660907c68cb97>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string)
+  at System.IO.File.WriteAllText (System.String path, System.String contents) [0x00026] in <4449e9424e7e4d4d81a660907c68cb97>:0 
+  at ForgottenVillage.Editor.ElderTennisAutomation..cctor () [0x00020] in C:\Github_rep\AOOP_project\Assets\TheForgottenVillage\Scripts\Editor\ElderTennisAutomation.cs:8 
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
