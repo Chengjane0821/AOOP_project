@@ -77528,3 +77528,73 @@ UnityEditor.EditorAssemblies:ProcessInitializeOnLoadMethodAttributes ()
   at UnityEditor.EditorAssemblies.ProcessInitializeOnLoadMethodAttributes () [0x00056] in <15bb73cbe4984c7e86e71673213f0881>:0 
 UnityEditor.EditorAssemblies:ProcessInitializeOnLoadMethodAttributes ()
 
+2026-11-26T09:14:05 Exception NullReferenceException: SerializedObject of SerializedProperty has been Disposed.
+UnityEditor.SerializedProperty.get_stringValue () (at <15bb73cbe4984c7e86e71673213f0881>:0)
+UnityEditor.Android.AndroidBuildProfileExtension.OnBeforeAssemblyReload () (at /home/bokken/build/output/unity/unity/PlatformDependent/AndroidPlayer/Editor/Managed/AndroidBuildProfileExtension.cs:466)
+UnityEditor.AssemblyReloadEvents.OnBeforeAssemblyReload () (at <15bb73cbe4984c7e86e71673213f0881>:0)
+
+2026-11-26T09:15:10 Exception NullReferenceException: SerializedObject of SerializedProperty has been Disposed.
+UnityEditor.SerializedProperty.get_stringValue () (at <15bb73cbe4984c7e86e71673213f0881>:0)
+UnityEditor.Android.AndroidBuildProfileExtension.OnBeforeAssemblyReload () (at /home/bokken/build/output/unity/unity/PlatformDependent/AndroidPlayer/Editor/Managed/AndroidBuildProfileExtension.cs:466)
+UnityEditor.AssemblyReloadEvents.OnBeforeAssemblyReload () (at <15bb73cbe4984c7e86e71673213f0881>:0)
+
+2026-11-26T09:30:36 Exception NullReferenceException: SerializedObject of SerializedProperty has been Disposed.
+UnityEditor.SerializedProperty.get_stringValue () (at <15bb73cbe4984c7e86e71673213f0881>:0)
+UnityEditor.Android.AndroidBuildProfileExtension.OnBeforeAssemblyReload () (at /home/bokken/build/output/unity/unity/PlatformDependent/AndroidPlayer/Editor/Managed/AndroidBuildProfileExtension.cs:466)
+UnityEditor.AssemblyReloadEvents.OnBeforeAssemblyReload () (at <15bb73cbe4984c7e86e71673213f0881>:0)
+
+2026-11-26T09:44:49 Error Problem detected while opening the Scene file: 'Assets/_Course Library/Source Files/Sample Scenes/ModernRoom_Sample.unity'.
+Check the following logs for more details.
+UnityEditor.EditorApplication:Internal_CallDelayFunctions ()
+
+2026-11-26T09:44:49 Error Prefab instance problem: 'Plant_B_Prefab (1) (Missing Prefab with guid: 66b3478caf1cf544d808e89f025dd1bb)'. 2 instances are missing the same Prefab Asset with guid 66b3478caf1cf544d808e89f025dd1bb.
+UnityEditor.EditorApplication:Internal_CallDelayFunctions ()
+
+2026-11-26T09:44:49 Error Prefab instance problem. Missing Prefab Asset: 'Plant_A_Prefab (Missing Prefab with guid: 6d7dca2db810c214384d08984ed5d666)'
+UnityEditor.EditorApplication:Internal_CallDelayFunctions ()
+
+2026-11-26T09:44:49 Error Prefab instance problem. Missing Prefab Asset: 'Mirror_A_1_Prefab (Missing Prefab with guid: 74e19c8882167134f8c1380eec389912)'
+UnityEditor.EditorApplication:Internal_CallDelayFunctions ()
+
+2026-11-26T09:44:49 Error Prefab instance problem. Missing Prefab Asset: 'Lever_1_Prefab (Missing Prefab with guid: c965547321e11af4b8337403e384ac66)'
+UnityEditor.EditorApplication:Internal_CallDelayFunctions ()
+
+2026-11-26T09:44:49 Error Prefab instance problem. Missing Prefab Asset: 'Room_Modern_Prefab (Missing Prefab with guid: e2a73cd21db57634384d550bf68effe2)'
+UnityEditor.EditorApplication:Internal_CallDelayFunctions ()
+
+2026-11-26T09:44:50 Error Error building Player: 7 errors
+
+2026-11-26T09:44:52 Error Build completed with a result of 'Failed' in 23 seconds (23026 ms)
+8 errors
+UnityEditor.EditorApplication:Internal_CallDelayFunctions ()
+
+2026-11-26T09:46:13 Error Shader error in 'Hidden/Temporal Anti-aliasing': undeclared identifier 'sampler_CameraDepthTexture' at Assets/Effects/TemporalAntiAliasing/Resources/TemporalAntiAliasing.cginc(151) (on vulkan)
+
+Compiling Subshader: 0, Pass: , Vertex program with STEREO_MULTIVIEW_ON
+Platform defines: SHADER_API_MOBILE UNITY_ENABLE_REFLECTION_BUFFERS UNITY_LIGHTMAP_DLDR_ENCODING UNITY_NO_CUBEMAP_ARRAY UNITY_NO_DXT5nm UNITY_NO_RGBM UNITY_NO_SCREENSPACE_SHADOWS UNITY_PBS_USE_BRDF3 UNITY_PLATFORM_SUPPORTS_DEPTH_FETCH
+Disabled keywords: SHADER_API_GLES30 SHADER_API_GLES31 SHADER_API_GLES32 UNITY_ASTC_NORMALMAP_ENCODING UNITY_COLORSPACE_GAMMA UNITY_ENABLE_DETAIL_NORMALMAP UNITY_FRAMEBUFFER_FETCH_AVAILABLE UNITY_HARDWARE_TIER1 UNITY_HARDWARE_TIER2 UNITY_HARDWARE_TIER3 UNITY_LIGHTMAP_FULL_HDR UNITY_LIGHTMAP_RGBM_ENCODING UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_METAL_SHADOWS_USE_POINT_FILTERING UNITY_PBS_USE_BRDF1 UNITY_PBS_USE_BRDF2 UNITY_PRETRANSFORM_TO_DISPLAY_ORIENTATION UNITY_SPECCUBE_BLENDING UNITY_SPECCUBE_BOX_PROJECTION UNITY_UNIFIED_SHADER_PRECISION_MODEL UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_VIRTUAL_TEXTURING
+
+2026-11-26T09:46:14 Error Shader error in 'Hidden/Image Effects/Cinematic/AmbientOcclusion': undeclared identifier 'sampler_CameraDepthTexture' at Assets/Effects/AmbientOcclusion/Resources/Common.cginc(117) (on vulkan)
+
+Compiling Subshader: 0, Pass: , Vertex program with STEREO_MULTIVIEW_ON
+Platform defines: SHADER_API_MOBILE UNITY_ENABLE_REFLECTION_BUFFERS UNITY_LIGHTMAP_DLDR_ENCODING UNITY_NO_CUBEMAP_ARRAY UNITY_NO_DXT5nm UNITY_NO_RGBM UNITY_NO_SCREENSPACE_SHADOWS UNITY_PBS_USE_BRDF3 UNITY_PLATFORM_SUPPORTS_DEPTH_FETCH
+Disabled keywords: SHADER_API_GLES30 SHADER_API_GLES31 SHADER_API_GLES32 UNITY_ASTC_NORMALMAP_ENCODING UNITY_COLORSPACE_GAMMA UNITY_ENABLE_DETAIL_NORMALMAP UNITY_FRAMEBUFFER_FETCH_AVAILABLE UNITY_HARDWARE_TIER1 UNITY_HARDWARE_TIER2 UNITY_HARDWARE_TIER3 UNITY_LIGHTMAP_FULL_HDR UNITY_LIGHTMAP_RGBM_ENCODING UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_METAL_SHADOWS_USE_POINT_FILTERING UNITY_PBS_USE_BRDF1 UNITY_PBS_USE_BRDF2 UNITY_PRETRANSFORM_TO_DISPLAY_ORIENTATION UNITY_SPECCUBE_BLENDING UNITY_SPECCUBE_BOX_PROJECTION UNITY_UNIFIED_SHADER_PRECISION_MODEL UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_VIRTUAL_TEXTURING
+
+2026-11-26T09:46:14 Error Shader error in 'Hidden/ScreenSpaceReflection': undeclared identifier 'sampler_CameraDepthTexture' at Assets/Effects/ScreenSpaceReflection/Resources/ScreenSpaceReflection.shader(134) (on vulkan)
+
+Compiling Subshader: 0, Pass: , Vertex program with STEREO_MULTIVIEW_ON
+Platform defines: SHADER_API_MOBILE UNITY_ENABLE_REFLECTION_BUFFERS UNITY_LIGHTMAP_DLDR_ENCODING UNITY_NO_CUBEMAP_ARRAY UNITY_NO_DXT5nm UNITY_NO_RGBM UNITY_NO_SCREENSPACE_SHADOWS UNITY_PBS_USE_BRDF3 UNITY_PLATFORM_SUPPORTS_DEPTH_FETCH
+Disabled keywords: SHADER_API_GLES30 SHADER_API_GLES31 SHADER_API_GLES32 UNITY_ASTC_NORMALMAP_ENCODING UNITY_COLORSPACE_GAMMA UNITY_ENABLE_DETAIL_NORMALMAP UNITY_FRAMEBUFFER_FETCH_AVAILABLE UNITY_HARDWARE_TIER1 UNITY_HARDWARE_TIER2 UNITY_HARDWARE_TIER3 UNITY_LIGHTMAP_FULL_HDR UNITY_LIGHTMAP_RGBM_ENCODING UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_METAL_SHADOWS_USE_POINT_FILTERING UNITY_PBS_USE_BRDF1 UNITY_PBS_USE_BRDF2 UNITY_PRETRANSFORM_TO_DISPLAY_ORIENTATION UNITY_SPECCUBE_BLENDING UNITY_SPECCUBE_BOX_PROJECTION UNITY_UNIFIED_SHADER_PRECISION_MODEL UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_VIRTUAL_TEXTURING
+
+2026-11-26T09:46:14 Error Shader error in 'Hidden/Image Effects/Cinematic/MotionBlur/Reconstruction': undeclared identifier 'sampler_CameraDepthTexture' at Assets/Effects/MotionBlur/Resources/Prefilter.cginc(28) (on vulkan)
+
+Compiling Subshader: 0, Pass: , Vertex program with STEREO_MULTIVIEW_ON
+Platform defines: SHADER_API_MOBILE UNITY_ENABLE_REFLECTION_BUFFERS UNITY_LIGHTMAP_DLDR_ENCODING UNITY_NO_CUBEMAP_ARRAY UNITY_NO_DXT5nm UNITY_NO_RGBM UNITY_NO_SCREENSPACE_SHADOWS UNITY_PBS_USE_BRDF3 UNITY_PLATFORM_SUPPORTS_DEPTH_FETCH
+Disabled keywords: SHADER_API_GLES30 SHADER_API_GLES31 SHADER_API_GLES32 UNITY_ASTC_NORMALMAP_ENCODING UNITY_COLORSPACE_GAMMA UNITY_ENABLE_DETAIL_NORMALMAP UNITY_FRAMEBUFFER_FETCH_AVAILABLE UNITY_HARDWARE_TIER1 UNITY_HARDWARE_TIER2 UNITY_HARDWARE_TIER3 UNITY_LIGHTMAP_FULL_HDR UNITY_LIGHTMAP_RGBM_ENCODING UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_METAL_SHADOWS_USE_POINT_FILTERING UNITY_PBS_USE_BRDF1 UNITY_PBS_USE_BRDF2 UNITY_PRETRANSFORM_TO_DISPLAY_ORIENTATION UNITY_SPECCUBE_BLENDING UNITY_SPECCUBE_BOX_PROJECTION UNITY_UNIFIED_SHADER_PRECISION_MODEL UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_VIRTUAL_TEXTURING
+
+2026-11-26T09:46:16 Error Error building Player: 4 errors
+
+2026-11-26T09:46:17 Error Build completed with a result of 'Failed' in 21 seconds (20508 ms)
+5 errors
+UnityEditor.EditorApplication:Internal_CallDelayFunctions ()
+
